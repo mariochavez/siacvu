@@ -41,37 +41,7 @@
 	<div id="lista">
 		<h4>Proyectos</h4>
             
-		<% if (Model.List == null || Model.List.Length == 0) { %>
-			<div class="elementolista">
-				<div class="elementodescripcion">
-					<h5><span>No hay proyectos registrados</span></h5>
-				</div><!--end elementodescripcion-->
-
-			</div><!--end elementolista-->
-		<% } else { %>
-			<% foreach (var proyecto in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(proyecto.Id) %>">
-					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(proyecto.Nombre) %></span></h5>
-						<h6>Modificado el <%=Html.Encode(proyecto.Modificacion) %></h6>
-					</div><!--end elementodescripcion-->
-
-					<div class="elementobotones">
-						<p>
-							<span><%=Html.ActionLink<ProyectoController>(x => x.Edit(proyecto.Id), "Editar") %></span>
-	                        <span>
-	                            <% if (proyecto.Activo) { %>
-	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = proyecto.Id }, new { @class = "remote put" })%>
-	                            <% } else { %>
-	                                <%=Html.ActionLink("Activar", "Activate", new { id = proyecto.Id }, new { @class = "remote put" })%>
-	                            <% } %>
-	                        </span>
-	                   	</p>
-					</div><!--end elementobotones-->
-		
-               </div><!--end elementolista-->
-			<% } %>
-		<% } %>
+		<% Html.RenderPartial("_Producto", Model.ProductList); %>
             
 	</div><!--end lista-->
 

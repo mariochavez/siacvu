@@ -29,7 +29,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             routes.CreateArea("Productos", "DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos",
                               routes.MapRoute(null, "Productos/{controller}/{action}", new {action = "Index"}),
-                              routes.MapRoute("Productos", "Productos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"})
+                              routes.MapRoute("Productos", "Productos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
+                              routes.MapRoute(null, "{controller}/{id}/{action}/{tipoproducto}", null, new { id = @"\d{1,6}", tipoproducto = @"\d{1,6}" })
                 );
 
             routes.CreateArea("Catalogos", "DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos",

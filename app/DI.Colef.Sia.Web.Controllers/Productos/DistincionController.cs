@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDistincionMapper distincionMapper;
         readonly IDistincionService distincionService;
         readonly IEstadoPaisMapper estadoPaisMapper;
+        readonly IProductoService productoService;
         readonly ITipoDistincionMapper tipoDistincionMapper;
 
         public DistincionController(IDistincionService distincionService, IDistincionMapper distincionMapper,
@@ -26,7 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                     IArchivoService archivoService,
                                     IAmbitoMapper ambitoMapper, IPaisMapper paisMapper,
                                     IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
-                                    IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
+                                    IInstitucionMapper institucionMapper, ISedeMapper sedeMapper,
+                                    IProductoService productoService)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             base.catalogoService = catalogoService;
@@ -37,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoDistincionMapper = tipoDistincionMapper;
             this.ambitoMapper = ambitoMapper;
             this.estadoPaisMapper = estadoPaisMapper;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -44,14 +47,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<DistincionForm>();
-            var distincions = new Distincion[] { };
-
-            if (User.IsInRole("Investigadores"))
-                distincions = distincionService.GetAllDistinciones(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                distincions = distincionService.GetAllDistinciones();
-
-            data.List = distincionMapper.Map(distincions);
+            var productos = productoService.GetProductosByUsuario<Distincion>(CurrentUser(), x => x.Titulo,
+                                                                              x => x.TipoDistincion);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -65,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            
+
             return View(data);
         }
 
@@ -113,7 +111,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+            if (
+                !IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre,
+                                             new[] {"Internacional", "Binacional", ""}))
                 distincion.Pais = GetDefaultPais();
 
             ModelState.AddModelErrors(distincion.ValidationResults(), true, "Distincion");
@@ -135,7 +135,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+            if (
+                !IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre,
+                                             new[] {"Internacional", "Binacional", ""}))
                 distincion.Pais = GetDefaultPais();
 
             ModelState.AddModelErrors(distincion.ValidationResults(), true, "Distincion");

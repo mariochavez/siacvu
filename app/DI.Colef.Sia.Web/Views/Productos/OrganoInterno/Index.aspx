@@ -47,31 +47,7 @@
 	<div id="lista">
 		<h4>&Oacute;rganos Internos</h4>
             
-		<% if (Model.List == null || Model.List.Length == 0) { %>
-			<div class="elementolista">
-				<div class="elementodescripcion">
-					<h5><span>No hay &oacute;rganos internos registrados</span></h5>
-				</div><!--end elementodescripcion-->
-
-			</div><!--end elementolista-->
-		<% } else { %>
-			<% foreach (var organoInterno in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(organoInterno.Id) %>">
-					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(organoInterno.ConsejoComisionNombre) %></span></h5>
-						<h6>Modificado el <%=Html.Encode(organoInterno.Modificacion) %></h6>
-					</div><!--end elementodescripcion-->
-
-					<div class="elementobotones">
-						<p>
-							<span><%=Html.ActionLink<OrganoInternoController>(x => x.Edit(organoInterno.Id), "Editar")%></span>
-			            	<span><%=Html.ActionLink("Ver", "Show", new { id = organoInterno.Id })%></span>
-						</p>
-					</div><!--end elementobotones-->
-
-				</div><!--end elementolista-->
-			<% } %>
-		<% } %>
+		<% Html.RenderPartial("_Producto", Model.ProductList); %>
 		
     </div><!--end lista-->
 

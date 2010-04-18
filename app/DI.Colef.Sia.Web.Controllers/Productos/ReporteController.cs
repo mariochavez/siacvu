@@ -17,16 +17,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     {
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
+        readonly ICustomCollection customCollection;
+        readonly IInstitucionReporteMapper institucionReporteMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IProductoService productoService;
         readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
         readonly IReporteMapper reporteMapper;
         readonly IReporteService reporteService;
-        readonly IProyectoService proyectoService;
-        readonly ICustomCollection customCollection;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IInstitucionReporteMapper institucionReporteMapper;
 
         public ReporteController(IReporteService reporteService,
                                  IReporteMapper reporteMapper,
@@ -42,10 +43,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  IArchivoService archivoService,
                                  IProyectoService proyectoService,
                                  IAreaTematicaMapper areaTematicaMapper,
-                                 ILineaTematicaMapper lineaTematicaMapper, 
+                                 ILineaTematicaMapper lineaTematicaMapper,
                                  IInstitucionMapper institucionMapper,
                                  IInvestigadorExternoMapper investigadorExternoMapper,
-                                 IInstitucionReporteMapper institucionReporteMapper)
+                                 IInstitucionReporteMapper institucionReporteMapper, IProductoService productoService)
             : base(usuarioService, searchService, catalogoService)
         {
             base.catalogoService = catalogoService;
@@ -63,6 +64,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaTematicaMapper = areaTematicaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.institucionReporteMapper = institucionReporteMapper;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -70,14 +72,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<ReporteForm>();
-            var reportes = new Reporte[] { };
-
-            if (User.IsInRole("Investigadores"))
-                reportes = reporteService.GetAllReportes(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                reportes = reporteService.GetAllReportes();
-
-            data.List = reporteMapper.Map(reportes);
+            var productos = productoService.GetProductosByUsuario<Reporte>(CurrentUser(), x => x.Titulo,
+                                                                           x => x.TipoReporte);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -89,7 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = new GenericViewData<ReporteForm> { Form = SetupNewForm() };
+            var data = new GenericViewData<ReporteForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -167,9 +164,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "Institucion")] InstitucionProductoForm[] institucion,
                                    ReporteForm form)
         {
-            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
-            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
-            institucion = institucion ?? new InstitucionProductoForm[] { };
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] {};
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] {};
+            institucion = institucion ?? new InstitucionProductoForm[] {};
 
             var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                             coautorExterno, coautorInterno, institucion);
@@ -230,7 +227,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var reporte = reporteService.GetReporteById(firmaForm.ProductoId);
 
             reporte.Firma.Aceptacion2 = 1;
@@ -239,10 +235,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             reporteService.SaveReporte(reporte);
 
             var data = new FirmaForm
-            {
-                TipoProducto = firmaForm.TipoProducto,
-                Aceptacion2 = 1
-            };
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
 
             return Rjs("DgaaSign", data);
         }
@@ -251,7 +247,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var reporte = reporteService.GetReporteById(firmaForm.ProductoId);
             reporte.Firma.Aceptacion1 = 0;
             reporte.Firma.Aceptacion2 = 2;
@@ -325,7 +320,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var reporte = reporteService.GetReporteById(id);
             var form = new CoautorForm
                            {
-                               Controller = "Reporte", 
+                               Controller = "Reporte",
                                IdName = "ReporteId",
                                CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -396,7 +391,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 reporteService.SaveReporte(reporte);
             }
 
-            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+            var form = new CoautorForm {ModelId = id, InvestigadorId = investigadorId};
 
             return Rjs("DeleteCoautorInterno", form);
         }
@@ -408,8 +403,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var reporte = reporteService.GetReporteById(id);
             var form = new CoautorForm
                            {
-                               Controller = "Reporte", 
-                               IdName = "ReporteId", 
+                               Controller = "Reporte",
+                               IdName = "ReporteId",
                                InvestigadorExterno = new InvestigadorExternoForm(),
                                CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -488,13 +483,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (reporte != null)
             {
-                var coautor = reporte.CoautorExternoReportes.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                var coautor =
+                    reporte.CoautorExternoReportes.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
                 reporte.DeleteCoautorExterno(coautor);
 
                 reporteService.SaveReporte(reporte);
             }
 
-            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+            var form = new CoautorForm {ModelId = id, InvestigadorExternoId = investigadorExternoId};
 
             return Rjs("DeleteCoautorExterno", form);
         }
@@ -505,7 +501,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var reporte = reporteService.GetReporteById(id);
 
-            var form = new InstitucionForm { Controller = "Reporte", IdName = "ReporteId" };
+            var form = new InstitucionForm {Controller = "Reporte", IdName = "ReporteId"};
 
             if (reporte != null)
                 form.Id = reporte.Id;
@@ -570,12 +566,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteInstitucion", form);
         }
 
-        private ReporteForm SetupNewForm()
+        ReporteForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        private ReporteForm SetupNewForm(ReporteForm form)
+        ReporteForm SetupNewForm(ReporteForm form)
         {
             form = form ?? new ReporteForm();
 
@@ -589,17 +585,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (form.Id == 0)
             {
-                form.CoautorExternoReportes = new CoautorExternoProductoForm[] { };
-                form.CoautorInternoReportes = new CoautorInternoProductoForm[] { };
+                form.CoautorExternoReportes = new CoautorExternoProductoForm[] {};
+                form.CoautorInternoReportes = new CoautorInternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
-				{
-				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                {
+                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
-				}
+                }
                 form.PosicionCoautor = 1;
-            } else
+            }
+            else
             {
                 form.AreasTematicas =
                     areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
@@ -617,7 +614,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
-        private static ReporteForm SetupShowForm(ReporteForm form)
+        static ReporteForm SetupShowForm(ReporteForm form)
         {
             form = form ?? new ReporteForm();
 
@@ -625,18 +622,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   {
                                       InstitucionNombre = form.Institucion.Nombre,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
-
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,
-
                                       ProyectoNombre = form.ProyectoNombre,
-
                                       IsShowForm = true,
                                       //InstitucionLabel = "Institución donde se publica",
                                       InstitucionLabel = "Instancia a la que se presenta el reporte"

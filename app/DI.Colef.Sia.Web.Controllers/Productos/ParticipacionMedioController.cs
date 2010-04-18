@@ -13,11 +13,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class ParticipacionMedioController : BaseController<ParticipacionMedio, ParticipacionMedioForm>
     {
         readonly IAmbitoMapper ambitoMapper;
+        readonly IDirigidoAMapper dirigidoAMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IParticipacionMedioMapper participacionMedioMapper;
         readonly IParticipacionMedioService participacionMedioService;
-        readonly IDirigidoAMapper dirigidoAMapper;
+        readonly IProductoService productoService;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
 
         public ParticipacionMedioController(IParticipacionMedioService participacionMedioService,
                                             IParticipacionMedioMapper participacionMedioMapper,
@@ -27,11 +28,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                             ITipoParticipacionMapper tipoParticipacionMapper,
                                             IAreaTematicaMapper areaTematicaMapper,
                                             IDirigidoAMapper dirigidoAMapper,
-                                            ISearchService searchService, 
-                                            ILineaTematicaMapper lineaTematicaMapper, 
-                                            IAreaMapper areaMapper, 
+                                            ISearchService searchService,
+                                            ILineaTematicaMapper lineaTematicaMapper,
+                                            IAreaMapper areaMapper,
                                             IDisciplinaMapper disciplinaMapper,
-                                ISubdisciplinaMapper subdisciplinaMapper)
+                                            ISubdisciplinaMapper subdisciplinaMapper, IProductoService productoService)
             : base(usuarioService, searchService, catalogoService)
         {
             base.catalogoService = catalogoService;
@@ -42,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.ambitoMapper = ambitoMapper;
             this.dirigidoAMapper = dirigidoAMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -49,14 +51,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<ParticipacionMedioForm>();
-            var participacionMedios = new ParticipacionMedio[] { };
-
-            if (User.IsInRole("Investigadores"))
-                participacionMedios = participacionMedioService.GetAllParticipacionMedios(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                participacionMedios = participacionMedioService.GetAllParticipacionMedios();
-
-            data.List = participacionMedioMapper.Map(participacionMedios);
+            var productos = productoService.GetProductosByUsuario<ParticipacionMedio>(CurrentUser(), x => x.Titulo,
+                                                                                      x => x.TipoParticipacion);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -68,8 +65,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = new GenericViewData<ParticipacionMedioForm> { Form = SetupNewForm() };
-            
+            var data = new GenericViewData<ParticipacionMedioForm> {Form = SetupNewForm()};
+
             return View(data);
         }
 
@@ -165,7 +162,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(firmaForm.ProductoId);
 
             participacionMedio.Firma.Aceptacion2 = 1;
@@ -174,10 +170,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
             var data = new FirmaForm
-            {
-                TipoProducto = firmaForm.TipoProducto,
-                Aceptacion2 = 1
-            };
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
 
             return Rjs("DgaaSign", data);
         }
@@ -186,7 +182,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(firmaForm.ProductoId);
             participacionMedio.Firma.Aceptacion1 = 0;
             participacionMedio.Firma.Aceptacion2 = 2;
@@ -251,7 +246,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionParticipacionMedios());
+            form.TiposParticipaciones =
+                tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionParticipacionMedios());
 
             if (form.Id == 0)
             {
@@ -261,7 +257,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
                 }
-            } else
+            }
+            else
             {
                 form.AreasTematicas =
                     areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
@@ -280,7 +277,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
-        private static ParticipacionMedioForm SetupShowForm(ParticipacionMedioForm form)
+        static ParticipacionMedioForm SetupShowForm(ParticipacionMedioForm form)
         {
             form = form ?? new ParticipacionMedioForm();
 
@@ -289,7 +286,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,
-
                                       IsShowForm = true
                                   };
 

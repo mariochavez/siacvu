@@ -15,47 +15,48 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class ObraTraducidaController : BaseController<ObraTraducida, ObraTraducidaForm>
     {
-		readonly IObraTraducidaService obraTraducidaService;
-        readonly IObraTraducidaMapper obraTraducidaMapper;
-        readonly IIdiomaMapper idiomaMapper;
-        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper;
         readonly IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper;
         readonly ICoautorExternoObraTraducidaMapper coautorExternoObraTraducidaMapper;
         readonly ICoautorInternoObraTraducidaMapper coautorInternoObraTraducidaMapper;
         readonly ICustomCollection customCollection;
         readonly IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IIdiomaMapper idiomaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
-    
-        public ObraTraducidaController(IObraTraducidaService obraTraducidaService, 
-			                        IObraTraducidaMapper obraTraducidaMapper,
-			                        ICatalogoService catalogoService,
-                                    IUsuarioService usuarioService,
-                                    ISearchService searchService,
-                                    IArchivoService archivoService,
-			                        IIdiomaMapper idiomaMapper,
-                                    IAreaTematicaMapper areaTematicaMapper,
-                                    IRevistaPublicacionMapper revistaPublicacionMapper,
-                                    ICoautorExternoObraTraducidaMapper coautorExternoObraTraducidaMapper,
-                                    ICoautorInternoObraTraducidaMapper coautorInternoObraTraducidaMapper,
-                                    IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper,
-                                    IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper,
-                                    ICustomCollection customCollection,
-                                    ILineaTematicaMapper lineaTematicaMapper,
-                                    IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper,
-                                    IInvestigadorExternoMapper investigadorExternoMapper,
-                                    IInvestigadorService investigadorService,
-                                    IPaisMapper paisMapper
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IObraTraducidaMapper obraTraducidaMapper;
+        readonly IObraTraducidaService obraTraducidaService;
+        readonly IProductoService productoService;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+
+        public ObraTraducidaController(IObraTraducidaService obraTraducidaService,
+                                       IObraTraducidaMapper obraTraducidaMapper,
+                                       ICatalogoService catalogoService,
+                                       IUsuarioService usuarioService,
+                                       ISearchService searchService,
+                                       IArchivoService archivoService,
+                                       IIdiomaMapper idiomaMapper,
+                                       IAreaTematicaMapper areaTematicaMapper,
+                                       IRevistaPublicacionMapper revistaPublicacionMapper,
+                                       ICoautorExternoObraTraducidaMapper coautorExternoObraTraducidaMapper,
+                                       ICoautorInternoObraTraducidaMapper coautorInternoObraTraducidaMapper,
+                                       IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper,
+                                       IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper,
+                                       ICustomCollection customCollection,
+                                       ILineaTematicaMapper lineaTematicaMapper,
+                                       IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper,
+                                       IInvestigadorExternoMapper investigadorExternoMapper,
+                                       IInvestigadorService investigadorService,
+                                       IPaisMapper paisMapper, IProductoService productoService
             ) : base(usuarioService, searchService, catalogoService)
         {
-			base.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
             base.paisMapper = paisMapper;
 
             this.obraTraducidaService = obraTraducidaService;
             this.obraTraducidaMapper = obraTraducidaMapper;
-			this.idiomaMapper = idiomaMapper;
+            this.idiomaMapper = idiomaMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.coautorExternoObraTraducidaMapper = coautorExternoObraTraducidaMapper;
@@ -68,21 +69,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.editorialObraTraducidaMapper = editorialObraTraducidaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorService = investigadorService;
+            this.productoService = productoService;
         }
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
             var data = new GenericViewData<ObraTraducidaForm>();
-            var obrasTraducidas = new ObraTraducida[] { };
-
-            if (User.IsInRole("Investigadores"))
-                obrasTraducidas = obraTraducidaService.GetAllObraTraducidas(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                obrasTraducidas = obraTraducidaService.GetAllObraTraducidas();
-
-            data.List = obraTraducidaMapper.Map(obrasTraducidas);
+            var productos = productoService.GetProductosByUsuario<ObraTraducida>(CurrentUser(), x => x.Nombre,
+                                                                                 x => x.TipoObraTraducida);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -94,10 +91,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = new GenericViewData<ObraTraducidaForm> { Form = SetupNewForm() };
+            var data = new GenericViewData<ObraTraducidaForm> {Form = SetupNewForm()};
 
             ViewData["Idioma"] = (from e in data.Form.Idiomas where e.Nombre == "Español" select e.Id).FirstOrDefault();
-            ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
+            ViewData["Edicion"] =
+                (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -144,7 +142,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (coautorExists != 0)
             {
                 coautorInternoObraTraducida =
-                    obraTraducida.CoautorInternoObraTraducidas.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                    obraTraducida.CoautorInternoObraTraducidas.Where(x => x.Investigador.Id == CurrentInvestigador().Id)
+                        .
                         FirstOrDefault();
 
                 posicionCoautor = coautorInternoObraTraducida.Posicion;
@@ -178,9 +177,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
             var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
-            
+
             data.Form = SetupShowForm(obraTraducidaForm);
-            
+
             ViewData.Model = data;
             return View();
         }
@@ -196,14 +195,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "Editorial")] EditorialProductoForm[] editorial,
                                    ObraTraducidaForm form)
         {
-            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
-            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
-            autorExterno = autorExterno ?? new AutorExternoProductoForm[] { };
-            autorInterno = autorInterno ?? new AutorInternoProductoForm[] { };
-            editorial = editorial ?? new EditorialProductoForm[] { };
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] {};
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] {};
+            autorExterno = autorExterno ?? new AutorExternoProductoForm[] {};
+            autorInterno = autorInterno ?? new AutorInternoProductoForm[] {};
+            editorial = editorial ?? new EditorialProductoForm[] {};
 
             var obraTraducida = obraTraducidaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
-                                              coautorExterno, coautorInterno, autorExterno, autorInterno, editorial);
+                                                        coautorExterno, coautorInterno, autorExterno, autorInterno,
+                                                        editorial);
 
             ModelState.AddModelErrors(obraTraducida.ValidationResults(), true, "ObraTraducida");
             if (!ModelState.IsValid)
@@ -234,7 +234,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 return Rjs("ModelError");
             }
-            
+
             obraTraducidaService.SaveObraTraducida(obraTraducida, true);
             SetMessage(String.Format("Obra traducida {0} ha sido modificada", obraTraducida.Nombre));
 
@@ -262,7 +262,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(firmaForm.ProductoId);
 
             obraTraducida.Firma.Aceptacion2 = 1;
@@ -271,10 +270,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             obraTraducidaService.SaveObraTraducida(obraTraducida);
 
             var data = new FirmaForm
-            {
-                TipoProducto = firmaForm.TipoProducto,
-                Aceptacion2 = 1
-            };
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
 
             return Rjs("DgaaSign", data);
         }
@@ -283,7 +282,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(firmaForm.ProductoId);
             obraTraducida.Firma.Aceptacion1 = 0;
             obraTraducida.Firma.Aceptacion2 = 2;
@@ -323,13 +321,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
 
             var form = new ShowFieldsForm
-            {
-                RevistaPublicacionId = revistaForm.Id,
-                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
-                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
-                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
-            };
+                           {
+                               RevistaPublicacionId = revistaForm.Id,
+                               RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                               RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                               RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                               RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+                           };
 
             return Rjs("ChangeRevista", form);
         }
@@ -341,7 +339,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
             var form = new CoautorForm
                            {
-                               Controller = "ObraTraducida", 
+                               Controller = "ObraTraducida",
                                IdName = "ObraTraducidaId",
                                CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -367,7 +365,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var coautorInternoObraTraducida = coautorInternoObraTraducidaMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorInternoObraTraducida.ValidationResults(), false, "CoautorInterno", String.Empty);
+            ModelState.AddModelErrors(coautorInternoObraTraducida.ValidationResults(), false, "CoautorInterno",
+                                      String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -407,13 +406,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (obraTraducida != null)
             {
-                var coautor = obraTraducida.CoautorInternoObraTraducidas.Where(x => x.Investigador.Id == investigadorId).First();
+                var coautor =
+                    obraTraducida.CoautorInternoObraTraducidas.Where(x => x.Investigador.Id == investigadorId).First();
                 obraTraducida.DeleteCoautorInterno(coautor);
 
                 obraTraducidaService.SaveObraTraducida(obraTraducida);
             }
 
-            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+            var form = new CoautorForm {ModelId = id, InvestigadorId = investigadorId};
 
             return Rjs("DeleteCoautorInterno", form);
         }
@@ -425,8 +425,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
             var form = new CoautorForm
                            {
-                               Controller = "ObraTraducida", 
-                               IdName = "ObraTraducidaId", 
+                               Controller = "ObraTraducida",
+                               IdName = "ObraTraducidaId",
                                InvestigadorExterno = new InvestigadorExternoForm(),
                                CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -444,11 +444,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                               int obraTraducidaId)
         {
             var investigadorExternoForm = new InvestigadorExternoForm
-            {
-                Nombre = form.Nombre,
-                ApellidoPaterno = form.ApellidoPaterno,
-                ApellidoMaterno = form.ApellidoMaterno
-            };
+                                              {
+                                                  Nombre = form.Nombre,
+                                                  ApellidoPaterno = form.ApellidoPaterno,
+                                                  ApellidoMaterno = form.ApellidoMaterno
+                                              };
 
             var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
 
@@ -466,7 +466,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.InvestigadorExternoId = investigadorExterno.Id;
             var coautorExternoObraTraducida = coautorExternoObraTraducidaMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorExternoObraTraducida.ValidationResults(), false, "CoautorExterno", String.Empty);
+            ModelState.AddModelErrors(coautorExternoObraTraducida.ValidationResults(), false, "CoautorExterno",
+                                      String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -506,14 +507,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (obraTraducida != null)
             {
                 var coautor =
-                    obraTraducida.CoautorExternoObraTraducidas.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First
+                    obraTraducida.CoautorExternoObraTraducidas.Where(
+                        x => x.InvestigadorExterno.Id == investigadorExternoId).First
                         ();
                 obraTraducida.DeleteCoautorExterno(coautor);
 
                 obraTraducidaService.SaveObraTraducida(obraTraducida);
             }
 
-            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+            var form = new CoautorForm {ModelId = id, InvestigadorExternoId = investigadorExternoId};
 
             return Rjs("DeleteCoautorExterno", form);
         }
@@ -525,7 +527,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
             var form = new AutorForm
                            {
-                               Controller = "ObraTraducida", 
+                               Controller = "ObraTraducida",
                                IdName = "ObraTraducidaId",
                                AutorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -583,13 +585,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (obraTraducida != null)
             {
-                var autor = obraTraducida.AutorInternoObraTraducidas.Where(x => x.Investigador.Id == investigadorId).First();
+                var autor =
+                    obraTraducida.AutorInternoObraTraducidas.Where(x => x.Investigador.Id == investigadorId).First();
                 obraTraducida.DeleteAutorInterno(autor);
 
                 obraTraducidaService.SaveObraTraducida(obraTraducida);
             }
 
-            var form = new AutorForm { ModelId = id, InvestigadorId = investigadorId };
+            var form = new AutorForm {ModelId = id, InvestigadorId = investigadorId};
 
             return Rjs("DeleteAutorInterno", form);
         }
@@ -602,8 +605,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var form = new AutorForm
                            {
-                               Controller = "ObraTraducida", 
-                               IdName = "ObraTraducidaId", 
+                               Controller = "ObraTraducida",
+                               IdName = "ObraTraducidaId",
                                InvestigadorExterno = new InvestigadorExternoForm(),
                                AutorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -621,11 +624,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             [Bind(Prefix = "AutorExterno")] AutorExternoProductoForm form, int obraTraducidaId)
         {
             var investigadorExternoForm = new InvestigadorExternoForm
-            {
-                Nombre = form.Nombre,
-                ApellidoPaterno = form.ApellidoPaterno,
-                ApellidoMaterno = form.ApellidoMaterno
-            };
+                                              {
+                                                  Nombre = form.Nombre,
+                                                  ApellidoPaterno = form.ApellidoPaterno,
+                                                  ApellidoMaterno = form.ApellidoMaterno
+                                              };
 
             var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
 
@@ -683,32 +686,33 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (obraTraducida != null)
             {
                 var autor =
-                    obraTraducida.AutorExternoObraTraducidas.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                    obraTraducida.AutorExternoObraTraducidas.Where(
+                        x => x.InvestigadorExterno.Id == investigadorExternoId).First();
                 obraTraducida.DeleteAutorExterno(autor);
 
                 obraTraducidaService.SaveObraTraducida(obraTraducida);
             }
 
-            var form = new AutorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+            var form = new AutorForm {ModelId = id, InvestigadorExternoId = investigadorExternoId};
 
             return Rjs("DeleteAutorExterno", form);
         }
-                
-        private ObraTraducidaForm SetupNewForm()
+
+        ObraTraducidaForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
-        
-        private ObraTraducidaForm SetupNewForm(ObraTraducidaForm form)
+
+        ObraTraducidaForm SetupNewForm(ObraTraducidaForm form)
         {
-			form = form ?? new ObraTraducidaForm();
+            form = form ?? new ObraTraducidaForm();
 
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
 
             form.TiposLibro = customCollection.TipoLibroCustomCollection();
             form.TiposObraTraducidas = customCollection.TipoObraTraducidaCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            
+
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
             form.Ediciones = customCollection.EdicionCustomCollection();
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
@@ -721,22 +725,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 form.AutorExternoObraTraducidas = new AutorExternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
-				{
-				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                {
+                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
-				}
+                }
                 form.PosicionCoautor = 1;
-            } else
+            }
+            else
             {
                 form.AreasTematicas =
                     areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
             }
-			
+
             return form;
         }
-        
-        private void FormSetCombos(ObraTraducidaForm form)
+
+        void FormSetCombos(ObraTraducidaForm form)
         {
             ViewData["TipoObraTraducida"] = form.TipoObraTraducida;
             ViewData["EstadoProducto"] = form.EstadoProducto;
@@ -755,25 +760,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new ObraTraducidaForm();
 
             form.ShowFields = new ShowFieldsForm
-            {
-                EstadoProducto = form.EstadoProducto,
-                FechaAceptacion = form.FechaAceptacion,
-                FechaPublicacion = form.FechaPublicacion,
-                ModelId = form.Id,
-
-                RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
-                RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
-                RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
-                RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
-
-                PalabraClave1 = form.PalabraClave1,
-                PalabraClave2 = form.PalabraClave2,
-                PalabraClave3 = form.PalabraClave3,
-
-                IsShowForm = true,
-                RevistaLabel = "Nombre de la revista"
-            };
+                                  {
+                                      EstadoProducto = form.EstadoProducto,
+                                      FechaAceptacion = form.FechaAceptacion,
+                                      FechaPublicacion = form.FechaPublicacion,
+                                      ModelId = form.Id,
+                                      RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
+                                      RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                                      RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                                      RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                                      RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
+                                      PalabraClave1 = form.PalabraClave1,
+                                      PalabraClave2 = form.PalabraClave2,
+                                      PalabraClave3 = form.PalabraClave3,
+                                      IsShowForm = true,
+                                      RevistaLabel = "Nombre de la revista"
+                                  };
 
             return form;
         }

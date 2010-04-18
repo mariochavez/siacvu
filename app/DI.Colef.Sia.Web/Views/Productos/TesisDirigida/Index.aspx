@@ -46,31 +46,7 @@
 	<div id="lista">
 		<h4>Tesis dirigidas</h4>
             
-		<% if (Model.List == null || Model.List.Length == 0) { %>
-			<div class="elementolista">
-				<div class="elementodescripcion">
-					<h5><span>No hay tesis dirigidas registradas</span></h5>
-				</div><!--end elementodescripcion-->
-
-			</div><!--end elementolista-->
-		<% } else { %>
-			<% foreach (var tesis in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(tesis.Id) %>">
-					<div class="elementodescripcion">
-					    <h5><span><%= IndexValueHelper.GetTesisIndexStringValue(tesis) %></span></h5>
-						<h6>Modificado el <%=Html.Encode(tesis.Modificacion) %></h6>
-					</div><!--end elementodescripcion-->
-
-					<div class="elementobotones">
-						<p>
-							<span><%=Html.ActionLink<TesisDirigidaController>(x => x.Edit(tesis.Id), "Editar") %></span>
-			            	<span><%=Html.ActionLink("Ver", "Show", new { id = tesis.Id })%></span>
-						</p>
-					</div><!--end elementobotones-->
-
-				</div><!--end elementolista-->
-			<% } %>
-		<% } %>
+		<% Html.RenderPartial("_Producto", Model.ProductList); %>
 		
     </div><!--end lista-->
 

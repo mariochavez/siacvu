@@ -16,10 +16,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     {
         readonly IDictamenMapper dictamenMapper;
         readonly IDictamenService dictamenService;
-        readonly ITipoDictamenMapper tipoDictamenMapper;
-        readonly IFondoConacytMapper fondoConacytMapper;
         readonly IEditorialProductoMapper<EditorialDictamen> editorialDictamenMapper;
+        readonly IFondoConacytMapper fondoConacytMapper;
+        readonly IProductoService productoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly ITipoDictamenMapper tipoDictamenMapper;
 
         public DictamenController(IDictamenService dictamenService,
                                   IDictamenMapper dictamenMapper,
@@ -30,7 +31,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ITipoDictamenMapper tipoDictamenMapper,
                                   IFondoConacytMapper fondoConacytMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  ISearchService searchService, IPaisMapper paisMapper)
+                                  ISearchService searchService, IPaisMapper paisMapper,
+                                  IProductoService productoService)
             : base(usuarioService, searchService, catalogoService)
         {
             base.catalogoService = catalogoService;
@@ -41,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.dictamenMapper = dictamenMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
+            this.productoService = productoService;
             this.tipoDictamenMapper = tipoDictamenMapper;
         }
 
@@ -49,14 +52,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<DictamenForm>();
-            var dictamenes = new Dictamen[] { };
-
-            if (User.IsInRole("Investigadores"))
-                dictamenes = dictamenService.GetAllDictamenes(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                dictamenes = dictamenService.GetAllDictamenes();
-
-            data.List = dictamenMapper.Map(dictamenes);
+            var productos = productoService.GetProductosByUsuario<Dictamen>(CurrentUser(), x => x.Nombre,
+                                                                            x => x.TipoDictamen);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -70,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            
+
             return View(data);
         }
 
@@ -83,18 +81,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var dictamen = dictamenService.GetDictamenById(id);
 
             if (dictamen.Firma.Aceptacion1 == 1 && dictamen.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El dictamen {0} esta en firma y no puede ser editado", dictamen.Nombre));
-            
+                return
+                    RedirectToHomeIndex(String.Format("El dictamen {0} esta en firma y no puede ser editado",
+                                                      dictamen.Nombre));
+
             if (User.IsInRole("DGAA"))
             {
                 if ((dictamen.Firma.Aceptacion1 == 1 && dictamen.Firma.Aceptacion2 == 1) ||
                     (dictamen.Firma.Aceptacion1 == 0 && dictamen.Firma.Aceptacion2 == 0) ||
                     (dictamen.Firma.Aceptacion1 == 0 && dictamen.Firma.Aceptacion2 == 2)
-                   )
+                    )
                     return
                         RedirectToHomeIndex(String.Format(
-                                                "El dictamen {0} ya fue aceptado o no ha sido enviado a firma",
-                                                dictamen.Nombre));
+                            "El dictamen {0} ya fue aceptado o no ha sido enviado a firma",
+                            dictamen.Nombre));
             }
 
             if (User.IsInRole("Investigadores"))
@@ -133,9 +133,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "Editorial")] EditorialProductoForm[] editorial,
-                                    DictamenForm form)
+                                   DictamenForm form)
         {
-            editorial = editorial ?? new EditorialProductoForm[] { };
+            editorial = editorial ?? new EditorialProductoForm[] {};
 
             var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador(), editorial);
             ModelState.AddModelErrors(dictamen.ValidationResults(), true, "Dictamen");
@@ -195,7 +195,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var dictamen = dictamenService.GetDictamenById(firmaForm.ProductoId);
 
             dictamen.Firma.Aceptacion2 = 1;
@@ -204,10 +203,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             dictamenService.SaveDictamen(dictamen);
 
             var data = new FirmaForm
-            {
-                TipoProducto = firmaForm.TipoProducto,
-                Aceptacion2 = 1
-            };
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
 
             return Rjs("DgaaSign", data);
         }
@@ -216,7 +215,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var dictamen = dictamenService.GetDictamenById(firmaForm.ProductoId);
             dictamen.Firma.Aceptacion1 = 0;
             dictamen.Firma.Aceptacion2 = 2;
@@ -240,7 +238,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return Rjs("DgaaSign", data);
         }
-        
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
@@ -256,14 +254,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
 
             var form = new ShowFieldsForm
-            {
-                RevistaPublicacionId = revistaForm.Id,
-
-                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
-                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
-                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
-            };
+                           {
+                               RevistaPublicacionId = revistaForm.Id,
+                               RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                               RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                               RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                               RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+                           };
 
             return Rjs("ChangeRevista", form);
         }
@@ -279,7 +276,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes());
             form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
-            
+
             return form;
         }
 
@@ -289,21 +286,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["FondoConacyt"] = form.FondoConacytId;
         }
 
-        private DictamenForm SetupShowForm(DictamenForm form)
+        DictamenForm SetupShowForm(DictamenForm form)
         {
             form = form ?? new DictamenForm();
 
             form.ShowFields = new ShowFieldsForm
-            {
-                RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
-                RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
-                RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
-                RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
-                
-                IsShowForm = true,
-                RevistaLabel = "Nombre de la revista"
-            };
+                                  {
+                                      RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
+                                      RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                                      RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                                      RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                                      RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
+                                      IsShowForm = true,
+                                      RevistaLabel = "Nombre de la revista"
+                                  };
 
             return form;
         }

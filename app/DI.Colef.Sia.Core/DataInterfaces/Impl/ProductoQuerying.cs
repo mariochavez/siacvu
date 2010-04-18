@@ -57,6 +57,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return productoList.ToArray();
         }
 
+        public ProductoDTO[] GetProductosByUsuario<T>(Usuario usuario, Expression<Func<T, object>> productName,
+            Expression<Func<T, object>> productType)
+        {
+            ICriteria query = BuildCriteria(usuario, productName, productType);
+            IList<ProductoDTO> productos = query.List<ProductoDTO>();
+
+            return productos.ToArray();
+        }
+
         public decimal GetPuntosSieva(Usuario usuario)
         {
             IMultiCriteria allProducts = Session.CreateMultiCriteria()

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
+using SharpArch.Web.Areas;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
@@ -47,44 +48,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             if ((isDGAA && producto.IsFirmed()) || (!isDGAA && producto.IsValidated()))
                 actions += String.Format("<span>{0}</span>",
-                                         html.ActionLink("Editar", "Edit",
-                                                         new
-                                                             {
-                                                                 producto.Id,
-                                                                 producto.TipoProducto
-                                                             }));
+                                         html.ActionLinkForAreas<HomeController>(
+                                             x => x.Edit(producto.Id, producto.TipoProducto),
+                                             "Editar"));
             else if (!isDGAA)
             {
                 if (!producto.IsFirmed() && !producto.IsValidated())
                 {
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLink("Editar", "Edit",
-                                                             new
-                                                                 {
-                                                                     producto.Id,
-                                                                     producto.TipoProducto
-                                                                 }));
+                                         html.ActionLinkForAreas<HomeController>(
+                                             x => x.Edit(producto.Id, producto.TipoProducto),
+                                             "Editar"));
+
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLink("Firmar", "Sign",
-                                                             new
-                                                                 {
-                                                                     producto.Id,
-                                                                     producto.TipoProducto
-                                                                 },
-                                                             new { @class = "remote put" })
-                        );
-                }
+                                         html.ActionLinkForAreas<HomeController>(
+                                             x => x.Sign(producto.Id, producto.TipoProducto),
+                                             "Firmar")).Replace("<a ", "<a class = 'remote put'");
+                } 
                 else if (producto.IsFirmed() && !producto.IsValidated())
+                {
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLink("Ver", "Show",
-                                                             new
-                                                                 {
-                                                                     producto.Id,
-                                                                     producto.TipoProducto
-                                                                 }));
-
+                                         html.ActionLinkForAreas<HomeController>(
+                                             x => x.Show(producto.Id, producto.TipoProducto),
+                                             "Ver"));
+                }
             }
-
             return actions;
         }
 

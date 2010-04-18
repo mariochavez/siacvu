@@ -14,32 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     public class ArticuloDifusionController : BaseController<ArticuloDifusion, ArticuloDifusionForm>
     {
+        readonly IAreaMapper areaMapper;
         readonly IArticuloDifusionMapper articuloMapper;
         readonly IArticuloDifusionService articuloService;
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
-        readonly ITipoArchivoMapper tipoArchivoMapper;
         readonly ICustomCollection customCollection;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IProductoService productoService;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly ITipoArchivoMapper tipoArchivoMapper;
 
         public ArticuloDifusionController(IArticuloDifusionService articuloService,
-                                  IArticuloDifusionMapper articuloMapper,
-                                  ICatalogoService catalogoService,
-                                  IUsuarioService usuarioService,
-                                  ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
-                                  ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
-                                  ISearchService searchService, ITipoArchivoMapper tipoArchivoMapper,
-                                  IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
-                                  ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
-                                  IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
-                                  IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  IInvestigadorExternoMapper investigadorExternoMapper,
-                                  IArchivoService archivoService,
-                                  IInvestigadorService investigadorService
+                                          IArticuloDifusionMapper articuloMapper,
+                                          ICatalogoService catalogoService,
+                                          IUsuarioService usuarioService,
+                                          ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
+                                          ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
+                                          ISearchService searchService, ITipoArchivoMapper tipoArchivoMapper,
+                                          IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
+                                          ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
+                                          IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                                          IRevistaPublicacionMapper revistaPublicacionMapper,
+                                          IInvestigadorExternoMapper investigadorExternoMapper,
+                                          IArchivoService archivoService,
+                                          IInvestigadorService investigadorService,
+                                          IProductoService productoService
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -54,6 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorService = investigadorService;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -61,14 +64,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<ArticuloDifusionForm>();
-            var articulos = new ArticuloDifusion[] { };
-
-            if (User.IsInRole("Investigadores"))
-                articulos = articuloService.GetAllArticulos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                articulos = articuloService.GetAllArticulos();
-
-            data.List = articuloMapper.Map(articulos);
+            var productos = productoService.GetProductosByUsuario<ArticuloDifusion>(CurrentUser(), x => x.Titulo,
+                                                                                    x => x.TipoArticulo);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -80,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = new GenericViewData<ArticuloDifusionForm> { Form = SetupNewForm() };
+            var data = new GenericViewData<ArticuloDifusionForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -319,7 +317,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articulo = articuloService.GetArticuloById(id);
             var form = new CoautorForm
                            {
-                               Controller = "ArticuloDifusion", 
+                               Controller = "ArticuloDifusion",
                                IdName = "ArticuloId",
                                CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -494,12 +492,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorExterno", form);
         }
 
-        private ArticuloDifusionForm SetupNewForm()
+        ArticuloDifusionForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        private ArticuloDifusionForm SetupNewForm(ArticuloDifusionForm form)
+        ArticuloDifusionForm SetupNewForm(ArticuloDifusionForm form)
         {
             form = form ?? new ArticuloDifusionForm();
 
@@ -514,17 +512,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (form.Id == 0)
             {
-                form.CoautorExternoArticulos = new CoautorExternoProductoForm[] { };
-                form.CoautorInternoArticulos = new CoautorInternoProductoForm[] { };
+                form.CoautorExternoArticulos = new CoautorExternoProductoForm[] {};
+                form.CoautorInternoArticulos = new CoautorInternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
-				{
-				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                {
+                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
-				}
+                }
                 form.PosicionCoautor = 1;
-            } else
+            }
+            else
             {
                 form.AreasTematicas =
                     areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
@@ -533,7 +532,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return form;
         }
 
-        private void FormSetCombos(ArticuloDifusionForm form)
+        void FormSetCombos(ArticuloDifusionForm form)
         {
             ViewData["TipoArticulo"] = form.TipoArticulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
@@ -546,7 +545,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
-        private static ArticuloDifusionForm SetupShowForm(ArticuloDifusionForm form)
+        static ArticuloDifusionForm SetupShowForm(ArticuloDifusionForm form)
         {
             form = form ?? new ArticuloDifusionForm();
 

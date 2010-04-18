@@ -536,7 +536,7 @@
     <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
     <Content Include="Views\GrupoInvestigacion\_NewMiembroExterno.ascx" />
     <Content Include="Views\GrupoInvestigacion\_ShowMiembroExterno.ascx" />
-    <Content Include="Views\Home\_Productos.ascx" />
+    <Content Include="Views\Shared\_Producto.ascx" />
     <Content Include="Views\Home\FilterProducts.js.ascx" />
     <Content Include="Views\Home\Sign.js.ascx" />
     <Content Include="Views\Home\_VinculacionDifusion.ascx" />

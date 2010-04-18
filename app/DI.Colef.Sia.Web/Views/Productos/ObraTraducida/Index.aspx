@@ -47,31 +47,7 @@
 	<div id="lista">
 		<h4>Obras traducidas</h4>
             
-		<% if (Model.List == null || Model.List.Length == 0) { %>
-			<div class="elementolista">
-				<div class="elementodescripcion">
-					<h5><span>No hay obras traducidas registradas</span></h5>
-				</div><!--end elementodescripcion-->
-
-			</div><!--end elementolista-->
-		<% } else { %>
-			<% foreach (var obraTraducida in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(obraTraducida.Id) %>">
-					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(obraTraducida.Nombre) %></span></h5>
-						<h6>Modificado el <%=Html.Encode(obraTraducida.Modificacion) %></h6>
-					</div><!--end elementodescripcion-->
-
-					<div class="elementobotones">
-						<p>
-							<span><%=Html.ActionLink<ObraTraducidaController>(x => x.Edit(obraTraducida.Id), "Editar") %></span>
-	                        <span><%=Html.ActionLink("Ver", "Show", new { id = obraTraducida.Id })%></span>
-	                   	</p>
-					</div><!--end elementobotones-->
-		
-               </div><!--end elementolista-->
-			<% } %>
-		<% } %>
+		<% Html.RenderPartial("_Producto", Model.ProductList); %>
             
 	</div><!--end lista-->
 

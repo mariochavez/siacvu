@@ -1,12 +1,11 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<HomeForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 
 var html = '
 <p>
     <span>
-        <%=Html.ActionLinkForAreas<HomeController>(x => x.Show(Model.IdProducto , Model.TipoProducto), "Ver")%>
+        <%=Html.ActionLink("Ver", "Show", new { id = Model.IdProducto, tipoproducto = Model.TipoProducto })%>
     </span>
 </p>
 ';

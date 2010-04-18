@@ -19,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly IConsejoComisionMapper consejoComisionMapper;
+        readonly IProductoService productoService;
         readonly ICustomCollection customCollection;
     
         public OrganoInternoController(IOrganoInternoService organoInternoService, 
@@ -30,7 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ICustomCollection customCollection,
             IUsuarioService usuarioService,
             ISearchService searchService,
-            IConsejoComisionMapper consejoComisionMapper)
+            IConsejoComisionMapper consejoComisionMapper, IProductoService productoService)
             : base(usuarioService, searchService, catalogoService)
         {
 			base.catalogoService = catalogoService;
@@ -40,6 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.organoInternoService = organoInternoService;
             this.organoInternoMapper = organoInternoMapper;
 			this.consejoComisionMapper = consejoComisionMapper;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -47,12 +49,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index() 
         {
 			var data = CreateViewDataWithTitle(Title.Index);
-            var organoInternos = new OrganoInterno[] { };
-
-            if (User.IsInRole("DGAA"))
-                organoInternos = organoInternoService.GetAllOrganoInternos();
-
-            data.List = organoInternoMapper.Map(organoInternos);
+            var productos = productoService.GetProductosByUsuario<OrganoInterno>(CurrentUser(), x => x.ConsejoComision,
+                                                             x => x.Departamento);
+            data.ProductList = productos;
 
             return View(data);
         }
