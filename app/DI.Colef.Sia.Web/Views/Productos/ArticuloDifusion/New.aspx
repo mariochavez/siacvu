@@ -45,8 +45,7 @@
                 
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
-                
-                
+                            
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>

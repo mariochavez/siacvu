@@ -9,16 +9,16 @@
 </p>
 <p>
     <label>Financiamiento interno</label>
-    <%=Html.TextBox("FinanciamientoInterno", Model.FinanciamientoInterno, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("FinanciamientoInterno", Model.FinanciamientoInterno, new { @class = "input100-requerido", maxlength = 7 })%>
     <%=Html.ValidationMessage("FinanciamientoInterno")%>
 </p>
 <p>
     <label>Financiamiento externo</label>
-    <%=Html.TextBox("FinanciamientoExterno", Model.FinanciamientoExterno, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("FinanciamientoExterno", Model.FinanciamientoExterno, new { @class = "input100-requerido", maxlength = 7 })%>
     <%=Html.ValidationMessage("FinanciamientoExterno")%>
 </p>
 <p>
     <label>Sesiones de trabajo programadas</label>
-    <%=Html.TextBox("SesionesTrabajo", Model.SesionesTrabajo, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("SesionesTrabajo", Model.SesionesTrabajo, new { @class = "input100-requerido", maxlength = 7 })%>
     <%=Html.ValidationMessage("SesionesTrabajo")%>
 </p>

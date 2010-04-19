@@ -57,10 +57,6 @@
                     <label>T&iacute;tulo del art&iacute;culo</label>
                     <span class="valor"><%=Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Tipo de producto</label>
-                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoArticulo, 1)%>&nbsp;</span>
-                </p>
                 
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">

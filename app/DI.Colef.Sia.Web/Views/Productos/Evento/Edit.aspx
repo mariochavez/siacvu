@@ -63,10 +63,11 @@
                     
                     <h4>
                         <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
-                            <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautores del art&iacute;culo
-                            de investigaci&oacute;n <span>
+                            <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                            Autor(es) del trabajo presentado
+                            <span>
                                 <%=Html.Encode(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length)%>
-                                coautor(es) </span><span class="cvu"></span></a>
+                                autor(es) </span><span class="cvu"></span></a>
                     </h4>
                     <span id="coautores_area">
                         <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "CoautorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewCoautorInternoLink, NewCoautorExternoLink", SubFormName = "coautor", UrlActionExterno = "NewCoautorExterno", UrlActionInterno = "NewCoautorInterno", Link1Id = "NewCoautorInternoLink", Link2Id = "NewCoautorExternoLink" }); %>

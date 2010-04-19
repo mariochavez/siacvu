@@ -65,7 +65,7 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Coautores de la rese&ntilde;a
+                        Coautores de <span id="coautores" class="titulovalor"><%=Model.Form.TipoResena == 1 ? "la Nota cr&iacute;tica" : "la Rese&ntilde;a bibligr&aacute;fica" %></span>
                         <span>
                             <%=Html.Encode(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length)%> coautor(es) 
                         </span>
