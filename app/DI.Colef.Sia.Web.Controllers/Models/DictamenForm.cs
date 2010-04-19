@@ -13,9 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoDictamenId { get; set; }
         public string TipoDictamenNombre { get; set; }
 
-        public int FirmaAceptacion2 { get; set; }
-        public string FirmaDescripcion { get; set; }
-
         public int FondoConacyt { get; set; }
         public int FondoConacytId { get; set; }
         public string FondoConacytNombre { get; set; }

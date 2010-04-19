@@ -19,9 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool AutorSeOrdenaAlfabeticamente { get; set; }
         public int PosicionAutor { get; set; }
 
-        public int FirmaAceptacion2 { get; set; }
-        public string FirmaDescripcion { get; set; }
-
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 

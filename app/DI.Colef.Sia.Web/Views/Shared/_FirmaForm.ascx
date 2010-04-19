@@ -2,20 +2,28 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<% using (Html.BeginForm("DgaaSign", Model.Controller, FormMethod.Post, new { id = "firmaform" })){ %>
+
+<% using(Html.BeginForm("DgaaSign", Model.Controller, FormMethod.Post, new { id = "firmaform" })) { %>
+	<h4>Validaci&oacute;n</h4>
+	<%=Html.AntiForgeryToken() %>
     <%=Html.Hidden("ProductoId", Model.Id)%>
     <%=Html.Hidden("TipoProducto", Model.TipoProducto)%>
-    <p>Para confirmar que el contenido del producto es v&aacute;lido presione el bot&oacute;n con la leyenda <strong>Validar</strong></p>
-    <div class="minilistaboton">
-        <p><span><%=Html.ActionLink("Validar", "DgaaValidateProduct", null, new { @class = "remoteform", rel = "#firmaform" })%></span></p>
-    </div>
+	<div class="minilistaboton">
+		<p>
+    		<span><%=Html.ActionLink("Validar", "DgaaValidateProduct", null, new { @class = "remoteform", rel = "#firmaform" })%></span>
+    		Si el producto es v&aacute;lido presione el bot&oacute;n <strong>Validar</strong>
+		</p>	
+	</div>    
 
-    <p>Para rechazar el contenido del producto indique el motivo del rechazo y presione el bot&oacute;n con la
-    leyenda <strong>Rechazar</strong></p>
-    <p>
-        <%=Html.TextArea("Descripcion", "",5, 35, new { @class = "input250-requerido" })%>
-    </p>
-    <div class="minilistaboton">
-        <p><span><%=Html.ActionLink("Rechazar", "DgaaRejectProduct", null, new { @class = "remoteform", rel = "#firmaform" })%></span></p>
+	<p>
+		<label>Motivo de rechazo</label>
+		<%=Html.TextArea("Descripcion", "",5, 35, new { @class = "input420-requerido" })%>
+	</p>
+	
+	<div class="minilistaboton">
+        <p>
+        	<span><%=Html.ActionLink("Rechazar", "DgaaRejectProduct", null, new { @class = "remoteform", rel = "#firmaform" })%></span>
+        	Si el producto es rechazado, indique el motivo y presione el bot&oacute;n <strong>Rechazar</strong>
+    	</p>
     </div>
 <% } %>

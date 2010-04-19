@@ -24,29 +24,17 @@
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
-    <div id="barra">
-        <div id="asistente">
-            <% if(User.IsInRole("Investigadores")){ %>
-                <% if(Model.Form.FirmaAceptacion2 == 2){ %>
-                    <h3>&Aacute;rea de validaci&oacute;n de producto</h3>
-                    <p>Motivo del rechazo: <%=Html.Encode(Model.Form.FirmaDescripcion)%></p>
-                <% } %>
-            <% } %>
-	        <% if(User.IsInRole("DGAA")){ %>
-	            <h3>&Aacute;rea de validaci&oacute;n de producto</h3>
-	            <% Html.RenderPartial("_FirmaForm", new FirmaForm{Id = Model.Form.Id, IdName = "ArticuloId", Controller = "ArticuloDifusion", TipoProducto = 1}); %>
-	        <% } %>
-            <h3>Asistente de secci&oacute;n</h3>
-            <% Html.RenderPartial("_EditSidebar"); %>
-        </div><!--end asistente-->
-
-    </div><!--end barra-->
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div id="textos">
 	
 	    <% Html.RenderPartial("_Message"); %>    
+
+        <% if(User.IsInRole("Investigadores")){ %>
+			<% Html.RenderPartial("_FirmaMessage", Model.Form); %>
+        <% } %>
+
 	    <div id="forma">
 
 	        <% using (Html.BeginForm("Update", "ArticuloDifusion", FormMethod.Post, new { @class = "remote" })){ %>
@@ -90,7 +78,11 @@
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->
-    
+
+	        <% if(User.IsInRole("DGAA")){ %>    
+            	<% Html.RenderPartial("_FirmaForm", new FirmaForm{Id = Model.Form.Id, IdName = "ArticuloId", Controller = "Articulo", TipoProducto = 1}); %>
+            <% } %> 
+	       
 	</div><!--end textos-->
 
 <script type="text/javascript">

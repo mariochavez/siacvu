@@ -35,9 +35,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PosicionAutor { get; set; }
         public int NoPaginas { get; set; }
 
-        public int FirmaAceptacion2 { get; set; }
-        public string FirmaDescripcion { get; set; }
-
         public int Idioma { get; set; }
         public int IdiomaId { get; set; }
         public string IdiomaNombre { get; set; }

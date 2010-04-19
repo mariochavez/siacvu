@@ -6,6 +6,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
         public int Id { get; set; }
 
+        public int FirmaAceptacion2 { get; set; }
+        public string FirmaDescripcion { get; set; }
+
+		public int Puntuacion { get; set; }
         public int PosicionCoautor { get; set; }
         public string UsuarioNombre { get; set; }
         public string UsuarioApellidoPaterno { get; set; }
