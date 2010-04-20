@@ -4,6 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
@@ -19,7 +20,7 @@
 			
 		<div class="botonzon">
 		    <span>
-		        <%=Html.ActionLink<EstanciaInstitucionExternaController>(x => x.New(), "+ Nueva estancia en institución externa", new { title = "Nueva estancia en institución externa" })%>
+		        <%=Html.ActionLink<EstanciaInstitucionExternaController>(x => x.New(), Model.GetObjectNameNewButton())%>
 		    </span>
 		</div>
 	

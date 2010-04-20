@@ -22,7 +22,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.Resena) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ResenaController>(x => x.New(), "+ Nueva reseña") %></span>
+            <span><%=Html.ActionLink<ResenaController>(x => x.New(), Model.GetObjectNameNewButton())%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

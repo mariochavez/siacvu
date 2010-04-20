@@ -106,11 +106,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
                 .Add(Projections.Property("f.Aceptacion2"), "FirmaAceptacion2");
 
 
-            var fechaPublicacion = GetPropertyName();
-            if (!String.IsNullOrEmpty(fechaPublicacion))
-            {
-                projection.Add(Projections.Property("FechaPublicacion"), "FechaPublicacion");    
-            }
+            //var fechaPublicacion = GetPropertyName();
+            //if (!String.IsNullOrEmpty(fechaPublicacion))
+            //{
+            //    projection.Add(Projections.Property("FechaPublicacion"), "FechaPublicacion");    
+            //}
             
 
             var criteria = Session.CreateCriteria(typeof(T))

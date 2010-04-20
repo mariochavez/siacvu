@@ -4,6 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -19,7 +20,7 @@
             presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva formaci&oacute;n acad&eacute;mica</strong>.
         </p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ Nueva formación académica")%></span>
+            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), Model.GetObjectNameNewButton())%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

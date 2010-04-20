@@ -5,12 +5,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
+    <div id="tituloseccion">
     <h2>
         <%=Html.ProductoListTitle(TipoProductoEnum.Reporte) %>
     </h2>
+    </div>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">

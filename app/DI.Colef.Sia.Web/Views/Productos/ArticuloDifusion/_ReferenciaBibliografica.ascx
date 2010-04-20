@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 
-<% Html.RenderPartial("_RevistaPublicacion", Model); %>
+<%--<% Html.RenderPartial("_RevistaPublicacion", Model); %>--%>
 
 <p>
     <label>Volumen</label>

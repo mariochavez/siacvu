@@ -22,7 +22,7 @@
             <%=Html.ProductoShowMessage(TipoProductoEnum.TesisDirigida) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TesisDirigidaController>(x => x.New(), "+ Nueva tesis dirigida")%></span>
+            <span><%=Html.ActionLink<TesisDirigidaController>(x => x.New(), Model.GetObjectNameNewButton())%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

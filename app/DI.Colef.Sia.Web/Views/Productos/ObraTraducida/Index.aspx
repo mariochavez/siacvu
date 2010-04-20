@@ -23,7 +23,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.ObraTraducida) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ObraTraducidaController>(x => x.New(), "+ Nueva obra traducida") %></span>
+            <span><%=Html.ActionLink<ObraTraducidaController>(x => x.New(), Model.GetObjectNameNewButton())%></span>
         </div>
     </div>
 </asp:Content>

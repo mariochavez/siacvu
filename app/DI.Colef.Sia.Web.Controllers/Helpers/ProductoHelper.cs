@@ -242,7 +242,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Dictamenes";
                     break;
                 case TipoProductoEnum.Evento:
-                    productName = "Organización y participación de eventos académicos";
+                    //productName = "Organización y participación de eventos académicos";
+                    productName = "Participación en eventos académicos";
                     break;
                 case TipoProductoEnum.Libro:
                     productName = "Libros";
@@ -251,13 +252,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Obras traducidas";
                     break;
                 case TipoProductoEnum.OrganoExterno:
-                    productName = "Participaciónes Honoríficas en Órganos Colegiados Externos";
+                    //productName = "Participaciónes Honoríficas en Órganos Colegiados Externos";
+                    productName = "Órganos Colegiados Externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
                     productName = "Difusiónes del conocimiento";
                     break;
                 case TipoProductoEnum.Reporte:
-                    productName = "Reportes técnicos/Documentos de trabajo";
+                    //productName = "Reportes técnicos/Documentos de trabajo";
+                    productName = "Reportes técnicos";
                     break;
                 case TipoProductoEnum.TesisDirigida:
                     productName = "Tesis dirigidas";
