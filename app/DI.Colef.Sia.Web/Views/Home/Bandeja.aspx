@@ -59,7 +59,7 @@
         </h4>
         
         <span id="prodacademica">
-            <% Html.RenderPartial("_Productos", Model.Form.ProduccionAcademica); %>
+            <% Html.RenderPartial("_Producto", Model.Form.ProduccionAcademica); %>
         </span>
         
         <h4>
@@ -69,7 +69,7 @@
                 <span><%=Html.Encode(Model.Form.Proyectos.Length)%> producto(s)</span></a>
         </h4>
         <span id="proyectos">
-            <% Html.RenderPartial("_Productos", Model.Form.Proyectos); %>
+            <% Html.RenderPartial("_Producto", Model.Form.Proyectos); %>
         </span>
         
         <h4>
@@ -80,7 +80,7 @@
         </h4>
         
         <span id="recursoshumanos">
-            <% Html.RenderPartial("_Productos", Model.Form.FormacionRecursosHumanos); %>
+            <% Html.RenderPartial("_Producto", Model.Form.FormacionRecursosHumanos); %>
         </span>
         
         <h4>
@@ -90,7 +90,7 @@
                 <span><%=Html.Encode(Model.Form.Vinculacion.Length)%> producto(s)</span></a>
         </h4>
         <span id="vinculacion">
-            <% Html.RenderPartial("_Productos", Model.Form.Vinculacion); %>
+            <% Html.RenderPartial("_Producto", Model.Form.Vinculacion); %>
         </span>
 		
 		<h4>
@@ -100,7 +100,7 @@
 		        <span><%=Html.Encode(Model.Form.Eventos.Length)%> producto(s)</span></a>
 		</h4>
 		<span id="eventos">
-            <% Html.RenderPartial("_Productos", Model.Form.Eventos); %>
+            <% Html.RenderPartial("_Producto", Model.Form.Eventos); %>
         </span>
     
     </div><!--end lista-->

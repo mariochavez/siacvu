@@ -145,6 +145,7 @@
     <Compile Include="Models\BaseForm.cs" />
     <Compile Include="Models\ComboForm.cs" />
     <Compile Include="Models\GlosarioForm.cs" />
+    <Compile Include="Helpers\AreaRouteHelper.cs" />
     <Compile Include="Results\RedirectToAreaRouteResult.cs" />
     <Compile Include="Helpers\EntitiesNamesHelper.cs" />
     <Compile Include="Helpers\IdValueHelper.cs" />

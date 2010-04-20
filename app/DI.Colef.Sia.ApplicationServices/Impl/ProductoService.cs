@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 
@@ -53,6 +54,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public object[] GetProductosFinalizadosBandeja(Usuario usuario)
         {
             return productoQuerying.GetBandejaProductos(usuario, TipoBandeja.Finished);
+        }
+
+        public ProductoDTO[] GetProductosByUsuario<T>(Usuario usuario, Expression<Func<T, object>> productName, Expression<Func<T, object>> productType)
+        {
+            return productoQuerying.GetProductosByUsuario(usuario, productName, productType);
         }
 
         public object[] GetProductosBandeja(bool isDgaa)

@@ -14,29 +14,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class TesisDirigidaController : BaseController<TesisDirigida, TesisDirigidaForm>
     {
+        readonly IAreaMapper areaMapper;
+        readonly ICustomCollection customCollection;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
+        readonly IProductoService productoService;
+        readonly ISectorMapper sectorMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
-        readonly IVinculacionAPyDMapper vinculacionApyDMapper;
-        readonly ICustomCollection customCollection;
         readonly ITesisPosgradoMapper tesisPosgradoMapper;
         readonly ITesisPosgradoService tesisPosgradoService;
-        readonly ISectorMapper sectorMapper;
-        readonly IAreaMapper areaMapper;
+        readonly IVinculacionAPyDMapper vinculacionApyDMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
-                               ITesisDirigidaMapper tesisDirigidaMapper,
-                               IArchivoService archivoService,
-                               ICatalogoService catalogoService,
-                               IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
-                               ISubdisciplinaMapper subdisciplinaMapper, 
-                               ISearchService searchService,
-                               IVinculacionAPyDMapper vinculacionApyDMapper,
-                               INivelMapper nivelMapper, ICustomCollection customCollection,
-                               ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService,
-                               IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
-                               IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
+                                       ITesisDirigidaMapper tesisDirigidaMapper,
+                                       IArchivoService archivoService,
+                                       ICatalogoService catalogoService,
+                                       IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
+                                       ISubdisciplinaMapper subdisciplinaMapper,
+                                       ISearchService searchService,
+                                       IVinculacionAPyDMapper vinculacionApyDMapper,
+                                       INivelMapper nivelMapper, ICustomCollection customCollection,
+                                       ITesisPosgradoMapper tesisPosgradoMapper,
+                                       ITesisPosgradoService tesisPosgradoService,
+                                       IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
+                                       IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper,
+                                       IInstitucionMapper institucionMapper,
+                                       IProductoService productoService)
+            : base(
+                usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper,
+                organizacionMapper, nivelMapper)
         {
             base.catalogoService = catalogoService;
             base.institucionMapper = institucionMapper;
@@ -49,6 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tesisPosgradoService = tesisPosgradoService;
             this.sectorMapper = sectorMapper;
             this.areaMapper = areaMapper;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -56,14 +63,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<TesisDirigidaForm>();
-            var tesisDirigidas = new TesisDirigida[] { };
+            var productos = productoService.GetProductosByUsuario<TesisDirigida>(CurrentUser(), x => x.Titulo,
+                                                                                 x => x.TipoTesis);
+            data.ProductList = productos;
 
-            if (User.IsInRole("Investigadores"))
-                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas();
-
-            data.List = tesisDirigidaMapper.Map(tesisDirigidas);
 
             return View(data);
         }
@@ -77,7 +80,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            
+
             return View(data);
         }
 
@@ -89,19 +92,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            if (tesisDirigida.Firma.Aceptacion1 == 1 && tesisDirigida.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToIndex(String.Format("La tesis dirigida {0} esta en firma y no puede ser editada", tesisDirigida.Titulo));
-            
+            if (tesisDirigida.Firma.Aceptacion1 == 1 && tesisDirigida.Firma.Aceptacion2 == 0 &&
+                User.IsInRole("Investigadores"))
+                return
+                    RedirectToIndex(String.Format("La tesis dirigida {0} esta en firma y no puede ser editada",
+                                                  tesisDirigida.Titulo));
+
             if (User.IsInRole("DGAA"))
             {
                 if ((tesisDirigida.Firma.Aceptacion1 == 1 && tesisDirigida.Firma.Aceptacion2 == 1) ||
                     (tesisDirigida.Firma.Aceptacion1 == 0 && tesisDirigida.Firma.Aceptacion2 == 0) ||
                     (tesisDirigida.Firma.Aceptacion1 == 0 && tesisDirigida.Firma.Aceptacion2 == 2)
-                   )
+                    )
                     return
                         RedirectToIndex(String.Format(
-                                                "La tesis dirigida {0} ya fue aceptada o no ha sido enviada a firma",
-                                                tesisDirigida.Titulo));
+                            "La tesis dirigida {0} ya fue aceptada o no ha sido enviada a firma",
+                            tesisDirigida.Titulo));
             }
 
             if (User.IsInRole("Investigadores"))
@@ -147,9 +153,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 return Rjs("ModelError");
             }
-            
+
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
-            SetMessage(String.Format("Tesis dirigida {0} ha sido creada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
+            SetMessage(String.Format("Tesis dirigida {0} ha sido creada",
+                                     IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
 
             return Rjs("Save", tesisDirigida.Id);
         }
@@ -171,9 +178,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 return Rjs("ModelError");
             }
-            
+
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida, true);
-            SetMessage(String.Format("Tesis dirigida {0} ha sido modificada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
+            SetMessage(String.Format("Tesis dirigida {0} ha sido modificada",
+                                     IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
 
             return Rjs("Save", tesisDirigida.Id);
         }
@@ -198,7 +206,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(firmaForm.ProductoId);
 
             tesisDirigida.Firma.Aceptacion2 = 1;
@@ -227,7 +234,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(firmaForm.ProductoId);
             tesisDirigida.Firma.Aceptacion1 = 0;
             tesisDirigida.Firma.Aceptacion2 = 2;
@@ -301,7 +307,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.FormasParticipaciones = customCollection.FormaParticipacionCustomCollection();
             form.TiposTesis = customCollection.TipoTesisCustomCollection();
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
-            form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.FindUnsedTesisInvestigador(CurrentInvestigador()));
+            form.TesisPosgrados =
+                tesisPosgradoMapper.Map(tesisPosgradoService.FindUnsedTesisInvestigador(CurrentInvestigador()));
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
@@ -337,7 +344,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
-        private TesisDirigidaForm SetupShowForm(TesisDirigidaForm form)
+        TesisDirigidaForm SetupShowForm(TesisDirigidaForm form)
         {
             form = form ?? new TesisDirigidaForm();
 
@@ -347,15 +354,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   {
                                       InstitucionNombre = form.Institucion.Nombre,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
-
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
-
                                       Nivel2Nombre = form.Nivel2Nombre,
                                       OrganizacionNombre = form.OrganizacionNombre,
                                       SectorNombre = form.SectorNombre,
-
                                       IsShowForm = true,
                                       InstitucionLabel = "Institución"
                                   };

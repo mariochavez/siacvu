@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
+using SharpArch.Web.Areas;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
@@ -35,6 +36,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 info += String.Format("<br /><span>aún sin firmar, trabajo en proceso</span>");
             else if(producto.IsFirmed() && !producto.IsValidated())
                 info += String.Format("<br />trabajo firmado en proceso de validación");
+            else if(producto.IsValidated())
+            	info += String.Format("<br />trabajo firmado y validado");
 
             info += String.Format("<br />registrado el {0}", producto.FechaCreacion);
 
@@ -44,47 +47,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         public static string ProductActions(this HtmlHelper html, ProductoDTO producto, bool isDGAA)
         {
             var actions = String.Empty;
-
+            
             if ((isDGAA && producto.IsFirmed()) || (!isDGAA && producto.IsValidated()))
                 actions += String.Format("<span>{0}</span>",
-                                         html.ActionLink("Editar", "Edit",
-                                                         new
-                                                             {
-                                                                 producto.Id,
-                                                                 producto.TipoProducto
-                                                             }));
+                                         html.ActionLink("Editar", "Edit", "Home", 
+                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, null));
             else if (!isDGAA)
             {
                 if (!producto.IsFirmed() && !producto.IsValidated())
                 {
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLink("Editar", "Edit",
-                                                             new
-                                                                 {
-                                                                     producto.Id,
-                                                                     producto.TipoProducto
-                                                                 }));
+                                         html.ActionLink("Editar", "Edit", "Home", 
+                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, null));
+
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLink("Firmar", "Sign",
-                                                             new
-                                                                 {
-                                                                     producto.Id,
-                                                                     producto.TipoProducto
-                                                                 },
-                                                             new { @class = "remote put" })
-                        );
-                }
+                                         html.ActionLink("Firmar", "Sign", "Home", 
+                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, new { @class = "remote put"}));
+                } 
                 else if (producto.IsFirmed() && !producto.IsValidated())
+                {
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLink("Ver", "Show",
-                                                             new
-                                                                 {
-                                                                     producto.Id,
-                                                                     producto.TipoProducto
-                                                                 }));
-
+                                         html.ActionLink("Ver", "Show", "Home", 
+                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, null));
+                }
             }
-
             return actions;
         }
 
@@ -283,7 +269,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string articuloIdioma = " el";
             if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
-                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
+                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena
+                || tipoProducto == TipoProductoEnum.Distincion)
                 articuloIdioma = " la";
             return articuloIdioma;
         }

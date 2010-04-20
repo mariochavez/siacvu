@@ -1021,12 +1021,6 @@ a.editabusqueda {
 	display: inline;
 }
 
-#firmaform span.field-validation-error {
-	margin: 0 0 0 10px;
-	color: #FF0000;
-	display: block;
-}
-
 #forma .input-validation-error, #forma select.input-validation-error, #firmaform .input-validation-error, #firmaform select.input-validation-error {
 	border: 1px solid #FF0000;
 }
@@ -1143,7 +1137,7 @@ a.minilistacancelar {
 	font-size: 11pt;
 	line-height: 15pt;
 	color: #555;
-	margin:0 0 0 170px !important;
+	padding:15px 0 0 170px !important;
 }
 
 .submit a {

@@ -23,18 +23,16 @@
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
-    <div id="barra">
-        <div id="asistente">
-            <h3>Asistente de secci&oacute;n</h3>
-            <% Html.RenderPartial("_EditSidebar"); %>
-        </div><!--end asistente-->
-    </div><!--end barra-->
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div id="textos">
 	
 	    <% Html.RenderPartial("_Message"); %>    
+
+        <% if(User.IsInRole("Investigadores")){ %>
+			<% Html.RenderPartial("_FirmaMessage", Model.Form); %>
+        <% } %>
 	    
 	    <div id="forma">
 	        <% using (Html.BeginForm("Update", "OrganoInterno", FormMethod.Post, new { @class = "remote" })){ %>
@@ -45,20 +43,7 @@
 				<h4>Datos del &oacute;rgano interno</h4>
                 <% Html.RenderPartial("_DatosOrganoInterno", Model.Form); %>
                 
-                <p>
-                    <label>Obra publicada</label>
-                    <span id="span_comprobante_documento" class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteOrganoInternoNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteOrganoInternoId), Model.Form.ComprobanteOrganoInternoNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteOrganoInterno_DocumentoProbatorio" id="ComprobanteOrganoInterno_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 
                 <% Html.RenderPartial("_ProgressBar"); %>
 	            
@@ -67,7 +52,11 @@
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->
-    
+
+	        <% if(User.IsInRole("DGAA")){ %>    
+            	<% Html.RenderPartial("_FirmaForm", new FirmaForm{Id = Model.Form.Id, IdName = "ArticuloId", Controller = "Articulo", TipoProducto = 1}); %>
+            <% } %>
+                
 	</div><!--end textos-->
     
 <script type="text/javascript">

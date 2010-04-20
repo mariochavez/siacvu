@@ -65,7 +65,7 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Coautores de la rese&ntilde;a
+                        Coautores de <span id="coautores" class="titulovalor"><%=Model.Form.TipoResena == 1 ? "la Nota cr&iacute;tica" : "la Rese&ntilde;a bibligr&aacute;fica" %></span>
                         <span>
                             <%=Html.Encode(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length)%> coautor(es) 
                         </span>
@@ -111,16 +111,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
                     </p>
                 <% } %>
-                <p>
-                    <label>Obra publicada</label>
-                    <span class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteResenaNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteResenaId), Model.Form.ComprobanteResenaNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <p>
                     <label>L&iacute;nea tem&aacute;tica institucional</label>

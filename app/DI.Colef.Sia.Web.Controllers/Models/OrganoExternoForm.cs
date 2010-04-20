@@ -18,9 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ComprobanteOrganoExternoId { get; set; }
         public string ComprobanteOrganoExternoNombre { get; set; }
 
-        public int FirmaAceptacion2 { get; set; }
-        public string FirmaDescripcion { get; set; }
-
         public int Pais { get; set; }
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }

@@ -252,6 +252,27 @@ function reporteSetup() {
     );
 
     $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
+    
+    var ReporteText = {
+		setup: function(){
+			var tipoProducto = $('#TipoReporte');
+			if (tipoProducto.length > 0) {
+	    		tipoProducto.change(ReporteText.changeText);
+	    		ReporteText.setText(tipoProducto.val(), tipoProducto.children().length);
+			}
+		},
+	    setText: function(value, children) {
+	        if (value <= 1)
+	            $('#coautores').text('Documento de Trabajo');
+	        else if (value == 2)
+	            $('#coautores').text('Reporte Técnico');
+	    },
+	    changeText: function() {
+	        ReporteText.setText($(this).val(), $(this).children().length);
+	    }
+	};
+	
+	ReporteText.setup();
 }
 
 function resenaSetup() {
@@ -287,6 +308,27 @@ function resenaSetup() {
     );
 
     $('#AutorSeOrdenaAlfabeticamente')[0].dynamic.setup();
+    
+    var ResenaText = {
+		setup: function(){
+			var tipoProducto = $('#TipoResena');
+			if (tipoProducto.length > 0) {
+	    		tipoProducto.change(ResenaText.changeText);
+	    		ResenaText.setText(tipoProducto.val(), tipoProducto.children().length);
+			}
+		},
+	    setText: function(value, children) {
+	        if (value <= 1)
+	            $('#coautores').text('la Nota crítica');
+	        else if (value == 2)
+	            $('#coautores').text('la Reseña bibligráfica');
+	    },
+	    changeText: function() {
+	        ResenaText.setText($(this).val(), $(this).children().length);
+	    }
+	};
+	
+	ResenaText.setup();
 }
 
 function proyectoSetup(role) {
@@ -388,13 +430,13 @@ function cursoSetup() {
 
     $('#TipoCurso')[0].dynamic.setup();
 
-    $('#EsPrivada').dynamicui(
-            [
-                ['1', ['#EsPrivada_Field']]
-            ]
-        );
-
-    $('#EsPrivada')[0].dynamic.setup();
+//    $('#EsPrivada').dynamicui(
+//            [
+//                ['1', ['#EsPrivada_Field']]
+//            ]
+//        );
+//
+//    $('#EsPrivada')[0].dynamic.setup();
 }
 
 function eventoSetup() {

@@ -17,9 +17,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAmbitoMapper ambitoMapper;
         readonly IOrganoExternoMapper organoExternoMapper;
         readonly IOrganoExternoService organoExternoService;
+        readonly IProductoService productoService;
         readonly ISectorMapper sectorMapper;
         readonly ITipoOrganoMapper tipoOrganoMapper;
-        
+
         public OrganoExternoController(IOrganoExternoService organoExternoService,
                                        IOrganoExternoMapper organoExternoMapper,
                                        IArchivoService archivoService,
@@ -28,7 +29,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                        ITipoOrganoMapper tipoOrganoMapper,
                                        ISectorMapper sectorMapper,
                                        IAmbitoMapper ambitoMapper,
-                                       ISearchService searchService, IPaisMapper paisMapper)
+                                       ISearchService searchService, IPaisMapper paisMapper,
+                                       IProductoService productoService)
             : base(usuarioService, searchService, catalogoService)
         {
             base.catalogoService = catalogoService;
@@ -37,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoOrganoMapper = tipoOrganoMapper;
             this.sectorMapper = sectorMapper;
             this.ambitoMapper = ambitoMapper;
+            this.productoService = productoService;
             this.paisMapper = paisMapper;
         }
 
@@ -45,14 +48,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<OrganoExternoForm>();
-            var organoExternos = new OrganoExterno[] { };
-
-            if (User.IsInRole("Investigadores"))
-                organoExternos = organoExternoService.GetAllOrganoExternos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                organoExternos = organoExternoService.GetAllOrganoExternos();
-
-            data.List = organoExternoMapper.Map(organoExternos);
+            var productos = productoService.GetProductosByUsuario<OrganoExterno>(CurrentUser(), x => x.Nombre,
+                                                                                 x => x.TipoOrgano);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -78,19 +76,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var organoExterno = organoExternoService.GetOrganoExternoById(id);
 
-            if (organoExterno.Firma.Aceptacion1 == 1 && organoExterno.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El órgano externo {0} esta en firma y no puede ser editado", organoExterno.Nombre));
-            
+            if (organoExterno.Firma.Aceptacion1 == 1 && organoExterno.Firma.Aceptacion2 == 0 &&
+                User.IsInRole("Investigadores"))
+                return
+                    RedirectToHomeIndex(String.Format("El órgano externo {0} esta en firma y no puede ser editado",
+                                                      organoExterno.Nombre));
+
             if (User.IsInRole("DGAA"))
             {
                 if ((organoExterno.Firma.Aceptacion1 == 1 && organoExterno.Firma.Aceptacion2 == 1) ||
                     (organoExterno.Firma.Aceptacion1 == 0 && organoExterno.Firma.Aceptacion2 == 0) ||
                     (organoExterno.Firma.Aceptacion1 == 0 && organoExterno.Firma.Aceptacion2 == 2)
-                   )
+                    )
                     return
                         RedirectToHomeIndex(String.Format(
-                                                "El órgano externo {0} ya fue aceptado o no ha sido enviado a firma",
-                                                organoExterno.Nombre));
+                            "El órgano externo {0} ya fue aceptado o no ha sido enviado a firma",
+                            organoExterno.Nombre));
             }
 
             if (User.IsInRole("Investigadores"))
@@ -148,16 +149,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var organoExterno = new OrganoExterno();
 
             if (User.IsInRole("Investigadores"))
-               organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+                organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
             if (User.IsInRole("DGAA"))
-               organoExterno = organoExternoMapper.Map(form, CurrentUser());
+                organoExterno = organoExternoMapper.Map(form, CurrentUser());
 
             ModelState.AddModelErrors(organoExterno.ValidationResults(), true, "OrganoExterno");
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
-            
+
             organoExternoService.SaveOrganoExterno(organoExterno, true);
             SetMessage(String.Format("Órgano externo {0} ha sido modificado", organoExterno.Nombre));
 
@@ -185,7 +186,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var organoExterno = organoExternoService.GetOrganoExternoById(firmaForm.ProductoId);
 
             organoExterno.Firma.Aceptacion2 = 1;
@@ -194,10 +194,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             organoExternoService.SaveOrganoExterno(organoExterno);
 
             var data = new FirmaForm
-            {
-                TipoProducto = firmaForm.TipoProducto,
-                Aceptacion2 = 1
-            };
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
 
             return Rjs("DgaaSign", data);
         }
@@ -206,7 +206,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var organoExterno = organoExternoService.GetOrganoExternoById(firmaForm.ProductoId);
             organoExterno.Firma.Aceptacion1 = 0;
             organoExterno.Firma.Aceptacion2 = 2;

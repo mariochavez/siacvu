@@ -24,7 +24,7 @@
 
 			<div class="elementobotones">
 				<p>
-				    <%=Html.ProductActions(producto, Page.User.IsInRole("DGAA")) %>
+				    <%=Html.ProductActions(producto, Page.User.IsInRole("DGAA"))%>
                	</p>
 			</div><!--end elementobotones-->
         		

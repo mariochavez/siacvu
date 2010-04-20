@@ -18,9 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool PertenecePNPC { get; set; }
         public bool EsPrivada { get; set; }
 
-        public int FirmaAceptacion2 { get; set; }
-        public string FirmaDescripcion { get; set; }
-
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 

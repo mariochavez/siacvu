@@ -9,8 +9,3 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Titulo")%>
 </p>
-<p>
-    <label>Tipo de producto</label>
-    <span class="valor"><%=HumanizeHelper.TipoProducto(Model.TipoArticulo, 1) %></span>
-    <%=Html.Hidden("TipoArticulo", Model.TipoArticulo)%>
-</p>

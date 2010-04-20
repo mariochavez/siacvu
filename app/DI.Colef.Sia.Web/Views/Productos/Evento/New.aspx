@@ -64,8 +64,8 @@
                     <h4>
                         <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
                           <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                          Coautores del art&iacute;culo de investigaci&oacute;n 
-                          <span><%=Html.Encode(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length)%> coautor(es)
+                          Autor(es) del trabajo presentado
+                          <span><%=Html.Encode(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length)%> autor(es)
                           </span>
                           <span class="cvu"></span>
                         </a>

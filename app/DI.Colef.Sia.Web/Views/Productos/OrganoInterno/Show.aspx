@@ -74,16 +74,7 @@
                         <span class="valor"><%= HumanizeHelper.Periodo(Model.Form.Periodo)%>&nbsp;</span>
                     </p>
                 <% } %>
-                <p>
-                    <label>Obra publicada</label>
-                    <span class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteOrganoInternoNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteOrganoInternoId), Model.Form.ComprobanteOrganoInternoNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<OrganoInternoController>(x => x.Index(), "Regresar") %>

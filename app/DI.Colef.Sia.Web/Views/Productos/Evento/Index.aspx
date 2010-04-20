@@ -46,31 +46,7 @@
 	<div id="lista">
 	<h4>Eventos</h4>
             
-		<% if (Model.List == null || Model.List.Length == 0) { %>
-			<div class="elementolista">
-				<div class="elementodescripcion">
-					<h5><span>No hay eventos registrados</span></h5>
-				</div><!--end elementodescripcion-->	
-
-			</div><!--end elementolista-->
-		<% } else { %>
-			<% foreach (var evento in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(evento.Id) %>">
-					<div class="elementodescripcion">
-					    <h5><span><%=Html.Encode(evento.Nombre)%></span></h5>
-						<h6>Modificado el <%=Html.Encode(evento.Modificacion) %></h6>
-					</div><!--end elementodescripcion-->
-
-					<div class="elementobotones">
-						<p>
-							<span><%=Html.ActionLink<EventoController>(x => x.Edit(evento.Id), "Editar") %></span>
-			            	<span><%=Html.ActionLink("Ver", "Show", new { id = evento.Id })%></span>
-						</p>
-					</div><!--end elementobotones-->
-
-				</div><!--end elementolista-->
-			<% } %>
-		<% } %>
+		<% Html.RenderPartial("_Producto", Model.ProductList); %>
 		
     </div><!--end lista-->
 

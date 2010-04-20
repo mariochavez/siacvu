@@ -209,6 +209,7 @@
     <Content Include="Views\Shared\_RevistaPublicacion.ascx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\DebugFormSubmission.ascx" />
+    <Content Include="Views\Shared\_ShowArchivo.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />
@@ -540,7 +541,7 @@
     <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
     <Content Include="Views\GrupoInvestigacion\_NewMiembroExterno.ascx" />
     <Content Include="Views\GrupoInvestigacion\_ShowMiembroExterno.ascx" />
-    <Content Include="Views\Home\_Productos.ascx" />
+    <Content Include="Views\Shared\_Producto.ascx" />
     <Content Include="Views\Home\FilterProducts.js.ascx" />
     <Content Include="Views\Home\Sign.js.ascx" />
     <Content Include="Views\Home\_VinculacionDifusion.ascx" />

@@ -15,48 +15,62 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class ProyectoController : BaseController<Proyecto, ProyectoForm>
     {
-        readonly IProyectoService proyectoService;
-        readonly IProyectoMapper proyectoMapper;
-        readonly ITipoProyectoMapper tipoProyectoMapper;
+        readonly IAreaMapper areaMapper;
         readonly IConvenioMapper convenioMapper;
-        readonly IResponsableProyectoMapper responsableProyectoMapper;
-        readonly IParticipanteInternoProyectoMapper participanteInternoProyectoMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IParticipanteExternoProyectoMapper participanteExternoProyectoMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IMonedaMapper monedaMapper;
-        readonly ISectorMapper sectorMapper;
-        readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
+        readonly IConvenioService convenioService;
+        readonly ICustomCollection customCollection;
+        readonly IEstudianteProyectoMapper estudianteProyectoMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly ICustomCollection customCollection;
-        readonly IAreaMapper areaMapper;
-        readonly IConvenioService convenioService;
-        readonly IVinculacionAPyDMapper vinculacionAPyDMapper;
-        readonly IEstudianteProyectoMapper estudianteProyectoMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IMonedaMapper monedaMapper;
+        readonly IParticipanteExternoProyectoMapper participanteExternoProyectoMapper;
+        readonly IParticipanteInternoProyectoMapper participanteInternoProyectoMapper;
         readonly IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper;
+        readonly IProductoService productoService;
+        readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
+        readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
+        readonly IResponsableProyectoMapper responsableProyectoMapper;
+        readonly ISectorMapper sectorMapper;
+        readonly ITipoProyectoMapper tipoProyectoMapper;
+        readonly IVinculacionAPyDMapper vinculacionAPyDMapper;
 
-        public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
-                                  IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
-                                  IInvestigadorMapper investigadorMapper, IResponsableProyectoMapper responsableProyectoMapper, 
-                                  IParticipanteInternoProyectoMapper participanteInternoProyectoMapper, ICustomCollection customCollection,
-                                  IInvestigadorExternoMapper investigadorExternoMapper, IParticipanteExternoProyectoMapper participanteExternoProyectoMapper, 
-                                  ISedeMapper sedeMapper, ILineaTematicaMapper lineaTematicaMapper, 
-                                  IAmbitoMapper ambitoMapper, IMonedaMapper monedaMapper, 
-                                  IInstitucionMapper institucionMapper, 
-                                  INivelEstudioMapper nivelEstudioMapper, ISectorMapper sectorMapper, IOrganizacionMapper organizacionMapper, 
-                                  INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IDisciplinaMapper disciplinaMapper, 
-                                  ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService,
+        public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper,
+                                  ICatalogoService catalogoService,
+                                  IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper,
+                                  IConvenioMapper convenioMapper,
+                                  IInvestigadorMapper investigadorMapper,
+                                  IResponsableProyectoMapper responsableProyectoMapper,
+                                  IParticipanteInternoProyectoMapper participanteInternoProyectoMapper,
+                                  ICustomCollection customCollection,
+                                  IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IParticipanteExternoProyectoMapper participanteExternoProyectoMapper,
+                                  ISedeMapper sedeMapper, ILineaTematicaMapper lineaTematicaMapper,
+                                  IAmbitoMapper ambitoMapper, IMonedaMapper monedaMapper,
+                                  IInstitucionMapper institucionMapper,
+                                  INivelEstudioMapper nivelEstudioMapper, ISectorMapper sectorMapper,
+                                  IOrganizacionMapper organizacionMapper,
+                                  INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper,
+                                  IDisciplinaMapper disciplinaMapper,
+                                  ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService,
+                                  IInvestigadorService investigadorService,
                                   IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper,
                                   IFondoConacytMapper fondoConacytMapper,
-                                  IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper,
-                                  IAreaTematicaMapper areaTematicaMapper, IAreaMapper areaMapper, IConvenioService convenioService,
-                                  IVinculacionAPyDMapper vinculacionAPyDMapper, IEstudianteProyectoMapper estudianteProyectoMapper,
+                                  IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper,
+                                  IClaseMapper claseMapper,
+                                  IAreaTematicaMapper areaTematicaMapper, IAreaMapper areaMapper,
+                                  IConvenioService convenioService,
+                                  IVinculacionAPyDMapper vinculacionAPyDMapper,
+                                  IEstudianteProyectoMapper estudianteProyectoMapper,
                                   IArchivoService archivoService,
-                                  IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
+                                  IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper,
+                                  IProductoService productoService)
+            : base(
+                usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper,
+                organizacionMapper, nivelMapper, ramaMapper, claseMapper)
         {
-        
             base.catalogoService = catalogoService;
             base.institucionMapper = institucionMapper;
             base.sedeMapper = sedeMapper;
@@ -82,6 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.vinculacionAPyDMapper = vinculacionAPyDMapper;
             this.estudianteProyectoMapper = estudianteProyectoMapper;
             this.productoGeneradoProyectoMapper = productoGeneradoProyectoMapper;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -89,14 +104,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Index()
         {
             var data = new GenericViewData<ProyectoForm>();
-            var proyectos = new Proyecto[] { };
-
-            if (User.IsInRole("Investigadores"))
-                proyectos = proyectoService.GetAllProyectos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                proyectos = proyectoService.GetAllProyectos();
-
-            data.List = proyectoMapper.Map(proyectos);
+            var productos = productoService.GetProductosByUsuario<Proyecto>(CurrentUser(), x => x.Nombre,
+                                                                            x => x.TipoProyecto);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -108,15 +118,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = new GenericViewData<ProyectoForm> { Form = SetupNewForm() };
+            var data = new GenericViewData<ProyectoForm> {Form = SetupNewForm()};
 
             if (User.IsInRole("DGAA"))
             {
-                ViewData["SectorId"] = (from s in data.Form.Sectores where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES" select s.Id).FirstOrDefault();
-                ViewData["OrganizacionId"] = (from o in data.Form.Organizaciones where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C." select o.Id).FirstOrDefault();
-                ViewData["SectorEconomicoId"] = (from se in data.Form.SectoresEconomicos where se.Nombre == "Servicios profesionales cientificos y tecnicos" select se.Id).FirstOrDefault();
-                ViewData["RamaId"] = (from r in data.Form.Ramas where r.Nombre == "Servicios de investigacion cientifica y desarrollo" select r.Id).FirstOrDefault();
-                ViewData["ClaseId"] = (from c in data.Form.Clases where c.Nombre == "Servicios de investigacion y desarrollo en ciencias sociales y humanidades prestados por el sector publi" select c.Id).FirstOrDefault();
+                ViewData["SectorId"] =
+                    (from s in data.Form.Sectores
+                     where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES"
+                     select s.Id).FirstOrDefault();
+                ViewData["OrganizacionId"] =
+                    (from o in data.Form.Organizaciones
+                     where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C."
+                     select o.Id).FirstOrDefault();
+                ViewData["SectorEconomicoId"] =
+                    (from se in data.Form.SectoresEconomicos
+                     where se.Nombre == "Servicios profesionales cientificos y tecnicos"
+                     select se.Id).FirstOrDefault();
+                ViewData["RamaId"] =
+                    (from r in data.Form.Ramas
+                     where r.Nombre == "Servicios de investigacion cientifica y desarrollo"
+                     select r.Id).FirstOrDefault();
+                ViewData["ClaseId"] = (from c in data.Form.Clases
+                                       where
+                                           c.Nombre ==
+                                           "Servicios de investigacion y desarrollo en ciencias sociales y humanidades prestados por el sector publi"
+                                       select c.Id).FirstOrDefault();
             }
 
             data.Form.PosicionParticipante = 1;
@@ -193,8 +219,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "Responsable")] ResponsableProyectoForm[] responsables,
-                                   [Bind(Prefix = "ParticipanteInterno")] ParticipanteInternoProductoForm[] participantesInternos,
-                                   [Bind(Prefix = "ParticipanteExterno")] ParticipanteExternoProductoForm[] participantesExternos,
+                                   [Bind(Prefix = "ParticipanteInterno")] ParticipanteInternoProductoForm[]
+                                       participantesInternos,
+                                   [Bind(Prefix = "ParticipanteExterno")] ParticipanteExternoProductoForm[]
+                                       participantesExternos,
                                    [Bind(Prefix = "RecursoFinanciero")] RecursoFinancieroProyectoForm[] recursos,
                                    [Bind(Prefix = "Estudiante")] EstudianteProyectoForm[] estudiantes,
                                    [Bind(Prefix = "ProductoGenerado")] ProductoGeneradoProyectoForm[] productos,
@@ -204,8 +232,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             recursos = recursos ?? new RecursoFinancieroProyectoForm[] {};
             estudiantes = estudiantes ?? new EstudianteProyectoForm[] {};
             productos = productos ?? new ProductoGeneradoProyectoForm[] {};
-            participantesInternos = participantesInternos ?? new ParticipanteInternoProductoForm[] { };
-            participantesExternos = participantesExternos ?? new ParticipanteExternoProductoForm[] { };
+            participantesInternos = participantesInternos ?? new ParticipanteInternoProductoForm[] {};
+            participantesExternos = participantesExternos ?? new ParticipanteExternoProductoForm[] {};
 
             var proyecto = proyectoMapper.Map(form, CurrentUser(), CurrentInvestigador(), responsables,
                                               participantesInternos, participantesExternos,
@@ -268,7 +296,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var proyecto = proyectoService.GetProyectoById(firmaForm.ProductoId);
 
             proyecto.Firma.Aceptacion2 = 1;
@@ -297,7 +324,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var proyecto = proyectoService.GetProyectoById(firmaForm.ProductoId);
             proyecto.Firma.Aceptacion1 = 0;
             proyecto.Firma.Aceptacion2 = 2;
@@ -375,7 +401,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddResponsable([Bind(Prefix = "Responsable")]ResponsableProyectoForm form, int proyectoId)
+        public ActionResult AddResponsable([Bind(Prefix = "Responsable")] ResponsableProyectoForm form, int proyectoId)
         {
             var responsableProyecto = responsableProyectoMapper.Map(form);
 
@@ -446,13 +472,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddRecursoFinanciero([Bind(Prefix = "RecursoFinanciero")] RecursoFinancieroProyectoForm form, int proyectoId)
+        public ActionResult AddRecursoFinanciero(
+            [Bind(Prefix = "RecursoFinanciero")] RecursoFinancieroProyectoForm form, int proyectoId)
         {
             Proyecto proyecto;
             RecursoFinancieroProyectoForm recursoFinancieroProyectoForm;
             var recursoFinancieroProyecto = recursoFinancieroProyectoMapper.Map(form);
 
-            ModelState.AddModelErrors(recursoFinancieroProyecto.ValidationResults(), false, "RecursoFinanciero", String.Empty);
+            ModelState.AddModelErrors(recursoFinancieroProyecto.ValidationResults(), false, "RecursoFinanciero",
+                                      String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -570,19 +598,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 proyectoService.SaveProyecto(proyecto);
             }
 
-            var form = new EstudianteProyectoForm { Id = estudianteId };
+            var form = new EstudianteProyectoForm {Id = estudianteId};
 
             return Rjs("DeleteEstudiante", form);
         }
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewParticipanteInterno(int id , bool esAlfabeticamente)
+        public ActionResult NewParticipanteInterno(int id, bool esAlfabeticamente)
         {
             var proyecto = proyectoService.GetProyectoById(id);
             var form = new ParticipanteForm
                            {
-                               Controller = "Proyecto", 
+                               Controller = "Proyecto",
                                IdName = "ProyectoId",
                                ParticipanteSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -596,12 +624,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddParticipanteInterno([Bind(Prefix = "ParticipanteInterno")] ParticipanteInternoProductoForm form,
-                                                    int proyectoId)
+        public ActionResult AddParticipanteInterno(
+            [Bind(Prefix = "ParticipanteInterno")] ParticipanteInternoProductoForm form,
+            int proyectoId)
         {
             var participanteInternoProyecto = participanteInternoProyectoMapper.Map(form);
 
-            ModelState.AddModelErrors(participanteInternoProyecto.ValidationResults(), false, "ParticipanteInterno", String.Empty);
+            ModelState.AddModelErrors(participanteInternoProyecto.ValidationResults(), false, "ParticipanteInterno",
+                                      String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -639,7 +669,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (proyecto != null)
             {
-                var participante = proyecto.ParticipanteInternoProyectos.Where(x => x.Investigador.Id == investigadorId).First();
+                var participante =
+                    proyecto.ParticipanteInternoProyectos.Where(x => x.Investigador.Id == investigadorId).First();
                 proyecto.DeleteParticipanteInterno(participante);
 
                 proyectoService.SaveProyecto(proyecto);
@@ -657,8 +688,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var proyecto = proyectoService.GetProyectoById(id);
             var form = new ParticipanteForm
                            {
-                               Controller = "Proyecto", 
-                               IdName = "ProyectoId", 
+                               Controller = "Proyecto",
+                               IdName = "ProyectoId",
                                InvestigadorExterno = new InvestigadorExternoForm(),
                                ParticipanteSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -672,7 +703,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddParticipanteExterno([Bind(Prefix = "ParticipanteExterno")] ParticipanteExternoProductoForm form,
+        public ActionResult AddParticipanteExterno(
+            [Bind(Prefix = "ParticipanteExterno")] ParticipanteExternoProductoForm form,
             int proyectoId)
         {
             var investigadorExternoForm = new InvestigadorExternoForm
@@ -684,7 +716,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
 
-            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "ParticipanteExterno", String.Empty);
+            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "ParticipanteExterno",
+                                      String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -694,7 +727,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
-            
+
             form.InvestigadorExternoId = investigadorExterno.Id;
             var participanteExternoProyecto = participanteExternoProyectoMapper.Map(form);
 
@@ -736,13 +769,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (proyecto != null)
             {
-                var participante = proyecto.ParticipanteExternoProyectos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                var participante =
+                    proyecto.ParticipanteExternoProyectos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).
+                        First();
                 proyecto.DeleteParticipanteExterno(participante);
 
                 proyectoService.SaveProyecto(proyecto);
             }
 
-            var form = new ParticipanteForm { InvestigadorExternoId = investigadorExternoId };
+            var form = new ParticipanteForm {InvestigadorExternoId = investigadorExternoId};
 
             return Rjs("DeleteParticipanteExterno", form);
         }
@@ -765,13 +800,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddProducto([Bind(Prefix = "ProductoGenerado")] ProductoGeneradoProyectoForm form, int proyectoId)
+        public ActionResult AddProducto([Bind(Prefix = "ProductoGenerado")] ProductoGeneradoProyectoForm form,
+                                        int proyectoId)
         {
             Proyecto proyecto;
             ProductoGeneradoProyectoForm productoGeneradoProyectoForm;
             var productoGeneradoProyecto = productoGeneradoProyectoMapper.Map(form);
 
-            ModelState.AddModelErrors(productoGeneradoProyecto.ValidationResults(), false, "ProductoGenerado", String.Empty);
+            ModelState.AddModelErrors(productoGeneradoProyecto.ValidationResults(), false, "ProductoGenerado",
+                                      String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -816,17 +853,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 proyectoService.SaveProyecto(proyecto);
             }
 
-            var form = new ProductoGeneradoProyectoForm { Id = productoGeneradoId };
+            var form = new ProductoGeneradoProyectoForm {Id = productoGeneradoId};
 
             return Rjs("DeleteProducto", form);
         }
 
-        private ProyectoForm SetupNewForm()
+        ProyectoForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        private ProyectoForm SetupNewForm(ProyectoForm form)
+        ProyectoForm SetupNewForm(ProyectoForm form)
         {
             form = form ?? new ProyectoForm();
 
@@ -849,8 +886,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (form.Id == 0)
             {
-                form.ParticipanteExternoProyectos = new ParticipanteExternoProductoForm[] { };
-                form.ParticipanteInternoProyectos = new ParticipanteInternoProductoForm[] { };
+                form.ParticipanteExternoProyectos = new ParticipanteExternoProductoForm[] {};
+                form.ParticipanteInternoProyectos = new ParticipanteInternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
                 {
@@ -858,7 +895,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
                 }
-            } else
+            }
+            else
             {
                 form.AreasTematicas =
                     areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
@@ -868,21 +906,33 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();
 
             form.UserRole = User.IsInRole("Investigadores") ? "Investigador" : "DGAA";
-            
+
             if (User.IsInRole("DGAA"))
             {
                 if (form.Id == 0)
                 {
-                    var sectorId = (from s in form.Sectores where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES" select s.Id).FirstOrDefault();
+                    var sectorId =
+                        (from s in form.Sectores
+                         where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES"
+                         select s.Id).FirstOrDefault();
                     form.Organizaciones = GetOrganizacionesBySectorId(sectorId);
 
-                    var organizacionId = (from o in form.Organizaciones where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C." select o.Id).FirstOrDefault();
+                    var organizacionId =
+                        (from o in form.Organizaciones
+                         where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C."
+                         select o.Id).FirstOrDefault();
                     form.Niveles = GetNivelesByOrganizacionId(organizacionId);
 
-                    var sectorEconomicoId = (from se in form.SectoresEconomicos where se.Nombre == "Servicios profesionales cientificos y tecnicos" select se.Id).FirstOrDefault();
+                    var sectorEconomicoId =
+                        (from se in form.SectoresEconomicos
+                         where se.Nombre == "Servicios profesionales cientificos y tecnicos"
+                         select se.Id).FirstOrDefault();
                     form.Ramas = GetRamasBySectorEconomicoId(sectorEconomicoId);
 
-                    var ramaId = (from r in form.Ramas where r.Nombre == "Servicios de investigacion cientifica y desarrollo" select r.Id).FirstOrDefault();
+                    var ramaId =
+                        (from r in form.Ramas
+                         where r.Nombre == "Servicios de investigacion cientifica y desarrollo"
+                         select r.Id).FirstOrDefault();
                     form.Clases = GetClasesByRamaId(ramaId);
                 }
                 else
@@ -898,7 +948,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(ProyectoForm form)
+        void FormSetCombos(ProyectoForm form)
         {
             ViewData["TipoProyecto"] = form.TipoProyectoId;
             ViewData["EstadoProyecto"] = form.EstadoProyecto;
@@ -927,7 +977,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             }
         }
 
-        private static ProyectoForm SetupShowForm(ProyectoForm form)
+        static ProyectoForm SetupShowForm(ProyectoForm form)
         {
             form = form ?? new ProyectoForm();
 
@@ -936,15 +986,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
-
                                       Nivel2Nombre = form.Nivel2Nombre,
                                       OrganizacionNombre = form.OrganizacionNombre,
                                       SectorNombre = form.SectorNombre,
-
                                       ClaseNombre = form.ClaseNombre,
                                       RamaNombre = form.RamaNombre,
                                       SectorEconomicoNombre = form.SectorEconomicoNombre,
-
                                       IsShowForm = true
                                   };
 

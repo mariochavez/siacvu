@@ -23,9 +23,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly ICustomCollection customCollection;
         readonly IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IProductoService productoService;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -37,9 +38,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICustomCollection customCollection, IAreaTematicaMapper areaTematicaMapper,
                                   ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
-                                  IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper, IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper,
+                                  IInvestigadorExternoMapper investigadorExternoMapper,
                                   IInvestigadorService investigadorService,
-                                  IPaisMapper paisMapper)
+                                  IPaisMapper paisMapper, IProductoService productoService)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             base.paisMapper = paisMapper;
@@ -57,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.editorialCapituloMapper = editorialCapituloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorService = investigadorService;
+            this.productoService = productoService;
         }
 
         [Authorize]
@@ -64,14 +67,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = new GenericViewData<CapituloForm>();
-            var capitulos = new Capitulo[] { };
-
-            if (User.IsInRole("Investigadores"))
-                capitulos = capituloService.GetAllCapitulos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                capitulos = capituloService.GetAllCapitulos();
-
-            data.List = capituloMapper.Map(capitulos);
+            var productos = productoService.GetProductosByUsuario<Capitulo>(CurrentUser(), x => x.NombreCapitulo,
+                                                                            x => x.TipoCapitulo);
+            data.ProductList = productos;
 
             return View(data);
         }
@@ -83,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = new GenericViewData<CapituloForm> {Form = SetupNewForm() };
+            var data = new GenericViewData<CapituloForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -105,7 +103,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var coautorExists = 0;
             int posicionAutor;
             var autorExists = 0;
-            
+
             if (User.IsInRole("Investigadores"))
             {
                 coautorExists =
@@ -121,7 +119,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var capituloForm = capituloMapper.Map(capitulo);
-            if(capitulo.AreaTematica != null)
+            if (capitulo.AreaTematica != null)
                 capituloForm.LineaTematicaId = capitulo.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(capituloForm);
@@ -221,7 +219,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             capituloService.SaveCapitulo(capitulo, true);
-            SetMessage(String.Format ("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
+            SetMessage(String.Format("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
 
             return Rjs("Save", capitulo.Id);
         }
@@ -247,7 +245,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var capitulo = capituloService.GetCapituloById(firmaForm.ProductoId);
 
             capitulo.Firma.Aceptacion2 = 1;
@@ -256,10 +253,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             capituloService.SaveCapitulo(capitulo);
 
             var data = new FirmaForm
-            {
-                TipoProducto = firmaForm.TipoProducto,
-                Aceptacion2 = 1
-            };
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
 
             return Rjs("DgaaSign", data);
         }
@@ -268,7 +265,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var capitulo = capituloService.GetCapituloById(firmaForm.ProductoId);
             capitulo.Firma.Aceptacion1 = 0;
             capitulo.Firma.Aceptacion2 = 2;
@@ -327,7 +323,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var capitulo = capituloService.GetCapituloById(id);
             var form = new CoautorForm
                            {
-                               Controller = "Capitulo", 
+                               Controller = "Capitulo",
                                IdName = "CapituloId",
                                CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -411,8 +407,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var capitulo = capituloService.GetCapituloById(id);
             var form = new CoautorForm
                            {
-                               Controller = "Capitulo", 
-                               IdName = "CapituloId", 
+                               Controller = "Capitulo",
+                               IdName = "CapituloId",
                                InvestigadorExterno = new InvestigadorExternoForm(),
                                CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -511,7 +507,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var capitulo = capituloService.GetCapituloById(id);
             var form = new AutorForm
                            {
-                               Controller = "Capitulo", 
+                               Controller = "Capitulo",
                                IdName = "CapituloId",
                                AutorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -588,8 +584,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var form = new AutorForm
                            {
-                               Controller = "Capitulo", 
-                               IdName = "CapituloId", 
+                               Controller = "Capitulo",
+                               IdName = "CapituloId",
                                InvestigadorExterno = new InvestigadorExternoForm(),
                                AutorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
@@ -679,13 +675,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return Rjs("DeleteAutorExterno", form);
         }
-        
-        private CapituloForm SetupNewForm()
+
+        CapituloForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        private CapituloForm SetupNewForm(CapituloForm form)
+        CapituloForm SetupNewForm(CapituloForm form)
         {
             form = form ?? new CapituloForm();
 
@@ -707,13 +703,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 form.AutorExternoCapitulos = new AutorExternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
-				{
-				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                {
+                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
-				}
+                }
                 form.PosicionCoautor = 1;
-            } else
+            }
+            else
             {
                 form.AreasTematicas =
                     areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
@@ -722,7 +719,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return form;
         }
 
-        private void FormSetCombos(CapituloForm form)
+        void FormSetCombos(CapituloForm form)
         {
             ViewData["TipoCapitulo"] = form.TipoCapitulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
@@ -745,14 +742,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
-
                                       ProyectoNombre = form.Proyecto.Nombre,
-
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-
                                       IsShowForm = true
                                   };
 
@@ -761,7 +755,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         protected override void DeleteEditorialInModel(Capitulo model, int editorialId)
         {
-            if(model != null)
+            if (model != null)
             {
                 var editorial = model.EditorialCapitulos.Where(x => x.Id == editorialId).First();
                 model.DeleteEditorial(editorial);

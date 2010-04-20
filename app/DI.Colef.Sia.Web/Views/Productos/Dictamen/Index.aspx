@@ -46,31 +46,7 @@
 	<div id="lista">
 		<h4>Dict&aacute;menes</h4>
             
-		<% if (Model.List == null || Model.List.Length == 0) { %>
-			<div class="elementolista">
-				<div class="elementodescripcion">
-					<h5><span>No hay dict&aacute;menes registrados</span></h5>
-				</div><!--end elementodescripcion-->
-
-			</div><!--end elementolista-->
-		<% } else { %>
-			<% foreach (var dictamen in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(dictamen.Id) %>">
-					<div class="elementodescripcion">
-					    <h5><span><%=Html.Encode(dictamen.Nombre)%></span></h5>
-						<h6>Modificado el <%=Html.Encode(dictamen.Modificacion) %></h6>
-					</div><!--end elementodescripcion-->
-
-					<div class="elementobotones">
-						<p>
-							<span><%=Html.ActionLink<DictamenController>(x => x.Edit(dictamen.Id), "Editar") %></span>
-			            	<span><%=Html.ActionLink("Ver", "Show", new { id = dictamen.Id })%></span>
-						</p>
-					</div><!--end elementobotones-->
-
-				</div><!--end elementolista-->
-			<% } %>
-		<% } %>
+		<% Html.RenderPartial("_Producto", Model.ProductList); %>
 		
     </div><!--end lista-->
 
