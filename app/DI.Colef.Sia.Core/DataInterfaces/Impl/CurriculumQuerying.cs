@@ -104,13 +104,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
 
                 .Add(Projections.Property("f.Aceptacion1"), "FirmaAceptacion1")
                 .Add(Projections.Property("f.Aceptacion2"), "FirmaAceptacion2");
-
-
-            //var fechaPublicacion = GetPropertyName();
-            //if (!String.IsNullOrEmpty(fechaPublicacion))
-            //{
-            //    projection.Add(Projections.Property("FechaPublicacion"), "FechaPublicacion");    
-            //}
             
 
             var criteria = Session.CreateCriteria(typeof(T))
@@ -120,6 +113,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
             var isInvestigador = (from role in usuario.Roles
                                   where role.Nombre == "Investigadores"
                                   select role).FirstOrDefault() != null;
+
+            var fechaPublicacion = EntityHelper.GetPropertyName<T>("FechaPublicacion");
+            if (!String.IsNullOrEmpty(fechaPublicacion))
+            {
+                projection.Add(Projections.Property("FechaPublicacion"), "FechaPublicacion");
+            }
+
 
             var revistaTable = EntityHelper.GetRevistaTable<T>();
             if (!String.IsNullOrEmpty(revistaTable))

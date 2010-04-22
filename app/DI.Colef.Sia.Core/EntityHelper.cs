@@ -115,6 +115,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             return GetTableName<T>("Institucion");
         }
 
+        public static string GetPropertyName<T>(string propertyName)
+        {
+            return GetTableName<T>(propertyName);
+        }
+
         public static bool HasInstitucion<T>()
         {
             return GetInstitucionTable<T>() != String.Empty;

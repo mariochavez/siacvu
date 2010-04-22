@@ -49,6 +49,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                         return Redirect(returnUrl);
 
                     Session["puntos"] = productoService.GetPuntosSieva(currentUser);
+                    Session["nombreCompleto"] = string.Format("{0} {1} {2}", currentUser.Nombre,
+                                                               currentUser.ApellidoPaterno, currentUser.ApellidoMaterno);
                     return Redirect(Url.Action("Index", "Home"));
                 }
 
@@ -58,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             // If we got this far, something failed, redisplay form
             ViewData["rememberMe"] = rememberMe;
             ViewData["username"] = username;
+            
             return View("Index");
         }
 
