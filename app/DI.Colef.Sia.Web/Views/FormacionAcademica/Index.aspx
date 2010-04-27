@@ -3,24 +3,21 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2>
-        <%=Html.Encode(Model.Title) %></h2>
+    <h2>Administraci&oacute;n de Niveles/Grados acad&eacute;micos</h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
     runat="server">
     <div id="subcontenido">
-        <h3>Agregar nueva formaci&oacute;n acad&eacute;mica</h3>
+        <h3>Agregar nuevo grado acad&eacute;mico</h3>
         <p>
             Puede agregar una nueva formaci&oacute;n acad&eacute;mica dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva formaci&oacute;n acad&eacute;mica</strong>.
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
         </p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), Model.GetObjectNameNewButton())%></span>
+            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ Nuevo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -29,7 +26,7 @@
     runat="server">
     <div id="barra">
         <div id="asistente">
-            <h3Asistente de secci&oacute;n</h3>
+            <h3>Asistente de secci&oacute;n</h3>
             <p>Lista de formaciones acad&eacute;micas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->

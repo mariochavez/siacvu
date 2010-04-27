@@ -120,6 +120,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
                 projection.Add(Projections.Property("FechaPublicacion"), "FechaPublicacion");
             }
 
+            var volumen = EntityHelper.GetPropertyName<T>("Volumen");
+            if (!String.IsNullOrEmpty(volumen))
+            {
+                projection.Add(Projections.Property("Volumen"), "Volumen");
+            }
+
+            //var numero = EntityHelper.GetPropertyName<T>("Numero");
+            //if (!String.IsNullOrEmpty(numero))
+            //{
+            //    projection.Add(Projections.Property("Numero"), "Numero");
+            //}
+
+            var paginaInicial = EntityHelper.GetPropertyName<T>("PaginaInicial");
+            if (!String.IsNullOrEmpty(paginaInicial))
+            {
+                projection.Add(Projections.Property("PaginaInicial"), "PaginaInicial");
+            }
+
+            var paginaFinal = EntityHelper.GetPropertyName<T>("PaginaFinal");
+            if (!String.IsNullOrEmpty(paginaFinal))
+            {
+                projection.Add(Projections.Property("PaginaFinal"), "PaginaFinal");
+            }
+
 
             var revistaTable = EntityHelper.GetRevistaTable<T>();
             if (!String.IsNullOrEmpty(revistaTable))

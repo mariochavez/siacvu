@@ -4,8 +4,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core.DataInterfaces" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
@@ -56,16 +54,25 @@
                     <br />
                  </p>
 
+                 <!-- Produccion Academica -->
                 <% if ((Model.Form.ListaProductos[0] as CurriculumDTO[]).Length > 0) { %>
                     <span class="encabezadoValor">Producci&oacute;n Academica</span><br />
-                                        
+
+                    <!-- Articulos Cientificos -->
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 1).Length > 0) { %>
                         <br />
-                        <span class="tituloValor">Articulos</span><br />
+                        <span class="tituloValor">Articulos cient&iacute;ficos</span><br />
                         <% Html.RenderPartial("_ProducccionAcademica", Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 1));%><br />
                     <% } %>
 
-                    
+                    <!-- Articulos Difusion -->
+                    <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 16).Length > 0) { %>
+                         <br />
+                         <span class="tituloValor">Articulos de difusi&oacute;n</span><br />
+                         <% Html.RenderPartial("_ProducccionAcademica", Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 16));%><br />
+                    <% } %>
+
+                    <!-- Capitulos -->
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 2).Length > 0) { %>
                         <br />
                         <span class="tituloValor">Capitulo</span><br />

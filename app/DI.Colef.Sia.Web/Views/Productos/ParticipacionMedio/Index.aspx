@@ -44,7 +44,7 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Participaciones en medios</h4>
+		<h4>Actividades de difusi&oacute;n del conocimiento</h4>
             
 		<% Html.RenderPartial("_Producto", Model.ProductList); %>
 		

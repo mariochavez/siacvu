@@ -6,7 +6,7 @@
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2>Administración de apoyos del CONACyT</h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">

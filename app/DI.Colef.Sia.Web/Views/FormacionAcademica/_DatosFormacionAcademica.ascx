@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Nivel de estudio</label>
+    <label>Nivel/Grado acad&eacute;mico</label>
     <%=Html.DropDownList("NivelEstudio", Model.NivelesEstudios.CreateSelectList<NivelEstudioForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
@@ -15,7 +15,7 @@
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>
 <p>
-    <label>T&iacute;tulo de grado</label>
+    <label>T&iacute;tulo de Nivel/Grado acad&eacute;mico</label>
     <%=Html.TextBox("TituloGrado", Model.TituloGrado, new { @class = "input420-bold-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("TituloGrado")%>
 </p>
@@ -30,17 +30,27 @@
 <% Html.RenderPartial("_ShowInstitucionLong", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
 
 <p>
-    <label>T&iacute;tulo de tesis</label>
+    <label>T&iacute;tulo del Nivel/Grado acad&eacute;mico</label>
     <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("TituloTesis")%>
 </p>
+
 <p>
+    <label>Estatus</label>
+    <%=Html.DropDownList("Estatus", Model.EstatusFormacionAcademicas.CreateSelectList<EstatusFormacionAcademicaForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("Estatus")%>
+</p>
+
+<%--<p>
     <label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
         new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
-</p>
+</p>--%>
+
 <p>
     <label>Pa&iacute;s</label>
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
@@ -59,13 +69,6 @@
     <label>Ciudad</label>
     <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Ciudad")%>
-</p>
-<p>
-    <label>Estatus</label>
-    <%=Html.DropDownList("Estatus", Model.EstatusFormacionAcademicas.CreateSelectList<EstatusFormacionAcademicaForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Estatus")%>
 </p>
 
 <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Sectores, Organizaciones = Model.Organizaciones, Niveles = Model.Niveles, IsShowForm = false }); %>

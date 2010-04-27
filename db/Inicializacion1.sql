@@ -412,6 +412,7 @@ insert into TipoOrganos values('Consejos (Consultivos)',GETDATE(), GETDATE(), 1,
 insert into TipoOrganos values('Comisiones',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Comités (Sub-Comités)',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Grupos de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Asociación académica',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoDictamenes values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Libro',GETDATE(), GETDATE(), 1, 1, 1);

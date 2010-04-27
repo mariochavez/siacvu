@@ -59,10 +59,10 @@
                     <label>T&iacute;tulo de tesis</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TituloTesis)%>&nbsp;</span>
                 </p>
-                <p>
+                <%--<p>
                     <label>L&iacute;nea tem&aacute;tica</label>
                     <span class="valor"><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 <p>
                     <label>Pa&iacute;s</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>

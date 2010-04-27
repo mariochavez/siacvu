@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
-using SharpArch.Web.Areas;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
