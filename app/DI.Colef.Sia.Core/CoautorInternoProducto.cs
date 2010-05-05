@@ -62,4 +62,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class MiembroInternoGrupoInvestigacion : CoautorInternoProducto
+    {
+        
+    }
 }

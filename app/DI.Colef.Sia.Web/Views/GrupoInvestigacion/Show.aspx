@@ -2,11 +2,8 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<GrupoInvestigacionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -56,13 +53,32 @@
                 <% if (Model.Form.Lider) { %>
                     <p>
                         <label>Nombre</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.Nombre)%></span>
+                        <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%></span>
                     </p>
                 <% } %>
-                
-                <h4>Miembros</h4>
-                <% Html.RenderPartial("_ShowMiembroExterno", new GrupoInvestigacionForm {MiembroExternoGrupoInvestigaciones = Model.Form.MiembroExternoGrupoInvestigaciones, Id = Model.Form.Id});%>
-                
+               
+               <h4>
+                    <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length) %>">
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                        Miembros del Grupo de investigaci&oacute;n 
+                        <span>
+                        <%=Html.Encode(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length)%> miembro(s)
+                        </span> 
+                        <span class="cvu"></span>
+                    </a>
+                </h4>
+                <span id="coautores_area">
+                <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.MiembroInternoGrupoInvestigaciones, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.MiembroExternoGrupoInvestigaciones, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.MiembroExternoGrupoInvestigaciones, CoautoresInternos = Model.Form.MiembroInternoGrupoInvestigaciones }); %>
+                <p>
+                    <label>Investigador</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+                    <label class="right">Posici&oacute;n</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
+                </p>
+	            </span> 
+               
                 <h4>&nbsp;</h4>
                 <p>
                     <label>Impacto / Productividad</label>

@@ -141,7 +141,9 @@
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\CurriculumHelper.cs" />
     <Compile Include="Mappers\IGlosarioMapper.cs" />
+    <Compile Include="Mappers\IMiembroInternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\GlosarioMapper.cs" />
+    <Compile Include="Mappers\Impl\MiembroInternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Models\BaseForm.cs" />
     <Compile Include="Models\ComboForm.cs" />
     <Compile Include="Models\GlosarioForm.cs" />

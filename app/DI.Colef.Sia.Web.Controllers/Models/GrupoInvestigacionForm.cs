@@ -1,10 +1,7 @@
-using DecisionesInteligentes.Colef.Sia.Core;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class GrupoInvestigacionForm
+    public class GrupoInvestigacionForm : BaseForm
     {
-		public int Id { get; set; }
 		public string NombreGrupoInvestigacion { get; set; }
 		public string FechaCreacion { get; set; }
         public bool Lider { get; set; }
@@ -17,16 +14,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        public Investigador Investigador { get; set; }
-
-        public string Nombre
-        {
-            get
-            {
-                return string.Format("{0} {1} {2}", Investigador.Usuario.Nombre,
-                                     Investigador.Usuario.ApellidoPaterno, Investigador.Usuario.ApellidoMaterno);
-            }
-        }
+        public bool CoautorSeOrdenaAlfabeticamente { get; set; }
+        public bool AutorSeOrdenaAlfabeticamente { get; set; }
+        public int PosicionAutor { get; set; }
 
         public int SectorId { get; set; }
         public int OrganizacionId { get; set; }
@@ -36,10 +26,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
 
-        public MiembroExternoGrupoInvestigacionForm[] MiembroExternoGrupoInvestigaciones { get; set; }
+        public CoautorExternoProductoForm[] MiembroExternoGrupoInvestigaciones { get; set; }
+        public CoautorInternoProductoForm[] MiembroInternoGrupoInvestigaciones { get; set; }
 
         /* New */
-        public MiembroExternoGrupoInvestigacionForm[] MiembroExternoGrupoInvestigacion { get; set; }
+        public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
+        public CoautorExternoProductoForm CoautorInternoProducto { get; set; }
 
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }

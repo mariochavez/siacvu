@@ -121,7 +121,6 @@
     <Compile Include="EstudianteProyecto.cs" />
     <Compile Include="IInstitucion.cs" />
     <Compile Include="InstitucionProducto.cs" />
-    <Compile Include="MiembroExternoGrupoInvestigacion.cs" />
     <Compile Include="NHibernateValidator\CategoriaInvestigadorValidator.cs" />
     <Compile Include="CursoInvestigador.cs" />
     <Compile Include="EditorialProducto.cs" />

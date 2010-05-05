@@ -64,4 +64,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class MiembroExternoGrupoInvestigacion : CoautorExternoProducto
+    {
+        
+    }
 }

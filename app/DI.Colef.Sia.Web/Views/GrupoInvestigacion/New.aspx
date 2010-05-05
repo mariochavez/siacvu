@@ -3,8 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2> <%=Html.Encode(Model.Title) %></h2>
 </asp:Content>
@@ -66,12 +65,26 @@
             </p>
             <p id="siLider">
                 <label>Nombre</label>
-                <span class="valor"><%= Html.Encode(Model.Form.Nombre)%></span>
+                <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%></span>
                 <span class="cvu"></span>
             </p>
             
-            <h4>Miembros</h4>
-            <% Html.RenderPartial("_EditMiembroExterno", Model.Form); %>
+            <h4>
+                <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length) %>">
+                    <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                    Miembros del <span id="coautores" class="titulovalor">Grupo de Investigaci&oacute;n</span>
+                    <span>
+                        <%=Html.Encode(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length)%>
+                        miembro(s) </span><span class="cvu"></span></a>
+            </h4>
+           <span id="coautores_area">
+                <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "CoautorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewCoautorInternoLink, NewCoautorExternoLink", SubFormName = "coautor", UrlActionExterno = "NewCoautorExterno", UrlActionInterno = "NewCoautorInterno", Link1Id = "NewCoautorInternoLink", Link2Id = "NewCoautorExternoLink" }); %>
+				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.MiembroInternoGrupoInvestigaciones, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.MiembroExternoGrupoInvestigaciones, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.MiembroExternoGrupoInvestigaciones, CoautoresInternos = Model.Form.MiembroInternoGrupoInvestigaciones }); %>
+	            
+				<% Html.RenderPartial("_AutorEntry", Model.Form); %>
+           </span>
             
             <h4>&nbsp;</h4>
             <% Html.RenderPartial("_EstructuraFuncional", Model.Form); %>

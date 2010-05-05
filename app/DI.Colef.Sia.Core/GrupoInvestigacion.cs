@@ -11,19 +11,34 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [GrupoInvestigacionValidator]
     public class GrupoInvestigacion : Entity, IBaseEntity
     {
+         //const int tipoProducto = //Buscar en TipoProductoEnum
+
         public GrupoInvestigacion()
         {
             MiembroExternoGrupoInvestigaciones = new List<MiembroExternoGrupoInvestigacion>();
+            MiembroInternoGrupoInvestigaciones = new List<MiembroInternoGrupoInvestigacion>();
         }
 
         public virtual void AddMiembroExterno(MiembroExternoGrupoInvestigacion miembroExternoGrupoInvestigacion)
         {
+            //miembroExternoGrupoInvestigacion.TipoProducto = tipoProducto;
             MiembroExternoGrupoInvestigaciones.Add(miembroExternoGrupoInvestigacion);
         }
 
         public virtual void DeleteMiembroExterno(MiembroExternoGrupoInvestigacion miembroExternoGrupoInvestigacion)
         {
             MiembroExternoGrupoInvestigaciones.Remove(miembroExternoGrupoInvestigacion);
+        }
+
+        public virtual void AddMiembroInterno(MiembroInternoGrupoInvestigacion miembroInternoGrupoInvestigacion)
+        {
+            //miembroInternoGrupoInvestigacion.TipoProducto = tipoProducto;
+            MiembroInternoGrupoInvestigaciones.Add(miembroInternoGrupoInvestigacion);
+        }
+
+        public virtual void  DeleteMiembroInterno(MiembroInternoGrupoInvestigacion miembroInternoGrupoInvestigacion)
+        {
+            MiembroInternoGrupoInvestigaciones.Remove(miembroInternoGrupoInvestigacion);
         }
 
         [NotNull]
@@ -33,9 +48,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [DomainSignature]
 		public virtual string NombreGrupoInvestigacion { get; set; }
 
+        public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
+
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<MiembroExternoGrupoInvestigacion> MiembroExternoGrupoInvestigaciones { get; private set; }
 
+        [Valid]
+        public virtual IList<MiembroInternoGrupoInvestigacion> MiembroInternoGrupoInvestigaciones { get; private set; }
+
+        public virtual int PosicionAutor { get; set; }
+
+        public virtual int PosicionCoautor { get; set; }
+        
 		public virtual DateTime FechaCreacion { get; set; }
 
         public virtual Sector Sector { get; set; }
