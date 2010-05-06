@@ -875,7 +875,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Convenios = convenioMapper.Map(convenioService.GetAllConvenios());
             form.SectoresFinanciamientos = sectorMapper.Map(catalogoService.GetActiveSectoresFinanciamientos());
             form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
-            form.ImpactoPuliticaPublicas = customCollection.ImpactoPoliticaPublicaCustomCollection();
+            form.ImpactoPoliticaPublicas = customCollection.ImpactoPoliticaPublicaCustomCollection();
             form.VinculacionesAPyDs = vinculacionAPyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);

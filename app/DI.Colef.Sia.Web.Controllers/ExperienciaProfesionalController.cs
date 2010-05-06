@@ -1,9 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -19,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly ISectorMapper sectorMapper;
         readonly IAreaMapper areaMapper;
+        readonly ICustomCollection customCollection;
 
         public ExperienciaProfesionalController(IExperienciaProfesionalService experienciaProfesionalService,
                                                 IExperienciaProfesionalMapper experienciaProfesionalMapper,
@@ -29,7 +30,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                 ISubdisciplinaMapper subdisciplinaMapper, 
                                                 IClaseMapper claseMapper,
                                                 ISearchService searchService, IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
-                                                IDisciplinaMapper disciplinaMapper, IRamaMapper ramaMapper, IAreaMapper areaMapper
+                                                IDisciplinaMapper disciplinaMapper, IRamaMapper ramaMapper, IAreaMapper areaMapper,
+                                                ICustomCollection customCollection
             ): base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
         {
             this.catalogoService = catalogoService;
@@ -38,6 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.paisMapper = paisMapper;
             this.sectorMapper = sectorMapper;
             this.areaMapper = areaMapper;
+            this.customCollection = customCollection;
         }
 
         [Authorize]
@@ -172,6 +175,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+
+            form.Entidades = customCollection.EntidadExperienciaProfesionalCustomCollection();
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);

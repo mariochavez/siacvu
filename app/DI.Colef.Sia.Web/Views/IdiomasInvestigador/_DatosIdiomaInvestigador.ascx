@@ -9,8 +9,8 @@
 </p>
 <p>
 	<label>Lengua materna</label>
-	<%=Html.TextBox("LenguaMaterna", Model.LenguaMaterna, new { @class = "input250", maxlength = 100 })%>
-	<%=Html.ValidationMessage("LenguaMaterna")%>						
+	<%=Html.CheckBox("LenguaMaterna", Model.LenguaMaterna)%>
+    <br /><label></label><span>(Marque en caso positivo)</span>				
 </p>
 <p>
 	<label>Traductor</label>

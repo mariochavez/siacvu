@@ -1,14 +1,9 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ProyectoForm : BaseForm
     {
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
-
-        public int FirmaAceptacion2 { get; set; }
-        public string FirmaDescripcion { get; set; }
 
         //Seccion Informacion General
         public string Nombre { get; set; }
@@ -69,7 +64,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int ImpactoPoliticaPublica { get; set; }
 
-        public CustomSelectForm[] ImpactoPuliticaPublicas { get; set; }
+        public CustomSelectForm[] ImpactoPoliticaPublicas { get; set; }
 
         public int VinculacionAPyD { get; set; }
         public int VinculacionAPyDId { get; set; }

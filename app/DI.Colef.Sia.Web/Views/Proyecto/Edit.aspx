@@ -2,11 +2,8 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ProyectoForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -60,7 +57,7 @@
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigadores participantes
                     <span>
                         <%=Html.Encode(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length)%>
-                        coautor(es) </span><span class="cvu"></span></a>
+                        participante(s) </span><span class="cvu"></span></a>
             </h4>
             <span id="coautores_area">
                 <% Html.RenderPartial("_EditResponsable", Model.Form); %>

@@ -1,11 +1,9 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ExperienciaProfesionalForm
     {
         public int Id { get; set; }
-        public string Entidad { get; set; }
+        public int Entidad { get; set; }
         public string Nombramiento { get; set; }
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
@@ -15,6 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PrincipalesLogros { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
+
+        public string EntidadNombre{ get; set;}
+        public CustomSelectForm[] Entidades { get; set; }
 
         //Espacio para Agregar Mapeos
         public int SectorId { get; set; }

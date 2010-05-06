@@ -3340,6 +3340,10 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
     create table GrupoInvestigaciones (
         Id INT IDENTITY NOT NULL,
        NombreGrupoInvestigacion NVARCHAR(250) null,
+       AutorSeOrdenaAlfabeticamente BIT null,
+       CoautorSeOrdenaAlfabeticamente BIT null,
+       PosicionAutor INT null,
+       PosicionCoautor INT null,
        FechaCreacion DATETIME null,
        Lider BIT null,
        Impacto NVARCHAR(255) null,

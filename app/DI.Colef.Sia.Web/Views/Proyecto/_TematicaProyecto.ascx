@@ -12,7 +12,7 @@
 
 <p>
     <label>Impacto en la pol&iacute;tica p&uacute;blica</label>
-    <%=Html.DropDownList("ImpactoPoliticaPublica", Model.ImpactoPuliticaPublicas.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+    <%=Html.DropDownList("ImpactoPoliticaPublica", Model.ImpactoPoliticaPublicas.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("ImpactoPoliticaPublica")%>
 </p>

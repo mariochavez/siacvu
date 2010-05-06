@@ -3,7 +3,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class IdiomasInvestigadorForm
     {
         public int Id { get; set; }
-        public string LenguaMaterna { get; set; }
+        public bool LenguaMaterna { get; set; }
         public bool Traductor { get; set; }
         public bool Profesor { get; set; }
         public string FechaEvaluacion { get; set; }

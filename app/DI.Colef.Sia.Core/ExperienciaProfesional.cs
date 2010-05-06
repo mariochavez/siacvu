@@ -10,7 +10,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [ExperienciaProfesionalValidator]
     public class ExperienciaProfesional : Entity, IBaseEntity
     {
-        public virtual string Entidad { get; set; }
+        public virtual int Entidad { get; set; }
 
         public virtual Sector Sector { get; set; }
 

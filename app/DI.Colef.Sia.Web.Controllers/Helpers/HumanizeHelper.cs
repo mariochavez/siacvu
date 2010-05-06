@@ -609,5 +609,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             return productoGenerado;
         }
+
+        public static string EntidadExperienciaProfesional(int entidadId)
+        {
+            var entidad = string.Empty;
+
+            switch (entidadId)
+            {
+                case 1:
+                    entidad = "Actividad profesional";
+                    break;
+                case 2:
+                    entidad = "Empresa";
+                    break;
+                case 3:
+                    entidad = "Institución";
+                    break;
+            }
+
+            return entidad;
+        }
     }
 }

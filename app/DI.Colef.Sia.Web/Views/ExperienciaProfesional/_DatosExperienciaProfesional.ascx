@@ -9,7 +9,8 @@
 </p>
 <p>
     <label>Entidad</label>
-    <%=Html.TextBox("Entidad", Model.Entidad, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.DropDownList("Entidad", Model.Entidades.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                    "Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Entidad")%>
 </p>

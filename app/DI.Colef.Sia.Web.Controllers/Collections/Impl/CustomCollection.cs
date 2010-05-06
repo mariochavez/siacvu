@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
@@ -302,6 +301,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
             return new[]
                        {
                            new CustomSelectForm()
+                       };
+        }
+
+        public CustomSelectForm[] EntidadExperienciaProfesionalCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Actividad profesional"},
+                           new CustomSelectForm {Id = 2, Nombre = "Empresa"},
+                           new CustomSelectForm {Id = 3, Nombre = "Institución"}
                        };
         }
     }

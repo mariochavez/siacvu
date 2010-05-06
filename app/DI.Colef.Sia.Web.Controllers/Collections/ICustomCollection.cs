@@ -31,5 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections
         CustomSelectForm[] TipoEstudianteCustomCollection();
         CustomSelectForm[] ProductoGeneradoCustomCollection();
         CustomSelectForm[] TipoEditorialCustomCollection();
+        CustomSelectForm[] EntidadExperienciaProfesionalCustomCollection();
     }
 }

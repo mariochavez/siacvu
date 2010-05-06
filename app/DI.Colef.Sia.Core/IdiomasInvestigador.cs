@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public virtual Idioma Idioma { get; set; }
 
-        public virtual string LenguaMaterna { get; set; }
+        public virtual bool LenguaMaterna { get; set; }
 
         public virtual bool Traductor { get; set; }
 
