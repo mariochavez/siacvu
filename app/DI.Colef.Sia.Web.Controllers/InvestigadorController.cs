@@ -2,11 +2,11 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
-using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -18,7 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICategoriaInvestigadorMapper categoriaInvestigadorMapper;
         readonly ICategoriaMapper categoriaMapper;
         readonly IDepartamentoMapper departamentoMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IEstadoInvestigadorMapper estadoInvestigadorMapper;
         readonly IEstadoMapper estadoMapper;
         readonly IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper;
@@ -30,7 +29,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
         readonly ISNIMapper sniMapper;
         readonly IUsuarioMapper usuarioMapper;
-        private readonly ICurriculumService curriculumService;
+        readonly ICurriculumService curriculumService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
 
         public InvestigadorController(IInvestigadorService investigadorService, IUsuarioService usuarioService,
                                       ICatalogoService catalogoService, IInvestigadorMapper investigadorMapper,
@@ -44,7 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       ISNIInvestigadorMapper sniInvestigadorMapper, 
                                       IPuestoMapper puestoMapper,
                                       ISearchService searchService, IArchivoService archivoService,
-            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper, ISedeMapper sedeMapper, ICurriculumService curriculumService)
+                                      IInstitucionMapper institucionMapper, ISedeMapper sedeMapper, ICurriculumService curriculumService,
+                                      IAreaTematicaMapper areaTematicaMapper,
+                                      ILineaTematicaMapper lineaTematicaMapper)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.investigadorService = investigadorService;
@@ -62,8 +64,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.sniInvestigadorMapper = sniInvestigadorMapper;
             this.puestoMapper = puestoMapper;
             this.archivoService = archivoService;
-            this.areaTematicaMapper = areaTematicaMapper;
             this.curriculumService = curriculumService;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.areaTematicaMapper = areaTematicaMapper;
         }
 
         [Authorize(Roles = "Dgaa")]
@@ -82,8 +85,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm(0);
+            //var data = CreateViewDataWithTitle(Title.New);
+            var data = new GenericViewData<InvestigadorForm> { Form = SetupNewForm(0) };
 
             return View(data);
         }
@@ -92,16 +95,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
-
+            var data = new GenericViewData<InvestigadorForm>();
             var investigador = investigadorService.GetInvestigadorById(id);
+
             if (investigador == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            data.Form = investigadorMapper.Map(investigador);
-            // TODO: Dependencias
-            //data.Form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
-            ViewData["AreaTematicaId"] = data.Form.AreaTematicaId;
+            var investigadorForm = investigadorMapper.Map(investigador);
+
+            data.Form = SetupNewForm(id, investigadorForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -348,19 +352,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             // TODO: Dependencias
             return Rjs("", null);
-
-            //if (areaTematicaMapper == null)
-            //    return Content("Action not supported");
-
-            //var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-
-            //var form = new ShowFieldsForm
-            //{
-            //    AreaTematicaId = areaTematicaForm.Id,
-            //    AreaTematicaLineaTematicaNombre = areaTematicaForm.LineaTematicaNombre
-            //};
-
-            //return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize(Roles = "Dgaa")]
@@ -586,45 +577,59 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
-        InvestigadorForm SetupNewForm(int usuarioId)
+        InvestigadorForm SetupNewForm(int usuarioId, InvestigadorForm form = null)
         {
-            Usuario usuario = usuarioId == 0 ? null : usuarioService.GetUsuarioById(usuarioId);
+            var usuario = usuarioId == 0 ? null : usuarioService.GetUsuarioById(usuarioId);
 
-            return new InvestigadorForm
-                       {
-                           EstadoInvestigador = new EstadoInvestigadorForm(),
-                           GradoAcademicoInvestigador = new GradoAcademicoInvestigadorForm(),
-                           CategoriaInvestigador = new CategoriaInvestigadorForm(),
-                           CargoInvestigador = new CargoInvestigadorForm(),
-                           SNIInvestigador = new SNIInvestigadorForm(),
-                           Usuarios = usuarioMapper.Map(investigadorService.FindUsuariosToBeInvestigador()),
-                           Estados = estadoMapper.Map(catalogoService.GetActiveEstados()),
-                           GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
-                           Categorias = categoriaMapper.Map(catalogoService.GetActiveCategorias()),
-                           Puestos = puestoMapper.Map(catalogoService.GetActivePuestos()),
-                           Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
-                           Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
-                           SNIs = sniMapper.Map(catalogoService.GetActiveSNIs()),
-                           //AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas()),
-                           UsuarioApellidoMaterno = usuario != null ? usuario.ApellidoMaterno : String.Empty,
-                           UsuarioApellidoPaterno = usuario != null ? usuario.ApellidoPaterno : String.Empty,
-                           UsuarioNombre = usuario != null ? usuario.Nombre : String.Empty,
-                           UsuarioCedulaProfesional = usuario != null ? usuario.CedulaProfesional : String.Empty,
-                           UsuarioCodigoRH = usuario != null ? usuario.CodigoRH : String.Empty,
-                           UsuarioCorreoElectronico = usuario != null ? usuario.CorreoElectronico : String.Empty,
-                           UsuarioCURP = usuario != null ? usuario.CURP : String.Empty,
-                           UsuarioDireccion = usuario != null ? usuario.Direccion : String.Empty,
-                           UsuarioDocumentosIdentidad = usuario != null ? usuario.DocumentosIdentidad : String.Empty,
-                           UsuarioEstadoCivil = usuario != null ? usuario.EstadoCivil : String.Empty,
-                           UsuarioFechaIngreso =
-                               usuario != null ? usuario.FechaIngreso.ToCustomShortDateString() : String.Empty,
-                           UsuarioFechaNacimiento =
-                               usuario != null ? usuario.FechaNacimiento.ToCustomShortDateString() : String.Empty,
-                           UsuarioNacionalidad = usuario != null ? usuario.Nacionalidad : String.Empty,
-                           UsuarioRFC = usuario != null ? usuario.RFC : String.Empty,
-                           UsuarioSexo = usuario != null ? usuario.Sexo : String.Empty,
-                           UsuarioTelefono = usuario != null ? usuario.Telefono : String.Empty
-                       };
+            form = form ?? new InvestigadorForm();
+
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
+            form.EstadoInvestigador = new EstadoInvestigadorForm();
+            form.GradoAcademicoInvestigador = new GradoAcademicoInvestigadorForm();
+            form.CategoriaInvestigador = new CategoriaInvestigadorForm();
+            form.CargoInvestigador = new CargoInvestigadorForm();
+            form.SNIInvestigador = new SNIInvestigadorForm();
+            form.Usuarios = usuarioMapper.Map(investigadorService.FindUsuariosToBeInvestigador());
+            form.Estados = estadoMapper.Map(catalogoService.GetActiveEstados());
+            form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
+            form.Categorias = categoriaMapper.Map(catalogoService.GetActiveCategorias());
+            form.Puestos = puestoMapper.Map(catalogoService.GetActivePuestos());
+            form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
+            form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
+            form.SNIs = sniMapper.Map(catalogoService.GetActiveSNIs());
+            form.UsuarioApellidoMaterno = usuario != null ? usuario.ApellidoMaterno : String.Empty;
+            form.UsuarioApellidoPaterno = usuario != null ? usuario.ApellidoPaterno : String.Empty;
+            form.UsuarioNombre = usuario != null ? usuario.UsuarioNombre : String.Empty;
+            form.UsuarioCedulaProfesional = usuario != null ? usuario.CedulaProfesional : String.Empty;
+            form.UsuarioCodigoRH = usuario != null ? usuario.CodigoRH : String.Empty;
+            form.UsuarioCorreoElectronico = usuario != null ? usuario.CorreoElectronico : String.Empty;
+            form.UsuarioCURP = usuario != null ? usuario.CURP : String.Empty;
+            form.UsuarioDireccion = usuario != null ? usuario.Direccion : String.Empty;
+            form.UsuarioDocumentosIdentidad = usuario != null ? usuario.DocumentosIdentidad : String.Empty;
+            form.UsuarioEstadoCivil = usuario != null ? usuario.EstadoCivil : String.Empty;
+            form.UsuarioFechaIngreso = usuario != null ? usuario.FechaIngreso.ToCustomShortDateString() : String.Empty;
+            form.UsuarioFechaNacimiento = usuario != null ? usuario.FechaNacimiento.ToCustomShortDateString() : String.Empty;
+            form.UsuarioNacionalidad = usuario != null ? usuario.Nacionalidad : String.Empty;
+            form.UsuarioRFC = usuario != null ? usuario.RFC : String.Empty;
+            form.UsuarioSexo = usuario != null ? usuario.Sexo : String.Empty;
+            form.UsuarioTelefono = usuario != null ? usuario.Telefono : String.Empty;
+
+            if (form.Id == 0)
+            {
+            }
+            else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
+            }
+            return form;
+        }
+
+        void FormSetCombos(InvestigadorForm form)
+        {
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
     }
 }

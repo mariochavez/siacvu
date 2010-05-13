@@ -8,7 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public class InvestigadorMapper : AutoFormMapper<Investigador, InvestigadorForm>, IInvestigadorMapper
     {
-
         readonly IUsuarioService usuarioService;
         readonly ICargoInvestigadorMapper cargoInvestigadorMapper;
         readonly ICategoriaInvestigadorMapper categoriaInvestigadorMapper;
@@ -98,6 +97,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.ExpedienteSNI = message.ExpedienteSNI;
 
             return model;
+        }
+
+        public override InvestigadorForm Map(Investigador model)
+        {
+            var message = base.Map(model);
+
+            if (model.AreaTematica != null)
+                message.LineaTematicaId = model.AreaTematica.LineaTematica.Id;
+
+            return message;
         }
     }
 }

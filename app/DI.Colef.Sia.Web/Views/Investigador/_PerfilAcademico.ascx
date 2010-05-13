@@ -1,18 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InvestigadorForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<p>
-    <label>L&iacute;nea tem&aacute;tica Institucional</label>
-    <span id="span_lineatematica" class="valor"><%= Html.Encode(Model.AreaTematicaLineaTematicaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>&Aacute;rea tem&aacute;tica Institucional</label>
-    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("changeareatematica") })%>
-    <%=Html.ValidationMessage("AreaTematicaId")%>
-</p>
+<% Html.RenderPartial("_LineaAreaTematica", Model); %>
+
 <p>
     <label>Area tem&aacute;tica 1</label>
     <%=Html.TextBox("AreaTematica1", Model.AreaTematica1, new { @class = "input250", maxlength = 40 })%>

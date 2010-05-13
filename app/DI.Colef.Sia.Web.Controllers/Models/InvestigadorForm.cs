@@ -1,12 +1,10 @@
 using System.Linq;
-using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class InvestigadorForm
+    public class InvestigadorForm : BaseForm
     {
-        public int Id { get; set; }
         public string FechaIngreso { get; set; }
         public string FechaContrato { get; set; }
 
@@ -14,23 +12,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ExpedienteAcademico { get; set; }
         public string ClaveCVU { get; set; }
 
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-        public string AreaTematicaLineaTematicaNombre { get; set; }
-
-        public string AreaTematica1 { get; set; }
-        public string AreaTematica2 { get; set; }
-        public string AreaTematica3 { get; set; }
-
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 
         public int Usuario { get; set; }
         public int UsuarioId { get; set; }
-
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
         public string UsuarioDireccion { get; set; }
         public string UsuarioTelefono { get; set; }
         public string UsuarioCorreoElectronico { get; set; }
@@ -170,7 +156,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public DepartamentoForm[] Departamentos { get; set; }
         public SedeForm[] Sedes { get; set; }
         public SNIForm[] SNIs { get; set; }
-        public AreaTematicaForm[] AreasTematicas { get; set; }
+
+        public string AreaTematicaNombre { get; set; }
+        public string AreaTematicaLineaTematicaNombre { get; set; }
+
+        public string AreaTematica1 { get; set; }
+        public string AreaTematica2 { get; set; }
+        public string AreaTematica3 { get; set; }
 
         public PuestoForm[] Puestos { get; set; }
 
@@ -180,6 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string ExpedienteSNI { get; set; }
 
+        public AreaTematicaForm AreaTematica { get; set; }
 
         public object[] ListaProductos { get; set; }
     }

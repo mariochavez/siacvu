@@ -3969,7 +3969,7 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     create table ExperienciaProfesionales (
         Id INT IDENTITY NOT NULL,
-       Entidad NVARCHAR(255) null,
+       Entidad INT null,
        Nombramiento NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
@@ -4878,7 +4878,7 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     create table IdiomasInvestigadores (
         Id INT IDENTITY NOT NULL,
-       LenguaMaterna NVARCHAR(255) null,
+       LenguaMaterna BIT null,
        Traductor BIT null,
        Profesor BIT null,
        NivelConversacion INT null,
