@@ -45,15 +45,9 @@
                 
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
-<<<<<<< HEAD
-                                
-                <h4>
-                  <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
-=======
                             
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
->>>>>>> mariochavez/master
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
                     Coautores del art&iacute;culo de difusi&oacute;n
                     <span>
