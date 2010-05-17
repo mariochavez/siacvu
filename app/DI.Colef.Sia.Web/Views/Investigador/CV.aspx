@@ -37,10 +37,10 @@
                 <h4><center>CURRICULUM VITAE</center></h4>
 		        <p>
 			        <span class="encabezadoValor"><%=Html.Encode(Model.Form.NombreCompleto)%></span><br />
-			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].GradoAcademicoNombre)%> en <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].Programa)%></span><br />
-			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionNombre)%>, <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionPaisNombre)%></span><br />
-			        <span class="valor">Profesor/Investigador <%=Html.Encode(Model.Form.CategoriasInvestigador[0].CategoriaNombre)%></span><br />
-			        <span class="valor">Sistema Nacional de Investigadores <%=Html.Encode(Model.Form.SNIsInvestigador[0].SNINombre)%></span><br />
+			        <span class="valor"><%=Html.Encode(Model.Form.GradoAcademico.GradoAcademicoNombre)%> en <%=Html.Encode(Model.Form.GradoAcademico.Programa)%></span><br />
+			        <span class="valor"><%=Html.Encode(Model.Form.GradoAcademico.InstitucionNombre)%>, <%=Html.Encode(Model.Form.GradoAcademico.InstitucionPaisNombre)%></span><br />
+			        <span class="valor">Profesor/Investigador <%=Html.Encode(Model.Form.Categoria.CategoriaNombre)%></span><br />
+			        <span class="valor">Sistema Nacional de Investigadores <%=Html.Encode(Model.Form.SNI.SNINombre)%></span><br />
                     <br />
 			        <span class="tituloValor">El Colegio de la Frontera Norte</span><br/>
 			        <span class="tituloValor"><%=Html.Encode(Model.Form.CargosInvestigador[0].DepartamentoNombre)%></span><br/>
@@ -57,6 +57,13 @@
                  <!-- Produccion Academica -->
                 <% if ((Model.Form.ListaProductos[0] as CurriculumDTO[]).Length > 0) { %>
                     <span class="encabezadoValor">Producci&oacute;n Academica</span><br />
+
+                    <!-- Libros -->
+                    <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 7).Length > 0) { %>
+                        <br />
+                        <span class="tituloValor">Libros</span><br />
+                        <% Html.RenderPartial("_ProducccionAcademica", Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 7));%><br />
+                    <% } %>
 
                     <!-- Articulos Cientificos -->
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[0], 1).Length > 0) { %>
@@ -85,20 +92,24 @@
                 <% if ((Model.Form.ListaProductos[1] as CurriculumDTO[]).Length > 0) {%>
                     <span class="encabezadoValor">Formaci&oacute;n de recursos humanos</span><br />
                     
+                    <!-- Cursos -->
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[1], 3).Length > 0) { %>
                         <br />
                         <span class="tituloValor">Cursos</span><br />
                         <% Html.RenderPartial("_FormacionRecursosHumanos", Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[1], 3));%><br />
                     <% } %>
                     
+                    <!-- Tesis Dirigidas -->
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[1], 13).Length > 0) { %>
                         <br />
                         <span class="tituloValor">Tesis Dirigidas</span><br />
                         <% Html.RenderPartial("_FormacionRecursosHumanos", Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[1], 13));%><br />
                     <% } %>
+
                 <% } %>
                 
                 <br />
+                <!-- Proyectos -->
                 <% if ((Model.Form.ListaProductos[2] as CurriculumDTO[]).Length > 0) {%>
                     <span class="encabezadoValor">Proyectos</span><br />
                     <br />
@@ -109,18 +120,21 @@
                 <% if ((Model.Form.ListaProductos[3] as CurriculumDTO[]).Length > 0) {%>
                     <span class="encabezadoValor">Vinculaci&oacute;n y Difusi&oacute;n</span><br />
 
+                    <!-- Dictamenes -->
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[3], 4).Length > 0) {%>
                         <br />
                         <span class="tituloValor">Dictamenes</span><br />
                         <% Html.RenderPartial("_VinculacionDifusion", Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[3], 4));%><br />
                     <% } %>
 
+                    <!-- Organo Externo -->
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[3], 8).Length > 0) {%>
                         <br />
                         <span class="tituloValor">Organo Externo</span><br />
                         <% Html.RenderPartial("_VinculacionDifusion", Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[3], 8));%><br />
                     <% } %>
-                
+                    
+                    <!-- Participacion en Medio -->                
                     <% if (Html.ListaProductoTipo((CurriculumDTO[])Model.Form.ListaProductos[3], 10).Length > 0) {%>
                         <br />
                         <span class="tituloValor">Participaci&oacute;n en Medio</span><br />
@@ -129,6 +143,8 @@
                 <% } %>
                 
                 <br />
+
+                <!-- Eventos -->
                 <% if ((Model.Form.ListaProductos[4] as CurriculumDTO[]).Length > 0) {%>
                     <br />
                     <span class="tituloValor">Eventos</span><br />

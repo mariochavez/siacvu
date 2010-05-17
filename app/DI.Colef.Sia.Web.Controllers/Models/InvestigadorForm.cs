@@ -56,6 +56,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
+        public GradoAcademicoInvestigadorForm GradoAcademico
+        {
+            get
+            {
+                if (GradosAcademicosInvestigador.Length > 0)
+                    return GradosAcademicosInvestigador[0];
+                
+                return new GradoAcademicoInvestigadorForm
+                           {
+                               GradoAcademicoNombre = string.Empty,
+                               Programa = string.Empty,
+                               InstitucionNombre = string.Empty,
+                               InstitucionPaisNombre = string.Empty,
+                           };
+            }
+        }
+
         EstadoInvestigadorForm[] estadosInvestigador;
         public EstadoInvestigadorForm[] EstadosInvestigador
         {
@@ -90,6 +107,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             set { gradosAcademicosInvestigador = value; }
         }
 
+        public CategoriaInvestigadorForm Categoria
+        {
+            get
+            {
+                if (CategoriasInvestigador.Length > 0)
+                    return categoriasInvestigador[0];
+
+                return new CategoriaInvestigadorForm
+                           {
+                               CategoriaNombre = string.Empty
+                           };
+            }
+        }
+
         CategoriaInvestigadorForm[] categoriasInvestigador;
         public CategoriaInvestigadorForm[] CategoriasInvestigador
         {
@@ -122,6 +153,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                 return result.ToArray();
             }
             set { cargosInvestigador = value; }
+        }
+
+        public SNIInvestigadorForm SNI
+        {
+            get
+            {
+                if (SNIsInvestigador.Length > 0)
+                    return SNIsInvestigador[0];
+
+                return new SNIInvestigadorForm
+                           {
+                               SNINombre = string.Empty
+                           };
+            }
         }
 
         SNIInvestigadorForm[] snisInvestigador;

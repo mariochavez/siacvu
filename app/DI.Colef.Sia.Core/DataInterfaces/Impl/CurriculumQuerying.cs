@@ -126,12 +126,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
                 projection.Add(Projections.Property("Volumen"), "Volumen");
             }
 
-            //var numero = EntityHelper.GetPropertyName<T>("Numero");
-            //if (!String.IsNullOrEmpty(numero))
-            //{
-            //    projection.Add(Projections.Property("Numero"), "Numero");
-            //}
-
             var paginaInicial = EntityHelper.GetPropertyName<T>("PaginaInicial");
             if (!String.IsNullOrEmpty(paginaInicial))
             {
@@ -187,18 +181,18 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
             return criteria;
         }
 
-        string GetPropertyName<TEntity>(Expression<Func<TEntity, object>> expression)
+        static string GetPropertyName<TEntity>(Expression<Func<TEntity, object>> expression)
         {
             return GetPropertyInfo(expression).Member.Name;
         }
 
-        MemberExpression GetPropertyInfo<TEntity>(Expression<Func<TEntity, object>> expression)
+        static MemberExpression GetPropertyInfo<TEntity>(Expression<Func<TEntity, object>> expression)
         {
             var memberExpression = expression.Body as MemberExpression;
 
             if (memberExpression == null)
             {
-                UnaryExpression unaryExpression = expression.Body as UnaryExpression;
+                var unaryExpression = expression.Body as UnaryExpression;
                 if (unaryExpression != null && unaryExpression.NodeType == ExpressionType.Convert)
                     memberExpression = unaryExpression.Operand as MemberExpression;
             }
