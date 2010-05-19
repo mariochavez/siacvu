@@ -18,6 +18,12 @@
     <%=Html.ValidationMessage("TipoEvento") %>
 </p>
 
+<p class="OtroTipo">
+    <label>Tipo</label>
+    <%=Html.TextBox("OtroTipoEvento", Model.OtroTipoEvento, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("OtroTipoEvento")%>
+</p>
+
 <p>
     <label>Tipo de participaci&oacute;n</label>
     <%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),

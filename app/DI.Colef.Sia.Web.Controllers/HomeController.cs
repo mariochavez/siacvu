@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = new GenericViewData<HomeForm>
                            {
-                               Title = "Sistema de administración académica",
+                               Title = "Sistema de Información Académica",
                                Form = GetProductosEnProcesoBandeja()
                            };
 

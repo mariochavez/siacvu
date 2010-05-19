@@ -110,7 +110,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string productoListSubTitle = "Agregar {0}";
 
-            return String.Format(productoListSubTitle, ProductoNamePlural(html, tipoProducto));
+            return String.Format(productoListSubTitle, ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoEditMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
@@ -241,7 +241,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Órganos Colegiados Externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
-                    productName = "Difusiónes del conocimiento";
+                    productName = "Difusiones del conocimiento";
                     break;
                 case TipoProductoEnum.Reporte:
                     //productName = "Reportes técnicos/Documentos de trabajo";

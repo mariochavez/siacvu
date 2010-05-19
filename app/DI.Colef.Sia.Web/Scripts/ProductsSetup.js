@@ -210,9 +210,14 @@ function participacionMedioSetup() {
                 ['Presentación de libro', ['#libro_label']],
                 ['Presentación resultados de investigación', ['#investigacion_label']],
                 ['Periódico/Diario', ['#notaPeriodistica_label']],
-                [['Seleccione ...', 'Conferencias', 'Demostraciones', 'Ferias Científicas y Tecnológicas', 'Ferias Empresariales', 'Medios Impresos', 'Radio', 'Revistas de Divulgación', 'Seminarios', 'Simposium', 'Talleres', 'Teatro', 'Televisión', 'Video'], ['#titulo_label']]
+                [['Seleccione ...', 'Conferencias', 'Demostraciones', 'Ferias Científicas y Tecnológicas',
+                  'Ferias Empresariales', 'Medios Impresos', 'Radio', 'Revistas de Divulgación', 'Seminarios',
+                  'Simposium', 'Talleres', 'Teatro', 'Televisión', 'Video'], ['#titulo_label']],
+                ['Otro', ['.OtroTipo, #otraParticipacion_label']]
             ]
         );
+
+    CheckOptions.setup();
 
     $('#TipoParticipacion')[0].dynamic.setup();
 }
@@ -446,6 +451,14 @@ function eventoSetup() {
             ]
         );
 
+    $('#TipoEvento').dynamicui(
+            [
+                ['Otro', ['.OtroTipo, #tipoevento_field']]
+            ]
+    );
+
+    $('#TipoEvento')[0].dynamic.setup();
+
     $('#TipoParticipacion')[0].dynamic.setup();
 
     $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
@@ -460,30 +473,38 @@ function eventoSetup() {
 }
 
 var CheckOptions = {
-    setup: function() {
+    setup: function () {
         $('#forma').unload(CheckOptions.verifyOptions());
         $('#TipoEvento').change(CheckOptions.verifyOptions);
         $('#TipoParticipacion').change(CheckOptions.verifyOptions);
     },
-    verifyOptions: function() {
+    verifyOptions: function () {
         var comboText1 = $('#TipoEvento :selected').text();
         var comboText2 = $('#TipoParticipacion :selected').text();
 
         if (comboText1 == "Evento Estratégico (El Colef)" && comboText2 == "Organizador") {
-            $('#OrganizadorColef_fields').slideDown('fast', function() {
+            $('#OrganizadorColef_fields').slideDown('fast', function () {
                 $('#OrganizadorColef_fields').fadeIn('fast');
             });
-            $('#NoOrganizadorColef_fields').slideUp('fast', function() {
+            $('#NoOrganizadorColef_fields').slideUp('fast', function () {
                 $('#NoOrganizadorColef_fields').fadeOut('fast');
             });
         }
         else {
-            $('#OrganizadorColef_fields').slideUp('fast', function() {
+            $('#OrganizadorColef_fields').slideUp('fast', function () {
                 $('#OrganizadorColef_fields').fadeOut('fast');
             });
-            $('#NoOrganizadorColef_fields').slideDown('fast', function() {
+            $('#NoOrganizadorColef_fields').slideDown('fast', function () {
                 $('#NoOrganizadorColef_fields').fadeIn('fast');
             });
+        }
+
+        if (comboText2 != 'Otro') {
+            $('#OtroTipoParticipacion').val('');
+        }
+
+        if (comboText1 != 'Otro') {
+            $('#OtroTipoEvento').val('');
         }
     }
 };

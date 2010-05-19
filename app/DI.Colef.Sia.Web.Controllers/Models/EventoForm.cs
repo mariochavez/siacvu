@@ -19,6 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int SesionesTrabajo { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
+        public string OtroTipoEvento{ get; set;}
+
         public int TipoEvento { get; set; }
         public int TipoEventoId { get; set; }
         public string TipoEventoNombre { get; set; }

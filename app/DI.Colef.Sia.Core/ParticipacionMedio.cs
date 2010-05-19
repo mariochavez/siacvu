@@ -24,6 +24,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Sede Sede { get; set; }
 
+        public virtual string OtroTipoParticipacion { get; set; }
+
 		public virtual TipoParticipacion TipoParticipacion { get; set; }
 
         [DomainSignature]

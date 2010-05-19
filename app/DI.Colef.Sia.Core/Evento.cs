@@ -92,6 +92,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoEvento TipoEvento { get; set; }
 
+        public virtual string OtroTipoEvento{ get; set;}
+
         public virtual AreaTematica AreaTematica { get; set; }
 
         public virtual string ObjetivoEvento { get; set; }

@@ -48,6 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.SesionesTrabajo = message.SesionesTrabajo;
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
 
+            model.OtroTipoEvento = message.OtroTipoEvento;
+
             if (model.Usuario == null || model.Usuario == usuarioEvento)
                 model.PosicionCoautor = message.PosicionCoautor;
 

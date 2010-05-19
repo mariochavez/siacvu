@@ -140,6 +140,8 @@
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\CurriculumHelper.cs" />
+    <Compile Include="Helpers\EventoHelper.cs" />
+    <Compile Include="Helpers\ParticipacionMedioHelper.cs" />
     <Compile Include="Mappers\IGlosarioMapper.cs" />
     <Compile Include="Mappers\IMiembroInternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\GlosarioMapper.cs" />

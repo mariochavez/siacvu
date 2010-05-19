@@ -5,8 +5,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -55,7 +53,11 @@
                 <p>
                     <label>Tipo de participaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
+                    <%= Html.OtraParticipacion(Model.Form) %>
                 </p>
+
+
+
                 <p>
                     <% if (Model.Form.TipoParticipacionNombre.Contains("Presentación de libro")){ %>
                         <label>Nombre del libro</label>

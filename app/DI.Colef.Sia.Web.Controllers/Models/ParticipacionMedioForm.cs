@@ -2,7 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ParticipacionMedioForm : BaseForm
     {
-		public int Id { get; set; }
         public string Titulo { get; set; }
         public string Institucion { get; set; }
         public string LugarPresentacion { get; set; }
@@ -18,6 +17,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int DirigidoA { get; set; }
         public int DirigidoAId { get; set; }
         public string DirigidoANombre { get; set; }
+
+        public string OtroTipoParticipacion { get; set; }
 
         public int TipoParticipacion { get; set; }
         public int TipoParticipacionId { get; set; }

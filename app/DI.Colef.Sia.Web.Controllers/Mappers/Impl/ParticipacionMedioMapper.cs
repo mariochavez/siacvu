@@ -31,6 +31,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
 
+            model.OtroTipoParticipacion = message.OtroTipoParticipacion;
+
             model.FechaPresentacion = message.FechaPresentacion.FromShortDateToDateTime();
 
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
