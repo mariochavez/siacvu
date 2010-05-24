@@ -30,7 +30,7 @@
 <% Html.RenderPartial("_ShowInstitucionLong", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
 
 <p>
-    <label>T&iacute;tulo del Nivel/Grado acad&eacute;mico</label>
+    <label>T&iacute;tulo de tesis</label>
     <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("TituloTesis")%>

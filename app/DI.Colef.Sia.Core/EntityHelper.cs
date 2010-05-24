@@ -95,6 +95,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             return GetTableName<T>("RevistaPublicacion");
         }
 
+        public static string GetFirmaTable<T>()
+        {
+            return GetTableName<T>("Firma");
+        }
+
         public static bool HasRevista<T>()
         {
             return GetRevistaTable<T>() != String.Empty;

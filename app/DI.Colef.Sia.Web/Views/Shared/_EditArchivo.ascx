@@ -8,7 +8,8 @@
 	        <div class="sublista" id="archivo_<%=Html.Encode(Model.Archivos[i].Id) %>">
 	            <h6>
 	                <a href="<%=Url.Action("deletearchivo", null, new{ id = Model.Id, archivoId = Model.Archivos[i].Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-	                <%=Html.ActionLinkForAreas<ArchivoController>(x => x.Show(Model.Archivos[i].Id), Html.Encode(Model.Archivos[i].Nombre))%>
+	                <%=Html.ActionLink(Html.Encode(Model.Archivos[i].Nombre), "Show", "Archivo", new { id = Model.Archivos[i].Id }, null) %>
+                    <!-- <%=Html.ActionLinkForAreas<ArchivoController>(x => x.Show(Model.Archivos[i].Id), Html.Encode(Model.Archivos[i].Nombre))%> -->
 	                <%=Html.Hidden("Archivo[" + i + "].Id", Model.Archivos[i].Id)%>
 	            </h6>
 			</div><!--end sublista-->

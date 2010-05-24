@@ -240,6 +240,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         ICriteria BuildCriteria<T>(Usuario usuario, Expression<Func<T, object>> productName,
             Expression<Func<T, object>> productType)
         {
+            var firmaTable = EntityHelper.GetFirmaTable<T>();
+
             var projection = Projections.ProjectionList()
                 .Add(Projections.Property("Id"), "Id")
                 .Add(Projections.Property(GetPropertyName(productName)), "Nombre")
@@ -248,10 +250,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
                 .Add(Projections.Property("u.Nombre"), "UsuarioNombre")
                 .Add(Projections.Property("u.ApellidoPaterno"), "UsuarioApellidoPaterno")
-                .Add(Projections.Property("u.ApellidoMaterno"), "UsuarioApellidoMaterno")
+                .Add(Projections.Property("u.ApellidoMaterno"), "UsuarioApellidoMaterno");
 
-                .Add(Projections.Property("f.Aceptacion1"), "FirmaAceptacion1")
-                .Add(Projections.Property("f.Aceptacion2"), "FirmaAceptacion2");
+            if (!String.IsNullOrEmpty(firmaTable))
+            {
+                projection.Add(Projections.Property("f.Aceptacion1"), "FirmaAceptacion1");
+                projection.Add(Projections.Property("f.Aceptacion2"), "FirmaAceptacion2");
+            }
 
             var estadoTable = EntityHelper.GetEstadoTable<T>();
             if(!String.IsNullOrEmpty(estadoTable))
@@ -270,8 +275,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             }
 
             var criteria = Session.CreateCriteria(typeof (T))
-                .CreateAlias("Usuario", "u")
-                .CreateAlias("Firma", "f");
+                .CreateAlias("Usuario", "u");
+
+            if (!String.IsNullOrEmpty(firmaTable))
+                criteria.CreateAlias("Firma", "f");
 
             if (!String.IsNullOrEmpty(tipoTable))
                 criteria.CreateAlias(tipoTable, "t");
