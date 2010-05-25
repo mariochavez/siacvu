@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<ParticipacionAcademiaForm>();
             var participacionAcademias = new ParticipacionAcademia[] { };
 
             if (User.IsInRole("Investigadores"))
@@ -64,8 +64,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<ParticipacionAcademiaForm> {Form = SetupNewForm()};
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             
             return View(data);
@@ -75,7 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<ParticipacionAcademiaForm>();
 
             var participacionAcademia = participacionAcademiaService.GetParticipacionAcademiaById(id);
 
@@ -98,7 +97,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ParticipacionAcademiaForm>();
 
             var participacionAcademia = participacionAcademiaService.GetParticipacionAcademiaById(id);
             var participacionAcademiaForm = participacionAcademiaMapper.Map(participacionAcademia);
@@ -204,7 +203,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["EstadoProducto"] = form.EstadoProducto;
         }
 
-        private ParticipacionAcademiaForm SetupShowForm(ParticipacionAcademiaForm form)
+        private static ParticipacionAcademiaForm SetupShowForm(ParticipacionAcademiaForm form)
         {
             form = form ?? new ParticipacionAcademiaForm();
 

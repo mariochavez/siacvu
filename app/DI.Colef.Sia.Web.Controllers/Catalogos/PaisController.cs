@@ -4,15 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class PaisController : BaseController<Pais, PaisForm>
     {
-        readonly ICatalogoService catalogoService;
-        readonly IPaisMapper paisMapper;
 
         public PaisController(IUsuarioService usuarioService, ICatalogoService catalogoService, IPaisMapper paisMapper,
                               ISearchService searchService)
@@ -26,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<PaisForm>();
 
             var pais = catalogoService.GetAllPaises();
             data.List = paisMapper.Map(pais);
@@ -38,8 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new PaisForm();
+            var data = new GenericViewData<PaisForm> {Form = new PaisForm()};
 
             return View(data);
         }
@@ -48,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<PaisForm>();
 
             var pais = catalogoService.GetPaisById(id);
             data.Form = paisMapper.Map(pais);

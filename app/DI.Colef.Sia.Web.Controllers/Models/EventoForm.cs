@@ -44,6 +44,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public SesionEventoForm[] SesionEventos { get; set; }
         public ArchivoForm[] ArchivosEvento { get; set; }
 
+        public override InstitucionProductoForm[] Instituciones
+        {
+            get { return InstitucionEventos; }
+        }
+
         public override ArchivoForm[] Archivos
         {
             get { return ArchivosEvento; }

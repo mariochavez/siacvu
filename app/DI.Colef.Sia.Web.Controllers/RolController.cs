@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -24,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<RolForm>();
 
             var roles = usuarioService.GetAllRoles();
             data.List = rolMapper.Map(roles);
@@ -35,8 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new RolForm();
+            var data = new GenericViewData<RolForm> {Form = new RolForm()};
 
             return View(data);
         }
@@ -44,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<RolForm>();
 
             var rol = usuarioService.GetRolById(id);
             data.Form = rolMapper.Map(rol);

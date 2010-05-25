@@ -102,9 +102,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             CoautorInternoResena coautorInternoResena;
             AutorInternoResena autorInternoResena;
-            int posicionCoautor;
+            int posicionCoautor = 0;
             var coautorExists = 0;
-            int posicionAutor;
+            int posicionAutor = 0;
             var autorExists = 0;
             var data = new GenericViewData<ResenaForm>();
 
@@ -142,7 +142,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     resena.CoautorInternoResenas.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
                         FirstOrDefault();
 
-                posicionCoautor = coautorInternoResena.Posicion;
+                if (coautorInternoResena != null) posicionCoautor = coautorInternoResena.Posicion;
             }
             else
                 posicionCoautor = data.Form.PosicionCoautor;
@@ -153,7 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     resena.AutorInternoResenas.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
                         FirstOrDefault();
 
-                posicionAutor = autorInternoResena.Posicion;
+                if (autorInternoResena != null) posicionAutor = autorInternoResena.Posicion;
             }
             else
                 posicionAutor = data.Form.PosicionAutor;
@@ -169,7 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ResenaForm>();
 
             var resena = resenaService.GetResenaById(id);
 

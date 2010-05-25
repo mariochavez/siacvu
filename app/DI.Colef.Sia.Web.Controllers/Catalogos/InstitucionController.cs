@@ -13,9 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class InstitucionController : BaseController<Institucion, InstitucionForm>
     {
-        readonly ICatalogoService catalogoService;
-        readonly IInstitucionMapper institucionMapper;
-        readonly IPaisMapper paisMapper;
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IAmbitoMapper ambitoMapper;
         readonly ISectorMapper sectorMapper;
@@ -42,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<InstitucionForm>();
 
             var institucions = catalogoService.GetAllInstituciones();
             data.List = institucionMapper.Map(institucions);
@@ -54,8 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<InstitucionForm> {Form = SetupNewForm()};
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
@@ -65,7 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<InstitucionForm>();
 
             var institucion = catalogoService.GetInstitucionById(id);
             var institucionForm = institucionMapper.Map(institucion);
@@ -82,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<InstitucionForm>();
 
             var institucion = catalogoService.GetInstitucionById(id);
             data.Form = institucionMapper.Map(institucion);
@@ -180,7 +176,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             if (form.Id == 0)
                 form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
-
             else
                 form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
 

@@ -5,7 +5,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,8 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     public class AreaController : BaseController<Area, AreaForm>
     {
         readonly IAreaMapper areaMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
-        readonly ICatalogoService catalogoService;
+        //readonly IAreaTematicaMapper areaTematicaMapper;
+        //readonly ICatalogoService catalogoService;
 
         public AreaController(IUsuarioService usuarioService,
                               ICatalogoService catalogoService,
@@ -31,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<AreaForm>();
 
             var areas = catalogoService.GetAllAreas();
             data.List = areaMapper.Map(areas);
@@ -43,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
+            var data = new GenericViewData<AreaForm>();
             data.Form = new AreaForm();
 
             return View(data);
@@ -53,7 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<AreaForm>();
 
             var area = catalogoService.GetAreaById(id);
             data.Form = areaMapper.Map(area);

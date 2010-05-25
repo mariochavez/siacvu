@@ -11,7 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class NivelController : BaseController<Nivel, NivelForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly INivelMapper nivelMapper;
         readonly IOrganizacionMapper organizacionMapper;
 
@@ -29,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<NivelForm>();
 
             var nivels = catalogoService.GetAllNiveles();
             data.List = nivelMapper.Map(nivels);
@@ -41,8 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<NivelForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -51,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<NivelForm>();
 
             var nivel = catalogoService.GetNivelById(id);
             var nivelForm = nivelMapper.Map(nivel);

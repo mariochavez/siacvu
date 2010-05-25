@@ -15,8 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IExperienciaProfesionalService experienciaProfesionalService;
         readonly IExperienciaProfesionalMapper experienciaProfesionalMapper;
-        readonly ICatalogoService catalogoService;
-        readonly IPaisMapper paisMapper;
         readonly ISectorMapper sectorMapper;
         readonly IAreaMapper areaMapper;
         readonly ICustomCollection customCollection;
@@ -47,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<ExperienciaProfesionalForm>();
             var experienciaProfesionals = new ExperienciaProfesional[] { };
 
             if (User.IsInRole("Investigadores"))
@@ -67,8 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<ExperienciaProfesionalForm> {Form = SetupNewForm()};
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
@@ -78,7 +75,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<ExperienciaProfesionalForm>();
 
             var experienciaProfesional = experienciaProfesionalService.GetExperienciaProfesionalById(id);
 
@@ -101,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ExperienciaProfesionalForm>();
 
             var experienciaProfesional = experienciaProfesionalService.GetExperienciaProfesionalById(id);
             var experienciaProfesionalForm = experienciaProfesionalMapper.Map(experienciaProfesional);
@@ -210,7 +207,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["ClaseId"] = form.ClaseId;
         }
 
-        private ExperienciaProfesionalForm SetupShowForm(ExperienciaProfesionalForm form)
+        private static ExperienciaProfesionalForm SetupShowForm(ExperienciaProfesionalForm form)
         {
             form = form ?? new ExperienciaProfesionalForm();
 

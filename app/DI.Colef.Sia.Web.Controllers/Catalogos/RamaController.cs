@@ -11,7 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class RamaController : BaseController<Rama, RamaForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IRamaMapper ramaMapper;
         readonly ISectorMapper sectorMapper;
     
@@ -30,7 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<RamaForm>();
 
             var ramas = catalogoService.GetAllRamas();
             data.List = ramaMapper.Map(ramas);
@@ -41,10 +40,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-			
+        {
+            var data = new GenericViewData<RamaForm> {Form = SetupNewForm()};
+
             return View(data);
         }
         
@@ -52,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<RamaForm>();
 
             var rama = catalogoService.GetRamaById(id);
             var ramaForm = ramaMapper.Map(rama);

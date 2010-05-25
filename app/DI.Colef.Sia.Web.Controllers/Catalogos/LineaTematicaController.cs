@@ -4,7 +4,6 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -12,7 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [Obsolete("Hay que eliminar este controlador, como sus dependencias y vistas")]
     public class LineaTematicaController : BaseController<LineaTematica, LineaTematicaForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
 
         public LineaTematicaController(IUsuarioService usuarioService, ICatalogoService catalogoService,

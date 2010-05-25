@@ -4,14 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class TipoActividadController : BaseController<TipoActividad, TipoActividadForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ITipoActividadMapper tipoActividadMapper;
 
         public TipoActividadController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -26,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<TipoActividadForm>();
 
             var tipoActividads = catalogoService.GetAllTipoActividades();
             data.List = tipoActividadMapper.Map(tipoActividads);
@@ -38,8 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new TipoActividadForm();
+            var data = new GenericViewData<TipoActividadForm> {Form = new TipoActividadForm()};
 
             return View(data);
         }
@@ -48,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<TipoActividadForm>();
 
             var tipoActividad = catalogoService.GetTipoActividadById(id);
             data.Form = tipoActividadMapper.Map(tipoActividad);

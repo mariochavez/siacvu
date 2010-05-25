@@ -4,7 +4,6 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -12,8 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [Obsolete("Hay que eliminar este controlador, como sus dependencias y vistas")]
     public class AreaTematicaController : BaseController<AreaTematica, AreaTematicaForm>
     {
-        readonly ICatalogoService catalogoService;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
     

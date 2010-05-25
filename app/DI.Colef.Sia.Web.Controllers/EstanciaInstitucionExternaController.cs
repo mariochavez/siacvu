@@ -13,7 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IEstanciaInstitucionExternaService estanciaInstitucionExternaService;
         readonly IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper;
-        readonly ICatalogoService catalogoService;
+        //readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly ISectorMapper sectorMapper;
 
@@ -57,8 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<EstanciaInstitucionExternaForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -67,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<EstanciaInstitucionExternaForm>();
 
             var movilidadAcademica = estanciaInstitucionExternaService.GetEstanciaInstitucionExternaById(id);
 
@@ -91,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<EstanciaInstitucionExternaForm>();
 
             var movilidadAcademica = estanciaInstitucionExternaService.GetEstanciaInstitucionExternaById(id);
             var movilidadAcademicaForm = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
@@ -186,7 +185,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
-        private EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)
+        private static EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)
         {
             form = form ?? new EstanciaInstitucionExternaForm();
 

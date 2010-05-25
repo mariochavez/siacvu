@@ -4,15 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class SedeController : BaseController<Sede, SedeForm>
     {
-        readonly ICatalogoService catalogoService;
-        readonly ISedeMapper sedeMapper;
 
         public SedeController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISedeMapper sedeMapper,
                               ISearchService searchService)
@@ -26,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<SedeForm>();
             var sedes = catalogoService.GetAllSedes();
             data.List = sedeMapper.Map(sedes);
 
@@ -37,8 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new SedeForm();
+            var data = new GenericViewData<SedeForm> {Form = new SedeForm()};
 
             return View(data);
         }
@@ -47,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<SedeForm>();
 
             var sede = catalogoService.GetSedeById(id);
             data.Form = sedeMapper.Map(sede);
@@ -60,7 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<SedeForm>();
 
             var sede = catalogoService.GetSedeById(id);
             data.Form = sedeMapper.Map(sede);

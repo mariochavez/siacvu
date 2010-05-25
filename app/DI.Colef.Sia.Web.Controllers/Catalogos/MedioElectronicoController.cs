@@ -4,14 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class MedioElectronicoController : BaseController<MedioElectronico, MedioElectronicoForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IMedioElectronicoMapper medioElectronicoMapper;
 
         public MedioElectronicoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -27,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<MedioElectronicoForm>();
 
             var medioElectronicos = catalogoService.GetAllMedioElectronicos();
             data.List = medioElectronicoMapper.Map(medioElectronicos);
@@ -38,10 +37,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new MedioElectronicoForm();
-			
+        {
+            var data = new GenericViewData<MedioElectronicoForm> {Form = new MedioElectronicoForm()};
+
             return View(data);
         }
         
@@ -49,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<MedioElectronicoForm>();
 
             var medioElectronico = catalogoService.GetMedioElectronicoById(id);
             data.Form = medioElectronicoMapper.Map(medioElectronico);

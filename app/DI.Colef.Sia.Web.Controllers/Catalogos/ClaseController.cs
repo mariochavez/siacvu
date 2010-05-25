@@ -11,7 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class ClaseController : BaseController<Clase, ClaseForm>
     {
-        readonly ICatalogoService catalogoService;
+        //readonly ICatalogoService catalogoService;
         readonly IClaseMapper claseMapper;
         readonly IRamaMapper ramaMapper;
     
@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<ClaseForm>();
 
             var clases = catalogoService.GetAllClases();
             data.List = claseMapper.Map(clases);
@@ -41,10 +41,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-			
+        {
+            var data = new GenericViewData<ClaseForm> {Form = SetupNewForm()};
+
             return View(data);
         }
 
@@ -52,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<ClaseForm>();
 
             var clase = catalogoService.GetClaseById(id);
 

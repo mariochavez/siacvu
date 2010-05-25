@@ -2,7 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ParticipacionAcademiaForm : BaseForm
     {
-        public int Id { get; set; }
         public string NombreProducto { get; set; }
         public string Revista { get; set; }
         public string Volumen { get; set; }

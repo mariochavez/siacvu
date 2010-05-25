@@ -12,7 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class TipoParticipacionController : BaseController<TipoParticipacion, TipoParticipacionForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ICustomCollection customCollection;
 
@@ -30,7 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<TipoParticipacionForm>();
 
             var tipoParticipacions = catalogoService.GetAllTipoParticipaciones();
             data.List = tipoParticipacionMapper.Map(tipoParticipacions);
@@ -42,8 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<TipoParticipacionForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -52,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<TipoParticipacionForm>();
 
             var tipoParticipacion = catalogoService.GetTipoParticipacionById(id);
             var tipoParticipacionForm = tipoParticipacionMapper.Map(tipoParticipacion);

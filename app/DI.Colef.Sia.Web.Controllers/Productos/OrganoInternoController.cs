@@ -8,6 +8,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -48,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<OrganoInternoForm>();
             var productos = productoService.GetProductosByUsuario<OrganoInterno>(CurrentUser(), x => x.ConsejoComision,
                                                              x => x.Departamento);
             data.ProductList = productos;
@@ -60,8 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-			var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<OrganoInternoForm> {Form = SetupNewForm()};
             ViewData["Periodo"] = (from p in data.Form.Periodos where p.Nombre == "Primer periodo" select p.Id).FirstOrDefault();
 
             return View(data);
@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<OrganoInternoForm>();
 
             var organoInterno = organoInternoService.GetOrganoInternoById(id);
 
@@ -94,7 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<OrganoInternoForm>();
 
             var organoInterno = organoInternoService.GetOrganoInternoById(id);
             data.Form = organoInternoMapper.Map(organoInterno);

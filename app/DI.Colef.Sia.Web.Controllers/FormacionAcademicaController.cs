@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -14,12 +13,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class FormacionAcademicaController : BaseController<FormacionAcademica, FormacionAcademicaForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IFormacionAcademicaMapper formacionAcademicaMapper;
         readonly IFormacionAcademicaService formacionAcademicaService;
         readonly INivelEstudioMapper nivelEstudioMapper;
-        readonly IPaisMapper paisMapper;
         readonly IEstatusFormacionAcademicaMapper estatusFormacionAcademicaMapper;
         readonly ISectorMapper sectorMapper;
         readonly IAreaMapper areaMapper;
@@ -54,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<FormacionAcademicaForm>();
             var formacionAcademicas = new FormacionAcademica[] { };
 
             if (User.IsInRole("Investigadores"))
@@ -71,8 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<FormacionAcademicaForm> {Form = SetupNewForm()};
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             return View(data);
         }
@@ -81,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<FormacionAcademicaForm>();
 
             var formacionAcademica = formacionAcademicaService.GetFormacionAcademicaById(id);
 
@@ -104,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<FormacionAcademicaForm>();
 
             var formacionAcademica = formacionAcademicaService.GetFormacionAcademicaById(id);
             var formacionAcademicaForm = formacionAcademicaMapper.Map(formacionAcademica);
@@ -238,7 +234,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
-        private FormacionAcademicaForm SetupShowForm(FormacionAcademicaForm form)
+        private static FormacionAcademicaForm SetupShowForm(FormacionAcademicaForm form)
         {
             form = form ?? new FormacionAcademicaForm();
 

@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<InvestigadorForm>();
 
             var investigadors = investigadorService.GetAllInvestigadores();
             data.List = investigadorMapper.Map(investigadors);
@@ -118,7 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if(!User.IsInRole("Dgaa") && CurrentUser().Id != id)
                 return NotAuthorized();
 
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<InvestigadorForm>();
 
             var investigador = investigadorService.GetInvestigadorById(id);
             data.Form = investigadorMapper.Map(investigador);
@@ -130,7 +130,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult CV(int id)
         {
-            var data = CreateViewDataWithTitle(Title.CV);
+            var data = new GenericViewData<InvestigadorForm>();
 
             var investigador = investigadorService.GetInvestigadorById(id);
 
@@ -154,9 +154,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (investigador == null)
                 return NoInvestigadorProfile();
 
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            data.Form = investigadorMapper.Map(investigador);
+            var data = new GenericViewData<InvestigadorForm> {Form = investigadorMapper.Map(investigador)};
 
             ViewData.Model = data;
             return View("Show");

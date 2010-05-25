@@ -4,14 +4,14 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
     public class AreaInvestigacionController : BaseController<AreaInvestigacion, AreaInvestigacionForm>
     {
-		readonly ICatalogoService catalogoService;
+		//readonly ICatalogoService catalogoService;
         readonly IAreaInvestigacionMapper areaInvestigacionMapper;
     
         public AreaInvestigacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<AreaInvestigacionForm>();
 			
 			var areaInvestigacions = catalogoService.GetAllAreaInvestigacions();
             data.List = areaInvestigacionMapper.Map(areaInvestigacions);
@@ -37,18 +37,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new AreaInvestigacionForm();
-			
-			return View(data);
+        {
+            var data = new GenericViewData<AreaInvestigacionForm> {Form = new AreaInvestigacionForm()};
+
+            return View(data);
         }
 
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<AreaInvestigacionForm>();
 
             var areaInvestigacion = catalogoService.GetAreaInvestigacionById(id);
             data.Form = areaInvestigacionMapper.Map(areaInvestigacion);

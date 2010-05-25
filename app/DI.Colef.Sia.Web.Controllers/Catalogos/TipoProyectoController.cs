@@ -4,14 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class TipoProyectoController : BaseController<TipoProyecto, TipoProyectoForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ITipoProyectoMapper tipoProyectoMapper;
 
         public TipoProyectoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -26,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<TipoProyectoForm>();
 
             var tipoProyectos = catalogoService.GetAllTipoProyectos();
             data.List = tipoProyectoMapper.Map(tipoProyectos);
@@ -38,8 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new TipoProyectoForm();
+            var data = new GenericViewData<TipoProyectoForm> {Form = new TipoProyectoForm()};
 
             return View(data);
         }
@@ -48,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<TipoProyectoForm>();
 
             var tipoProyecto = catalogoService.GetTipoProyectoById(id);
             data.Form = tipoProyectoMapper.Map(tipoProyecto);

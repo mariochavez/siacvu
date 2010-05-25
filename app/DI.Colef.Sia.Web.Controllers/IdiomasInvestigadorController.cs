@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IIdiomasInvestigadorService idiomasInvestigadorService;
         readonly IIdiomasInvestigadorMapper idiomasInvestigadorMapper;
-        readonly ICatalogoService catalogoService;
         readonly IIdiomaMapper idiomaMapper;
         readonly ICustomCollection customCollection;
 
@@ -36,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<IdiomasInvestigadorForm>();
             var idiomasInvestigadors = new IdiomasInvestigador[] { };
 
             if (User.IsInRole("Investigadores"))
@@ -53,8 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<IdiomasInvestigadorForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -63,7 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<IdiomasInvestigadorForm>();
 
             var idiomasInvestigador = idiomasInvestigadorService.GetIdiomasInvestigadorById(id);
 
@@ -86,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<IdiomasInvestigadorForm>();
 
             var idiomasInvestigador = idiomasInvestigadorService.GetIdiomasInvestigadorById(id);
             data.Form = idiomasInvestigadorMapper.Map(idiomasInvestigador);

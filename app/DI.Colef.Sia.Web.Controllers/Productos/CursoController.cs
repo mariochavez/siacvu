@@ -74,8 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<CursoForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -84,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<CursoForm>();
 
             var curso = cursoService.GetCursoById(id);
 
@@ -122,7 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<CursoForm>();
 
             var curso = cursoService.GetCursoById(id);
 
@@ -338,7 +337,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
-        CursoForm SetupShowForm(CursoForm form)
+        static CursoForm SetupShowForm(CursoForm form)
         {
             form = form ?? new CursoForm();
 

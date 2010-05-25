@@ -13,9 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class EditorialController : BaseController<Editorial, EditorialForm>
     {
-        readonly ICatalogoService catalogoService;
+        //readonly ICatalogoService catalogoService;
         readonly IEditorialMapper editorialMapper;
-        readonly IPaisMapper paisMapper;
+        //readonly IPaisMapper paisMapper;
         readonly ICustomCollection customCollection;
     
         public EditorialController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<EditorialForm>();
 			
             var editorials = catalogoService.GetAllEditorials();
             data.List = editorialMapper.Map(editorials);
@@ -45,9 +45,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+        {
+            var data = new GenericViewData<EditorialForm> {Form = SetupNewForm()};
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             return View(data);
         }
@@ -56,7 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<EditorialForm>();
 
             var editorial = catalogoService.GetEditorialById(id);
             var editorialForm = editorialMapper.Map(editorial);

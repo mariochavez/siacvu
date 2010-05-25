@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -15,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
 		readonly IGrupoInvestigacionService grupoInvestigacionService;
         readonly IGrupoInvestigacionMapper grupoInvestigacionMapper;
-        readonly ICatalogoService catalogoService;
         readonly ISectorMapper sectorMapper;
         readonly IMiembroExternoGrupoInvestigacionMapper miembroExternoGrupoInvestigacionMapper;
         readonly IMiembroInternoGrupoInvestigacionMapper miembroInternoGrupoInvestigacionMapper;
@@ -49,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<GrupoInvestigacionForm>();
             var grupoInvestigacions = new GrupoInvestigacion[] { };
 
             if (User.IsInRole("Investigadores"))
@@ -78,7 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<GrupoInvestigacionForm>();
 
             var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
 
@@ -101,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<GrupoInvestigacionForm>();
 
             var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
             var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
@@ -391,7 +389,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
-        private GrupoInvestigacionForm SetupShowForm(GrupoInvestigacionForm form)
+        private static GrupoInvestigacionForm SetupShowForm(GrupoInvestigacionForm form)
         {
             form = form ?? new GrupoInvestigacionForm();
             form.ShowFields = new ShowFieldsForm

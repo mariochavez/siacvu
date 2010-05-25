@@ -4,13 +4,14 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
     public class ConsejoComisionController : BaseController<ConsejoComision, ConsejoComisionForm>
     {
-		readonly ICatalogoService catalogoService;
+		//readonly ICatalogoService catalogoService;
         readonly IConsejoComisionMapper consejoComisionMapper;
     
         public ConsejoComisionController(IUsuarioService usuarioService,
@@ -27,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<ConsejoComisionForm>();
 			
 			var consejoComisions = catalogoService.GetAllConsejoComisions();
             data.List = consejoComisionMapper.Map(consejoComisions);
@@ -38,18 +39,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new ConsejoComisionForm();
-			
-			return View(data);
+        {
+            var data = new GenericViewData<ConsejoComisionForm> {Form = new ConsejoComisionForm()};
+
+            return View(data);
         }
 
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<ConsejoComisionForm>();
 
             var consejoComision = catalogoService.GetConsejoComisionById(id);
             data.Form = consejoComisionMapper.Map(consejoComision);
@@ -62,7 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ConsejoComisionForm>();
 
             var consejoComision = catalogoService.GetConsejoComisionById(id);
             data.Form = consejoComisionMapper.Map(consejoComision);

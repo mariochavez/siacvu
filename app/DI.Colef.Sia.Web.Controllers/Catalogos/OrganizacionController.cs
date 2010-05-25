@@ -11,7 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class OrganizacionController : BaseController<Organizacion, OrganizacionForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
 
@@ -29,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<OrganizacionForm>();
 
             var organizacions = catalogoService.GetAllOrganizaciones();
             data.List = organizacionMapper.Map(organizacions);
@@ -41,8 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<OrganizacionForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -51,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<OrganizacionForm>();
 
             var organizacion = catalogoService.GetOrganizacionById(id);
 

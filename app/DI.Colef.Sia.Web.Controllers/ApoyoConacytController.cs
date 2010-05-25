@@ -13,7 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IApoyoConacytService apoyoConacytService;
         readonly IApoyoConacytMapper apoyoConacytMapper;
-        readonly ICatalogoService catalogoService;
+        //readonly ICatalogoService catalogoService;
         readonly ITipoApoyoMapper tipoApoyoMapper;
         readonly ISubprogramaConacytMapper subprogramaConacytMapper;
 
@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<ApoyoConacytForm>();
             var apoyoConacyts = new ApoyoConacyt[] { };
 
             if (User.IsInRole("Investigadores"))
@@ -51,8 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<ApoyoConacytForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -61,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<ApoyoConacytForm>();
 
             var apoyoConacyt = apoyoConacytService.GetApoyoConacytById(id);
 
@@ -84,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ApoyoConacytForm>();
 
             var apoyoConacyt = apoyoConacytService.GetApoyoConacytById(id);
             data.Form = apoyoConacytMapper.Map(apoyoConacyt);

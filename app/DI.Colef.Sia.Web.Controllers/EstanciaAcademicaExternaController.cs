@@ -6,6 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -43,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<EstanciaAcademicaExternaForm>();
 
             var estanciaAcademicaExternas = new EstanciaAcademicaExterna[] { };
 
@@ -58,9 +59,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+        {
+            var data = new GenericViewData<EstanciaAcademicaExternaForm> {Form = SetupNewForm()};
             ViewData["FechaInicial"] = DateTime.Now.ToString("dd/MM/yyyy");
             ViewData["FechaFinal"] = DateTime.Now.ToString("dd/MM/yyyy");
 
@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<EstanciaAcademicaExternaForm>();
 
             var estanciaAcademicaExterna = estanciaAcademicaExternaService.GetEstanciaAcademicaExternaById(id);
 
@@ -95,7 +95,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<EstanciaAcademicaExternaForm>();
 
             var estanciaAcademicaExterna = estanciaAcademicaExternaService.GetEstanciaAcademicaExternaById(id);
             var estanciaAcademicaExternaForm = estanciaAcademicaExternaMapper.Map(estanciaAcademicaExterna);
@@ -196,7 +196,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Sede"] = form.SedeId;
         }
 
-        private EstanciaAcademicaExternaForm SetupShowForm(EstanciaAcademicaExternaForm form)
+        private static EstanciaAcademicaExternaForm SetupShowForm(EstanciaAcademicaExternaForm form)
         {
             form = form ?? new EstanciaAcademicaExternaForm();
 

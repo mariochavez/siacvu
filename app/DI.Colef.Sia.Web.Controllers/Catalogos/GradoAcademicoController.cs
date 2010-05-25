@@ -4,14 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class GradoAcademicoController : BaseController<GradoAcademico, GradoAcademicoForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
 
         public GradoAcademicoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -26,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<GradoAcademicoForm>();
             var gradoAcademicos = catalogoService.GetAllGradoAcademicos();
             data.List = gradoAcademicoMapper.Map(gradoAcademicos);
 
@@ -37,8 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new GradoAcademicoForm();
+            var data = new GenericViewData<GradoAcademicoForm> {Form = new GradoAcademicoForm()};
 
             return View(data);
         }
@@ -47,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<GradoAcademicoForm>();
 
             var gradoAcademico = catalogoService.GetGradoAcademicoById(id);
             data.Form = gradoAcademicoMapper.Map(gradoAcademico);

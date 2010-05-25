@@ -4,13 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
     public class FondoConacytController : BaseController<FondoConacyt, FondoConacytForm>
     {
-		readonly ICatalogoService catalogoService;
         readonly IFondoConacytMapper fondoConacytMapper;
     
         public FondoConacytController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<FondoConacytForm>();
 			
 			var fondoConacyts = catalogoService.GetAllFondoConacyts();
             data.List = fondoConacytMapper.Map(fondoConacyts);
@@ -36,18 +36,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new FondoConacytForm();
-			
-			return View(data);
+        {
+            var data = new GenericViewData<FondoConacytForm> {Form = new FondoConacytForm()};
+
+            return View(data);
         }
 
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<FondoConacytForm>();
 
             var fondoConacyt = catalogoService.GetFondoConacytById(id);
             data.Form = fondoConacytMapper.Map(fondoConacyt);

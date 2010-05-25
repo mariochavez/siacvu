@@ -4,14 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class LineaInvestigacionController : BaseController<LineaInvestigacion, LineaInvestigacionForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
 
         public LineaInvestigacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -27,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<LineaInvestigacionForm>();
 
             var lineaInvestigacions = catalogoService.GetAllLineaInvestigaciones();
             data.List = lineaInvestigacionMapper.Map(lineaInvestigacions);
@@ -39,8 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new LineaInvestigacionForm();
+            var data = new GenericViewData<LineaInvestigacionForm> {Form = new LineaInvestigacionForm()};
 
             return View(data);
         }
@@ -49,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<LineaInvestigacionForm>();
 
             var lineaInvestigacion = catalogoService.GetLineaInvestigacionById(id);
             data.Form = lineaInvestigacionMapper.Map(lineaInvestigacion);

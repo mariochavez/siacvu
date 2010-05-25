@@ -374,6 +374,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             throw new NotSupportedException();
         }
 
+        protected virtual void DeleteInstitucionInModel(TModel model, int institucionId)
+        {
+            throw new NotSupportedException();
+        }
+
+        protected virtual bool SaveInstitucionInModel(TModel model, InstitucionProducto institucionProducto)
+        {
+            throw new NotSupportedException();
+        }
+
         protected virtual EditorialProductoForm MapEditorialModel(EditorialProducto model, int parentId)
         {
             throw new NotSupportedException();
@@ -576,7 +586,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ModelState.AddModelErrors(model.ValidationResults(), !excludePrefix.IsNullOrEmpty(), excludePrefix);
             if (!ModelState.IsValid)
             {
-                var data = CreateViewDataWithTitle(title); 
+                //var data = CreateViewDataWithTitle(title); 
+                var data = new GenericViewData<TForm>();
                 data.Form = form;
                 SetError(string.Format("Se ha generado un error al actualizar el {0}, por favor corrija los siguientes errores.\n{1}",
                     GetObjectName(false),

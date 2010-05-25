@@ -4,13 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class TipoArchivoController : BaseController<TipoArchivo, TipoArchivoForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ITipoArchivoMapper tipoArchivoMapper;
     
         public TipoArchivoController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<TipoArchivoForm>();
 			
             var tipoArchivos = catalogoService.GetAllTipoArchivos();
             data.List = tipoArchivoMapper.Map(tipoArchivos);
@@ -36,10 +36,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new TipoArchivoForm();
-			
+        {
+            var data = new GenericViewData<TipoArchivoForm> {Form = new TipoArchivoForm()};
+
             return View(data);
         }
 
@@ -47,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<TipoArchivoForm>();
 
             var tipoArchivo = catalogoService.GetTipoArchivoById(id);
             data.Form = tipoArchivoMapper.Map(tipoArchivo);

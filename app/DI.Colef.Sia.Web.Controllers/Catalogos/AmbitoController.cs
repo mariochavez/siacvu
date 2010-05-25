@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -12,7 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     public class AmbitoController : BaseController<Ambito, AmbitoForm>
     {
         readonly IAmbitoMapper ambitoMapper;
-        readonly ICatalogoService catalogoService;
+        //readonly ICatalogoService catalogoService;
 
         public AmbitoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                 IAmbitoMapper ambitoMapper, ISearchService searchService)
@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<AmbitoForm>();
 
             var ambitos = catalogoService.GetAllAmbitos();
             data.List = ambitoMapper.Map(ambitos);
@@ -38,8 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new AmbitoForm();
+            var data = new GenericViewData<AmbitoForm> {Form = new AmbitoForm()};
 
             return View(data);
         }
@@ -48,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<AmbitoForm>();
 
             var ambito = catalogoService.GetAmbitoById(id);
             data.Form = ambitoMapper.Map(ambito);

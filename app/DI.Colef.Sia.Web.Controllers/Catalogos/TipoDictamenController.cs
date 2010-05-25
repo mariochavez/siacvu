@@ -4,14 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class TipoDictamenController : BaseController<TipoDictamen, TipoDictamenForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
 
         public TipoDictamenController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -26,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<TipoDictamenForm>();
 
             var tipoDictamens = catalogoService.GetAllTipoDictamenes();
             data.List = tipoDictamenMapper.Map(tipoDictamens);
@@ -38,8 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new TipoDictamenForm();
+            var data = new GenericViewData<TipoDictamenForm> {Form = new TipoDictamenForm()};
 
             return View(data);
         }
@@ -48,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<TipoDictamenForm>();
 
             var tipoDictamen = catalogoService.GetTipoDictamenById(id);
             data.Form = tipoDictamenMapper.Map(tipoDictamen);

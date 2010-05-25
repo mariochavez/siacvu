@@ -4,13 +4,13 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     public class CategoriaController : BaseController<Categoria, CategoriaForm>
     {
-        readonly ICatalogoService catalogoService;
+        //readonly ICatalogoService catalogoService;
         readonly ICategoriaMapper categoriaMapper;
 
         public CategoriaController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICategoriaMapper categoriaMapper,
@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<CategoriaForm>();
             var categorias = catalogoService.GetAllCategorias();
             data.List = categoriaMapper.Map(categorias);
 
@@ -36,8 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new CategoriaForm();
+            var data = new GenericViewData<CategoriaForm> {Form = new CategoriaForm()};
 
             return View(data);
         }
@@ -46,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<CategoriaForm>();
 
             var categoria = catalogoService.GetCategoriaById(id);
             data.Form = categoriaMapper.Map(categoria);
