@@ -86,7 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult New()
         {
             //var data = CreateViewDataWithTitle(Title.New);
-            var data = new GenericViewData<InvestigadorForm> { Form = SetupNewForm(0) };
+            var data = new GenericViewData<InvestigadorForm> {Form = SetupNewForm(0, null)};
 
             return View(data);
         }
@@ -577,7 +577,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
-        InvestigadorForm SetupNewForm(int usuarioId, InvestigadorForm form = null)
+        //InvestigadorForm SetupNewForm()
+        //{
+        //    return SetupNewForm(null);
+        //}
+
+        InvestigadorForm SetupNewForm(int usuarioId, InvestigadorForm form)
         {
             var usuario = usuarioId == 0 ? null : usuarioService.GetUsuarioById(usuarioId);
 

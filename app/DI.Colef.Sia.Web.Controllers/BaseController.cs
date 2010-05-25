@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -167,14 +166,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(catalogoService.GetGlosario(contexto, campo));
         }
 
-        [Authorize()]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeLineaTematica(int select)
         {
             if (areaTematicaMapper == null)
                 return Content("Action not supported");
 
-            var list = new List<CatalogoForm> {new CatalogoForm() {Id = 0, Nombre = "Seleccione ..."}};
+            var list = new List<CatalogoForm> {new CatalogoForm {Id = 0, Nombre = "Seleccione ..."}};
             list.AddRange(areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(select)));
             var form = new BaseForm
                            {
@@ -502,9 +501,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var esInternacional = false;
 
-            for (var i = 0; i < ambitos.Length; i++)
+            foreach (var t in ambitos)
             {
-                if (ambitoNombre == ambitos[i])
+                if (ambitoNombre == t)
                     esInternacional = true;
             }
 
