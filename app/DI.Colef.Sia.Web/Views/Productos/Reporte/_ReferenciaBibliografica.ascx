@@ -10,7 +10,7 @@
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
 </div>
 <div class="ReporteDocumento">
-    <% Html.RenderPartial("_EditInstitucion", new InstitucionForm { Instituciones = Model.InstitucionReportes, ModelId = Model.Id } ); %>
+    <% Html.RenderPartial("_EditInstitucion", Model ); %>
 </div>
 <p class="DocumentoTrabajo">
 	<label>Serie/N&uacute;mero</label>

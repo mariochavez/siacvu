@@ -41,6 +41,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public ArchivoForm[] ArchivosReporte { get; set; }
 
+        public InstitucionProductoForm[] InstitucionEventos { get; set; }
+
+
+        public override InstitucionProductoForm[] Instituciones
+        {
+            get { return InstitucionEventos; }
+        }
+
         public override ArchivoForm[] Archivos
         {
             get { return ArchivosReporte; }
@@ -49,11 +57,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* New */
         public CoautorExternoProductoForm[] CoautorExternoReportes { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoReportes { get; set; }
-        public InstitucionProductoForm[] InstitucionReportes { get; set; }
+        public InstitucionProductoForm InstitucionProducto { get; set; }
 
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-        public InstitucionProductoForm InstitucionProducto { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
