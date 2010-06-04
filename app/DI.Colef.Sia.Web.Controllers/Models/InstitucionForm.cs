@@ -44,5 +44,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public InstitucionProductoForm[] Instituciones { get; set; }
         public int ModelId { get; set; }
         public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
     }
 }

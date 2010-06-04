@@ -12,7 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public virtual NivelEstudio NivelEstudio { get; set; }
 
-        public virtual int NumeroCedula { get; set; }
+        public virtual string NumeroCedula { get; set; }
 
         [DomainSignature]
         [NotNullNotEmpty]

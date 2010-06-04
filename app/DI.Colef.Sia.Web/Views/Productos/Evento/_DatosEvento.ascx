@@ -32,7 +32,8 @@
     <%=Html.ValidationMessage("TipoParticipacion")%>
 </p>
 
-<% Html.RenderPartial("_EditInstitucion", new InstitucionForm { Instituciones = Model.InstitucionEventos, ModelId = Model.Id } ); %>
+<% Html.RenderPartial("_EditInstitucion", Model ); %>
+
 
 <div id="NoOrganizadorColef_fields">
     <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>

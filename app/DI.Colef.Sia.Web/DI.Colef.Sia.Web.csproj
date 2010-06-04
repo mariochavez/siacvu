@@ -873,7 +873,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3756</DevelopmentServerPort>
+          <DevelopmentServerPort>14458</DevelopmentServerPort>
           <DevelopmentServerVPath>/sia</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

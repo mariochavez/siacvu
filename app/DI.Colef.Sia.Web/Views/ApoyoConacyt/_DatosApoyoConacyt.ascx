@@ -1,6 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ApoyoConacytForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+
+<p>
+    <label>Nombre</label>
+    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-requerido", maxlength = 50 })%>
+    <%=Html.ValidationMessage("Nombre") %>
+</p>
 <p>
     <label>No. de apoyo</label>
     <%=Html.TextBox("NoApoyo", Model.NoApoyo, new { @class = "input100-requerido", maxlength = 10 })%>

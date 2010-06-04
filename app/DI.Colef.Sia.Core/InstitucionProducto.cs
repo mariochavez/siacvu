@@ -1,13 +1,12 @@
 using System;
-using NHibernate.Validator.Constraints;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [InstitucionProductoValidator]
     public class InstitucionProducto : Entity, IBaseEntity
     {
-
-        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
         public virtual int TipoProducto { get; set; }
@@ -21,6 +20,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+
+        public virtual string InstitucionNombre { get; set; }
     }
 
     public class InstitucionReporte : InstitucionProducto

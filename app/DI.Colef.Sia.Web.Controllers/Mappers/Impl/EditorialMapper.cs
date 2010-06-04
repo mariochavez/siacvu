@@ -9,8 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         readonly ICatalogoService catalogoService;
 
-        public EditorialMapper(IRepository<Editorial> repository,
-            ICatalogoService catalogoService)
+        public EditorialMapper(IRepository<Editorial> repository,  ICatalogoService catalogoService)
             : base(repository)
         {
             this.catalogoService = catalogoService;

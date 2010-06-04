@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -344,7 +345,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 added = SaveEditorialToModel(model, editorialProducto);
             }
 
-            var editorialProductoForm = added ? MapEditorialModel(editorialProducto, modelId): new EditorialProductoForm();
+            var editorialProductoForm = added
+                                            ? MapEditorialModel(editorialProducto, modelId)
+                                            : new EditorialProductoForm();
 
             return Rjs(added ? "AddEditorial" : "HideEditorialForm", editorialProductoForm);
         }
@@ -364,6 +367,70 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("DeleteEditorial", form);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewInstitucion(int id)
+        {
+            var evento = GetModelById(id);
+
+            var form = new InstitucionForm { Controller = "Evento", IdName = "EventoId" };
+
+            if (evento != null)
+                form.Id = evento.Id;
+
+            return Rjs("NewInstitucion", form);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddInstitucion([Bind(Prefix = "Institucion")] InstitucionProductoForm form, int modelId)
+        {
+            var institucionProducto = MapInstitucionMessage(form);
+
+            ModelState.AddModelErrors(institucionProducto.ValidationResults(), false, "Institucion", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            var added = true;
+            if (modelId != 0)
+            {
+                institucionProducto.CreadoPor = CurrentUser();
+                institucionProducto.ModificadoPor = CurrentUser();
+
+                var model = GetModelById(modelId);
+                var alreadyHasIt = AlreadyHasIt(modelId, institucionProducto);
+                
+                if (!alreadyHasIt)
+                {
+                    added = SaveInstitucionToModel(model, institucionProducto);
+                }
+            }
+
+            var institucionProductoForm = added
+                                              ? MapInstitucionModel(institucionProducto, modelId)
+                                              : new InstitucionProductoForm();
+
+            return Rjs(added ? "AddInstitucion" : "HideInstitucionForm", institucionProductoForm);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteInstitucion(int id, int institucionId)
+        {
+            var model = GetModelById(id);
+
+            if (model != null)
+                DeleteInstitucionInModel(model, institucionId);
+
+            var form = new InstitucionForm { InstitucionId = institucionId };
+
+            return Rjs("DeleteInstitucion", form);
+        }
+
         protected virtual void DeleteEditorialInModel(TModel model, int editorialId)
         {
             throw new NotSupportedException();
@@ -379,7 +446,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             throw new NotSupportedException();
         }
 
-        protected virtual bool SaveInstitucionInModel(TModel model, InstitucionProducto institucionProducto)
+        protected virtual bool SaveInstitucionToModel(TModel model, InstitucionProducto institucionProducto)
         {
             throw new NotSupportedException();
         }
@@ -394,7 +461,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             throw new NotSupportedException();
         }
 
+        protected virtual InstitucionProductoForm MapInstitucionModel(InstitucionProducto model, int parentId)
+        {
+            throw new NotSupportedException();
+        }
+
+        protected virtual InstitucionProducto MapInstitucionMessage(InstitucionProductoForm form)
+        {
+            throw new NotSupportedException();
+        }
+
         protected virtual TModel GetModelById(int id)
+        {
+            throw new NotSupportedException();
+        }
+
+        protected virtual bool AlreadyHasIt(int modelId, InstitucionProducto institucionProducto)
         {
             throw new NotSupportedException();
         }
@@ -584,11 +666,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected bool IsValidateModel(TModel model, TForm form, Title title, string excludePrefix)
         {
             ModelState.AddModelErrors(model.ValidationResults(), !excludePrefix.IsNullOrEmpty(), excludePrefix);
+
             if (!ModelState.IsValid)
             {
-                //var data = CreateViewDataWithTitle(title); 
-                var data = new GenericViewData<TForm>();
-                data.Form = form;
+                var data = new GenericViewData<TForm> {Form = form};
+
                 SetError(string.Format("Se ha generado un error al actualizar el {0}, por favor corrija los siguientes errores.\n{1}",
                     GetObjectName(false),
                     ModelState.ContainsKey("Entity") ? ModelState["Entity"].Errors[0].ErrorMessage : String.Empty));

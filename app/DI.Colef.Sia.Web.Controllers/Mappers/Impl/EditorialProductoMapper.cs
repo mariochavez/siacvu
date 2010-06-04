@@ -7,55 +7,6 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    //public class EditorialProductoMapper : AutoFormMapper<EditorialProducto, EditorialProductoForm>, IEditorialProductoMapper
-    //{
-    //    readonly ICatalogoService catalogoService;
-
-    //    public EditorialProductoMapper(IRepository<EditorialProducto> repository, ICatalogoService catalogoService)
-    //        : base(null)
-    //    {
-
-    //        this.catalogoService = catalogoService;
-    //    }
-
-    //    protected override int GetIdFromMessage(EditorialProductoForm message)
-    //    {
-    //        return message.Id;
-    //    }
-
-    //    public override EditorialProductoForm Map(EditorialProducto model)
-    //    {
-    //        var message = base.Map(model);
-    //        if (message.EditorialId > 0)
-    //            message.EditorialNombre = model.Editorial.Nombre;
-
-    //        return message;
-    //    }
-
-    //    protected override void MapToModel(EditorialProductoForm message, EditorialProducto model)
-    //    {
-    //        var editorial = catalogoService.GetEditorialById(message.EditorialId);
-    //        if (editorial != null && String.Compare(editorial.Nombre, message.EditorialNombre) >= 0)
-    //        {
-    //            model.Editorial = editorial;
-    //        }
-    //        else
-    //        {
-    //            model.EditorialNombre = message.EditorialNombre;
-    //            model.Editorial = null;
-    //        }
-
-    //        model.Pais = catalogoService.GetPaisById(message.PaisId);
-
-    //        if (model.IsTransient())
-    //        {
-    //            model.Activo = true;
-    //            model.CreadoEl = DateTime.Now;
-    //        }
-    //        model.ModificadoEl = DateTime.Now;
-    //    }
-    //}
-
     public class EditorialProductoMapper<TModel> : EditorialAutoMapper<TModel>, IEditorialProductoMapper<TModel> where TModel : Entity, new()
     {
         public EditorialProductoMapper(IRepository<TModel> repository, ICatalogoService catalogoService)

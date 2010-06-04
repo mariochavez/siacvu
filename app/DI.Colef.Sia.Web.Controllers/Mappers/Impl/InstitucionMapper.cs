@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class InstitucionMapper : AutoFormMapper<Institucion, InstitucionForm>, IInstitucionMapper
     {
         readonly ICatalogoService catalogoService;
+
         public InstitucionMapper(IRepository<Institucion> repository, ICatalogoService catalogoService)
             : base(repository)
         {

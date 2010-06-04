@@ -3,7 +3,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class FormacionAcademicaForm
     {
         public int Id { get; set; }
-        public int NumeroCedula { get; set; }
+        public string NumeroCedula { get; set; }
         public string TituloGrado { get; set; }
         public string FechaObtencion { get; set; }
         public string TituloTesis { get; set; }

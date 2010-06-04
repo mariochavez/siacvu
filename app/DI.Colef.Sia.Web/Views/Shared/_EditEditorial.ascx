@@ -1,5 +1,4 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<BaseForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <div class="minilista" id="editorialList">
@@ -15,7 +14,6 @@
                         <span class="field-alert-inline">Esta editorial no esta registrada en el cat&aacute;logo</span>
                     <% } %>
 	                <%=Html.Hidden("Editorial[" + i + "].Id", Model.Editoriales[i].Id)%>
-
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

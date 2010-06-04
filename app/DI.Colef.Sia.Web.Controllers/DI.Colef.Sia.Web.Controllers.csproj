@@ -143,8 +143,10 @@
     <Compile Include="Helpers\EventoHelper.cs" />
     <Compile Include="Helpers\ParticipacionMedioHelper.cs" />
     <Compile Include="Mappers\IGlosarioMapper.cs" />
+    <Compile Include="Mappers\IInstitucionProductoMapper.cs" />
     <Compile Include="Mappers\IMiembroInternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\GlosarioMapper.cs" />
+    <Compile Include="Mappers\Impl\InstitucionProductoMapper.cs" />
     <Compile Include="Mappers\Impl\MiembroInternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Models\BaseForm.cs" />
     <Compile Include="Models\ComboForm.cs" />
@@ -204,12 +206,12 @@
     <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
     <Compile Include="Mappers\IEditorialProductoMapper.cs" />
     <Compile Include="Mappers\IEditorialMapper.cs" />
-    <Compile Include="Mappers\IInstitucionEventoMapper.cs" />
+    <Compile Include="Mappers\IInstitucionEventoMapperTemp.cs" />
     <Compile Include="Mappers\Impl\TesisPosgradoMapper.cs" />
     <Compile Include="Mappers\Impl\ConsejoComisionMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialProductoMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialMapper.cs" />
-    <Compile Include="Mappers\Impl\InstitucionEventoMapper.cs" />
+    <Compile Include="Mappers\Impl\InstitucionEventoMapperTemp.cs" />
     <Compile Include="Mappers\Impl\OrganoInternoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoArchivoMapper.cs" />
     <Compile Include="Mappers\Impl\VinculacionAPyDMapper.cs" />

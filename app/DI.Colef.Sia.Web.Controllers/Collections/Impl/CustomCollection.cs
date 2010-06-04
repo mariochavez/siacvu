@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                            new CustomSelectForm {Id = 1, Nombre = "Director"},
                            new CustomSelectForm {Id = 2, Nombre = "Co-director"},
                            new CustomSelectForm {Id = 3, Nombre = "Lector"},
-                           new CustomSelectForm {Id = 3, Nombre = "Sinodal"}
+                           new CustomSelectForm {Id = 4, Nombre = "Sinodal"}
                        };
         }
 

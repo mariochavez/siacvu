@@ -22,8 +22,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
             var evento = value as Evento;
 
-            if(evento.TipoParticipacion != null)
-                isValid &= ValidateTipoParticipacion(evento, constraintValidatorContext);
+            if (evento != null)
+            {
+                if (evento.TipoParticipacion != null)
+                    isValid &= ValidateTipoParticipacion(evento, constraintValidatorContext);
+            }
 
             return isValid;
         }

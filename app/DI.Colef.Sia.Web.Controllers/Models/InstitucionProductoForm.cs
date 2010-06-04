@@ -10,5 +10,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InstitucionNombre { get; set; }
 
         public int ParentId { get; set; }
+
+        public bool InstitucionExists
+        {
+            get
+            {
+                return InstitucionId > 0;
+            }
+        }
     }
 }

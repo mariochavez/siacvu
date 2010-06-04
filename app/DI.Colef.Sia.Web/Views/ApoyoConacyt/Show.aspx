@@ -1,11 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ApoyoConacytForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -36,6 +33,10 @@
 
         <div id="forma">
             <div id="campos">
+                <p>
+                    <label>Nombre</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
+                </p>
                 <p>
                     <label>No. de apoyo</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NoApoyo)%>&nbsp;</span>

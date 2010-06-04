@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
-using NHibernate;
 using SharpArch.Core.PersistenceSupport;
-using SharpArch.Data.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {

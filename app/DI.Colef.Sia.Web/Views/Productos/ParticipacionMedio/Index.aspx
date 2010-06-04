@@ -5,11 +5,10 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.ProductoListTitle(TipoProductoEnum.ParticipacionMedio) %>
+        Administraci&oacute;n de Difusi&oacute;n del conocimiento
     </h2>
 </asp:Content>
 
@@ -22,7 +21,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.ParticipacionMedio) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Nueva")%></span>
+            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Nuevo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

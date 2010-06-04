@@ -3,7 +3,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class ApoyoConacytForm
     {
         public int Id { get; set; }
-        public int NoApoyo { get; set; }
+        public string Nombre { get; set;}
+        public string NoApoyo { get; set; }
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
         public string PalabraClave1 { get; set; }

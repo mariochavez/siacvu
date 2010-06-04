@@ -1,5 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InstitucionForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<BaseForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <div class="minilista" id="institucionList">
@@ -7,11 +6,14 @@
 
     <% if (Model.Instituciones != null && Model.Instituciones.Length > 0){ %>
         <% for (int i = 0; i < Model.Instituciones.Length; i++){ %>
-	        <div class="sublista" id="institucion_<%=Html.Encode(Model.Instituciones[i].InstitucionId) %>">
+	        <div class="sublista" id="institucion_<%=Html.Encode(Model.Instituciones[i].Id) %>">
 	            <h6>
-	            	<a href="<%=Url.Action("DeleteInstitucion", null, new{ id = Model.ModelId, institucionId = Model.Instituciones[i].InstitucionId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+	            	<a href="<%=Url.Action("DeleteInstitucion", null, new{ id = Model.Id, institucionId = Model.Instituciones[i].Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.Instituciones[i].InstitucionNombre)%>
-                    <%=Html.Hidden("Institucion[" + i + "].InstitucionId", Model.Instituciones[i].InstitucionId)%>
+                    <% if(!Model.Instituciones[i].InstitucionExists && !string.IsNullOrEmpty(Model.Instituciones[i].InstitucionNombre)){ %>
+                        <span class="field-alert-inline">Esta instituci&oacute;n no esta registrada en el cat&aacute;logo</span>
+                    <% } %>
+                    <%=Html.Hidden("Institucion[" + i + "].Id", Model.Instituciones[i].Id)%>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>
@@ -24,7 +26,7 @@
 	<div id="institucionNew" class="minilistaboton">
 		<p>
 			<span>
-		    	<%=Html.ActionLink("+ Agregar institución", "NewInstitucion", new { Id = Model.ModelId }, new { @class = "remote get" })%>
+		    	<%=Html.ActionLink("+ Agregar institución", "NewInstitucion", new { Id = Model.Id }, new { @class = "remote get" })%>
 			</span>
 		</p>
 	</div><!--end minilistaboton-->

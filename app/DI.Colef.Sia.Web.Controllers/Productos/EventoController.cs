@@ -20,7 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
-        readonly IInstitucionEventoMapper institucionEventoMapper;
+        readonly IInstitucionProductoMapper<InstitucionEvento> institucionEventoMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
@@ -42,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
                                 ISearchService searchService,
-                                IInstitucionEventoMapper institucionEventoMapper,
+                                IInstitucionProductoMapper<InstitucionEvento> institucionEventoMapper,
                                 IInvestigadorExternoMapper investigadorExternoMapper,
                                 IInvestigadorService investigadorService, IProductoService productoService)
             : base(usuarioService, searchService, catalogoService)
@@ -552,75 +552,60 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorExterno", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewInstitucion(int id)
+        protected override void DeleteInstitucionInModel(Evento model, int institucionId)
         {
-            var evento = eventoService.GetEventoById(id);
+            if(model != null)
+            {
+                var institucion = model.InstitucionEventos.Where(x => x.Id == institucionId).First();
+                model.DeleteInstitucion(institucion);
 
-            var form = new InstitucionForm {Controller = "Evento", IdName = "EventoId"};
-
-            if (evento != null)
-                form.Id = evento.Id;
-
-            return Rjs("NewInstitucion", form);
+                eventoService.SaveEvento(model);
+            }
         }
 
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddInstitucion([Bind(Prefix = "Institucion")] InstitucionProductoForm form,
-                                           int eventoId)
+        protected override bool SaveInstitucionToModel(Evento model, InstitucionProducto institucionProducto)
         {
-            var institucionEvento = institucionEventoMapper.Map(form);
+            var alreadyHasIt = AlreadyHasIt(model.Id, institucionProducto);
+            var added = false;
 
-            ModelState.AddModelErrors(institucionEvento.ValidationResults(), false, "Institucion", String.Empty);
-            if (!ModelState.IsValid)
+            if (!alreadyHasIt)
             {
-                return Rjs("ModelError");
+                model.AddInstitucion(institucionProducto);
+                eventoService.SaveEvento(model, true);
+                added = true;
             }
 
-            if (eventoId != 0)
-            {
-                institucionEvento.CreadoPor = CurrentUser();
-                institucionEvento.ModificadoPor = CurrentUser();
-
-                var evento = eventoService.GetEventoById(eventoId);
-                var alreadyHasIt =
-                    evento.InstitucionEventos.Where(
-                        x => x.Institucion.Id == institucionEvento.Institucion.Id).Count();
-
-                if (alreadyHasIt == 0)
-                {
-                    evento.AddInstitucion(institucionEvento);
-                    eventoService.SaveEvento(evento);
-                }
-            }
-
-            var institucionEventoForm = institucionEventoMapper.Map(institucionEvento);
-            institucionEventoForm.ParentId = eventoId;
-
-            return Rjs("AddInstitucion", institucionEventoForm);
+            return added;
         }
 
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteInstitucion(int id, int institucionId)
+        protected override InstitucionProducto MapInstitucionMessage(InstitucionProductoForm form)
         {
-            var evento = eventoService.GetEventoById(id);
+            return institucionEventoMapper.Map(form);
+        }
 
-            if (evento != null)
-            {
-                var institucion = evento.InstitucionEventos.Where(x => x.Institucion.Id == institucionId).First();
-                evento.DeleteInstitucion(institucion);
+        protected override InstitucionProductoForm MapInstitucionModel(InstitucionProducto model, int parentId)
+        {
+            var institucionEventoForm = institucionEventoMapper.Map(model as InstitucionEvento);
+            institucionEventoForm.ParentId = parentId;
 
-                eventoService.SaveEvento(evento);
-            }
+            return institucionEventoForm;
+        }
 
-            var form = new InstitucionForm {ModelId = id, InstitucionId = institucionId};
+        protected override Evento GetModelById(int id)
+        {
+            return eventoService.GetEventoById(id);
+        }
 
-            return Rjs("DeleteInstitucion", form);
+        protected override bool AlreadyHasIt(int eventoId, InstitucionProducto institucionProducto)
+        {
+            var evento = eventoService.GetEventoById(eventoId);
+
+            var institucionId = institucionProducto.Institucion != null ? institucionProducto.Institucion.Id : 0;
+
+            var count = evento.InstitucionEventos.Where(x => ((x.Institucion != null && institucionId > 0 && x.Institucion.Id == institucionId) ||
+                          (x.InstitucionNombre == institucionProducto.InstitucionNombre))).Count();
+
+            return count > 0;
         }
 
         EventoForm SetupNewForm()

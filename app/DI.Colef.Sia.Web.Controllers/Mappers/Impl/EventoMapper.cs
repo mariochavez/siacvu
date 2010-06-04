@@ -1,3 +1,4 @@
+using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -11,14 +12,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ISesionEventoMapper sesionEventoMapper;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
-        readonly IInstitucionEventoMapper institucionEventoMapper;
-        private Usuario usuarioEvento = null;
+        readonly IInstitucionProductoMapper<InstitucionEvento> institucionEventoMapper;
+        private Usuario usuarioEvento;
 
         public EventoMapper(IRepository<Evento> repository, ICatalogoService catalogoService,
             ICoautorExternoEventoMapper coautorExternoEventoMapper,
             ISesionEventoMapper sesionEventoMapper,
             ICoautorInternoEventoMapper coautorInternoEventoMapper,
-            IInstitucionEventoMapper institucionEventoMapper
+            IInstitucionProductoMapper<InstitucionEvento> institucionEventoMapper
         )
             : base(repository)
         {
@@ -32,6 +33,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override int GetIdFromMessage(EventoForm message)
         {
             return message.Id;
+        }
+
+        public override EventoForm Map(Evento model)
+        {
+            var message = base.Map(model);
+            message.InstitucionEventos = institucionEventoMapper.Map(model.InstitucionEventos.Cast<InstitucionProducto>().ToArray());
+            
+            return message;
         }
 
         protected override void MapToModel(EventoForm message, Evento model)

@@ -139,6 +139,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<EditorialProducto, EditorialProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<InstitucionProducto, InstitucionProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateArticuloDifusionMaps()

@@ -10,8 +10,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [ApoyoConacytValidator]
     public class ApoyoConacyt : Entity, IBaseEntity
     {
+        public virtual string Nombre { get; set; }
+
         [DomainSignature]
-        public virtual int NoApoyo { get; set; }
+        public virtual string NoApoyo { get; set; }
 
         [NotNull]
         public virtual TipoApoyo TipoApoyo { get; set; }
