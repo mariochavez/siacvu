@@ -49,11 +49,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             coautorInterno.TipoProducto = tipoProducto;
             CoautorInternoCapitulos.Add((CoautorInternoCapitulo)coautorInterno);
         }
+
         public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
         {
             autorInterno.TipoProducto = tipoProducto;
             AutorInternoCapitulos.Add((AutorInternoCapitulo)autorInterno);
         }
+
         public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
         {
             autorExterno.TipoProducto = tipoProducto;
@@ -177,5 +179,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual DateTime ModificadoEl { get; set; }
 
 		public virtual bool Activo { get; set; }
+
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
     }
 }

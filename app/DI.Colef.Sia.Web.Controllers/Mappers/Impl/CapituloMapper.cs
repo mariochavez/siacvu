@@ -66,6 +66,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoLibro = message.TipoLibro;
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
             model.AutorSeOrdenaAlfabeticamente = message.AutorSeOrdenaAlfabeticamente;
+            model.PalabraClave1 = message.PalabraClave1;
+            model.PalabraClave2 = message.PalabraClave2;
+            model.PalabraClave3 = message.PalabraClave3;
 
             if (model.Usuario == null || model.Usuario == usuarioCapitulo)
             {
