@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -13,12 +14,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
         readonly IProyectoService proyectoService;
-        readonly IInstitucionReporteMapper institucionReporteMapper;
-        private Usuario usuarioReporte = null;
+        readonly IInstitucionProductoMapper<InstitucionReporte> institucionReporteMapper;
+        private Usuario usuarioReporte;
 
         public ReporteMapper(IRepository<Reporte> repository, ICatalogoService catalogoService,
                              ICoautorExternoReporteMapper coautorExternoReporteMapper, ICoautorInternoReporteMapper coautorInternoReporteMapper,
-                             IProyectoService proyectoService, IInstitucionReporteMapper institucionReporteMapper)
+                             IProyectoService proyectoService, IInstitucionProductoMapper<InstitucionReporte> institucionReporteMapper)
             : base(repository)
         {
             this.catalogoService = catalogoService;
@@ -31,6 +32,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override int GetIdFromMessage(ReporteForm message)
         {
             return message.Id;
+        }
+
+        public override ReporteForm Map(Reporte model)
+        {
+            var message = base.Map(model);
+            message.InstitucionReportes = institucionReporteMapper.Map(model.InstitucionReportes.Cast<InstitucionProducto>().ToArray());
+
+            return message;
         }
 
         protected override void MapToModel(ReporteForm message, Reporte model)
@@ -67,7 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            //model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
         }
 

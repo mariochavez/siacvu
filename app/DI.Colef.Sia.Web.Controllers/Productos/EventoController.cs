@@ -602,7 +602,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var institucionId = institucionProducto.Institucion != null ? institucionProducto.Institucion.Id : 0;
 
-            var count = evento.InstitucionEventos.Where(x => ((x.Institucion != null && institucionId > 0 && x.Institucion.Id == institucionId) ||
+            var count =
+                evento.InstitucionEventos.Where(
+                    x => ((x.Institucion != null && institucionId > 0 && x.Institucion.Id == institucionId) ||
                           (x.InstitucionNombre == institucionProducto.InstitucionNombre))).Count();
 
             return count > 0;

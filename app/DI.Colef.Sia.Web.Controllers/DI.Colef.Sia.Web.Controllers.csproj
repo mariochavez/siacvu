@@ -179,7 +179,6 @@
     <Compile Include="Mappers\IEditorialResenaMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\IEstudianteProyectoMapper.cs" />
-    <Compile Include="Mappers\IInstitucionReporteMapper.cs" />
     <Compile Include="Mappers\IMiembroExternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\AutorExternoResenaMapper.cs" />
@@ -195,7 +194,6 @@
     <Compile Include="Mappers\Impl\EditorialResenaMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\Impl\EstudianteProyectoMapper.cs" />
-    <Compile Include="Mappers\Impl\InstitucionReporteMapper.cs" />
     <Compile Include="Mappers\Impl\MiembroExternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\ObraTraducidaMapper.cs" />
     <Compile Include="Mappers\Impl\ProductoGeneradoProyectoMapper.cs" />
