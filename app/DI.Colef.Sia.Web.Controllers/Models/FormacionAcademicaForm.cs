@@ -23,9 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
-        public string LineaTematicaNombre { get; set; }
-        public int LineaTematicaId { get; set; }
-
         public int Pais { get; set; }
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }

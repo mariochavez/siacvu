@@ -32,7 +32,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Estatus = catalogoService.GetEstatusFormacionAcademicaById(message.Estatus);
             model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
 

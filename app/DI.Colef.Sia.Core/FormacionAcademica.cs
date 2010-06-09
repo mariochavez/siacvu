@@ -24,8 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string TituloTesis { get; set; }
 
-        public virtual LineaTematica LineaTematica { get; set; }
-
         public virtual Pais Pais { get; set; }
 
         public virtual EstadoPais EstadoPais { get; set; }
