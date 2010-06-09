@@ -106,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.AreaId);
             model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
+            model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
         }
 
         public Libro Map(LibroForm message, Usuario usuario)

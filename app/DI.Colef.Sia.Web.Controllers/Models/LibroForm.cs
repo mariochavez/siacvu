@@ -52,6 +52,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public EventoForm Evento { get; set; }
 
+        public int Idioma { get; set; }
+        public int IdiomaId { get; set; }
+        public string IdiomaNombre { get; set; }
+
         public int TotalCoautores
         {
             get
@@ -98,5 +102,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        public IdiomaForm[] Idiomas { get; set; }
     }
 }

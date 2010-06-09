@@ -29,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IProductoService productoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IIdiomaMapper idiomaMapper;
 
         public LibroController(ILibroService libroService,
                                IArchivoService archivoService,
@@ -50,7 +51,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ISubdisciplinaMapper subdisciplinaMapper,
                                IInvestigadorExternoMapper investigadorExternoMapper,
                                IInvestigadorService investigadorService,
-                               IProductoService productoService)
+                               IProductoService productoService,
+                               IIdiomaMapper idiomaMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             base.catalogoService = catalogoService;
@@ -71,6 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaTematicaMapper = areaTematicaMapper;
             this.investigadorService = investigadorService;
             this.productoService = productoService;
+            this.idiomaMapper = idiomaMapper;
         }
 
         [Authorize]
@@ -93,6 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
             var data = new GenericViewData<LibroForm> {Form = SetupNewForm()};
+            ViewData["Idioma"] = (from e in data.Form.Idiomas where e.Nombre == "Español" select e.Id).FirstOrDefault();
 
             ViewData["Edicion"] =
                 (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
@@ -598,6 +602,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
             form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+            form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
 
             if (form.Id == 0)
             {
@@ -636,6 +641,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             ViewData["LineaTematicaId"] = form.LineaTematicaId;
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
+
+            ViewData["Idioma"] = form.IdiomaId;
         }
 
         static LibroForm SetupShowForm(LibroForm form)
