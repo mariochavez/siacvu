@@ -21,6 +21,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PosicionAutor { get; set; }
         public bool AutorSeOrdenaAlfabeticamente { get; set; }
 
+        public string PalabraClave1 { get; set; }
+        public string PalabraClave2 { get; set; }
+        public string PalabraClave3 { get; set; }
+
         public int TipoCapitulo { get; set; }
         public int TipoLibro { get; set; }
         public int EstadoProducto { get; set; }
