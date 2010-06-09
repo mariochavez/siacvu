@@ -189,7 +189,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Reporte técnico/Documento de trabajo";
                     break;
                 case TipoProductoEnum.TesisDirigida:
-                    productName = "Tesis dirigida";
+                    productName = "Participación en Tesis";
                     break;
                 case TipoProductoEnum.Resena:
                     productName = "Reseña/Nota crítica";
@@ -248,7 +248,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Reportes técnicos";
                     break;
                 case TipoProductoEnum.TesisDirigida:
-                    productName = "Tesis dirigidas";
+                    productName = "Participación en Tesis";
                     break;
 				case TipoProductoEnum.Resena:
                     productName = "Reseñas/Notas críticas";
