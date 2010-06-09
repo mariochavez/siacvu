@@ -370,12 +370,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewInstitucion(int id)
         {
-            var evento = GetModelById(id);
+            var model = GetModelById(id);
 
-            var form = new InstitucionForm { Controller = "Evento", IdName = "EventoId" };
+            var form = new InstitucionForm();
 
-            if (evento != null)
-                form.Id = evento.Id;
+            if (model != null)
+                form.Id = model.Id;
 
             return Rjs("NewInstitucion", form);
         }

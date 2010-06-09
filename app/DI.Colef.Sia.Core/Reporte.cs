@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Proyecto Proyecto { get; set; }
 
-        public virtual Institucion Institucion { get; set; }
+        //public virtual Institucion Institucion { get; set; }
 
         public virtual AreaTematica AreaTematica { get; set; }
 

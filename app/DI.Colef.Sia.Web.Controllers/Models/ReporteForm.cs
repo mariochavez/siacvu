@@ -27,9 +27,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoPalabraClave2 { get; set; }
         public string ProyectoPalabraClave3 { get; set; }
 
-        public int InstitucionId { get; set; }
-        public string InstitucionNombre { get; set; }
-
         public int TotalCoautores
         {
             get
@@ -40,13 +37,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         }
 
         public ArchivoForm[] ArchivosReporte { get; set; }
-
-        public InstitucionProductoForm[] InstitucionEventos { get; set; }
+        public InstitucionProductoForm[] InstitucionReportes { get; set; }
 
 
         public override InstitucionProductoForm[] Instituciones
         {
-            get { return InstitucionEventos; }
+            get { return InstitucionReportes; }
         }
 
         public override ArchivoForm[] Archivos
