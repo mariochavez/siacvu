@@ -7,6 +7,14 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Nombre")%>
 </p>
+
+<p>
+    <label>Idioma</label>
+    <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Idioma") %>
+</p>
+
 <p>
     <label>Tipo de publicaci&oacute;n</label>
     <%=Html.DropDownList("FormatoPublicacion", Model.FormatosPublicaciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),

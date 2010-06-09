@@ -102,6 +102,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
+        public virtual Idioma Idioma { get; set; }
+
         [Valid]
         public virtual IList<CoautorExternoLibro> CoautorExternoLibros { get; private set; }
 
