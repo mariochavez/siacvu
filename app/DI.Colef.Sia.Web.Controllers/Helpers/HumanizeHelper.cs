@@ -617,13 +617,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (entidadId)
             {
                 case 1:
-                    entidad = "Actividad profesional";
-                    break;
-                case 2:
                     entidad = "Empresa";
                     break;
-                case 3:
+                case 2:
                     entidad = "Institución";
+                    break;
+                case 3:
+                    entidad = "Actividad profesional";
                     break;
             }
 
