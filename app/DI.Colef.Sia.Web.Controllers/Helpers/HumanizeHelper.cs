@@ -80,7 +80,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreProducto = "Reseña";
                     break;
                 case 13:
-                    nombreProducto = "Tesis dirigida";
+                    nombreProducto = "Participaci&oacute;n en tesis";
                     break;
                 case 15:
                     nombreProducto = "Proyecto";
