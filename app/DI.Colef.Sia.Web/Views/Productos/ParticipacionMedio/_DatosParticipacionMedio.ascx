@@ -28,6 +28,14 @@
 </p>
 
 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>
+
+<p>
+    <label>Nota period&iacute;stica</label>
+    <%=Html.TextArea("NotaPeriodistica", Model.NotaPeriodistica, 3, 35, new { @class = "input420-requerido", maxlength = 1000 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("NotaPeriodistica")%>
+</p>
+
 <% Html.RenderPartial("_LineaAreaTematica", Model); %>
 
 <p>

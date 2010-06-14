@@ -38,6 +38,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
+        public virtual string NotaPeriodistica { get; set; }
+
         public virtual AreaTematica AreaTematica { get; set; }
 		
 		public virtual string Institucion { get; set; }
