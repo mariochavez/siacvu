@@ -39,7 +39,7 @@
     
         <h1>Formaci&oacute;n de recursos humanos</h1>
         <ul>
-            <li><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.Index(), "Tesis dirigidas")%></li>
+            <li><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.Index(), "Participaci&oacute;n en Tesis")%></li>
 			<li><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos")%></li>
         </ul>
     </div>
