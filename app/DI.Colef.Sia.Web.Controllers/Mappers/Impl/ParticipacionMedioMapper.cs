@@ -30,6 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
+            model.NotaPeriodistica = message.NotaPeriodistica;
 
             model.OtroTipoParticipacion = message.OtroTipoParticipacion;
 

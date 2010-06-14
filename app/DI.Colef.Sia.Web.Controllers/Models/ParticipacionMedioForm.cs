@@ -9,6 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
+        public string NotaPeriodistica { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
