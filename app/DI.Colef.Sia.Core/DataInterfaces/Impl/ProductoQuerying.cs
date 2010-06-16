@@ -241,6 +241,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             Expression<Func<T, object>> productType)
         {
             var firmaTable = EntityHelper.GetFirmaTable<T>();
+            var estadoTable = EntityHelper.GetEstadoTable<T>();
+            var revistaTable = EntityHelper.GetRevistaTable<T>();
+            var institucionTable = EntityHelper.GetInstitucionTable<T>();
+            var tipoTable = String.Empty;
+
+            var criteria = Session.CreateCriteria(typeof(T))
+                .CreateAlias("Usuario", "u");
+
+            if (!String.IsNullOrEmpty(firmaTable))
+                criteria.CreateAlias("Firma", "f");
+
+            var isInvestigador = (from role in usuario.Roles
+                                  where role.Nombre == "Investigadores"
+                                  select role).FirstOrDefault() != null;
 
             var projection = Projections.ProjectionList()
                 .Add(Projections.Property("Id"), "Id")
@@ -258,11 +272,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 projection.Add(Projections.Property("f.Aceptacion2"), "FirmaAceptacion2");
             }
 
-            var estadoTable = EntityHelper.GetEstadoTable<T>();
             if(!String.IsNullOrEmpty(estadoTable))
                 projection.Add(Projections.Property(estadoTable), "Estatus");
 
-            var tipoTable = String.Empty;
             if (productType != null)
             {
                 if (GetPropertyType(productType) == typeof (int))
@@ -274,33 +286,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 }
             }
 
-            var criteria = Session.CreateCriteria(typeof (T))
-                .CreateAlias("Usuario", "u");
-
-            if (!String.IsNullOrEmpty(firmaTable))
-                criteria.CreateAlias("Firma", "f");
-
             if (!String.IsNullOrEmpty(tipoTable))
                 criteria.CreateAlias(tipoTable, "t");
 
-            var isInvestigador = (from role in usuario.Roles
-                          where role.Nombre == "Investigadores"
-                          select role).FirstOrDefault() != null;
-
-            var revistaTable = EntityHelper.GetRevistaTable<T>();
             if (!String.IsNullOrEmpty(revistaTable))
             {
-                criteria
-                    .CreateAlias(revistaTable, "r", JoinType.LeftOuterJoin);
+                criteria.CreateAlias(revistaTable, "r", JoinType.LeftOuterJoin);
 
                 projection.Add(Projections.Property("r.Titulo"), "RevistaNombre");
             }
 
-            var institucionTable = EntityHelper.GetInstitucionTable<T>();
             if (!String.IsNullOrEmpty(institucionTable))
             {
-                criteria
-                    .CreateAlias(institucionTable, "ins", JoinType.LeftOuterJoin);
+                criteria.CreateAlias(institucionTable, "ins", JoinType.LeftOuterJoin);
 
                 projection.Add(Projections.Property("ins.Nombre"), "InstitucionNombre");
             }
@@ -319,9 +317,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 else
                     criteria.Add(Expression.Eq("u.Id", usuario.Id));
             }
-
-            //if (EntityHelper.GetTipoProducto<T>() == TipoProductoEnum.Curso || EntityHelper.GetTipoProducto<T>() == TipoProductoEnum.TesisDirigida)
-            //    criteria.Add(Expression.Eq("Tipo", 2));
 
             criteria.SetProjection(Projections.Distinct(projection))
                 .AddOrder(Order.Desc("CreadoEl"))

@@ -308,9 +308,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
         {
             return new[]
                        {
-                           new CustomSelectForm {Id = 1, Nombre = "Actividad profesional"},
-                           new CustomSelectForm {Id = 2, Nombre = "Empresa"},
-                           new CustomSelectForm {Id = 3, Nombre = "Institución"}
+                           new CustomSelectForm {Id = 1, Nombre = "Empresa"},
+                           new CustomSelectForm {Id = 2, Nombre = "Institución"},
+                           new CustomSelectForm {Id = 3, Nombre = "Actividad profesional"}
                        };
         }
     }
