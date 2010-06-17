@@ -116,6 +116,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (!String.IsNullOrEmpty(verifyMessage))
                 return RedirectToHomeIndex(verifyMessage);
 
+            var verifyOwnershipMessage = VerifyProductoOwnership(CurrentUser().Investigador, libro.Usuario.Id,
+                                                                 CurrentUser().Id);
+            if (!String.IsNullOrEmpty(verifyOwnershipMessage))
+                return RedirectToHomeIndex(verifyOwnershipMessage);
+
             CoautorInternoLibro coautorInternoLibro;
             int posicionAutor;
             var coautorExists = 0;

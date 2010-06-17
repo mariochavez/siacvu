@@ -923,7 +923,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected string VerifyProductoStatus(Firma firma, string titulo)
         {
-            string message = String.Empty;
+            var message = String.Empty;
             if (firma.Aceptacion1 == 1 && firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
                 message = String.Format("El {0} {1} esta en firma y no puede ser editado",
                                         ProductoHelper.ProductoNameSingular(EntityHelper.GetTipoProducto<TModel>()),
@@ -939,6 +939,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                         "El {0} {1} ya fue aceptado o no ha sido enviado a firma",
                         ProductoHelper.ProductoNameSingular(EntityHelper.GetTipoProducto<TModel>()),
                         titulo);
+            }
+
+            return message;
+        }
+
+        protected string VerifyProductoOwnership(bool esInvestigador, int productoUsuarioId, int currentUserId)
+        {
+            var message = string.Empty;
+
+            if (esInvestigador && productoUsuarioId != currentUserId)
+            {
+                message = "Tienes que ser el titular del producto para poder editarlo";
             }
 
             return message;
