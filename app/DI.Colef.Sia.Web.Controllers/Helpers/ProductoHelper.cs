@@ -53,7 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                                          	new { id= producto.Id, tipoProducto = producto.TipoProducto }, null));
             else if (!isDGAA)
             {
-                if (!producto.IsFirmed() && !producto.IsValidated())
+                if (!producto.IsFirmed() && !producto.IsValidated() && producto.UsuarioId == producto.CurrentUserId)
                 {
                     actions += String.Format("<span>{0}</span>",
                                          html.ActionLink("Editar", "Edit", "Home", 
@@ -63,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                                          html.ActionLink("Firmar", "Sign", "Home", 
                                          	new { id= producto.Id, tipoProducto = producto.TipoProducto }, new { @class = "remote put"}));
                 } 
-                else if (producto.IsFirmed() && !producto.IsValidated())
+                else if (producto.IsFirmed() && !producto.IsValidated() || producto.UsuarioId != producto.CurrentUserId)
                 {
                     actions += String.Format("<span>{0}</span>",
                                          html.ActionLink("Ver", "Show", "Home", 
