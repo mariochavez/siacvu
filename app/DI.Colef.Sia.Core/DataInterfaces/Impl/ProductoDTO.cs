@@ -17,9 +17,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public int Tipo { get; set; }
         public string TipoNombre { get; set; }
 
+        public int UsuarioId{ get; set;}
         public string UsuarioApellidoMaterno { get; set; }
         public string UsuarioApellidoPaterno { get; set; }
         public string UsuarioNombre { get; set; }
+
+        public int CurrentUserId{ get; set;}
 
         public int FirmaAceptacion1 { get; set; }
         public int FirmaAceptacion2 { get; set; }

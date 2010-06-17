@@ -83,6 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = new GenericViewData<LibroForm>();
             var productos = productoService.GetProductosByUsuario<Libro>(CurrentUser(), x => x.Nombre,
                                                                          x => x.ContenidoLibro);
+
             data.ProductList = productos;
 
             return View(data);

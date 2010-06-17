@@ -63,6 +63,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             ICriteria query = BuildCriteria(usuario, productName, productType);
             IList<ProductoDTO> productos = query.List<ProductoDTO>();
 
+            foreach (var productoDto in productos)
+            {
+                productoDto.CurrentUserId = usuario.Id;
+            }
+
             return productos.ToArray();
         }
 
@@ -262,6 +267,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(Projections.Constant((int) EntityHelper.GetTipoProducto<T>()), "TipoProducto")
                 .Add(Projections.Property("CreadoEl"), "CreadoEl")
 
+                .Add(Projections.Property("u.Id"), "UsuarioId")
                 .Add(Projections.Property("u.Nombre"), "UsuarioNombre")
                 .Add(Projections.Property("u.ApellidoPaterno"), "UsuarioApellidoPaterno")
                 .Add(Projections.Property("u.ApellidoMaterno"), "UsuarioApellidoMaterno");
