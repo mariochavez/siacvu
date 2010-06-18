@@ -13,7 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IEstanciaInstitucionExternaService estanciaInstitucionExternaService;
         readonly IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper;
-        //readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly ISectorMapper sectorMapper;
 
