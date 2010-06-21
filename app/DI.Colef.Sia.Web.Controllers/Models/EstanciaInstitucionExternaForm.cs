@@ -1,8 +1,7 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class EstanciaInstitucionExternaForm
+    public class EstanciaInstitucionExternaForm : BaseForm
     {
-        public int Id { get; set; }
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
         public string Actividades { get; set; }
@@ -26,9 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SectorNombre { get; set; }
         public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
-        
-        public int InstitucionId { get; set; }
-        public string InstitucionNombre { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }

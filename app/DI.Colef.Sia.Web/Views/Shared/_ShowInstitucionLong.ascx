@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ShowFieldsForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<BaseForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <% if(!Model.IsShowForm){ %>
@@ -8,7 +7,10 @@
         <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
                 new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
         <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre", url = Url.Action("ChangeInstitucion") })%>
-        <%=Html.ValidationMessage("InstitucionNombre")%>
+        <span class="cvu"></span>
+    <%if (!Model.InstitucionExists && !String.IsNullOrEmpty(Model.InstitucionNombre)) { %>
+        <span class="field-alert">Esta instituci&oacute;n no esta registrada en el cat&aacute;logo</span>
+    <% } %>
     </p>
 <% } else { %>
     <p>

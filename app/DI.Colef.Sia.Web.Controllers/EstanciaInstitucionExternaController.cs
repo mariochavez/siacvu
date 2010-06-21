@@ -145,7 +145,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido modificada", movilidadAcademica.Institucion.Nombre));
+            return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido modificada", movilidadAcademica.InstitucionNombre));
         }
 
         [Authorize]
