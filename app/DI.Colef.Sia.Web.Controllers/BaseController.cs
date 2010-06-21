@@ -542,7 +542,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = new ShowFieldsForm
                            {
                                InstitucionId = institucionForm.Id,
-
+                               InstitucionNombre = institucionForm.InstitucionNombre,
                                InstitucionCiudad = institucionForm.Ciudad,
                                InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
                                InstitucionPaisNombre = institucionForm.PaisNombre,

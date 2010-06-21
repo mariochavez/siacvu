@@ -26,6 +26,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CatalogoForm[] LineasTematicas { get; set; }
         public CatalogoForm[] AreasTematicas { get; set; }
 
+        public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
+        public string InstitucionLabel { get; set; }
+        public string InstitucionCiudad { get; set; }
+        public string InstitucionEstadoPaisNombre { get; set; }
+        public string InstitucionPaisNombre { get; set; }
+        public bool InstitucionTipoInstitucionNombre { get; set; }
+
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
         public string RevistaPublicacionInstitucionNombre { get; set; }
@@ -33,11 +41,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaPublicacionIndice2Nombre { get; set; }
         public string RevistaPublicacionIndice3Nombre { get; set; }
 
+        public bool IsShowForm { get; set; }
+
         public bool RevistaPublicacionExists
         {
             get
             {
                 return RevistaPublicacionId > 0;
+            }
+        }
+
+        public bool InstitucionExists
+        {
+            get
+            {
+                return InstitucionId > 0;
             }
         }
 

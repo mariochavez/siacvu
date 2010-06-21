@@ -21,6 +21,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return message.Id;
         }
 
+        public override EstanciaInstitucionExternaForm Map(EstanciaInstitucionExterna model)
+        {
+            var message = base.Map(model);
+
+            if (message.InstitucionId > 0)
+                message.InstitucionNombre = model.Institucion.Nombre;
+
+            return message;
+        }
+
         protected override void MapToModel(EstanciaInstitucionExternaForm message, EstanciaInstitucionExterna model)
         {
             model.Actividades = message.Actividades;
@@ -31,7 +41,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+
+            var institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            if (institucion != null && string.Compare(institucion.Nombre, message.InstitucionNombre) >= 0)
+            {
+                model.Institucion = institucion;
+                model.InstitucionNombre = string.Empty;
+            }
+            else
+            {
+                model.InstitucionNombre = message.InstitucionNombre;
+                model.Institucion = null;
+            }
 
             model.Sector = catalogoService.GetSectorById(message.SectorId);
             model.Organizacion = catalogoService.GetOrganizacionById(message.OrganizacionId);

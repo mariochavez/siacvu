@@ -8,7 +8,7 @@
     <%=Html.ValidationMessage("TipoEstancia") %>
 </p>
 
-<% Html.RenderPartial("_ShowInstitucionLong", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución de destino", IsShowForm = false }); %>
+<% Html.RenderPartial("_ShowInstitucionLong", Model); %>
 
 <p>
     <label>Departamento de destino</label>
