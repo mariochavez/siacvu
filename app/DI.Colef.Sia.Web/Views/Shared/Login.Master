@@ -1,5 +1,3 @@
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Master Language="C#" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewMasterPage" %>
 

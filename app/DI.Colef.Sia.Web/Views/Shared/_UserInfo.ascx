@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
+
 <h1>
     <%--<%=Html.Encode(Page.User.Identity.Name) %>--%>
     <%= Html.Encode(Session["nombreCompleto"])%>
