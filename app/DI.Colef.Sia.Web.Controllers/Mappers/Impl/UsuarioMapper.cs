@@ -1,5 +1,4 @@
-﻿using System;
-using DecisionesInteligentes.Colef.Sia.Core;
+﻿using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.PersistenceSupport;
@@ -9,10 +8,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class UsuarioMapper : AutoFormMapper<Usuario, UsuarioForm>, IUsuarioMapper
     {
         readonly IRolMapper rolMapper;
+        readonly ITelefonoMapper telefonoMapper;
 
-        public UsuarioMapper(IRepository<Usuario> repository, IRolMapper rolMapper) : base(repository)
+        public UsuarioMapper(IRepository<Usuario> repository, IRolMapper rolMapper, ITelefonoMapper telefonoMapper) : base(repository)
         {
             this.rolMapper = rolMapper;
+            this.telefonoMapper = telefonoMapper;
         }
 
         protected override int GetIdFromMessage(UsuarioForm message)
@@ -29,7 +30,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.UsuarioNombre = message.UsuarioNombre;
             //model.Clave = message.Clave;
             model.Direccion = message.Direccion;
-            model.Telefono = message.Telefono;
             model.CorreoElectronico = message.CorreoElectronico;
             model.EstadoCivil = message.EstadoCivil;
             model.Sexo = message.Sexo;
@@ -46,6 +46,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             if (message.Rol != null)
                 model.AddRole(rolMapper.Map(message.Rol));
+
+            if (message.Telefono != null)
+                model.AddTelefono(telefonoMapper.Map(message.Telefono));
         }
 
         public Usuario Map(UsuarioForm message, Usuario usuario)
@@ -55,6 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.IsTransient())
             {
                 model.Roles[0].CreadoPor = usuario;
+                model.Telefonos[0].CreadoPor = usuario;
             }
 
             return model;

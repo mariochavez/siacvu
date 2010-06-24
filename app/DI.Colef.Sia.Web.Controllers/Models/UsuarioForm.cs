@@ -7,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string Direccion { get; set; }
-        public string Telefono { get; set; }
+        //public string Telefono { get; set; }
         public string CorreoElectronico { get; set; }
         public string EstadoCivil { get; set; }
         public string Sexo { get; set; }
@@ -32,5 +32,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public RolForm Rol { get; set; }
 
         public RolForm[] RolesUsuario { get; set; }
+
+        public TelefonoForm[] Telefonos { get; set; }
+
+        public TelefonoForm Telefono { get; set; }
     }
 }
