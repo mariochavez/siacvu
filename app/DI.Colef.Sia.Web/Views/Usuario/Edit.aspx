@@ -3,8 +3,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -44,6 +42,9 @@
             
 	            <h4>Roles</h4>
 	            <% Html.RenderPartial("_EditRol", Model.Form); %>
+
+                <h4>Tel&eacute;fonos</h4>
+                <% Html.RenderPartial("_EditTelefono", Model.Form); %>
             
 	            <p class="submit">
 	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<UsuarioController>(x => x.Index(), "Regresar") %>

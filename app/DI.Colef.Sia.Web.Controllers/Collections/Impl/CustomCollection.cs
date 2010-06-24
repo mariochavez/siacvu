@@ -313,5 +313,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                            new CustomSelectForm {Id = 3, Nombre = "Actividad profesional"}
                        };
         }
+
+        public CustomSelectForm[] TipoTelefonoCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Personal"},
+                           new CustomSelectForm {Id = 2, Nombre = "Trabajo"}
+                       };
+        }
     }
 }

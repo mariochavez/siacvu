@@ -16,6 +16,7 @@ namespace Tests.DI.Colef.Sia.Data
         Establish context = () =>
                                         {
                                             usuarioService = new UsuarioService(new Repository<Rol>(),
+                                                                                new Repository<Telefono>(),
                                                                                 new Repository<Usuario>(),
                                                                                 new InvestigadorQuerying());
                                         };
@@ -41,6 +42,7 @@ namespace Tests.DI.Colef.Sia.Data
         Establish context = () =>
         {
             usuarioService = new UsuarioService(new Repository<Rol>(),
+                                                new Repository<Telefono>(),
                                                 new Repository<Usuario>(),
                                                 new InvestigadorQuerying());
 

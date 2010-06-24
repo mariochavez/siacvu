@@ -629,5 +629,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             return entidad;
         }
+
+        public static string TipoTelefono(int telefono)
+        {
+            var tipoTelefono = "";
+
+            switch (telefono)
+            {
+                case 1:
+                    tipoTelefono = "Personal";
+                    break;
+                case  2:
+                    tipoTelefono = "Trabajo";
+                    break;
+            }
+
+            return tipoTelefono;
+        }
     }
 }

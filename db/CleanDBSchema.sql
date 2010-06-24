@@ -1405,6 +1405,11 @@ alter table Libros  drop constraint FK439120E7F4FE4035
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76425E2FD]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E76425E2FD
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7CB4F3F6C]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E7CB4F3F6C
 
@@ -1532,11 +1537,6 @@ alter table Reportes  drop constraint FK26728BE1CB4F3F6C
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE170EA6C9E]') AND parent_object_id = OBJECT_ID('Reportes'))
 alter table Reportes  drop constraint FK26728BE170EA6C9E
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE164F7D1CD]') AND parent_object_id = OBJECT_ID('Reportes'))
-alter table Reportes  drop constraint FK26728BE164F7D1CD
 
 
 
@@ -1807,6 +1807,21 @@ alter table EstudianteProyectos  drop constraint FK235213B874E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK235213B870EA6C9E]') AND parent_object_id = OBJECT_ID('EstudianteProyectos'))
 alter table EstudianteProyectos  drop constraint FK235213B870EA6C9E
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB984B9FDC244005C]') AND parent_object_id = OBJECT_ID('Usuarios'))
+alter table Usuarios  drop constraint FKB984B9FDC244005C
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD7942F62EA371669]') AND parent_object_id = OBJECT_ID('UsuarioTelefono'))
+alter table UsuarioTelefono  drop constraint FKD7942F62EA371669
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD7942F626A829E09]') AND parent_object_id = OBJECT_ID('UsuarioTelefono'))
+alter table UsuarioTelefono  drop constraint FKD7942F626A829E09
 
 
 
@@ -2620,11 +2635,6 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA64F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA1EDC2D3B]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA1EDC2D3B
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA7A8488F7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
 alter table FormacionAcademicas  drop constraint FK824D8BEA7A8488F7
 
@@ -2965,6 +2975,41 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCECA1B0562D605DB]') AND parent_object_id = OBJECT_ID('CorreoElectronicos'))
+alter table CorreoElectronicos  drop constraint FKCECA1B0562D605DB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCECA1B0574E8BAB7]') AND parent_object_id = OBJECT_ID('CorreoElectronicos'))
+alter table CorreoElectronicos  drop constraint FKCECA1B0574E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1696C99A62D605DB]') AND parent_object_id = OBJECT_ID('Telefonos'))
+alter table Telefonos  drop constraint FK1696C99A62D605DB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1696C99A74E8BAB7]') AND parent_object_id = OBJECT_ID('Telefonos'))
+alter table Telefonos  drop constraint FK1696C99A74E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E8299757A8488F7]') AND parent_object_id = OBJECT_ID('Direcciones'))
+alter table Direcciones  drop constraint FK1E8299757A8488F7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997562D605DB]') AND parent_object_id = OBJECT_ID('Direcciones'))
+alter table Direcciones  drop constraint FK1E82997562D605DB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997574E8BAB7]') AND parent_object_id = OBJECT_ID('Direcciones'))
+alter table Direcciones  drop constraint FK1E82997574E8BAB7
+
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'VinculacionAPyDes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table VinculacionAPyDes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoApoyos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoApoyos
@@ -3155,6 +3200,8 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Usuarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Usuarios
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'UsuarioTelefono') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table UsuarioTelefono
+
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoDictamenes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoDictamenes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'AutorInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorInternoProductos
@@ -3268,6 +3315,12 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Dictamenes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dictamenes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Glosarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Glosarios
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CorreoElectronicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CorreoElectronicos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Telefonos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Telefonos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Direcciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Direcciones
 
     create table VinculacionAPyDes (
         Id INT IDENTITY NOT NULL,
@@ -3399,6 +3452,9 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
        FirmaFk INT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
@@ -4235,10 +4291,12 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     create table ParticipacionMedios (
         Id INT IDENTITY NOT NULL,
+       OtroTipoParticipacion NVARCHAR(255) null,
        Titulo NVARCHAR(250) null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
+       NotaPeriodistica NVARCHAR(255) null,
        Institucion NVARCHAR(255) null,
        LugarPresentacion NVARCHAR(255) null,
        FechaPresentacion DATETIME null,
@@ -4292,6 +4350,7 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       IdiomaFk INT null,
        FirmaFk INT null,
        RevistaPublicacionFk INT null,
        UsuarioFk INT null,
@@ -4400,7 +4459,6 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
        Activo BIT null,
        FirmaFk INT null,
        ProyectoFk INT null,
-       InstitucionFk INT null,
        AreaTematicaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -4508,6 +4566,7 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       InstitucionNombre NVARCHAR(250) null,
        InstitucionFk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
@@ -4538,6 +4597,11 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
        ModificadoPorFk INT null,
        ProyectoFk INT null,
        primary key (Id)
+    )
+
+    create table UsuarioTelefono (
+        UsuarioFk INT not null,
+       TelefonoFk INT not null
     )
 
     create table TipoDictamenes (
@@ -4658,7 +4722,8 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     create table ApoyoConacyts (
         Id INT IDENTITY NOT NULL,
-       NoApoyo INT null,
+       Nombre NVARCHAR(250) null,
+       NoApoyo NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        PalabraClave1 NVARCHAR(255) null,
@@ -4688,6 +4753,7 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     create table EstanciaInstitucionExternas (
         Id INT IDENTITY NOT NULL,
+       InstitucionNombre NVARCHAR(250) null,
        DepartamentoDestino NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
@@ -4975,6 +5041,7 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
     create table Eventos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(250) null,
+       OtroTipoEvento NVARCHAR(255) null,
        ObjetivoEvento NVARCHAR(255) null,
        FinanciamientoInterno INT null,
        FinanciamientoExterno INT null,
@@ -5048,7 +5115,7 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     create table FormacionAcademicas (
         Id INT IDENTITY NOT NULL,
-       NumeroCedula INT null,
+       NumeroCedula NVARCHAR(255) null,
        TituloGrado NVARCHAR(250) null,
        FechaObtencion DATETIME null,
        TituloTesis NVARCHAR(250) null,
@@ -5058,7 +5125,6 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
        Activo BIT null,
        NivelEstudioFk INT null,
        InstitucionFk INT null,
-       LineaTematicaFk INT null,
        PaisFk INT null,
        EstadoPaisFk INT null,
        EstatusFk INT null,
@@ -5255,6 +5321,40 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table CorreoElectronicos (
+        Id INT IDENTITY NOT NULL,
+       TipoCorreoElectronico INT null,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Telefonos (
+        Id INT IDENTITY NOT NULL,
+       Numero NVARCHAR(255) null,
+       TipoTelefono INT null,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Direcciones (
+        Id INT IDENTITY NOT NULL,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       PaisFk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -6041,6 +6141,11 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
         references Subdisciplinas
 
     alter table Libros 
+        add constraint FK439120E76425E2FD 
+        foreign key (IdiomaFk) 
+        references Idiomas
+
+    alter table Libros 
         add constraint FK439120E7CB4F3F6C 
         foreign key (FirmaFk) 
         references Firmas
@@ -6104,11 +6209,6 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
         add constraint FK26728BE170EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
-
-    alter table Reportes 
-        add constraint FK26728BE164F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
 
     alter table Reportes 
         add constraint FK26728BE18A77AB9C 
@@ -6289,6 +6389,16 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
         add constraint FK235213B870EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
+
+    alter table Usuarios 
+        add constraint FKB984B9FDC244005C 
+        foreign key (CorreoElectronicoFk) 
+        references CorreoElectronicos
+
+    alter table UsuarioTelefono 
+        add constraint FKD7942F62EA371669 
+        foreign key (TelefonoFk) 
+        references Telefonos
 
     alter table AutorInternoProductos 
         add constraint FK140229918336201B 
@@ -6811,11 +6921,6 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
         references Instituciones
 
     alter table FormacionAcademicas 
-        add constraint FK824D8BEA1EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table FormacionAcademicas 
         add constraint FK824D8BEA7A8488F7 
         foreign key (PaisFk) 
         references Paises
@@ -6994,4 +7099,9 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
         add constraint FKE29ADD7BF1AEE935 
         foreign key (TipoDictamenFk) 
         references TipoDictamenes
+
+    alter table Direcciones 
+        add constraint FK1E8299757A8488F7 
+        foreign key (PaisFk) 
+        references Paises
 

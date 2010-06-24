@@ -8,7 +8,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public Usuario()
         {
-            Roles = new List<Rol>();    
+            Roles = new List<Rol>();
+            Telefonos = new List<Telefono>();
         }
 
         public virtual string Nombre { get; set; }
@@ -22,8 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual string Clave { get; set; }
 
         public virtual string Direccion { get; set; }
-
-        public virtual string Telefono { get; set; }
 
         public virtual string CorreoElectronico { get; set; }
 
@@ -49,6 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual IList<Rol> Roles { get; private set; }
 
+        public virtual IList<Telefono> Telefonos { get; private set; }
+
         public virtual bool Investigador { get; set; }
 
         public virtual bool Activo { get; set; }
@@ -61,6 +62,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteRole(Rol rol)
         {
             Roles.Remove(rol);
+        }
+
+        public virtual void AddTelefono(Telefono telefono)
+        {
+            Telefonos.Add(telefono);
+        }
+
+        public virtual void AddTelefono(string numero, int tipoTelefono)
+        {
+            Telefonos.Add(new Telefono {Numero = numero, TipoTelefono = tipoTelefono});
+        }
+
+        public virtual void DeleteTelefono(Telefono telefono)
+        {
+            Telefonos.Remove(telefono);
         }
     }
 }

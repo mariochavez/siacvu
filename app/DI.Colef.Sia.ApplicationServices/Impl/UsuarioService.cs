@@ -9,14 +9,16 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class UsuarioService : IUsuarioService
     {
         readonly IRepository<Rol> rolRepository;
+        readonly IRepository<Telefono> telefonoRepository;
         readonly IRepository<Usuario> usuarioRepository;
         readonly IInvestigadorQuerying investigadorQuerying;
 
-        public UsuarioService(IRepository<Rol> rolRepository, 
+        public UsuarioService(IRepository<Rol> rolRepository, IRepository<Telefono> telefonoRepository,
             IRepository<Usuario> usuarioRepository,
             IInvestigadorQuerying investigadorQuerying)
         {
             this.rolRepository = rolRepository;
+            this.telefonoRepository = telefonoRepository;
             this.usuarioRepository = usuarioRepository;
             this.investigadorQuerying = investigadorQuerying;
         }
@@ -46,6 +48,35 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public Rol[] GetActiveRoles()
         {
             return ((List<Rol>)rolRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public Telefono GetTelefonoById(int id)
+        {
+            return telefonoRepository.Get(id);
+        }
+
+        public Telefono[] GetAllTelefonos()
+        {
+            return ((List<Telefono>) telefonoRepository.GetAll()).ToArray();
+        }
+
+        public void SaveTelefono(Telefono telefono)
+        {
+            if (telefono.Id == 0)
+            {
+                telefono.Activo = true;
+                telefono.CreadoEl = DateTime.Now;
+            }
+
+            telefono.ModificadoEl = DateTime.Now;
+
+            telefonoRepository.SaveOrUpdate(telefono);
+        }
+
+        public Telefono[] GetActiveTelefonos()
+        {
+            return
+                ((List<Telefono>)telefonoRepository.FindAll(new Dictionary<string, object> {{"Activo", true}})).ToArray();
         }
 
         public Usuario[] GetAllUsuarios()

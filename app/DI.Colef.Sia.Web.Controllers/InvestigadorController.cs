@@ -616,7 +616,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.UsuarioNacionalidad = usuario != null ? usuario.Nacionalidad : String.Empty;
             form.UsuarioRFC = usuario != null ? usuario.RFC : String.Empty;
             form.UsuarioSexo = usuario != null ? usuario.Sexo : String.Empty;
-            form.UsuarioTelefono = usuario != null ? usuario.Telefono : String.Empty;
 
             if (form.Id == 0)
             {

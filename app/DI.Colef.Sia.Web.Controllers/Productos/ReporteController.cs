@@ -683,8 +683,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
-                                      InstitucionNombre = form.Institucion.Nombre,
-                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
@@ -694,7 +692,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       PalabraClave3 = form.PalabraClave3,
                                       ProyectoNombre = form.ProyectoNombre,
                                       IsShowForm = true,
-                                      //InstitucionLabel = "Institución donde se publica",
                                       InstitucionLabel = "Instancia a la que se presenta el reporte"
                                   };
 

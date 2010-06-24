@@ -14,15 +14,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         new readonly IUsuarioService usuarioService;
         readonly IUsuarioMapper usuarioMapper;
         readonly IRolMapper rolMapper;
+        readonly ITelefonoMapper telefonoMapper;
 
         public UsuarioController(IUsuarioService usuarioService, IUsuarioMapper usuarioMapper,
             ISearchService searchService, ICatalogoService catalogoService,
-            IRolMapper rolMapper)
+            IRolMapper rolMapper, ITelefonoMapper telefonoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.usuarioService = usuarioService;
             this.usuarioMapper = usuarioMapper;
             this.rolMapper = rolMapper;
+            this.telefonoMapper = telefonoMapper;
         }
 
         [Authorize]
@@ -134,6 +136,57 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             usuarioService.SaveUsuario(usuario);
 
             return Rjs("DeleteRol", id);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewTelefono(int id)
+        {
+            var usuario = usuarioService.GetUsuarioById(id);
+            var form = new UsuarioForm
+                           {
+                               Id = usuario.Id,
+                               Telefono = new TelefonoForm()
+                           };
+            return Rjs("NewTelefono", form);
+        }
+
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddTelefono([Bind(Prefix = "Telefono")]TelefonoForm form, int usuarioId)
+        {
+            var usuario = usuarioService.GetUsuarioById(usuarioId);
+            var telefono = new Telefono {Numero = form.Numero, TipoTelefono = form.TipoTelefono};
+
+            var alreadyHasIt =
+                    usuario.Telefonos.Where(
+                        x => x.Numero == telefono.Numero && x.TipoTelefono == telefono.TipoTelefono).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                usuario.AddTelefono(telefono);
+                usuarioService.SaveUsuario(usuario);
+            }
+
+            var telefonoUsuarioFom = telefonoMapper.Map(telefono);
+            telefonoUsuarioFom.UsuarioId = usuarioId;
+
+            return Rjs("AddTelefono", telefonoUsuarioFom);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteTelefono(int id, int usuarioId)
+        {
+            var telefono = usuarioService.GetTelefonoById(id);
+
+            var usuario = usuarioService.GetUsuarioById(usuarioId);
+            usuario.DeleteTelefono(telefono);
+            usuarioService.SaveUsuario(usuario);
+
+            return Rjs("DeleteTelefono", id);
         }
 
         [Authorize]
