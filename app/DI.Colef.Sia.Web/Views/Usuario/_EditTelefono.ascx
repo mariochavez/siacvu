@@ -7,7 +7,7 @@
 	    <% foreach(var telefono in Model.Telefonos) { %>
             <div id="telefono_<%=Html.Encode(telefono.Id) %>" class="sublista">
     	        <h6>
-    	            <a href="<%=Url.Action("deleterol", null, new{id = telefono.Id, usuarioId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+    	            <a href="<%=Url.Action("deletetelefono", null, new{id = telefono.Id, usuarioId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
     	            <%=Html.Encode(telefono.Numero)%></h6>
             </div><!--end estadolista-->
         <% } %>

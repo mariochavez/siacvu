@@ -27,6 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             get { return string.Format("{0} {1} {2}", ApellidoPaterno, ApellidoMaterno, Nombre); }
         }
 
+        public CustomSelectForm[] TipoTelefonos { get; set; }
+
         public RolForm[] Roles { get; set; }
 
         public RolForm Rol { get; set; }
@@ -36,5 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TelefonoForm[] Telefonos { get; set; }
 
         public TelefonoForm Telefono { get; set; }
+
+        public TelefonoForm[] TelefonosUsuario { get; set; }
     }
 }
