@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -15,16 +16,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IUsuarioMapper usuarioMapper;
         readonly IRolMapper rolMapper;
         readonly ITelefonoMapper telefonoMapper;
+        readonly ICustomCollection customCollection;
 
         public UsuarioController(IUsuarioService usuarioService, IUsuarioMapper usuarioMapper,
             ISearchService searchService, ICatalogoService catalogoService,
-            IRolMapper rolMapper, ITelefonoMapper telefonoMapper)
+            IRolMapper rolMapper, ITelefonoMapper telefonoMapper,
+            ICustomCollection customCollection)
             : base(usuarioService, searchService, catalogoService)
         {
             this.usuarioService = usuarioService;
             this.usuarioMapper = usuarioMapper;
             this.rolMapper = rolMapper;
             this.telefonoMapper = telefonoMapper;
+            this.customCollection = customCollection;
         }
 
         [Authorize]
@@ -49,7 +53,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = new GenericViewData<UsuarioForm>();
 
             var usuario = usuarioService.GetUsuarioById(id);
-            data.Form = usuarioMapper.Map(usuario);
+            var usuarioForm = usuarioMapper.Map(usuario);
+
+            data.Form = usuarioForm;
 
             ViewData.Model = data;
             return View();
@@ -105,7 +111,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult AddRol([Bind(Prefix = "Rol")]RolForm form, int usuarioId)
         {
             var rol = usuarioService.GetRolById(form.Id);
-
             var usuario = usuarioService.GetUsuarioById(usuarioId);
 
             var alreadyHasIt =
@@ -149,6 +154,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                Id = usuario.Id,
                                Telefono = new TelefonoForm()
                            };
+
+            form = SetupNewForm(form);
+
             return Rjs("NewTelefono", form);
         }
 
@@ -156,8 +164,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddTelefono([Bind(Prefix = "Telefono")]TelefonoForm form, int usuarioId)
         {
+            var telefono = new Telefono { Numero = form.Numero, TipoTelefono = form.TipoTelefono };
             var usuario = usuarioService.GetUsuarioById(usuarioId);
-            var telefono = new Telefono {Numero = form.Numero, TipoTelefono = form.TipoTelefono};
+            
 
             var alreadyHasIt =
                     usuario.Telefonos.Where(
@@ -165,6 +174,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (alreadyHasIt == 0)
             {
+                telefono.CreadoPor = CurrentUser();
+                telefono.ModificadoPor = CurrentUser();
+
+                usuarioService.SaveTelefono(telefono);
+
+                form.Id = telefono.Id;
+
                 usuario.AddTelefono(telefono);
                 usuarioService.SaveUsuario(usuario);
             }
@@ -195,6 +211,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = searchService.SearchUsuario(q);
             return Content(data);
+        }
+
+        UsuarioForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        UsuarioForm SetupNewForm(UsuarioForm form)
+        {
+            form = form ?? new UsuarioForm();
+
+            form.TipoTelefonos = customCollection.TipoTelefonoCustomCollection();
+
+            return form;
         }
     }
 }

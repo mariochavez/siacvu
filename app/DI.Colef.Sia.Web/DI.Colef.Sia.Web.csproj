@@ -210,6 +210,8 @@
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\DebugFormSubmission.ascx" />
     <Content Include="Views\Shared\_ShowArchivo.ascx" />
+    <Content Include="Views\Usuario\AddTelefono.js.ascx" />
+    <Content Include="Views\Usuario\DeleteTelefono.js.ascx" />
     <Content Include="Views\Usuario\NewTelefono.js.ascx" />
     <Content Include="Views\Usuario\_EditTelefono.ascx" />
     <Content Include="Views\Usuario\_NewTelefono.ascx" />
