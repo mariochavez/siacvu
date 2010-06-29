@@ -27,7 +27,7 @@
     <%=Html.ValidationMessage("FechaObtencion")%>
 </p>
 
-<% Html.RenderPartial("_ShowInstitucionLong", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
+<% Html.RenderPartial("_ShowInstitucionLong", Model); %>
 
 <p>
     <label>T&iacute;tulo de tesis</label>

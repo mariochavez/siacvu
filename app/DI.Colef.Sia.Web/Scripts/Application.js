@@ -210,29 +210,39 @@ var CheckOrden = {
 };
 
 var Coautores = {
-    setup: function() {
+    setup: function () {
         var tipoProducto = $('select.coautores');
         if (tipoProducto.length > 0) {
             tipoProducto.change(Coautores.changeText);
             Coautores.setText(tipoProducto.val(), tipoProducto.children().length);
         }
     },
-    setText: function(value, children) {
+    setText: function (value, children) {
         if (children > 3) {
-            if (value <= 1)
+            if (value <= 1){
+                $('#totalcoautores').text('coautor(es)');
                 $('#coautores').text('Coautores');
-            else if (value == 2)
+            }
+            else if (value == 2){
+                $('#totalcoautores').text('coordinador(es)');
                 $('#coautores').text('Coordinadores');
-            else if (value == 3)
+            }
+            else if (value == 3){
+                $('#totalcoautores').text('compilador(es)');
                 $('#coautores').text('Compiladores');
+            }
         } else {
-            if (value <= 1)
+            if (value <= 1){
+                $('#totalcoautores').text('coordinador(es)');
                 $('#coautores').text('Coordinadores');
-            else if (value == 2)
+            }
+            else if (value == 2){
+                $('#totalcoautores').text('compilador(es)');
                 $('#coautores').text('Compiladores');
+            }
         }
     },
-    changeText: function() {
+    changeText: function () {
         Coautores.setText($(this).val(), $(this).children().length);
     }
 };
