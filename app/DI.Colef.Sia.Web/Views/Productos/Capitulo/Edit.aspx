@@ -44,10 +44,13 @@
 	            
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length) %>">
-                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautores del cap&iacute;tulo
+                    <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                    Coautores del cap&iacute;tulo
                     <span>
-                        <%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%>
-                        coautor(es) </span><span class="cvu"></span></a>
+                        <%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%> coautor(es) 
+                    </span>
+                    <span class="cvu"></span>
+                </a>
             </h4>
             <span id="coautores_area">
                 <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "CoautorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewCoautorInternoLink, NewCoautorExternoLink", SubFormName = "coautor", UrlActionExterno = "NewCoautorExterno", UrlActionInterno = "NewCoautorInterno", Link1Id = "NewCoautorInternoLink", Link2Id = "NewCoautorExternoLink" }); %>
@@ -66,22 +69,7 @@
                 <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id, AutorSeOrdenaAlfabeticamente = Model.Form.AutorSeOrdenaAlfabeticamente }); %>
                 <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id, AutorSeOrdenaAlfabeticamente = Model.Form.AutorSeOrdenaAlfabeticamente }); %>
                 <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, AutoresInternos = Model.Form.AutorInternoCapitulos }); %>
-<%--	            <p>
-	                <label>Investigador</label>
-	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
-	            </p>
-                <p id="AutorSeOrdenaAlfabeticamente_field">
-	                <label>Posici&oacute;n del autor</label>
-                    <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100-requerido", maxlength = 2 })%>
-                    <span class="cvu"></span>
-	                <%=Html.ValidationMessage("PosicionAutor")%>
-                </p>
-	            <p>
-	                <label>Total de investigadores</label>
-	                <span id="totalautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
-	                <span class="cvu"></span>
-	            </p>--%>
-                <p></p>
+
                 <% Html.RenderPartial("_EditEditorial", Model.Form); %> 
 	            
 	            <div class="EstatusPublicado">

@@ -1,8 +1,7 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class FormacionAcademicaForm
+    public class FormacionAcademicaForm : BaseForm
     {
-        public int Id { get; set; }
         public string NumeroCedula { get; set; }
         public string TituloGrado { get; set; }
         public string FechaObtencion { get; set; }
@@ -19,9 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Estatus { get; set; }
         public int EstatusId { get; set; }
         public string EstatusNombre { get; set; }
-        
-        public string InstitucionNombre { get; set; }
-        public int InstitucionId { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }

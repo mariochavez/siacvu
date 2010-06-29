@@ -95,8 +95,15 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        <%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %> del libro
-                        <span><%=Html.Encode(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length)%> coautor(es) </span><span class="cvu"></span></a>
+                            <%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %> del libro
+                        <span>
+                            <%=Html.Encode(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length)%> 
+                        </span>
+                        <span>
+                            <%=Model.Form.TipoProducto == 2 ? "coodinador(es)" : Model.Form.TipoProducto == 3 ? "compilador(es)" : "coautor(es)" %>
+                        </span>
+                        <span class="cvu"></span>
+                    </a>
                 </h4>
                 <span id="coautores_area">
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>

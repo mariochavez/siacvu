@@ -5,8 +5,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -53,9 +51,14 @@
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                    <span id="coautores" class="titulovalor"><%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %></span> del libro
+                    <span id="coautores" class="titulovalor">
+                        <%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %>
+                    </span> del libro
                     <span>
-                        <%=Html.Encode(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length)%> coautor(es)
+                        <%=Html.Encode(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length)%>
+                    </span>
+                    <span id="totalcoautores">
+                        <%=Model.Form.TipoProducto == 2 ? "coodinador(es)" : Model.Form.TipoProducto == 3 ? "compilador(es)" : "coautor(es)" %>
                     </span>
                     <span class="cvu"></span>
                 </a>

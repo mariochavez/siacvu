@@ -13,6 +13,9 @@ $('input').removeClass('input-validation-error');
 $('textarea').removeClass('input-validation-error');
 $('select').removeClass('input-validation-error');
 
+
+window.location.href = $('#regresar').attr('href');
+
 if($('.fileUpload').length > 0) {
     UploadMulti.upload();
 } else {
