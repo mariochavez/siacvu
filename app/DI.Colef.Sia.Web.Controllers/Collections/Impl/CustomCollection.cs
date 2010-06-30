@@ -314,7 +314,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
-        public CustomSelectForm[] TipoTelefonoCustomCollection()
+        public CustomSelectForm[] TipoContactoCustomCollection()
         {
             return new[]
                        {

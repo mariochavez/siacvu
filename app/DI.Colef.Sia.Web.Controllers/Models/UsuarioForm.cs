@@ -7,8 +7,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string Direccion { get; set; }
-        //public string Telefono { get; set; }
-        public string CorreoElectronico { get; set; }
         public string EstadoCivil { get; set; }
         public string Sexo { get; set; }
         public string FechaNacimiento { get; set; }
@@ -27,18 +25,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             get { return string.Format("{0} {1} {2}", ApellidoPaterno, ApellidoMaterno, Nombre); }
         }
 
-        public CustomSelectForm[] TipoTelefonos { get; set; }
+        public CustomSelectForm[] TipoContacto { get; set; }
 
         public RolForm[] Roles { get; set; }
-
         public RolForm Rol { get; set; }
-
         public RolForm[] RolesUsuario { get; set; }
 
         public TelefonoForm[] Telefonos { get; set; }
-
         public TelefonoForm Telefono { get; set; }
-
         public TelefonoForm[] TelefonosUsuario { get; set; }
+
+        public CorreoElectronicoForm[] CorreosElectronicos { get; set; }
+        public CorreoElectronicoForm CorreoElectronico { get; set; }
     }
 }

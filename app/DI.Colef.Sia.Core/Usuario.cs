@@ -50,6 +50,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual IList<Telefono> Telefonos { get; private set; }
 
+        public virtual IList<CorreoElectronico> CorreosElectronicos { get; set; }
+
         public virtual bool Investigador { get; set; }
 
         public virtual bool Activo { get; set; }
@@ -77,6 +79,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteTelefono(Telefono telefono)
         {
             Telefonos.Remove(telefono);
+        }
+
+        public virtual void AddCorreoElectronico(CorreoElectronico correoElectronico)
+        {
+            CorreosElectronicos.Add(correoElectronico);
+        }
+
+        public virtual void AddCorreoElectronico(string direccion, int tipoCorreo)
+        {
+            CorreosElectronicos.Add(new CorreoElectronico {Direccion = direccion, TipoCorreoElectronico = tipoCorreo});
+        }
+
+        public virtual void DeleteCorreoElectronico(CorreoElectronico correoElectronico)
+        {
+            CorreosElectronicos.Remove(correoElectronico);
         }
     }
 }

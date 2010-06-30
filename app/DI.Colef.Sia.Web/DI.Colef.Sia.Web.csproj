@@ -212,8 +212,11 @@
     <Content Include="Views\Shared\_ShowArchivo.ascx" />
     <Content Include="Views\Usuario\AddTelefono.js.ascx" />
     <Content Include="Views\Usuario\DeleteTelefono.js.ascx" />
+    <Content Include="Views\Usuario\NewCorreoElectronico.js.ascx" />
     <Content Include="Views\Usuario\NewTelefono.js.ascx" />
+    <Content Include="Views\Usuario\_EditCorreoElectronico.ascx" />
     <Content Include="Views\Usuario\_EditTelefono.ascx" />
+    <Content Include="Views\Usuario\_NewCorreoElectronico.ascx" />
     <Content Include="Views\Usuario\_NewTelefono.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

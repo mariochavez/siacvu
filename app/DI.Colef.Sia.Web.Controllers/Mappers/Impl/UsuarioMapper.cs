@@ -9,11 +9,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         readonly IRolMapper rolMapper;
         readonly ITelefonoMapper telefonoMapper;
+        readonly ICorreoElectronicoMapper correoElectronicoMapper;
 
-        public UsuarioMapper(IRepository<Usuario> repository, IRolMapper rolMapper, ITelefonoMapper telefonoMapper) : base(repository)
+        public UsuarioMapper(IRepository<Usuario> repository, IRolMapper rolMapper, 
+            ITelefonoMapper telefonoMapper, ICorreoElectronicoMapper correoElectronicoMapper) : base(repository)
         {
             this.rolMapper = rolMapper;
             this.telefonoMapper = telefonoMapper;
+            this.correoElectronicoMapper = correoElectronicoMapper;
         }
 
         protected override int GetIdFromMessage(UsuarioForm message)
@@ -23,14 +26,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(UsuarioForm message, Usuario model)
         {
-            //
             model.Nombre = message.Nombre;
             model.ApellidoPaterno = message.ApellidoPaterno;
             model.ApellidoMaterno = message.ApellidoMaterno;
             model.UsuarioNombre = message.UsuarioNombre;
-            //model.Clave = message.Clave;
             model.Direccion = message.Direccion;
-            model.CorreoElectronico = message.CorreoElectronico;
             model.EstadoCivil = message.EstadoCivil;
             model.Sexo = message.Sexo;
             model.DocumentosIdentidad = message.DocumentosIdentidad;
@@ -49,6 +49,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             if (message.Telefono != null)
                 model.AddTelefono(telefonoMapper.Map(message.Telefono));
+
+            if(message.CorreoElectronico != null)
+                model.AddCorreoElectronico(correoElectronicoMapper.Map(message.CorreoElectronico));
         }
 
         public Usuario Map(UsuarioForm message, Usuario usuario)
@@ -59,6 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Roles[0].CreadoPor = usuario;
                 model.Telefonos[0].CreadoPor = usuario;
+                model.CorreosElectronicos[0].CreadoPor = usuario;
             }
 
             return model;
