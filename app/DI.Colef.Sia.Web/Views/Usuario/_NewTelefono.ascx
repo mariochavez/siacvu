@@ -4,7 +4,7 @@
 
 <p>
     <label>Tipo tel&eacute;fono</label>
-    <%=Html.DropDownList("Telefono.TipoTelefono", Model.TipoTelefonos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+    <%=Html.DropDownList("Telefono.TipoTelefono", Model.TipoContacto.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                     "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Telefono.TipoTelefono")%>
 </p>

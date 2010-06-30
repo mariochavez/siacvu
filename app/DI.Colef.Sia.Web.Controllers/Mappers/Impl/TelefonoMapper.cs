@@ -2,7 +2,7 @@
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Core.PersistenceSupport;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers.Impl
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public class TelefonoMapper : AutoFormMapper<Telefono, TelefonoForm>, ITelefonoMapper
     {

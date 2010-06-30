@@ -8,6 +8,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public virtual int TipoCorreoElectronico { get; set; }
 
+        public virtual string Direccion { get; set; }
+
         public virtual Usuario CreadoPor { get; set; }
 
         public virtual DateTime CreadoEl { get; set; }

@@ -205,6 +205,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("DeleteTelefono", id);
         }
 
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewCorreoElectronico(int id)
+        {
+            var usuario = usuarioService.GetUsuarioById(id);
+            var form = new UsuarioForm
+                           {
+                               Id = usuario.Id,
+                               CorreoElectronico = new CorreoElectronicoForm()
+                           };
+
+            form = SetupNewForm(form);
+
+            return Rjs("NewCorreoElectronico", form);
+        }
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
@@ -222,7 +239,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             form = form ?? new UsuarioForm();
 
-            form.TipoTelefonos = customCollection.TipoTelefonoCustomCollection();
+            form.TipoContacto = customCollection.TipoContactoCustomCollection();
+            
 
             return form;
         }
