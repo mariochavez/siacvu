@@ -1,19 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InvestigadorForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
     <label>Direcci&oacute;n</label>
     <span id="direccion" class="valor"><%=Html.Encode(Model.UsuarioDireccion) %>&nbsp;</span>
-</p> 
-<p>
-    <label>Tel&eacute;fono</label>
-    <span id="telefono" class="valor"><%=Html.Encode(Model.UsuarioTelefono) %>&nbsp;</span>
-</p>
-<p>
-    <label>Correo electr&oacute;nico</label>
-    <span id="correoelectronico" class="valor"><%=Html.Encode(Model.UsuarioCorreoElectronico) %>&nbsp;</span>
 </p>
 <p>
     <label>Estado civil</label>

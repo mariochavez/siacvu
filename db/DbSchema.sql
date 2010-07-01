@@ -151,6 +151,18 @@ alter table Idiomas  drop constraint FKB635BD3C62D605DB
 alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E8299757A8488F7]') AND parent_object_id = OBJECT_ID('Direcciones'))
+alter table Direcciones  drop constraint FK1E8299757A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997562D605DB]') AND parent_object_id = OBJECT_ID('Direcciones'))
+alter table Direcciones  drop constraint FK1E82997562D605DB
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997574E8BAB7]') AND parent_object_id = OBJECT_ID('Direcciones'))
+alter table Direcciones  drop constraint FK1E82997574E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK952D666B62D605DB]') AND parent_object_id = OBJECT_ID('TipoEventos'))
 alter table TipoEventos  drop constraint FK952D666B62D605DB
 
@@ -389,6 +401,22 @@ alter table ArchivoEstanciaAcademicaExterna  drop constraint FK8F52929682C3B7BC
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8F529296525369A7]') AND parent_object_id = OBJECT_ID('ArchivoEstanciaAcademicaExterna'))
 alter table ArchivoEstanciaAcademicaExterna  drop constraint FK8F529296525369A7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCECA1B0562D605DB]') AND parent_object_id = OBJECT_ID('CorreoElectronicos'))
+alter table CorreoElectronicos  drop constraint FKCECA1B0562D605DB
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCECA1B0574E8BAB7]') AND parent_object_id = OBJECT_ID('CorreoElectronicos'))
+alter table CorreoElectronicos  drop constraint FKCECA1B0574E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK76D515F66A829E09]') AND parent_object_id = OBJECT_ID('UsuarioCorreoElectronico'))
+alter table UsuarioCorreoElectronico  drop constraint FK76D515F66A829E09
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK76D515F6C244005C]') AND parent_object_id = OBJECT_ID('UsuarioCorreoElectronico'))
+alter table UsuarioCorreoElectronico  drop constraint FK76D515F6C244005C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75A1DA3162D605DB]') AND parent_object_id = OBJECT_ID('TipoOrganos'))
@@ -1447,10 +1475,6 @@ alter table EstudianteProyectos  drop constraint FK235213B874E8BAB7
 alter table EstudianteProyectos  drop constraint FK235213B870EA6C9E
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB984B9FDC244005C]') AND parent_object_id = OBJECT_ID('Usuarios'))
-alter table Usuarios  drop constraint FKB984B9FDC244005C
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD7942F62EA371669]') AND parent_object_id = OBJECT_ID('UsuarioTelefono'))
 alter table UsuarioTelefono  drop constraint FKD7942F62EA371669
 
@@ -2371,22 +2395,6 @@ alter table Dictamenes  drop constraint FKE29ADD7B62D605DB
 alter table Dictamenes  drop constraint FKE29ADD7B74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK241520AA62D605DB]') AND parent_object_id = OBJECT_ID('Glosarios'))
-alter table Glosarios  drop constraint FK241520AA62D605DB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK241520AA74E8BAB7]') AND parent_object_id = OBJECT_ID('Glosarios'))
-alter table Glosarios  drop constraint FK241520AA74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCECA1B0562D605DB]') AND parent_object_id = OBJECT_ID('CorreoElectronicos'))
-alter table CorreoElectronicos  drop constraint FKCECA1B0562D605DB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCECA1B0574E8BAB7]') AND parent_object_id = OBJECT_ID('CorreoElectronicos'))
-alter table CorreoElectronicos  drop constraint FKCECA1B0574E8BAB7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1696C99A62D605DB]') AND parent_object_id = OBJECT_ID('Telefonos'))
 alter table Telefonos  drop constraint FK1696C99A62D605DB
 
@@ -2395,16 +2403,12 @@ alter table Telefonos  drop constraint FK1696C99A62D605DB
 alter table Telefonos  drop constraint FK1696C99A74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E8299757A8488F7]') AND parent_object_id = OBJECT_ID('Direcciones'))
-alter table Direcciones  drop constraint FK1E8299757A8488F7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK241520AA62D605DB]') AND parent_object_id = OBJECT_ID('Glosarios'))
+alter table Glosarios  drop constraint FK241520AA62D605DB
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997562D605DB]') AND parent_object_id = OBJECT_ID('Direcciones'))
-alter table Direcciones  drop constraint FK1E82997562D605DB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997574E8BAB7]') AND parent_object_id = OBJECT_ID('Direcciones'))
-alter table Direcciones  drop constraint FK1E82997574E8BAB7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK241520AA74E8BAB7]') AND parent_object_id = OBJECT_ID('Glosarios'))
+alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
 
     if exists (select * from dbo.sysobjects where id = object_id(N'VinculacionAPyDes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table VinculacionAPyDes
@@ -2428,6 +2432,8 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Paises') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Paises
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Idiomas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Idiomas
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Direcciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Direcciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
 
@@ -2476,6 +2482,10 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoProyecto') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoProyecto
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoEstanciaAcademicaExterna') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoEstanciaAcademicaExterna
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CorreoElectronicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CorreoElectronicos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'UsuarioCorreoElectronico') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table UsuarioCorreoElectronico
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoOrganos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoOrganos
 
@@ -2711,13 +2721,9 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Dictamenes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dictamenes
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'Glosarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Glosarios
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CorreoElectronicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CorreoElectronicos
-
     if exists (select * from dbo.sysobjects where id = object_id(N'Telefonos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Telefonos
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'Direcciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Direcciones
+    if exists (select * from dbo.sysobjects where id = object_id(N'Glosarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Glosarios
 
     create table VinculacionAPyDes (
         Id INT IDENTITY NOT NULL,
@@ -2895,6 +2901,17 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Direcciones (
+        Id INT IDENTITY NOT NULL,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       PaisFk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3110,6 +3127,23 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
         Archivo INT not null,
        EstanciaAcademicaExternaFk INT null,
        primary key (Archivo)
+    )
+
+    create table CorreoElectronicos (
+        Id INT IDENTITY NOT NULL,
+       TipoCorreoElectronico INT null,
+       Direccion NVARCHAR(255) null,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table UsuarioCorreoElectronico (
+        CorreoElectronicoFk INT not null,
+       UsuarioFk INT not null
     )
 
     create table TipoOrganos (
@@ -4034,7 +4068,6 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
        FechaIngreso DATETIME null,
        Investigador BIT null,
        Activo BIT null,
-       CorreoElectronicoFk INT null,
        primary key (Id)
     )
 
@@ -4782,30 +4815,6 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
        primary key (Id)
     )
 
-    create table Glosarios (
-        Id INT IDENTITY NOT NULL,
-       Campo NVARCHAR(255) null,
-       Descripcion NVARCHAR(400) null,
-       Contexto NVARCHAR(255) null,
-       CreadoEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadoPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table CorreoElectronicos (
-        Id INT IDENTITY NOT NULL,
-       TipoCorreoElectronico INT null,
-       CreadoEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadoPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
     create table Telefonos (
         Id INT IDENTITY NOT NULL,
        Numero NVARCHAR(255) null,
@@ -4818,12 +4827,14 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
        primary key (Id)
     )
 
-    create table Direcciones (
+    create table Glosarios (
         Id INT IDENTITY NOT NULL,
+       Campo NVARCHAR(255) null,
+       Descripcion NVARCHAR(400) null,
+       Contexto NVARCHAR(255) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       PaisFk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5016,6 +5027,21 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
 
     alter table Idiomas 
         add constraint FKB635BD3C74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Direcciones 
+        add constraint FK1E8299757A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Direcciones 
+        add constraint FK1E82997562D605DB 
+        foreign key (CreadoPorFk) 
+        references Usuarios
+
+    alter table Direcciones 
+        add constraint FK1E82997574E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -5318,6 +5344,26 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
         add constraint FK8F529296525369A7 
         foreign key (EstanciaAcademicaExternaFk) 
         references EstanciaAcademicaExternas
+
+    alter table CorreoElectronicos 
+        add constraint FKCECA1B0562D605DB 
+        foreign key (CreadoPorFk) 
+        references Usuarios
+
+    alter table CorreoElectronicos 
+        add constraint FKCECA1B0574E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table UsuarioCorreoElectronico 
+        add constraint FK76D515F66A829E09 
+        foreign key (UsuarioFk) 
+        references Usuarios
+
+    alter table UsuarioCorreoElectronico 
+        add constraint FK76D515F6C244005C 
+        foreign key (CorreoElectronicoFk) 
+        references CorreoElectronicos
 
     alter table TipoOrganos 
         add constraint FK75A1DA3162D605DB 
@@ -6639,11 +6685,6 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
         foreign key (ProyectoFk) 
         references Proyectos
 
-    alter table Usuarios 
-        add constraint FKB984B9FDC244005C 
-        foreign key (CorreoElectronicoFk) 
-        references CorreoElectronicos
-
     alter table UsuarioTelefono 
         add constraint FKD7942F62EA371669 
         foreign key (TelefonoFk) 
@@ -7794,26 +7835,6 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table Glosarios 
-        add constraint FK241520AA62D605DB 
-        foreign key (CreadoPorFk) 
-        references Usuarios
-
-    alter table Glosarios 
-        add constraint FK241520AA74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table CorreoElectronicos 
-        add constraint FKCECA1B0562D605DB 
-        foreign key (CreadoPorFk) 
-        references Usuarios
-
-    alter table CorreoElectronicos 
-        add constraint FKCECA1B0574E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
     alter table Telefonos 
         add constraint FK1696C99A62D605DB 
         foreign key (CreadoPorFk) 
@@ -7824,17 +7845,12 @@ alter table Direcciones  drop constraint FK1E82997574E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table Direcciones 
-        add constraint FK1E8299757A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table Direcciones 
-        add constraint FK1E82997562D605DB 
+    alter table Glosarios 
+        add constraint FK241520AA62D605DB 
         foreign key (CreadoPorFk) 
         references Usuarios
 
-    alter table Direcciones 
-        add constraint FK1E82997574E8BAB7 
+    alter table Glosarios 
+        add constraint FK241520AA74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios

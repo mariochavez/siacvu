@@ -6,8 +6,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public class CorreoElectronicoMapper : AutoFormMapper<CorreoElectronico, CorreoElectronicoForm>, ICorreoElectronicoMapper
     {
-        public CorreoElectronicoMapper(IRepository<CorreoElectronico> repository)
-            : base(repository)
+        public CorreoElectronicoMapper(IRepository<CorreoElectronico> repository): base(repository)
         {
         }
 

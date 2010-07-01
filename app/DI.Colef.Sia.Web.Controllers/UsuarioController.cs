@@ -16,11 +16,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IUsuarioMapper usuarioMapper;
         readonly IRolMapper rolMapper;
         readonly ITelefonoMapper telefonoMapper;
+        readonly ICorreoElectronicoMapper correoElectronicoMapper;
         readonly ICustomCollection customCollection;
 
         public UsuarioController(IUsuarioService usuarioService, IUsuarioMapper usuarioMapper,
             ISearchService searchService, ICatalogoService catalogoService,
-            IRolMapper rolMapper, ITelefonoMapper telefonoMapper,
+            IRolMapper rolMapper, ITelefonoMapper telefonoMapper, ICorreoElectronicoMapper correoElectronicoMapper,
             ICustomCollection customCollection)
             : base(usuarioService, searchService, catalogoService)
         {
@@ -28,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.usuarioMapper = usuarioMapper;
             this.rolMapper = rolMapper;
             this.telefonoMapper = telefonoMapper;
+            this.correoElectronicoMapper = correoElectronicoMapper;
             this.customCollection = customCollection;
         }
 
@@ -185,10 +187,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 usuarioService.SaveUsuario(usuario);
             }
 
-            var telefonoUsuarioFom = telefonoMapper.Map(telefono);
-            telefonoUsuarioFom.UsuarioId = usuarioId;
+            var telefonoUsuarioForm = telefonoMapper.Map(telefono);
+            telefonoUsuarioForm.UsuarioId = usuarioId;
 
-            return Rjs("AddTelefono", telefonoUsuarioFom);
+            return Rjs("AddTelefono", telefonoUsuarioForm);
         }
 
         [CustomTransaction]
@@ -220,6 +222,52 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form = SetupNewForm(form);
 
             return Rjs("NewCorreoElectronico", form);
+        }
+
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddCorreoElectronico([Bind(Prefix = "CorreoElectronico")]CorreoElectronicoForm form, int usuarioId)
+        {
+            var correoElectronico = new CorreoElectronico
+                                        {Direccion = form.Direccion, TipoCorreoElectronico = form.TipoCorreo};
+            var usuario = usuarioService.GetUsuarioById(usuarioId);
+
+
+            var alreadyHasIt =
+                    usuario.CorreosElectronicos.Where(
+                        x => x.Direccion == correoElectronico.Direccion && x.TipoCorreoElectronico == correoElectronico.TipoCorreoElectronico).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                correoElectronico.CreadoPor = CurrentUser();
+                correoElectronico.ModificadoPor = CurrentUser();
+
+                usuarioService.SaveCorreoElectronico(correoElectronico);
+
+                form.Id = correoElectronico.Id;
+
+                usuario.AddCorreoElectronico(correoElectronico);
+                usuarioService.SaveUsuario(usuario);
+            }
+
+            var correoElectronicoUsuarioForm = correoElectronicoMapper.Map(correoElectronico);
+            correoElectronicoUsuarioForm.UsuarioId = usuarioId;
+
+            return Rjs("AddCorreoElectronico", correoElectronicoUsuarioForm);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCorreoElectronico(int id, int usuarioId)
+        {
+            var correoElectronico = usuarioService.GetCorreoElectronicoById(id);
+
+            var usuario = usuarioService.GetUsuarioById(usuarioId);
+            usuario.DeleteCorreoElectronico(correoElectronico);
+            usuarioService.SaveUsuario(usuario);
+
+            return Rjs("DeleteCorreoElectronico", id);
         }
 
         [Authorize]

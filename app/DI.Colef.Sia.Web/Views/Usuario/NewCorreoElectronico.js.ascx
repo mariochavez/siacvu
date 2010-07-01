@@ -2,13 +2,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <% using (Html.BeginForm("AddCorreoElectronico", "Usuario", FormMethod.Post, new { id = "correoelectronicoform" })) { %>
+    <% using (Html.BeginForm("AddCorreoElectronico", "Usuario", FormMethod.Post, new { id = "correoElectronicoform" })) { %>
     <%=Html.Hidden("UsuarioId", Model.Id)%>
     <% Html.RenderPartial("_NewCorreoElectronico"); %>
     <div class="minilistaboton">
         <p>
             <span>
-                <%=Html.SubmitButton("Guardar", "Agregar Correo electrónico", new { rel = "#correoelectronicoform", @class = "remote", @style = "border: 0px none;" })%>
+                <%=Html.SubmitButton("Guardar", "Agregar Correo electrónico", new { rel = "#correoElectronicoform", @class = "remote", @style = "border: 0px none;" })%>
             </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="correoElectronico">Cancelar</a>
         </p>
     </div>
