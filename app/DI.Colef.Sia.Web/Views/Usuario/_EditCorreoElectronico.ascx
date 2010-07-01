@@ -1,13 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UsuarioForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<div id="CorreoElectronicoList" class="minilista">
+<div id="correoElectronicoList" class="minilista">
 	<h5>Correo Electr&oacute;nico</h5>
 	<% if (Model.CorreosElectronicos != null && Model.CorreosElectronicos.Length > 0) { %>
 	    <% foreach(var correoElectronico in Model.CorreosElectronicos) { %>
             <div id="correoElectronico_<%=Html.Encode(correoElectronico.Id) %>" class="sublista">
     	        <h6>
-    	            <a href="<%=Url.Action("deletetelefono", null, new{id = correoElectronico.Id, usuarioId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+    	            <a href="<%=Url.Action("deletecorreoelectronico", null, new{id = correoElectronico.Id, usuarioId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
     	            <%=Html.Encode(correoElectronico.Direccion)%></h6>
             </div><!--end estadolista-->
         <% } %>

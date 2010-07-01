@@ -10,15 +10,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Rol> rolRepository;
         readonly IRepository<Telefono> telefonoRepository;
+        readonly IRepository<CorreoElectronico> correoElectronicoRepository;
         readonly IRepository<Usuario> usuarioRepository;
         readonly IInvestigadorQuerying investigadorQuerying;
 
-        public UsuarioService(IRepository<Rol> rolRepository, IRepository<Telefono> telefonoRepository,
+        public UsuarioService(IRepository<Rol> rolRepository, IRepository<Telefono> telefonoRepository, IRepository<CorreoElectronico> correoElectronicoRepository,
             IRepository<Usuario> usuarioRepository,
             IInvestigadorQuerying investigadorQuerying)
         {
             this.rolRepository = rolRepository;
             this.telefonoRepository = telefonoRepository;
+            this.correoElectronicoRepository = correoElectronicoRepository;
             this.usuarioRepository = usuarioRepository;
             this.investigadorQuerying = investigadorQuerying;
         }
@@ -77,6 +79,36 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             return
                 ((List<Telefono>)telefonoRepository.FindAll(new Dictionary<string, object> {{"Activo", true}})).ToArray();
+        }
+
+        public CorreoElectronico GetCorreoElectronicoById(int id)
+        {
+            return correoElectronicoRepository.Get(id);
+        }
+
+        public CorreoElectronico[] GetAllCorreosElectronicos()
+        {
+            return ((List<CorreoElectronico>) correoElectronicoRepository.GetAll()).ToArray();
+        }
+
+        public void SaveCorreoElectronico(CorreoElectronico correoElectronico)
+        {
+            if (correoElectronico.Id == 0)
+            {
+                correoElectronico.Activo = true;
+                correoElectronico.CreadoEl = DateTime.Now;
+            }
+
+            correoElectronico.ModificadoEl = DateTime.Now;
+
+            correoElectronicoRepository.SaveOrUpdate(correoElectronico);
+        }
+
+        public CorreoElectronico[] GetActiveCorreosElectronicos()
+        {
+            return
+                ((List<CorreoElectronico>)
+                 correoElectronicoRepository.FindAll(new Dictionary<string, object> {{"Activo", true}})).ToArray();
         }
 
         public Usuario[] GetAllUsuarios()

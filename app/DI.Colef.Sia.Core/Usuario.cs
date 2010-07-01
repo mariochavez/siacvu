@@ -24,8 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Direccion { get; set; }
 
-        public virtual string CorreoElectronico { get; set; }
-
         public virtual string EstadoCivil { get; set; }
 
         public virtual string Sexo { get; set; }

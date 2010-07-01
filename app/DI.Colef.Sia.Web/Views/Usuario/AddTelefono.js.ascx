@@ -12,7 +12,7 @@ var html = '
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#teledonoForm').hide();
+$('#telefonoForm').hide();
 $('#telefonoNew').show();
 $('#telefonoForm').html('');
 

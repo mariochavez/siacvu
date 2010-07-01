@@ -18,8 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Usuario { get; set; }
         public int UsuarioId { get; set; }
         public string UsuarioDireccion { get; set; }
-        public string UsuarioTelefono { get; set; }
-        public string UsuarioCorreoElectronico { get; set; }
         public string UsuarioEstadoCivil { get; set; }
         public string UsuarioFechaNacimiento { get; set; }
         public string UsuarioDocumentosIdentidad { get; set; }

@@ -16,6 +16,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         void SaveTelefono(Telefono telefono);
         Telefono[] GetActiveTelefonos();
 
+        //CorreosElectronicos
+        CorreoElectronico GetCorreoElectronicoById(int id);
+        CorreoElectronico[] GetAllCorreosElectronicos();
+        void SaveCorreoElectronico(CorreoElectronico correoElectronico);
+        CorreoElectronico[] GetActiveCorreosElectronicos();
+
         //Usuario
         Usuario[] GetAllUsuarios();
         Usuario GetUsuarioById(int id);
