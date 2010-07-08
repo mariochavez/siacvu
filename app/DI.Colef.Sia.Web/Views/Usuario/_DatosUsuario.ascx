@@ -10,18 +10,6 @@
     <span class="valor"><%= Html.Encode(Model.UsuarioNombre)%>&nbsp;</span>
 </p>
 <p>
-    <label>Direcci&oacute;n</label>
-    <span class="valor"><%= Html.Encode(Model.Direccion)%>&nbsp;</span>
-</p>
-<p>
-    <label>Tel&eacute;fono</label>
-    <span class="valor"><%= Html.Encode(Model.Telefono) %>&nbsp;</span>
-</p>
-<p>
-    <label>Correo electr&oacute;nico</label>
-    <span class="valor"><%= Html.Encode(Model.CorreoElectronico)%>&nbsp;</span>
-</p>
-<p>
     <label>Estado civil</label>
     <span class="valor"><%= Html.Encode(Model.EstadoCivil)%>&nbsp;</span>
 </p>

@@ -10,6 +10,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             Roles = new List<Rol>();
             Telefonos = new List<Telefono>();
+            Direcciones = new List<Direccion>();
+            CorreosElectronicos = new List<CorreoElectronico>();
         }
 
         public virtual string Nombre { get; set; }
@@ -21,8 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual string UsuarioNombre { get; set; }
 
         public virtual string Clave { get; set; }
-
-        public virtual string Direccion { get; set; }
 
         public virtual string EstadoCivil { get; set; }
 
@@ -48,7 +48,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual IList<Telefono> Telefonos { get; private set; }
 
-        public virtual IList<CorreoElectronico> CorreosElectronicos { get; set; }
+        public virtual IList<CorreoElectronico> CorreosElectronicos { get; private set; }
+
+        public virtual IList<Direccion> Direcciones { get; private set; }
 
         public virtual bool Investigador { get; set; }
 
@@ -92,6 +94,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteCorreoElectronico(CorreoElectronico correoElectronico)
         {
             CorreosElectronicos.Remove(correoElectronico);
+        }
+
+        public virtual void AddDireccion(Direccion direccion)
+        {
+            Direcciones.Add(direccion);
+        }
+
+        public virtual void DeleteDireccion(Direccion direccion)
+        {
+            Direcciones.Remove(direccion);
         }
     }
 }

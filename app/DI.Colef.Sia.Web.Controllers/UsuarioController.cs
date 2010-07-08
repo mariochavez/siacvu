@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -17,12 +18,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IRolMapper rolMapper;
         readonly ITelefonoMapper telefonoMapper;
         readonly ICorreoElectronicoMapper correoElectronicoMapper;
+        readonly IDireccionMapper direccionMapper;
         readonly ICustomCollection customCollection;
+        readonly IEstadoPaisMapper estadoPaisMapper;
 
         public UsuarioController(IUsuarioService usuarioService, IUsuarioMapper usuarioMapper,
             ISearchService searchService, ICatalogoService catalogoService,
             IRolMapper rolMapper, ITelefonoMapper telefonoMapper, ICorreoElectronicoMapper correoElectronicoMapper,
-            ICustomCollection customCollection)
+            IDireccionMapper direccionMapper,
+            IEstadoPaisMapper estadoPaisMapper,
+            ICustomCollection customCollection,
+            IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.usuarioService = usuarioService;
@@ -30,7 +36,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.rolMapper = rolMapper;
             this.telefonoMapper = telefonoMapper;
             this.correoElectronicoMapper = correoElectronicoMapper;
+            this.direccionMapper = direccionMapper;
+            this.estadoPaisMapper = estadoPaisMapper;
             this.customCollection = customCollection;
+            this.paisMapper = paisMapper;
+            this.estadoPaisMapper = estadoPaisMapper;
         }
 
         [Authorize]
@@ -57,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var usuario = usuarioService.GetUsuarioById(id);
             var usuarioForm = usuarioMapper.Map(usuario);
 
-            data.Form = usuarioForm;
+            data.Form = SetupNewForm(usuarioForm);
 
             ViewData.Model = data;
             return View();
@@ -270,12 +280,84 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("DeleteCorreoElectronico", id);
         }
 
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewDireccion(int id)
+        {
+            var usuario = usuarioService.GetUsuarioById(id);
+            var form = new UsuarioForm
+                           {
+                               Id = usuario.Id,
+                               Direccion = new DireccionForm()
+                           };
+
+            form = SetupNewForm(form);
+
+            return Rjs("NewDireccion", form);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddDireccion([Bind(Prefix = "Direccion")]DireccionForm form, int usuarioId)
+        {
+            var direccion = direccionMapper.Map(form);
+
+            var usuario = usuarioService.GetUsuarioById(usuarioId);
+
+            direccion.ModificadoPor = CurrentUser();
+            direccion.CreadoPor = CurrentUser();
+
+            usuarioService.SaveDireccion(direccion);
+
+            form.Id = direccion.Id;
+
+            usuario.AddDireccion(direccion);
+            usuarioService.SaveUsuario(usuario);
+
+            var direccionUsuarioForm = direccionMapper.Map(direccion);
+            direccionUsuarioForm.UsuarioId = usuarioId;
+
+            return Rjs("AddDireccion", direccionUsuarioForm);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteDireccion(int id, int usuarioId)
+        {
+            var direccion = usuarioService.GetDireccionById(id);
+
+            var usuario = usuarioService.GetUsuarioById(usuarioId);
+            usuario.DeleteDireccion(direccion);
+            usuarioService.SaveUsuario(usuario);
+
+            return Rjs("DeleteDireccion", id);
+        }
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.SearchUsuario(q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangePais(int select)
+        {
+            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
+
+            var form = new FormacionAcademicaForm
+            {
+                EstadosPaises = list.ToArray()
+            };
+
+            return Rjs("ChangePais", form);
         }
 
         UsuarioForm SetupNewForm()
@@ -288,7 +370,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form = form ?? new UsuarioForm();
 
             form.TipoContacto = customCollection.TipoContactoCustomCollection();
-            
+
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            if (form.Id == 0)
+            {
+                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
+            }
+
+            else
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
 
             return form;
         }

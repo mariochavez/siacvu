@@ -10,13 +10,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IRolMapper rolMapper;
         readonly ITelefonoMapper telefonoMapper;
         readonly ICorreoElectronicoMapper correoElectronicoMapper;
+        private readonly IDireccionMapper direccionMapper;
 
         public UsuarioMapper(IRepository<Usuario> repository, IRolMapper rolMapper, 
-            ITelefonoMapper telefonoMapper, ICorreoElectronicoMapper correoElectronicoMapper) : base(repository)
+            ITelefonoMapper telefonoMapper, ICorreoElectronicoMapper correoElectronicoMapper, IDireccionMapper direccionMapper) 
+            : base(repository)
         {
             this.rolMapper = rolMapper;
             this.telefonoMapper = telefonoMapper;
             this.correoElectronicoMapper = correoElectronicoMapper;
+            this.direccionMapper = direccionMapper;
         }
 
         protected override int GetIdFromMessage(UsuarioForm message)
@@ -30,7 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.ApellidoPaterno = message.ApellidoPaterno;
             model.ApellidoMaterno = message.ApellidoMaterno;
             model.UsuarioNombre = message.UsuarioNombre;
-            model.Direccion = message.Direccion;
             model.EstadoCivil = message.EstadoCivil;
             model.Sexo = message.Sexo;
             model.DocumentosIdentidad = message.DocumentosIdentidad;
@@ -43,6 +45,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaIngreso = message.FechaIngreso.FromShortDateToDateTime();
             model.Investigador = message.Investigador;
             model.Activo = message.Activo;
+
+            if (message.Direccion != null)
+            {
+                var direccion = direccionMapper.Map(message.Direccion);
+
+                if (model.Direcciones.Count > 0)
+                    model.Direcciones[0] = direccion;
+                model.AddDireccion(direccion);
+            }
 
             if (message.Rol != null)
                 model.AddRole(rolMapper.Map(message.Rol));
@@ -63,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Roles[0].CreadoPor = usuario;
                 model.Telefonos[0].CreadoPor = usuario;
                 model.CorreosElectronicos[0].CreadoPor = usuario;
+                model.Direcciones[0].CreadoPor = usuario;
             }
 
             return model;
