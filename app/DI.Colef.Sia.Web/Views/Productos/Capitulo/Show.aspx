@@ -97,7 +97,7 @@
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->                
-                <h4>Autor(es) del libro</h4>
+                <h4><%=Model.Form.TipoLibro == 1 ? "Coodinador(es)" : Model.Form.TipoLibro == 2 ? "Compilador(es)" : "Coautor(es)" %> del libro</h4>
 				<% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, AutorSeOrdenaAlfabeticamente = Model.Form.AutorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, AutorSeOrdenaAlfabeticamente = Model.Form.AutorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, AutoresInternos = Model.Form.AutorInternoCapitulos }); %>
