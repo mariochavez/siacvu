@@ -1,13 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ResenaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -56,6 +53,10 @@
                 <p>
                     <label>Nombre de la publicaci&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.NombreProducto)%>&nbsp;</span>
+                </p>
+                 <p>
+                    <label>Nombre del Autor</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.NombreAutor)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de publicaci&oacute;n</label>
