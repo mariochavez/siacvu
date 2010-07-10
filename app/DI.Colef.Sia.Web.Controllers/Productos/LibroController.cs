@@ -552,6 +552,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         protected override bool SaveEditorialToModel(Libro model, EditorialProducto editorialProducto)
         {
+            ModelState.AddModelErrors(model.ValidationResults(), true, "Libro");
+            if (!ModelState.IsValid)
+            {
+                return false;
+            }
+
             var editorialId = editorialProducto.Editorial != null ? editorialProducto.Editorial.Id : 0;
 
             var alreadyHasIt =

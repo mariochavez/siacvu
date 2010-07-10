@@ -205,6 +205,7 @@
     <Content Include="Views\Investigador\_FormacionRecursosHumanos.ascx" />
     <Content Include="Views\Investigador\_ProducccionAcademica.ascx" />
     <Content Include="Views\Productos\ArticuloDifusion\Index.aspx" />
+    <Content Include="Views\Shared\EditorialAddError.js.ascx" />
     <Content Include="Views\Usuario\ChangePais.js.ascx" />
     <Content Include="Views\Shared\HideEditorialForm.js.ascx" />
     <Content Include="Views\Shared\_RevistaPublicacion.ascx" />

@@ -344,6 +344,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 added = SaveEditorialToModel(model, editorialProducto);
             }
 
+            if (!added && !ModelState.IsValid)
+            {
+                ViewData["Rollback"] = true;
+                return Rjs("EditorialAddError");
+            }
+
             var editorialProductoForm = added
                                             ? MapEditorialModel(editorialProducto, modelId)
                                             : new EditorialProductoForm();
