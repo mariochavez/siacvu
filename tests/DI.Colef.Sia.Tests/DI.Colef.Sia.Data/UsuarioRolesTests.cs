@@ -18,6 +18,7 @@ namespace Tests.DI.Colef.Sia.Data
                                             usuarioService = new UsuarioService(new Repository<Rol>(),
                                                                                 new Repository<Telefono>(),
                                                                                 new Repository<CorreoElectronico>(),
+                                                                                new Repository<Direccion>(),
                                                                                 new Repository<Usuario>(),
                                                                                 new InvestigadorQuerying());
                                         };
@@ -45,6 +46,7 @@ namespace Tests.DI.Colef.Sia.Data
             usuarioService = new UsuarioService(new Repository<Rol>(),
                                                 new Repository<Telefono>(),
                                                 new Repository<CorreoElectronico>(),
+                                                new Repository<Direccion>(),
                                                 new Repository<Usuario>(),
                                                 new InvestigadorQuerying());
 

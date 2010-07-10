@@ -40,6 +40,9 @@
             
 	            <% Html.RenderPartial("_DatosUsuario", Model.Form); %>
             
+                <h4>Direcci&oacute;n</h4>
+                <% Html.RenderPartial("_EditDireccion", Model.Form); %>
+
 	            <h4>Roles</h4>
 	            <% Html.RenderPartial("_EditRol", Model.Form); %>
 

@@ -195,6 +195,11 @@ alter table Direcciones  drop constraint FK1E8299757A8488F7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E829975C0410E89]') AND parent_object_id = OBJECT_ID('Direcciones'))
+alter table Direcciones  drop constraint FK1E829975C0410E89
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997562D605DB]') AND parent_object_id = OBJECT_ID('Direcciones'))
 alter table Direcciones  drop constraint FK1E82997562D605DB
 
@@ -202,6 +207,16 @@ alter table Direcciones  drop constraint FK1E82997562D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E82997574E8BAB7]') AND parent_object_id = OBJECT_ID('Direcciones'))
 alter table Direcciones  drop constraint FK1E82997574E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEC11A2756A829E09]') AND parent_object_id = OBJECT_ID('UsuarioDireccion'))
+alter table UsuarioDireccion  drop constraint FKEC11A2756A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEC11A275E6709AF1]') AND parent_object_id = OBJECT_ID('UsuarioDireccion'))
+alter table UsuarioDireccion  drop constraint FKEC11A275E6709AF1
 
 
 
@@ -3039,6 +3054,8 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Direcciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Direcciones
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'UsuarioDireccion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table UsuarioDireccion
+
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEstancias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEstancias
@@ -3512,13 +3529,21 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
 
     create table Direcciones (
         Id INT IDENTITY NOT NULL,
+       LineaDireccion NVARCHAR(255) null,
+       Ciudad NVARCHAR(255) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        PaisFk INT null,
+       EstadoPaisFk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
+    )
+
+    create table UsuarioDireccion (
+        DireccionFk INT not null,
+       UsuarioFk INT not null
     )
 
     create table TipoEventos (
@@ -5442,6 +5467,16 @@ alter table Glosarios  drop constraint FK241520AA74E8BAB7
         add constraint FK1E8299757A8488F7 
         foreign key (PaisFk) 
         references Paises
+
+    alter table Direcciones 
+        add constraint FK1E829975C0410E89 
+        foreign key (EstadoPaisFk) 
+        references EstadoPaises
+
+    alter table UsuarioDireccion 
+        add constraint FKEC11A275E6709AF1 
+        foreign key (DireccionFk) 
+        references Direcciones
 
     alter table Subdisciplinas 
         add constraint FKB62F52ADBC063744 

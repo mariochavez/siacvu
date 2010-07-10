@@ -215,6 +215,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
             form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
 
+            form.InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion;
+            form.InstitucionLabel = "Institución";
+            form.IsShowForm = false;
+
+            return form;
+        }
+
+        FormacionAcademicaForm SetupShowForm(FormacionAcademicaForm form)
+        {
+            form = form ?? new FormacionAcademicaForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionNombre = form.Institucion.Nombre,
+
+                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
+                                      DisciplinaNombre = form.DisciplinaNombre,
+                                      AreaNombre = form.AreaNombre,
+
+                                      Nivel2Nombre = form.Nivel2Nombre,
+                                      OrganizacionNombre = form.OrganizacionNombre,
+                                      SectorNombre = form.SectorNombre                                    
+                                  };
+
+            form.InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion;
+            form.InstitucionLabel = "Institución";
+            form.IsShowForm = true;
+
             return form;
         }
 
@@ -232,33 +263,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["SectorId"] = form.SectorId;
             ViewData["OrganizacionId"] = form.OrganizacionId;
             ViewData["Nivel2Id"] = form.Nivel2Id;
-        }
-
-        private static FormacionAcademicaForm SetupShowForm(FormacionAcademicaForm form)
-        {
-            form = form ?? new FormacionAcademicaForm();
-
-            form.ShowFields = new ShowFieldsForm
-                                  {
-                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
-                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
-                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
-                                      InstitucionCiudad = form.Institucion.Ciudad,
-                                      InstitucionNombre = form.Institucion.Nombre,
-
-                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
-                                      DisciplinaNombre = form.DisciplinaNombre,
-                                      AreaNombre = form.AreaNombre,
-
-                                      Nivel2Nombre = form.Nivel2Nombre,
-                                      OrganizacionNombre = form.OrganizacionNombre,
-                                      SectorNombre = form.SectorNombre,
-
-                                      IsShowForm = true,
-                                      InstitucionLabel = "Institución"
-                                  };
-
-            return form;
         }
     }
 }

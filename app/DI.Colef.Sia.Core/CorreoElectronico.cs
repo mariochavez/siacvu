@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
@@ -8,6 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public virtual int TipoCorreoElectronico { get; set; }
 
+        [NotNullNotEmpty]
         public virtual string Direccion { get; set; }
 
         public virtual Usuario CreadoPor { get; set; }

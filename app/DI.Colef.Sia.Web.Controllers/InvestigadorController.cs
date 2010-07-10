@@ -607,7 +607,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.UsuarioCedulaProfesional = usuario != null ? usuario.CedulaProfesional : String.Empty;
             form.UsuarioCodigoRH = usuario != null ? usuario.CodigoRH : String.Empty;
             form.UsuarioCURP = usuario != null ? usuario.CURP : String.Empty;
-            form.UsuarioDireccion = usuario != null ? usuario.Direccion : String.Empty;
             form.UsuarioDocumentosIdentidad = usuario != null ? usuario.DocumentosIdentidad : String.Empty;
             form.UsuarioEstadoCivil = usuario != null ? usuario.EstadoCivil : String.Empty;
             form.UsuarioFechaIngreso = usuario != null ? usuario.FechaIngreso.ToCustomShortDateString() : String.Empty;
