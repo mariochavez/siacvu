@@ -2,12 +2,9 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<DistincionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -60,6 +57,10 @@
                 <p>
                     <label>Tipo de distinci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoDistincionNombre)%>&nbsp;</span>
+                </p>
+                 <p>
+                    <label>Otorgante</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Otorgante)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Descripci&oacute;n de la distinci&oacute;n</label>

@@ -16,6 +16,11 @@
     <%=Html.ValidationMessage("TipoDistincion") %>
 </p>
 <p>
+    <label>Otorgante</label>
+    <%=Html.TextBox("Otorgante", Model.Otorgante, new { @class = "input420", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Otorgante")%>
+</p>
+<p>
     <label>Descripci&oacute;n de la distinci&oacute;n</label>
     <%=Html.TextArea("Descripcion", Model.Descripcion, 3, 35, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>

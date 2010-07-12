@@ -10,13 +10,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
+        public string Otorgante { get; set; }
 
         public int TipoDistincion { get; set; }
         public int TipoDistincionId { get; set; }
         public string TipoDistincionNombre { get; set; }
-
-        public string InstitucionNombre { get; set; }
-        public int InstitucionId { get; set; }
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }
