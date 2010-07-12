@@ -45,6 +45,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Institucion Institucion { get; set; }
 
+        public virtual string InstitucionNombre { get; set; }
+
         public virtual Ambito Ambito { get; set; }
 
         public virtual Pais Pais { get; set; }

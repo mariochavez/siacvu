@@ -33,6 +33,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
+
+            var institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            if (institucion != null && string.Compare(institucion.Nombre, message.InstitucionNombre) >= 0)
+            {
+                model.Institucion = institucion;
+                model.InstitucionNombre = string.Empty;
+            }
+            else
+            {
+                model.InstitucionNombre = message.InstitucionNombre;
+                model.Institucion = null;
+            }
+        }
+
+        public override DistincionForm Map(Distincion model)
+        {
+            var message =  base.Map(model);
+
+            if (message.InstitucionId > 0)
+                message.InstitucionNombre = model.Institucion.Nombre;
+
+            return message;
         }
 
         public Distincion Map(DistincionForm message, Usuario usuario, Investigador investigador)

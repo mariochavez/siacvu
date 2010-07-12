@@ -37,6 +37,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             get { return ArchivosDistincion; }
         }
 
+        public bool InstitucionExists
+        {
+            get
+            {
+                return InstitucionId > 0;
+            }
+        }
+
         /* Catalogos */
         public TipoDistincionForm[] TiposDistinciones { get; set; }
         public AmbitoForm[] Ambitos { get; set; }

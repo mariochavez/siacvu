@@ -46,7 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateReportesMaps();
             CreateResenasMaps();
             CreateFormacionAcademicaMaps();
-            //CreateUsuarioMaps();
             CreateLibrosMaps();
             CreateEstanciaInstitucionExternaMaps();
             CreateEstanciaAcademicaExternaMaps();
@@ -375,13 +374,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.EstadoPais,
                            o => o.Ignore());
         }
-
-        //private void CreateUsuarioMaps()
-        //{
-        //    Mapper.CreateMap<Usuario, UsuarioForm>()
-        //        .ForMember(d => d.Direccion,
-        //                   o => o.Ignore());
-        //}
 
         private void CreateResenasMaps()
         {

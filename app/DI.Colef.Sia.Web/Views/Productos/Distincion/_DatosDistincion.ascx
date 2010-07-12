@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<DistincionForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos" %>
 <p>
     <label>T&iacute;tulo de la distinci&oacute;n</label>
     <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
@@ -30,9 +31,12 @@
 <p>
     <label>Instituci&oacute;n</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-            new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre"})%>
+            new { @class = "autocomplete buscar-requerido",  url = Html.BuildUrlFromExpressionForAreas<InstitucionController>(x => x.Search("")), maxlength = 100 })%>
+    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre", url = Url.Action("ChangeInstitucion") })%>
     <%=Html.ValidationMessage("InstitucionNombre")%>
+     <%if (!Model.InstitucionExists && !String.IsNullOrEmpty(Model.InstitucionNombre)) { %>
+        <span class="field-alert">Esta Institucion no esta registrada en el cat&aacute;logo</span>
+    <% } %>
 </p>
 <p>
     <label>&Aacute;mbito</label>
