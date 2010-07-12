@@ -104,7 +104,7 @@
                 <p>
                     <label>Fecha de la presentaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 
                 <p class="submit">

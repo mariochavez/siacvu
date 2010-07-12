@@ -46,12 +46,12 @@
 		        <p>
 			        <label>Ingreso  como investigador</label>
 			        <span class="valor"><%=Html.Encode(Model.Form.FechaIngreso) %></span>
-			        <span>(Formato dd/mm/yyyy)</span>
+			        <span>(Formato dd/mm/aaaa)</span>
 		        </p>
 	            <p>
 		            <label>Fecha de contrato indeterminado</label>
 		            <span class="valor"><%=Html.Encode(Model.Form.FechaContrato) %>&nbsp;</span>
-		            <span>(Formato dd/mm/yyyy)</span>
+		            <span>(Formato dd/mm/aaaa)</span>
 	            </p>
 	            
 	            <h4>Grado Acad&eacute;mico del Investigador</h4>

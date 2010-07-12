@@ -69,7 +69,7 @@
                 <p>
                     <label>Fecha de otorgamiento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaOtorgamiento)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Instituci&oacute;n</label>

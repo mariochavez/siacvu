@@ -67,13 +67,13 @@
                     <p>
                         <label>Fecha de aceptaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;
-                        </span><span>Formato (dd/mm/yyyy)</span>
+                        </span><span>Formato (dd/mm/aaaa)</span>
                     </p>
                 <% } if (Model.Form.EstadoProducto == 3){ %>
                     <p>
                         <label>Fecha de publicaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;
-                        </span><span>Formato (dd/mm/yyyy)</span>
+                        </span><span>Formato (dd/mm/aaaa)</span>
                     </p>
                 <% } %>
                 
@@ -82,7 +82,7 @@
                 <p>
                     <label>A&ntilde;o de edici&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
-                    <span>(Formato yyyy)</span>
+                    <span>(Formato aaaa)</span>
                 </p>
                 <p>
                     <label>L&iacute;nea tem&aacute;tica</label>

@@ -47,7 +47,7 @@
                 </p>
                 <p>
                     <label>Fecha de obtenci&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaObtencion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaObtencion)%>&nbsp;</span><span>Formato (dd/mm/aaaa)</span>
                 </p>
                 
                 <% Html.RenderPartial("_ShowInstitucionLong", Model.Form); %>

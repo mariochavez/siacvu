@@ -1,13 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ProyectoForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -71,17 +67,17 @@
                 <p>
                     <label>Fecha inicial</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaFinal) %>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Fecha de pr&oacute;rroga</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaProrroga)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Estatus del proyecto</label>
@@ -91,7 +87,7 @@
                     <p>
                         <label>Fecha de conclusi&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaConclusion)%>&nbsp;</span>
-                        <span>Formato (dd/mm/yyyy)</span>
+                        <span>Formato (dd/mm/aaaa)</span>
                     </p>
                 <% } %>
                 <% Html.RenderPartial("_ShowArchivo", Model.Form); %>

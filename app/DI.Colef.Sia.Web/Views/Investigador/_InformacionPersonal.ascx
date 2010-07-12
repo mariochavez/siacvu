@@ -13,7 +13,7 @@
 <p>
     <label>Fecha de nacimiento</label>
     <span id="fechanacimiento" class="valor"><%=Html.Encode(Model.UsuarioFechaNacimiento) %>&nbsp;</span>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
 </p>
 <p>
     <label>Documentos de identidad</label>
@@ -38,7 +38,7 @@
 <p>
     <label>Fecha de ingreso</label>
     <span id="fechaingreso" class="valor"><%=Html.Encode(Model.UsuarioFechaIngreso) %>&nbsp;</span>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
 </p>
 <p>
     <label>N&uacute;m. de c&eacute;dula profesional</label>

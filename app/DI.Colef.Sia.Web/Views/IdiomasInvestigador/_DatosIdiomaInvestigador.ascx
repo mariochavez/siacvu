@@ -43,7 +43,7 @@
 <p>
 	<label>Fecha de evaluaci&oacute;n</label>
 	<%=Html.TextBox("FechaEvaluacion", Model.FechaEvaluacion, new { @class="datetime input100", maxlength = 10 })%>
-	<span>(Formato dd/mm/yyyy)</span>
+	<span>(Formato dd/mm/aaaa)</span>
 	<%=Html.ValidationMessage("FechaEvaluacion")%>
 </p>
 <p>

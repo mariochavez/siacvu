@@ -39,11 +39,11 @@
 </p>
 <p>
     <label>Fecha nacimiento</label>
-    <span class="valor"><%= Html.Encode(Model.FechaNacimiento)%>&nbsp;</span><span>Formato (yyyy)</span>
+    <span class="valor"><%= Html.Encode(Model.FechaNacimiento)%>&nbsp;</span><span>Formato (aaaa)</span>
 </p>
 <p>
     <label>Fecha ingreso</label>
-    <span class="valor"><%= Html.Encode(Model.FechaIngreso)%>&nbsp;</span><span>Formato (yyyy)</span>
+    <span class="valor"><%= Html.Encode(Model.FechaIngreso)%>&nbsp;</span><span>Formato (aaaa)</span>
 </p>
 <p>
     <label>Investigador</label>

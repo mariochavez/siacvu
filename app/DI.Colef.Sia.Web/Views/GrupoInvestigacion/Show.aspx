@@ -40,7 +40,7 @@
                 </p>
                 <p>
                     <label>Fecha de creaci&oacute;n</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%=Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/aaaa)</span>
                 </p>
                 
                 <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields);%>

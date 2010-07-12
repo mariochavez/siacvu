@@ -10,7 +10,7 @@
 <p>
     <label>Fecha de obtención de grado</label>
     <%=Html.TextBox("GradoAcademicoInvestigador.Fecha", Model.GradoAcademicoInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <%=Html.ValidationMessage("GradoAcademicoInvestigador.Fecha")%>
 </p>
 <p>

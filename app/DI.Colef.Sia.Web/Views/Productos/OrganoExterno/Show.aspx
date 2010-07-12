@@ -2,12 +2,9 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<OrganoExternoForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -68,12 +65,12 @@
                 <p>
                     <label>Fecha de inicio</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>                
                 <p>
                     <label>Fecha de conclusi&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Ciudad/Estado</label>

@@ -51,7 +51,7 @@
                         <label>Ingreso como investigador</label>
 
                         <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-                        <span>(Formato dd/mm/yyyy)</span>
+                        <span>(Formato dd/mm/aaaa)</span>
                         <span class="cvu"></span>
                         <%=Html.ValidationMessage("FechaIngreso")%>
                     </p>
@@ -59,7 +59,7 @@
                         <label>Fecha de contrato indeterminado</label>
 
                         <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100", maxlength = 10 })%>
-                        <span>(Formato dd/mm/yyyy)</span>
+                        <span>(Formato dd/mm/aaaa)</span>
                     </p>
                     
                     <h4>Grado Acad&eacute;mico del Investigador</h4>

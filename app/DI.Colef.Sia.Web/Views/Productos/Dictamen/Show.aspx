@@ -60,7 +60,7 @@
                 <p>
 	                <label>Fecha de dictamen</label>
 	                <span class="valor"><%= Html.Encode(Model.Form.FechaDictamen)%>&nbsp;</span>
-	                </span><span>Formato (dd/mm/yyyy)</span>
+	                </span><span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
 	                <label>Producto dictaminado</label>

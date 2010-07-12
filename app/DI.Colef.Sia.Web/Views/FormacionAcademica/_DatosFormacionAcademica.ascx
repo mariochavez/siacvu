@@ -22,7 +22,7 @@
 <p>
     <label>Fecha de obtenci&oacute;n</label>
     <%=Html.TextBox("FechaObtencion", Model.FechaObtencion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaObtencion")%>
 </p>

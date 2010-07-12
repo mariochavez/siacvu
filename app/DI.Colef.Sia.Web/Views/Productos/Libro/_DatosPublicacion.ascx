@@ -44,7 +44,7 @@
     <p>
         <label></label>
 	    <span>
-		    <%=Html.ActionLink("+ Nuevo evento", "NewEvento", new { Id = Model.Id }, new { @class = "remote get" })%>
+		    <%=Html.ActionLink("+ Agregar nuevo evento", "NewEvento", new { Id = Model.Id }, new { @class = "remote get" })%>
 	    </span>
     </p>
 </div><!--end minilistaboton-->

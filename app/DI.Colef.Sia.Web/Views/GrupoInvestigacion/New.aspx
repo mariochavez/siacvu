@@ -50,7 +50,7 @@
                 <label>Fecha de creaci&oacute;n</label>
                 <%=Html.TextBox("FechaCreacion", Model.Form.FechaCreacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
                 <span class="cvu"></span>
-                <span>(Formato dd/mm/yyyy)</span>
+                <span>(Formato dd/mm/aaaa)</span>
                 <%=Html.ValidationMessage("FechaCreacion")%>
             </p>
             
