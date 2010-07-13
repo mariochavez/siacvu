@@ -77,6 +77,8 @@
                     <% Html.RenderPartial("_AutorEntry", Model.Form); %>
                     </span>
                 </div>
+
+                <% Html.RenderPartial("_DatosFinal", Model.Form); %>
                 
                 <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 

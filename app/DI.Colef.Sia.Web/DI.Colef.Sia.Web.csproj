@@ -183,6 +183,12 @@
     <Compile Include="Views\Catalogos\Glosario\_Form.ascx.designer.cs">
       <DependentUpon>_Form.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productos\Evento\_DatosFinal.ascx.cs">
+      <DependentUpon>_DatosFinal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\Evento\_DatosFinal.ascx.designer.cs">
+      <DependentUpon>_DatosFinal.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\bg-ColumnaA.gif" />
@@ -205,6 +211,7 @@
     <Content Include="Views\Investigador\_FormacionRecursosHumanos.ascx" />
     <Content Include="Views\Investigador\_ProducccionAcademica.ascx" />
     <Content Include="Views\Productos\ArticuloDifusion\Index.aspx" />
+    <Content Include="Views\Productos\Evento\_DatosFinal.ascx" />
     <Content Include="Views\Shared\EditorialAddError.js.ascx" />
     <Content Include="Views\Usuario\ChangePais.js.ascx" />
     <Content Include="Views\Shared\HideEditorialForm.js.ascx" />
