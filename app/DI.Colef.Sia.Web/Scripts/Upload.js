@@ -3,6 +3,11 @@
     fileData: null,
     queue: null,
     setup: function (fileUpload, queue, uploader, cancelImg, uploadImg, action, auth) {
+        if (!FlashDetect.installed) {
+            $(fileUpload).html('Usted no tiene flash instalado, por lo tanto no puede adjuntar archivos.');
+            return;
+        }
+
         $(fileUpload).uploadify({
             'uploader': uploader,
             'script': action,
@@ -80,6 +85,10 @@
         setupSublistRows();
     },
     upload: function () {
+        if (!FlashDetect.installed) {
+            return;
+        }
+
         $('#uploadify').uploadifySettings(
                 'scriptData',
                 {

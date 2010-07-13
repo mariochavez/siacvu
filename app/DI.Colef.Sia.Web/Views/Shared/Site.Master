@@ -17,6 +17,7 @@
     <script src="<%= ResolveUrl("~") %>Scripts/jquery.clearfield.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/jquery.autocomplete.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/jquery.dynamicui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/flash.detect.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/swfobjects.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/jquery.uploadify.v2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/Upload.js" type="text/javascript" charset="utf-8"></script>
