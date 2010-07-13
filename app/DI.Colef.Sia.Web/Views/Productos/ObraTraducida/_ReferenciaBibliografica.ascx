@@ -5,7 +5,7 @@
     <% Html.RenderPartial("_RevistaPublicacion", Model); %>
 </div>
 <p class="Capitulo_fields">
-    <label>Nombre del libro</label>
+    <label>T&iacute;tulo del libro</label>
     <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>

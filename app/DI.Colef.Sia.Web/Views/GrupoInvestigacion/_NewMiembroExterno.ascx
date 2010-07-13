@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Nombre</label>
+    <label>Nombre(s)</label>
     <%=Html.TextBox("MiembroExterno.Nombre", Model.InvestigadorExterno.Nombre, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("MiembroExterno.Nombre")%>
 </p>

@@ -21,7 +21,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         ArticuloDifusion = 16,
         ObraTraducida = 20,
         OrganoInterno = 14,
-        Distincion = 5
+        Distincion = 5,
+        ExperienciaProfesional = 21,
+        GrupoInvestigacion = 22,
+        Idioma = 23,
+        FormacionAcademica = 24,
+        EstanciaAcademica = 25,
+        ApoyoConacyt = 26
+
     }
 
     public class EntityHelper
@@ -75,6 +82,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core
                     return TipoProductoEnum.OrganoInterno;
                 case "Distincion":
                     return TipoProductoEnum.Distincion;
+                case "ExperienciaProfesional":
+                    return TipoProductoEnum.ExperienciaProfesional;
+                case "ApoyoConacyt":
+                    return TipoProductoEnum.ApoyoConacyt;
+                case "GrupoInvestigacion":
+                    return TipoProductoEnum.GrupoInvestigacion;
+                case "Idioma":
+                    return TipoProductoEnum.Idioma;
+                case "FormacionAcademica":
+                    return TipoProductoEnum.FormacionAcademica;
+                case "EstanciaAcademica":
+                    return TipoProductoEnum.EstanciaAcademica;
+
             }
 
             return 0;

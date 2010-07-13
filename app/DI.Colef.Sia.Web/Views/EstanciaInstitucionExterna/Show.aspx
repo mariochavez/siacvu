@@ -5,18 +5,20 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+       <%=Html.ProductoShowTitle(TipoProductoEnum.EstanciaAcademica) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada de la estancia en instituci&oacute;n externa como est&aacute; en el sistema.
+            <%=Html.ProductoShowMessage(TipoProductoEnum.EstanciaAcademica) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

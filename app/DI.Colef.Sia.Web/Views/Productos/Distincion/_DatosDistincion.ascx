@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>T&iacute;tulo de la distinci&oacute;n</label>
+    <label>Nombre de la distinci&oacute;n</label>
     <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Titulo")%>

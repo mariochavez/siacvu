@@ -54,7 +54,7 @@
             
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre del art&iacute;culo</label>
+                    <label>T&iacute;tulo del art&iacute;culo</label>
                     <span class="valor"><%=Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
                 </p>
                 <p>
@@ -65,7 +65,7 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Coautores del art&iacute;culo de investigaci&oacute;n 
+                        Coautor(es) <!--del art&iacute;culo de investigaci&oacute;n -->
                         <span>
                         <%=Html.Encode(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length)%> coautor(es)
                         </span> 
@@ -106,7 +106,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
                     </p>
                 <% } %>
-                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
+                
                 
                 <p>
                     <label></label>
@@ -129,9 +129,10 @@
                         <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp;
                     </span>
                 </p>
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 <p class="submit">                    
                     <%= Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>
                 </p>

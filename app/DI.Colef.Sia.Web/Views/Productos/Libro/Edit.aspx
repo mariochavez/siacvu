@@ -46,8 +46,8 @@
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
                     <span id="coautores" class="titulovalor">
-                        <%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %>
-                    </span> del libro 
+                        <%=Model.Form.TipoProducto == 2 ? "Coodinador(es)" : Model.Form.TipoProducto == 3 ? "Compilador(es)" : "Coautor(es)" %>
+                    </span> <!--del libro -->
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoLibros.Length + Model.Form.CoautorInternoLibros.Length)%>
                     </span>
@@ -75,9 +75,9 @@
             <div class="EstatusPublicado">
                 <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             </div>
-            <% Html.RenderPartial("_EditArchivo", Model.Form); %>
-            <% Html.RenderPartial("_DatosFinal", Model.Form); %>
             
+            <% Html.RenderPartial("_DatosFinal", Model.Form); %>
+            <% Html.RenderPartial("_EditArchivo", Model.Form); %>
             <% Html.RenderPartial("_ProgressBar"); %>
 			
             <p class="submit">

@@ -6,6 +6,7 @@
         <label><%= Html.Encode(Model.InstitucionLabel) %></label>
         <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
                 new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+        <br /><span style="margin-left:165px;">(No use abreviaturas para la instituci&oacute;n)</span>
         <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre", url = Url.Action("ChangeInstitucionShort") })%>
         <%=Html.ValidationMessage("InstitucionNombre")%>
     </p>

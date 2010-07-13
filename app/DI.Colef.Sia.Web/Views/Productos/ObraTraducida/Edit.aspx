@@ -45,7 +45,7 @@
 
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length) %>">
-                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautores de la obra traducida
+                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautor(es)<!-- de la obra traducida-->
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length)%>
                         coautor(es) </span><span class="cvu"></span></a>

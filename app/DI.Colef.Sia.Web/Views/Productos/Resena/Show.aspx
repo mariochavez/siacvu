@@ -51,11 +51,11 @@
                 
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre de la publicaci&oacute;n</label>
+                    <label>T&iacute;tulo de la colaboraci&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.NombreProducto)%>&nbsp;</span>
                 </p>
                  <p>
-                    <label>Nombre del Autor</label>
+                    <label>Nombre del(la) Autor(a)</label>
                     <span class="valor"><%=Html.Encode(Model.Form.NombreAutor)%>&nbsp;</span>
                 </p>
                 <p>
@@ -66,7 +66,7 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Coautores de <span id="coautores" class="titulovalor"><%=Model.Form.TipoResena == 1 ? "la Nota cr&iacute;tica" : "la Rese&ntilde;a bibligr&aacute;fica" %></span>
+                        Coautor(es) <!-- de <span id="coautores" class="titulovalor">--<=Model.Form.TipoResena == 1 ? "la Nota cr&iacute;tica" : "la Rese&ntilde;a bibligr&aacute;fica" ></span>-->
                         <span>
                             <%=Html.Encode(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length)%> coautor(es) 
                         </span>
@@ -78,7 +78,7 @@
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, CoautoresInternos = Model.Form.CoautorInternoResenas }); %>
                 <p>
-                    <label>Investigador</label>
+                    <label>Investigador(a)</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
 					<label class="right">Posici&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
@@ -112,7 +112,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
                     </p>
                 <% } %>
-                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
+                
                 
                 <p>
                     <label>L&iacute;nea tem&aacute;tica institucional</label>
@@ -126,9 +126,10 @@
                             <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp;
                         </span>
                 </p>
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+               
                 <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 <p class="submit">
                     <%=Html.ActionLink<ResenaController>(x => x.Index(), "Regresar") %>
                 </p>

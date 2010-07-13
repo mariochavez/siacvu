@@ -11,14 +11,14 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+       <%=Html.ProductoShowTitle(TipoProductoEnum.Proyecto) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del proyecto como est&aacute; en el sistema.
+            <%=Html.ProductoShowMessage(TipoProductoEnum.Proyecto) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -49,7 +49,7 @@
                 
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
-                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigadores participantes
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigador(es) participante(s)
                         <span>
                             <%=Html.Encode(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length)%>
                             coautor(es) </span><span class="cvu"></span></a>
@@ -122,7 +122,7 @@
                             <span id="span_fechaconclusion" class="valor"><%=Html.Encode(Model.Form.ConvenioFechaConclusion)%>&nbsp;</span>
                         </p>
                         <p>
-                            <label>Termino referencia</label>
+                            <label>Término de referencia</label>
                             <span id="span_terminoreferencia" class="valor"><%=Html.Encode(Model.Form.ConvenioTerminoReferencia)%>&nbsp;</span>
                         </p>
                         <p>

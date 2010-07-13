@@ -102,7 +102,7 @@
                     <% Html.RenderPartial("_ShowSesion", Model.Form); %>
                     
                 <% } else {%>
-                    <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                   
                     
                     <p>
                         <label>Con invitaci&oacute;n</label>
@@ -129,13 +129,14 @@
 	                <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	                <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, CoautoresInternos = Model.Form.CoautorInternoEventos }); %>
                     <p>
-                        <label>Investigador</label>
+                        <label>Investigador(a)</label>
                         <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
                         <label class="right">Posici&oacute;n</label>
                         <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
                     </p>
                     </span>
 	            <% } %>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
 	            <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <p class="submit">

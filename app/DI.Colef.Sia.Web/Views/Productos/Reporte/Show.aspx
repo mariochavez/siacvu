@@ -93,7 +93,7 @@
                     <h4>Contenido del reporte t&eacute;cnico</h4>
                     <% Html.RenderPartial("_ShowReporteTecnico", Model.Form); %>
                 <% } %>
-                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
+                
                 
                 <p>
                     <label>
@@ -108,7 +108,7 @@
                         <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; </span>
                 </p>
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 <p class="submit">
                     <%=Html.ActionLink<ReporteController>(x => x.Index(), "Regresar") %>
                 </p>
