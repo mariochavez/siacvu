@@ -22,6 +22,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         void SaveCorreoElectronico(CorreoElectronico correoElectronico);
         CorreoElectronico[] GetActiveCorreosElectronicos();
 
+        //Direcciones
+        Direccion GetDireccionById(int id);
+        Direccion[] GetAllDirecciones();
+        void SaveDireccion(Direccion direccion);
+        Direccion[] GetActiveDirecciones();
+
         //Usuario
         Usuario[] GetAllUsuarios();
         Usuario GetUsuarioById(int id);

@@ -13,8 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 12; // 12 Representa Resena
 
-        public virtual int TipoProducto { get { return tipoProducto; } }
-
         public Resena()
         {
             CoautorExternoResenas = new List<CoautorExternoResena>();
@@ -25,78 +23,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivosResena = new List<ArchivoResena>();
         }
 
-        public virtual IList<ArchivoResena> ArchivosResena { get; private set; }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivosResena.Add((ArchivoResena) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivosResena.Remove((ArchivoResena) archivo);
-        }
-
-        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
-        {
-            coautorExterno.TipoProducto = tipoProducto;
-            CoautorExternoResenas.Add((CoautorExternoResena)coautorExterno);
-        }
-
-        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
-        {
-            coautorInterno.TipoProducto = tipoProducto;
-            CoautorInternoResenas.Add((CoautorInternoResena)coautorInterno);
-        }
-
-        public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
-        {
-            autorInterno.TipoProducto = tipoProducto;
-            AutorInternoResenas.Add((AutorInternoResena)autorInterno);
-        }
-        public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
-        {
-            autorExterno.TipoProducto = tipoProducto;
-            AutorExternoResenas.Add((AutorExternoResena)autorExterno);
-        }
-
-        public virtual void AddEditorial(EditorialProducto editorial)
-        {
-            editorial.TipoProducto = tipoProducto;
-            EditorialResenas.Add((EditorialResena)editorial);
-        }
-
-        public virtual void DeleteEditorial(EditorialProducto editorial)
-        {
-            EditorialResenas.Remove((EditorialResena)editorial);
-        }
-
-        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
-        {
-            CoautorInternoResenas.Remove((CoautorInternoResena)coautorInterno);
-        }
-
-        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
-        {
-            CoautorExternoResenas.Remove((CoautorExternoResena)coautorExterno);
-        }
-
-        public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
-        {
-            AutorInternoResenas.Remove((AutorInternoResena)coautorInterno);
-        }
-
-        public virtual void DeleteAutorExterno(AutorExternoProducto coautorExterno)
-        {
-            AutorExternoResenas.Remove((AutorExternoResena)coautorExterno);
-        }
-
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string NombreProducto { get; set; }
 
+        public virtual string NombreAutor { get; set; }
+
         public virtual int TipoResena { get; set; }
+
+        public virtual int TipoProducto { get { return tipoProducto; } }
 
         public virtual AreaTematica AreaTematica { get; set; }
 
@@ -119,6 +54,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
+
+        public virtual IList<ArchivoResena> ArchivosResena { get; private set; }
 
         [Valid]
         public virtual Firma Firma { get; set; }
@@ -180,5 +117,71 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosResena.Add((ArchivoResena)archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosResena.Remove((ArchivoResena)archivo);
+        }
+
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoResenas.Add((CoautorExternoResena)coautorExterno);
+        }
+
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoResenas.Add((CoautorInternoResena)coautorInterno);
+        }
+
+        public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
+        {
+            autorInterno.TipoProducto = tipoProducto;
+            AutorInternoResenas.Add((AutorInternoResena)autorInterno);
+        }
+
+        public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
+        {
+            autorExterno.TipoProducto = tipoProducto;
+            AutorExternoResenas.Add((AutorExternoResena)autorExterno);
+        }
+
+        public virtual void AddEditorial(EditorialProducto editorial)
+        {
+            editorial.TipoProducto = tipoProducto;
+            EditorialResenas.Add((EditorialResena)editorial);
+        }
+
+        public virtual void DeleteEditorial(EditorialProducto editorial)
+        {
+            EditorialResenas.Remove((EditorialResena)editorial);
+        }
+
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoResenas.Remove((CoautorInternoResena)coautorInterno);
+        }
+
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoResenas.Remove((CoautorExternoResena)coautorExterno);
+        }
+
+        public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
+        {
+            AutorInternoResenas.Remove((AutorInternoResena)coautorInterno);
+        }
+
+        public virtual void DeleteAutorExterno(AutorExternoProducto coautorExterno)
+        {
+            AutorExternoResenas.Remove((AutorExternoResena)coautorExterno);
+        }
     }
 }

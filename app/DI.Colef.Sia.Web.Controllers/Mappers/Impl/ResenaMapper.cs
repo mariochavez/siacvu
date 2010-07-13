@@ -54,6 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.Numero = message.Numero;
             model.NombreProducto = message.NombreProducto;
+            model.NombreAutor = message.NombreAutor;
             model.PaginaInicial = message.PaginaInicial;
             model.PaginaFinal = message.PaginaFinal;
             model.TituloLibro = message.TituloLibro;

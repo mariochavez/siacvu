@@ -143,10 +143,12 @@
     <Compile Include="Helpers\EventoHelper.cs" />
     <Compile Include="Helpers\ParticipacionMedioHelper.cs" />
     <Compile Include="Mappers\ICorreoElectronicoMapper.cs" />
+    <Compile Include="Mappers\IDireccionMapper.cs" />
     <Compile Include="Mappers\IGlosarioMapper.cs" />
     <Compile Include="Mappers\IInstitucionProductoMapper.cs" />
     <Compile Include="Mappers\IMiembroInternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\CorreoElectronicoMapper.cs" />
+    <Compile Include="Mappers\Impl\DireccionMapper.cs" />
     <Compile Include="Mappers\Impl\GlosarioMapper.cs" />
     <Compile Include="Mappers\Impl\InstitucionProductoMapper.cs" />
     <Compile Include="Mappers\Impl\MiembroInternoGrupoInvestigacionMapper.cs" />
@@ -155,6 +157,7 @@
     <Compile Include="Models\BaseForm.cs" />
     <Compile Include="Models\ComboForm.cs" />
     <Compile Include="Models\CorreoElectronicoForm.cs" />
+    <Compile Include="Models\DireccionForm.cs" />
     <Compile Include="Models\GlosarioForm.cs" />
     <Compile Include="Helpers\AreaRouteHelper.cs" />
     <Compile Include="Models\TelefonoForm.cs" />

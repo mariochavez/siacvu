@@ -11,16 +11,20 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Rol> rolRepository;
         readonly IRepository<Telefono> telefonoRepository;
         readonly IRepository<CorreoElectronico> correoElectronicoRepository;
+        readonly IRepository<Direccion> direccionRepository;
         readonly IRepository<Usuario> usuarioRepository;
         readonly IInvestigadorQuerying investigadorQuerying;
 
-        public UsuarioService(IRepository<Rol> rolRepository, IRepository<Telefono> telefonoRepository, IRepository<CorreoElectronico> correoElectronicoRepository,
+        public UsuarioService(IRepository<Rol> rolRepository, IRepository<Telefono> telefonoRepository, 
+            IRepository<CorreoElectronico> correoElectronicoRepository,
+            IRepository<Direccion> direccionRepository,
             IRepository<Usuario> usuarioRepository,
             IInvestigadorQuerying investigadorQuerying)
         {
             this.rolRepository = rolRepository;
             this.telefonoRepository = telefonoRepository;
             this.correoElectronicoRepository = correoElectronicoRepository;
+            this.direccionRepository = direccionRepository;
             this.usuarioRepository = usuarioRepository;
             this.investigadorQuerying = investigadorQuerying;
         }
@@ -109,6 +113,36 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return
                 ((List<CorreoElectronico>)
                  correoElectronicoRepository.FindAll(new Dictionary<string, object> {{"Activo", true}})).ToArray();
+        }
+
+        public Direccion GetDireccionById(int id)
+        {
+            return direccionRepository.Get(id);
+        }
+
+        public Direccion[] GetAllDirecciones()
+        {
+            return ((List<Direccion>) direccionRepository.GetAll()).ToArray();
+        }
+
+        public void SaveDireccion(Direccion direccion)
+        {
+            if (direccion.Id == 0)
+            {
+                direccion.Activo = true;
+                direccion.CreadoEl = DateTime.Now;
+            }
+
+            direccion.ModificadoEl = DateTime.Now;
+
+            direccionRepository.SaveOrUpdate(direccion);
+        }
+
+        public Direccion[] GetActiveDirecciones()
+        {
+            return
+                ((List<Direccion>) direccionRepository.FindAll(new Dictionary<string, object> {{"Activo", true}})).
+                    ToArray();
         }
 
         public Usuario[] GetAllUsuarios()

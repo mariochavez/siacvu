@@ -4,6 +4,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
         public string Numero { get; set; }
         public string NombreProducto { get; set; }
+        public string NombreAutor { get; set; }
         public int PaginaInicial { get; set; }
         public int PaginaFinal { get; set; }
         public string TituloLibro { get; set; }
