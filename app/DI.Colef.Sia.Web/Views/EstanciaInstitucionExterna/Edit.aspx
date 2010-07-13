@@ -5,14 +5,16 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2> <%=Html.ProductoEditTitle(TipoProductoEnum.EstanciaAcademica) %></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Para modificar la estancia en instituci&oacute;n externa utilice los siguientes campos para realizar cambios dentro del sistema.</p>
+		<p> <%=Html.ProductoEditMessage(TipoProductoEnum.EstanciaAcademica) %></p>
 	</div><!--end introduccion-->	
 </asp:Content>
 

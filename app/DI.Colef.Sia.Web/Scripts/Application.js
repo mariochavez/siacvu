@@ -221,24 +221,24 @@ var Coautores = {
         if (children > 3) {
             if (value <= 1){
                 $('#totalcoautores').text('coautor(es)');
-                $('#coautores').text('Coautores');
+                $('#coautores').text('Coautor(es)');
             }
             else if (value == 2){
                 $('#totalcoautores').text('coordinador(es)');
-                $('#coautores').text('Coordinadores');
+                $('#coautores').text('Coordinador(es)');
             }
             else if (value == 3){
                 $('#totalcoautores').text('compilador(es)');
-                $('#coautores').text('Compiladores');
+                $('#coautores').text('Compilador(es)');
             }
         } else {
             if (value <= 1){
                 $('#totalcoautores').text('coordinador(es)');
-                $('#coautores').text('Coordinadores');
+                $('#coautores').text('Coordinador(es)');
             }
             else if (value == 2){
                 $('#totalcoautores').text('compilador(es)');
-                $('#coautores').text('Compiladores');
+                $('#coautores').text('Compilador(es)');
             }
         }
     },

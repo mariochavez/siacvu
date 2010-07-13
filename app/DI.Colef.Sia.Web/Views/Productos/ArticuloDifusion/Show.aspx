@@ -61,7 +61,7 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Coautores del art&iacute;culo de difusi&oacute;n
+                        Coautor(es)<!-- del art&iacute;culo de difusi&oacute;n-->
                         <span>
                         <%=Html.Encode(Model.Form.TotalCoautores)%> coautor(es)
                         </span> 
@@ -73,7 +73,7 @@
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, CoautoresInternos = Model.Form.CoautorInternoArticulos }); %>
                 <p>
-                    <label>Investigador</label>
+                    <label>Investigador(a)</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
 					<label class="right">Posici&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
@@ -81,7 +81,7 @@
                 </span>
                 
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
-                
+                 
                 <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                     
                 <p>
@@ -101,7 +101,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
                 </p>
 
-                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
+               
                 
                 <p>
                     <label></label>
@@ -124,9 +124,10 @@
                         <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; 
                     </span>
                 </p>
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 <p class="submit">                    
                     <%= Html.ActionLink<ArticuloDifusionController>(x => x.Index(), "Regresar")%>
                 </p>

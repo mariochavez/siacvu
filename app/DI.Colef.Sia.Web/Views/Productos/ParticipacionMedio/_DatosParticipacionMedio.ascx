@@ -17,7 +17,7 @@
 </p>
 
 <p>
-	<label class="noeffect" id="libro_label">Nombre del libro</label>
+	<label class="noeffect" id="libro_label">Título del libro</label>
 	<label class="noeffect" id="investigacion_label">Nombre del proyecto de investigaci&oacute;n</label>
 	<label class="noeffect" id="notaPeriodistica_label">Nota period&iacute;stica</label>
 	<label class="noeffect" id="titulo_label">T&iacute;tulo/Tema presentado</label>
@@ -27,7 +27,7 @@
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
 
-<% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>
+
 
 <p>
     <label>Nota period&iacute;stica</label>
@@ -69,3 +69,4 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaPresentacion")%>
 </p>
+<% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>

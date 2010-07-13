@@ -3,12 +3,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
-    <label>Nombre de la publicaci&oacute;n</label>
+    <label>T&iacute;tulo de la colaboraci&oacute;n</label>
     <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 200 })%>
     <%=Html.ValidationMessage("NombreProducto")%>
 </p>
 <p>
-    <label>Nombre del Autor</label>
+    <label>Nombre del(la) Autor(a)</label>
     <%=Html.TextBox("NombreAutor", Model.NombreAutor, new { @class = "input420", maxlength = 200 })%>
     <%=Html.ValidationMessage("NombreAutor")%>
 </p>                

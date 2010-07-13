@@ -56,7 +56,7 @@
     <!-- DATOS DE LA PUBLICACION -->            
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre original de la obra</label>
+                    <label>Título original</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 <p>
@@ -64,11 +64,11 @@
                     <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre) %>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Nombre del traductor (co-traductor)</label>
+                    <label>Traductor(a)</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreCompleto) %>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Nombre de la obra en el idioma traducido</label>
+                    <label>Titulo actual</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreObraTraducida) %>&nbsp;</span>
                 </p>
                 <p>
@@ -80,7 +80,7 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Coautores de la obra traducida
+                        Coautor(es) <!--de la obra traducida-->
                         <span>
                             <%=Html.Encode(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length)%> coautor(es) 
                         </span><span class="cvu"></span>

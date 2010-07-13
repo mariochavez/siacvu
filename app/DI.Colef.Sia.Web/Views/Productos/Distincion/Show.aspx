@@ -51,7 +51,7 @@
                 
                 <h4>Datos de la distinci&oacute;n</h4>
                 <p>
-                    <label>T&iacute;tulo de la distinci&oacute;n</label>
+                    <label>Nombre de la distinci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
                 </p>
                 <p>

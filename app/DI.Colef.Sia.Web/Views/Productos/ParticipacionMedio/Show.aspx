@@ -71,7 +71,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>
                 </p>
                 
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>
                         L&iacute;nea tem&aacute;tica institucional</label>
@@ -106,7 +106,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</span>
                     <span>Formato (dd/mm/aaaa)</span>
                 </p>
-                
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 <p class="submit">
                     <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar") %>
                 </p>

@@ -4,7 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <% if(!Model.IsShowForm){ %>
     <p>
-        <label>Nombre del alumno (autor)</label>
+        <label>Nombre del(la) alumno(a)</label>
         <%=Html.TextBox("NombreAlumno", Model.NombreAlumno, new { @class = "input420-bold-requerido", maxlength = 100 })%>
         <%=Html.ValidationMessage("NombreAlumno")%>
     </p>

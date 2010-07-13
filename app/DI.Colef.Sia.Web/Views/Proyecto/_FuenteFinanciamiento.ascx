@@ -28,7 +28,7 @@
         <span id="span_fechaconclusion" class="valor"><%=Html.Encode(Model.ConvenioFechaConclusion)%>&nbsp;</span>
     </p>
     <p class="Convenio_Fields">
-        <label>Termino referencia</label>
+        <label>Término de referencia</label>
         <span id="span_terminoreferencia" class="valor"><%=Html.Encode(Model.ConvenioTerminoReferencia)%>&nbsp;</span>
     </p>
     <p class="Convenio_Fields">

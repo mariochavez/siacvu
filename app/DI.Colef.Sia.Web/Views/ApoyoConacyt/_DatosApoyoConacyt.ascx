@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
-    <label>Nombre</label>
+    <label>Nombre del apoyo</label>
     <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-requerido", maxlength = 50 })%>
     <%=Html.ValidationMessage("Nombre") %>
 </p>

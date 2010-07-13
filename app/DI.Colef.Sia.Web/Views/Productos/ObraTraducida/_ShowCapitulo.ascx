@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Nombre del libro</label>
+    <label>T&iacute;tulo del libro</label>
     <span class="valor"><%= Html.Encode(Model.NombreLibro)%>&nbsp;</span>
 </p>
 
@@ -12,7 +12,7 @@
 <% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
 <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, AutoresInternos = Model.AutorInternoObraTraducidas }); %>
 <p>
-    <label>Investigador</label>
+    <label>Investigador(a)</label>
     <span class="valor"><%=Html.Encode(Model.InvestigadorNombre) %></span>
 </p>
 <p>
@@ -20,7 +20,7 @@
     <span id="totalautores" class="valor"><%=Html.Encode(Model.TotalAutores) %></span>	          
 </p>
 <p>
-    <label>Posici&oacute;n del autor</label>
+    <label>Posici&oacute;n del(la) autor(a)</label>
     <span class="valor"><%=Html.Encode(Model.PosicionAutor)%>&nbsp;</span>
 </p>
 
