@@ -69,11 +69,11 @@
 			        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 			    </div>
                 
-                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
+               
 
                 <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
-				
+				 <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 				<% Html.RenderPartial("_ProgressBar"); %>
 		
 	            <p class="submit">

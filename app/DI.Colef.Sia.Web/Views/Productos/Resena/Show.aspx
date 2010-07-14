@@ -91,7 +91,7 @@
                     <h4>Referencia de la obra rese&ntilde;ada</h4>
                     <% Html.RenderPartial("_ShowObraResenada", Model.Form); %>
                 <% } %>
-                
+                <h4>Datos de la revista</h4>
                 <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                 
                 <% if (Model.Form.EstadoProducto == 3){ %> 

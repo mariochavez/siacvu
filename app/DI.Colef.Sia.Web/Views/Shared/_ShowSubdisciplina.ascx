@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<h4>&Aacute;rea del conocimiento (CONACyT)</h4>
+<h5>CONACyT</h5>
 <% if(!Model.IsShowForm){ %>
     <p>
         <label>&Aacute;rea</label>

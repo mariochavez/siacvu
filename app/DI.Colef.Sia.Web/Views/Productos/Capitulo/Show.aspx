@@ -39,7 +39,7 @@
         <div id="forma">
             <div id="campos">
             
-            <h4>Datos del investigador</h4>
+            <!--<h4>Datos del investigador</h4>
                 <p>
                     <label>Nombre</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %>&nbsp;</span>
@@ -52,7 +52,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
-                
+                -->
     <!-- DATOS DE LA PUBLICACION -->            
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
@@ -102,7 +102,7 @@
 	            <% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, AutorSeOrdenaAlfabeticamente = Model.Form.AutorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, AutoresInternos = Model.Form.AutorInternoCapitulos }); %>
                 <p>
-                    <label>Investigador</label>
+                    <label>Investigador(a)</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
                 </p>
 	            <p>

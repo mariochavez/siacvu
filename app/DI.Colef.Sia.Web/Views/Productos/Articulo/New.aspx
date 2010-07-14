@@ -76,7 +76,7 @@
 	           
 
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
-				 <% Html.RenderPartial("_EditArchivo", Model.Form); %>
+				<% Html.RenderPartial("_EditArchivo", Model.Form); %>
 				<% Html.RenderPartial("_ProgressBar"); %>
             
 	            <p class="submit">
