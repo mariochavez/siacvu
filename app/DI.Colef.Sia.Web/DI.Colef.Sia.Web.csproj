@@ -183,12 +183,6 @@
     <Compile Include="Views\Catalogos\Glosario\_Form.ascx.designer.cs">
       <DependentUpon>_Form.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Productos\Evento\_DatosFinal.ascx.cs">
-      <DependentUpon>_DatosFinal.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Productos\Evento\_DatosFinal.ascx.designer.cs">
-      <DependentUpon>_DatosFinal.ascx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\bg-ColumnaA.gif" />
