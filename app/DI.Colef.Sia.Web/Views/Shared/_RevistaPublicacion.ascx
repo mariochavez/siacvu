@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<BaseForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos" %>
+<h4>Datos de la revista</h4>
 <p>
     <label>Nombre de la revista</label>
     <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,

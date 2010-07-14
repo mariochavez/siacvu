@@ -39,7 +39,7 @@
         <div id="forma">
             <div id="campos">
             
-            <h4>Datos del investigador</h4>
+            <%--<h4>Datos del investigador</h4>
 	            <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%>&nbsp;</span>
@@ -51,13 +51,17 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 
     <!-- DATOS DE LA PUBLICACION -->            
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
                     <label>Título original</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Titulo actual</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreObraTraducida) %>&nbsp;</span>
                 </p>
                 <p>
                     <label>Idioma al que se tradujo</label>
@@ -67,10 +71,7 @@
                     <label>Traductor(a)</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreCompleto) %>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Titulo actual</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NombreObraTraducida) %>&nbsp;</span>
-                </p>
+               
                 <p>
                     <label>Tipo de publicaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.TipoObraTraducida(Model.Form.TipoObraTraducida) %>&nbsp;</span>

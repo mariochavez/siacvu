@@ -38,7 +38,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+                <%--<h4>Datos del investigador</h4>
                 <p>
                     <label>Nombre</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %>&nbsp;</span>
@@ -56,7 +56,7 @@
                 <p>
                     <label>T&iacute;tulo del art&iacute;culo</label>
                     <span class="valor"><%=Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
@@ -102,7 +102,9 @@
                 </p>
 
                
-                
+                <h4>&aacute;rea del conocimiento</h4>
+                <h5>El Colef</h5>
+
                 <p>
                     <label></label>
                     <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>

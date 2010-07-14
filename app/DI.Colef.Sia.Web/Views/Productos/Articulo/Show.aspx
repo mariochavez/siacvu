@@ -38,7 +38,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+               <%-- <h4>Datos del investigador</h4>
                 <p>
                     <label>Nombre</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %>&nbsp;</span>
@@ -50,7 +50,7 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%=Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
             
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
@@ -77,7 +77,7 @@
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, CoautoresInternos = Model.Form.CoautorInternoArticulos }); %>
                 <p>
-                    <label>Investigador</label>
+                    <label>Investigador(a)</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
                     <label class="right">Posici&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
@@ -107,6 +107,8 @@
                     </p>
                 <% } %>
                 
+                <h4>&aacute;rea del conocimiento</h4>
+                <h4>El Colef</h4>
                 
                 <p>
                     <label></label>

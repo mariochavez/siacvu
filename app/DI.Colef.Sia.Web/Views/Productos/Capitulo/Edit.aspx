@@ -45,7 +45,7 @@
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                    Coautores del cap&iacute;tulo
+                    Coautor(es) del cap&iacute;tulo
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%> coautor(es) 
                     </span>

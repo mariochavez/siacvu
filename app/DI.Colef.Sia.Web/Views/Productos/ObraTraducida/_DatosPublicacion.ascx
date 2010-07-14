@@ -7,6 +7,11 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
+    <label>T&iacute;tulo actual</label>
+    <%=Html.TextBox("NombreObraTraducida", Model.NombreObraTraducida, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("NombreObraTraducida")%>
+</p>
+<p>
     <label>Idioma al que se tradujo</label>
     <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
@@ -29,11 +34,7 @@
     <%=Html.TextBox("ApellidoMaterno", Model.ApellidoMaterno, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("ApellidoMaterno")%>
 </p>
-<p>
-    <label>T&iacute;tulo actual</label>
-    <%=Html.TextBox("NombreObraTraducida", Model.NombreObraTraducida, new { @class = "input420-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("NombreObraTraducida")%>
-</p>
+
 <p>
     <label>Tipo de publicaci&oacute;n</label>
     <%=Html.DropDownList("TipoObraTraducida", Model.TiposObraTraducidas.CreateSelectList<CustomSelectForm>("Id", "Nombre"),

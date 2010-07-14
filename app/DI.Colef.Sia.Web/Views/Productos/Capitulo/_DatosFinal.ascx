@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CapituloForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
+<h4>&aacute;rea del conocimiento</h4>
+<h5>El Colef</h5>
 <p>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto)%> ¿Existe proyecto de investigaci&oacute;n de referencia?
     <br />
