@@ -109,7 +109,8 @@
                     <% Html.RenderPartial("_ShowCapitulo", Model.Form); %>
                 <% } %>
                 <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
-                
+                <h4>&aacute;rea del conocimiento</h4>
+                <h5>El Colef</h5>
                 <p>
                     <label>
                         L&iacute;nea tem&aacute;tica institucional</label>

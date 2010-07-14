@@ -36,7 +36,7 @@
     <%=Html.ValidationMessage("NotaPeriodistica")%>
 </p>
 
-<% Html.RenderPartial("_LineaAreaTematica", Model); %>
+
 
 <p>
 	<label>Instituci&oacute;n responsable/Nombre del medio</label>
@@ -69,4 +69,6 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaPresentacion")%>
 </p>
+<h4>&aacute;rea del conocimiento</h4>
+<% Html.RenderPartial("_LineaAreaTematica", Model); %>
 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>

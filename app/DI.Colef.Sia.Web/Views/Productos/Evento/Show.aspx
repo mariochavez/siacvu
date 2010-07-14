@@ -35,7 +35,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+               <%-- <h4>Datos del investigador</h4>
                 <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%>&nbsp;</span>
@@ -47,25 +47,14 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 <h4>Eventos acad&eacute;micos</h4>
                 <p>
                     <label>Nombre del evento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 
-                <p>
-                    <label>
-                        L&iacute;nea tem&aacute;tica institucional</label>
-                    <span class="valor">
-                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; </span>
-                </p>
-                <p>
-                    <label>
-                        &Aacute;rea tem&aacute;tica institucional</label>
-                    <span class="valor">
-                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; </span>
-                </p>
+               
                 
                 <p>
                     <label>Tipo de evento</label>
@@ -135,7 +124,21 @@
                         <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
                     </p>
                     </span>
-	            <% } %>
+	            <% } %> 
+                <h4>&aacute;rea del conocimiento</h4>
+                <h5>El Colef</h5>
+                <p>
+                    <label>
+                        L&iacute;nea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; </span>
+                </p>
+                <p>
+                    <label>
+                        &Aacute;rea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; </span>
+                </p>
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
 	            <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 

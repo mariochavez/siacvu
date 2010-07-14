@@ -35,7 +35,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+               <!-- <h4>Datos del investigador</h4>
                 <p>
                     <label>Nombre</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %>&nbsp;</span>
@@ -48,7 +48,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
-                
+                -->
     <!--DATOS PUBLICACION-->
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
@@ -158,7 +158,8 @@
                 <% if (Model.Form.TieneProyecto) { %>                    
                     <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                 <% } %>
-                
+                <h4>&aacute;rea del conocimiento</h4>
+                <h5>El Colef</h5>
                 <p>
                     <label>L&iacute;nea tem&aacute;tica institucional</label>
                     <span class="valor">
