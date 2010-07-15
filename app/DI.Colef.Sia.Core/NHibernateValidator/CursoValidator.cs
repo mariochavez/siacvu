@@ -27,11 +27,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var curso = value as Curso;
 
             if (!curso.IsTransient())
-            {/*
+            {
+                /*
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.ProgramaEstudio, "ProgramaEstudioNombre",
                                                          constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.Institucion, "InstitucionNombre",
                                                          constraintValidatorContext);
+                
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.NivelEstudio, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.NumeroHoras, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.Pais, constraintValidatorContext);
@@ -102,12 +104,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                         isValid = false;
                     }
 
-                    if (curso.Institucion == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo, vacío o cero|InstitucionNombre", "InstitucionNombre");
-                        isValid = false;
-                    }
+                    //if (curso.Institucion == null)
+                    //{
+                    //    constraintValidatorContext.AddInvalid(
+                    //        "no debe ser nulo, vacío o cero|InstitucionNombre", "InstitucionNombre");
+                    //    isValid = false;
+                    //}
 
                     isValid &= ValidateTipoCursoDiplomado(curso, constraintValidatorContext);
                 }

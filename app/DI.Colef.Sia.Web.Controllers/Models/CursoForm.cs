@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CursoForm : BaseForm
@@ -17,9 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool TieneConvenio { get; set; }
         public bool PertenecePNPC { get; set; }
         public bool EsPrivada { get; set; }
-
-        public string InstitucionNombre { get; set; }
-        public int InstitucionId { get; set; }
 
         public int NivelEstudio { get; set; }
         public int NivelEstudioId { get; set; }
@@ -43,8 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int CursoInvestigadorId { get; set; }
         public string CursoInvestigadorNombre { get; set; }
-
-        public bool IsShowForm { get; set; }
 
         public ArchivoForm[] ArchivosCurso { get; set; }
 
