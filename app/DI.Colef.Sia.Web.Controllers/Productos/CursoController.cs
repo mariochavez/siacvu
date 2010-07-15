@@ -317,6 +317,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     cursoInvestigadorMapper.Map(
                         cursoInvestigadorService.GetCursoInvestigadorById(form.CursoInvestigadorId));
 
+            form.InstitucionLabel = "Institución";
             form.IsShowForm = false;
 
             return form;

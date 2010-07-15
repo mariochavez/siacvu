@@ -38,6 +38,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                Title = "Menú"
                            };
 
+            var currentUser = CurrentUser();
+
+            Session["nombreCompleto"] = string.Format("{0} {1} {2}", currentUser.Nombre,
+                                                               currentUser.ApellidoPaterno, currentUser.ApellidoMaterno);
+
             return View(data);
         }
 

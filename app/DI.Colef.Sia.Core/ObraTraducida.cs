@@ -13,8 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 20; // 20 Representa Obra Traducida
 
-        public virtual int TipoProducto { get { return tipoProducto; } }
-
 		public ObraTraducida()
 		{
             CoautorExternoObraTraducidas = new List<CoautorExternoObraTraducida>();
@@ -25,73 +23,33 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivosObraTraducida = new List<ArchivoObraTraducida>();
 		}
 
+        [DomainSignature]
+        [NotNullNotEmpty]
+        public virtual string Nombre { get; set; }
+
+        public virtual Idioma Idioma { get; set; }
+
+        public virtual string NombreTraductor { get; set; }
+
+        public virtual string ApellidoPaterno { get; set; }
+
+        public virtual string ApellidoMaterno { get; set; }
+
+        public virtual string NombreObraTraducida { get; set; }
+
+        public virtual int TipoObraTraducida { get; set; }
+
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
+        public virtual AreaTematica AreaTematica { get; set; }
+
         public virtual IList<ArchivoObraTraducida> ArchivosObraTraducida { get; private set; }
 
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivosObraTraducida.Add((ArchivoObraTraducida) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivosObraTraducida.Remove((ArchivoObraTraducida) archivo);
-        }
-
-        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
-        {
-            coautorExterno.TipoProducto = tipoProducto;
-            CoautorExternoObraTraducidas.Add((CoautorExternoObraTraducida)coautorExterno);
-        }
-
-        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
-        {
-            coautorInterno.TipoProducto = tipoProducto;
-            CoautorInternoObraTraducidas.Add((CoautorInternoObraTraducida)coautorInterno);
-        }
-        public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
-        {
-            autorInterno.TipoProducto = tipoProducto;
-            AutorInternoObraTraducidas.Add((AutorInternoObraTraducida)autorInterno);
-        }
-        public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
-        {
-            autorExterno.TipoProducto = tipoProducto;
-            AutorExternoObraTraducidas.Add((AutorExternoObraTraducida)autorExterno);
-        }
-
-        public virtual void AddEditorial(EditorialProducto editorial)
-        {
-            editorial.TipoProducto = tipoProducto;
-            EditorialObraTraducidas.Add((EditorialObraTraducida)editorial);
-        }
-
-        public virtual void DeleteEditorial(EditorialProducto editorial)
-        {
-            EditorialObraTraducidas.Remove((EditorialObraTraducida)editorial);
-        }
-
-        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
-        {
-            CoautorInternoObraTraducidas.Remove((CoautorInternoObraTraducida)coautorInterno);
-        }
-
-        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
-        {
-            CoautorExternoObraTraducidas.Remove((CoautorExternoObraTraducida)coautorExterno);
-        }
-
-        public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
-        {
-            AutorInternoObraTraducidas.Remove((AutorInternoObraTraducida)coautorInterno);
-        }
-
-        public virtual void DeleteAutorExterno(AutorExternoProducto coautorExterno)
-        {
-            AutorExternoObraTraducidas.Remove((AutorExternoObraTraducida)coautorExterno);
-        }
-
         public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
+        public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
+
+        public virtual int PosicionAutor { get; set; }
 
         [Valid]
         public virtual IList<CoautorExternoObraTraducida> CoautorExternoObraTraducidas { get; private set; }
@@ -102,36 +60,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual Firma Firma { get; set; }
 
-        public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
-
         [Valid]
         public virtual IList<AutorInternoObraTraducida> AutorInternoObraTraducidas { get; private set; }
 
         [Valid]
-        public virtual IList<AutorExternoObraTraducida> AutorExternoObraTraducidas { get; private set; }
-
-        public virtual int PosicionAutor { get; set; }
+        public virtual IList<AutorExternoObraTraducida> AutorExternoObraTraducidas { get; private set; }     
 
         [Valid]
         public virtual IList<EditorialObraTraducida> EditorialObraTraducidas { get; private set; }
-
-		[DomainSignature]
-		[NotNullNotEmpty]
-		public virtual string Nombre { get; set; }
-
-		public virtual Idioma Idioma { get; set; }
-
-		public virtual string NombreTraductor { get; set; }
-
-		public virtual string ApellidoPaterno { get; set; }
-
-		public virtual string ApellidoMaterno { get; set; }
-
-		public virtual string NombreObraTraducida { get; set; }
-
-		public virtual int TipoObraTraducida { get; set; }
-
-		public virtual AreaTematica AreaTematica { get; set; }
 
 		public virtual string PalabraClave1 { get; set; }
 
@@ -185,6 +121,72 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Sede Sede { get; set; }
 
         public virtual int PosicionCoautor { get; set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosObraTraducida.Add((ArchivoObraTraducida)archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosObraTraducida.Remove((ArchivoObraTraducida)archivo);
+        }
+
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoObraTraducidas.Add((CoautorExternoObraTraducida)coautorExterno);
+        }
+
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoObraTraducidas.Add((CoautorInternoObraTraducida)coautorInterno);
+        }
+
+        public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
+        {
+            autorInterno.TipoProducto = tipoProducto;
+            AutorInternoObraTraducidas.Add((AutorInternoObraTraducida)autorInterno);
+        }
+
+        public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
+        {
+            autorExterno.TipoProducto = tipoProducto;
+            AutorExternoObraTraducidas.Add((AutorExternoObraTraducida)autorExterno);
+        }
+
+        public virtual void AddEditorial(EditorialProducto editorial)
+        {
+            editorial.TipoProducto = tipoProducto;
+            EditorialObraTraducidas.Add((EditorialObraTraducida)editorial);
+        }
+
+        public virtual void DeleteEditorial(EditorialProducto editorial)
+        {
+            EditorialObraTraducidas.Remove((EditorialObraTraducida)editorial);
+        }
+
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoObraTraducidas.Remove((CoautorInternoObraTraducida)coautorInterno);
+        }
+
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoObraTraducidas.Remove((CoautorExternoObraTraducida)coautorExterno);
+        }
+
+        public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
+        {
+            AutorInternoObraTraducidas.Remove((AutorInternoObraTraducida)coautorInterno);
+        }
+
+        public virtual void DeleteAutorExterno(AutorExternoProducto coautorExterno)
+        {
+            AutorExternoObraTraducidas.Remove((AutorExternoObraTraducida)coautorExterno);
+        }
 
 		public virtual Usuario CreadoPor { get; set; }
 

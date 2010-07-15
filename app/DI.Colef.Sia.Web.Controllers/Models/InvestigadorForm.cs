@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
@@ -17,7 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Usuario { get; set; }
         public int UsuarioId { get; set; }
-        public string UsuarioDireccion { get; set; }
         public string UsuarioEstadoCivil { get; set; }
         public string UsuarioFechaNacimiento { get; set; }
         public string UsuarioDocumentosIdentidad { get; set; }
@@ -28,6 +28,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string UsuarioFechaIngreso { get; set; }
         public string UsuarioCedulaProfesional { get; set; }
         public string UsuarioCodigoRH { get; set; }
+
+        public IList<DireccionForm> UsuarioDirecciones { get; set; }
+        public IList<CorreoElectronicoForm> UsuarioCorreosElectronicos { get; set; }
+        public IList<TelefonoForm> UsuarioTelefonos { get; set; }
 
         public string Nombre { 
             get

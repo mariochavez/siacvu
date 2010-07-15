@@ -1,11 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InvestigadorForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 
-<p>
-    <label>Direcci&oacute;n</label>
-    <span id="direccion" class="valor"><%=Html.Encode(Model.UsuarioDireccion) %>&nbsp;</span>
-</p>
 <p>
     <label>Estado civil</label>
     <span id="estadocivil" class="valor"><%=Html.Encode(Model.UsuarioEstadoCivil) %>&nbsp;</span>
@@ -48,3 +45,13 @@
     <label>C&oacute;digo RH</label>
     <span id="codigorh" class="valor"><%=Html.Encode(Model.UsuarioCodigoRH) %>&nbsp;</span>
 </p>	
+
+<% Html.RenderPartial("_ShowDirecciones", Model.UsuarioDirecciones); %>
+
+<% Html.RenderPartial("_ShowCorreosElectronicos", Model.UsuarioCorreosElectronicos); %>
+
+<% Html.RenderPartial("_ShowTelefonos", Model.UsuarioTelefonos); %>
+
+<p class="submit">
+    <%=Html.ActionLink<UsuarioController>(x => x.Edit(Model.UsuarioId), "Editar informacion personal") %>
+</p>
