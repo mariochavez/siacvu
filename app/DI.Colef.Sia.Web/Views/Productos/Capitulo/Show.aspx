@@ -140,7 +140,8 @@
                     </p>
                 <% } %>
                
-                
+                <h4>&aacute;rea del conocimiento</h4>
+                <h5>El Colef</h5>
                 <p>
                     <label></label>
                     <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>

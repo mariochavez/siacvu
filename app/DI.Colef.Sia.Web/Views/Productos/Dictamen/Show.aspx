@@ -38,7 +38,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+                <%--<h4>Datos del investigador</h4>
 	            <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%>&nbsp;</span>
@@ -50,7 +50,7 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 <h4>Datos del dictamen</h4>
                 <p>
 	                <label>

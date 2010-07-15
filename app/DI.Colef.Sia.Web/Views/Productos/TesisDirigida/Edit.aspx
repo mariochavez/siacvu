@@ -59,6 +59,7 @@
                     <h4>Datos de la tesis presentada</h4>
                     <% Html.RenderPartial("_ShowTesisExterna", Model.Form); %>
                 </div>
+                <h4>&aacute;rea del conocimiento</h4>
                 
                 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 

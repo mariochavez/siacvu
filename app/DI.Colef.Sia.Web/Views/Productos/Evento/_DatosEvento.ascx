@@ -9,8 +9,6 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 
-<% Html.RenderPartial("_LineaAreaTematica", Model); %>
-
 <p>
     <label>Tipo de evento</label>
     <%=Html.DropDownList("TipoEvento", Model.TiposEventos.CreateSelectList<TipoEventoForm>("Id", "Nombre"),

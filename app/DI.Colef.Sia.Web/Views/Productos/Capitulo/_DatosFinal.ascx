@@ -10,7 +10,7 @@
 <div id="tieneproyecto_field">
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false }); %>
 </div>
-
+<h4>&aacute;rea del conocimiento</h4>
 <% Html.RenderPartial("_LineaAreaTematica", Model); %>
 
 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Areas, Disciplinas = Model.Disciplinas, Subdisciplinas = Model.Subdisciplinas, IsShowForm = false }); %>
