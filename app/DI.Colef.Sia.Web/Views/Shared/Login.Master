@@ -7,7 +7,7 @@
 <head id="Header" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
-    <link href="<%= ResolveUrl("~") %>Content/Site.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<%= ResolveUrl("~") %>Content/Login.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="<%= ResolveUrl("~") %>Content/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="screen"/>
     <link href="<%= ResolveUrl("~") %>Content/jquery.autocomplete.css" rel="stylesheet" type="text/css" media="screen"/>
     
@@ -36,7 +36,7 @@
 		<div id="contenido">
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
             			
-            <asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
+           <asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
 		</div><!--end contenido-->			
 		
 		<div id="pie">
