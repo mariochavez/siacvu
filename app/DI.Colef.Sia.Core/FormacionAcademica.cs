@@ -20,6 +20,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaObtencion { get; set; }
 
+        public virtual string InstitucionNombre { get; set; }
+
         public virtual Institucion Institucion { get; set; }
 
         public virtual string TituloTesis { get; set; }
