@@ -172,6 +172,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
             form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
 
+            form.IsShowForm = false;
+            form.InstitucionLabel = "Institución de destino";
+
             return form;
         }
 

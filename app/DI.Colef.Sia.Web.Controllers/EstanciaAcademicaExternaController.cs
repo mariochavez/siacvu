@@ -122,7 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaAcademicaExternaService.SaveEstanciaAcademicaExterna(estanciaAcademicaExterna);
             SetMessage(String.Format("Estancia académica externa {0} ha sido creada",
-                                     estanciaAcademicaExterna.Institucion.Nombre));
+                                     estanciaAcademicaExterna.InstitucionNombre));
 
             return Rjs("Save", estanciaAcademicaExterna.Id);
         }
@@ -142,7 +142,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             }
 
             estanciaAcademicaExternaService.SaveEstanciaAcademicaExterna(estanciaAcademicaExterna, true);
-            SetMessage(String.Format("Estancia académica externa {0} ha sido modificada", estanciaAcademicaExterna.Institucion.Nombre));
+            SetMessage(String.Format("Estancia académica externa {0} ha sido modificada", estanciaAcademicaExterna.InstitucionNombre));
 
             return Rjs("Save", estanciaAcademicaExterna.Id);
         }
@@ -185,6 +185,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
             form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
 
+            form.IsShowForm = false;
+            form.InstitucionLabel = "Institución de procedencia";
+
             return form;
         }
 
@@ -206,11 +209,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
                                       InstitucionCiudad = form.Institucion.Ciudad,
-                                      InstitucionNombre = form.Institucion.Nombre,
-
-                                      IsShowForm = true,
-                                      InstitucionLabel = "Institución de procedencia"
+                                      InstitucionNombre = form.Institucion.Nombre                             
                                   };
+
+            form.IsShowForm = true;
+            form.InstitucionLabel = "Institución de procedencia";
 
             return form;
         }

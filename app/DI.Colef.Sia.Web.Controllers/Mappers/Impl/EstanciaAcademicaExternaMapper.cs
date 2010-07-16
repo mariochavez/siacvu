@@ -37,6 +37,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
             model.Sede = catalogoService.GetSedeById(message.Sede);
+
+            var institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            if (institucion != null && string.Compare(institucion.Nombre, message.InstitucionNombre) >= 0)
+            {
+                model.Institucion = institucion;
+                model.InstitucionNombre = string.Empty;
+            }
+            else
+            {
+                model.InstitucionNombre = message.InstitucionNombre;
+                model.Institucion = null;
+            }
         }
 
         public EstanciaAcademicaExterna Map(EstanciaAcademicaExternaForm message, Usuario usuario)
@@ -52,6 +64,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.ModificadoPor = usuario;
 
             return model;
+        }
+
+        public override EstanciaAcademicaExternaForm Map(EstanciaAcademicaExterna model)
+        {
+            var message = base.Map(model);
+
+            if (message.InstitucionId > 0)
+                message.InstitucionNombre = model.Institucion.Nombre;
+
+            return message;
         }
     }
 }
