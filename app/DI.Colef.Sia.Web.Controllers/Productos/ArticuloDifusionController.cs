@@ -41,9 +41,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                           IInvestigadorExternoMapper investigadorExternoMapper,
                                           IArchivoService archivoService,
                                           IInvestigadorService investigadorService,
-                                          IProductoService productoService
+                                          IProductoService productoService,
+                                          IPaisMapper paisMapper
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
+            base.paisMapper = paisMapper;
+
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.articuloService = articuloService;
             this.articuloMapper = articuloMapper;
@@ -515,6 +518,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
             form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+
             if (form.Id == 0)
             {
                 form.CoautorExternoArticulos = new CoautorExternoProductoForm[] {};
@@ -548,6 +553,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             ViewData["LineaTematicaId"] = form.LineaTematicaId;
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
+
+            ViewData["Pais"] = form.PaisId;
         }
 
         static ArticuloDifusionForm SetupShowForm(ArticuloDifusionForm form)

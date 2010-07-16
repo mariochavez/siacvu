@@ -152,6 +152,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<YearDateFormatter>());
 
