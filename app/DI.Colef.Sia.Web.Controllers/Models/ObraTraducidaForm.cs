@@ -35,6 +35,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PosicionAutor { get; set; }
         public int NoPaginas { get; set; }
 
+        public int Pais { get; set; }
+        public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
+
         public int Idioma { get; set; }
         public int IdiomaId { get; set; }
         public string IdiomaNombre { get; set; }
@@ -100,5 +104,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public IdiomaForm[] Idiomas { get; set; }
         public CustomSelectForm[] Reimpresiones { get; set; }
         public CustomSelectForm[] Ediciones { get; set; }
+        public PaisForm[] Paises { get; set; }
     }
 }

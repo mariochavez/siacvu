@@ -27,6 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Nombre { get; set; }
 
+        public virtual Pais Pais { get; set; }
+
         public virtual Idioma Idioma { get; set; }
 
         public virtual string NombreTraductor { get; set; }
