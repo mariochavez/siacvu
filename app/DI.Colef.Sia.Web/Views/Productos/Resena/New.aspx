@@ -6,7 +6,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -75,6 +74,13 @@
                 <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <%=Html.DropDownList("Pais", Model.Form.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+                    <span class="cvu"></span>
+                    <%=Html.ValidationMessage("Pais") %>
+                </p>
 
                 <h4>&aacute;rea del conocimiento</h4>
                 
