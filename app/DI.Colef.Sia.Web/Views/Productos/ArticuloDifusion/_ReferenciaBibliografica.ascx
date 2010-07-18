@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ArticuloDifusionForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 
 <%--<% Html.RenderPartial("_RevistaPublicacion", Model); %>--%>

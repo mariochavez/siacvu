@@ -112,6 +112,12 @@
                         <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
                     </p>
                 <% } %>
+                 
+                <p>    
+                    <label>Pa&iacute;s</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span> 
+                </p>
+
                 <h4>&aacute;rea del conocimiento</h4>
                 <h5>El Colef</h5>
                 <p>

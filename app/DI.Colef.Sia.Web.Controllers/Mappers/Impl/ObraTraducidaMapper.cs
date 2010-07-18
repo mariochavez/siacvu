@@ -80,6 +80,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
             model.AutorSeOrdenaAlfabeticamente = message.AutorSeOrdenaAlfabeticamente;
             model.NoPaginas = message.NoPaginas;
+            model.Pais = catalogoService.GetPaisById(message.Pais);
 
             if (model.Usuario == null || model.Usuario == usuarioObraTraducida)
             {

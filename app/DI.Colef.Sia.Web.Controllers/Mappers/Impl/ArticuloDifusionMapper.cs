@@ -13,7 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly IProyectoService proyectoService;
-        private Usuario usuarioArticulo = null;
+        private Usuario usuarioArticulo;
 
         public ArticuloDifusionMapper(IRepository<ArticuloDifusion> repository,
                               ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
@@ -56,6 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PaginaFinal = message.PaginaFinal;
             model.TipoArticulo = message.TipoArticulo;
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
+            model.Pais = catalogoService.GetPaisById(message.Pais);
 
             if (model.Usuario == null || model.Usuario == usuarioArticulo)
                 model.PosicionCoautor = message.PosicionCoautor;

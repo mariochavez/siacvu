@@ -1,13 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ArticuloDifusionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -38,26 +35,6 @@
 
         <div id="forma">
             <div id="campos">
-                <%--<h4>Datos del investigador</h4>
-                <p>
-                    <label>Nombre</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %>&nbsp;</span>
-                </p>
-	            <p>
-                    <label>Departamento</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Sede</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
-            
-                <h4>Datos de la publicaci&oacute;n</h4>
-                <p>
-                    <label>T&iacute;tulo del art&iacute;culo</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
-                </p>--%>
-                
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
@@ -83,6 +60,11 @@
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                  
                 <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
+                </p>
                     
                 <p>
                     <label>Volumen</label>

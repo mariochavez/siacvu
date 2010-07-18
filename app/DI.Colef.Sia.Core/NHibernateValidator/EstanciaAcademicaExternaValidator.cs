@@ -34,8 +34,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<EstanciaAcademicaExterna>(estanciaAcademicaExterna, x => x.FechaFinal, constraintValidatorContext);
             }
 
-            isValid &= !ValidateIsNullOrEmpty<EstanciaAcademicaExterna>(estanciaAcademicaExterna, x => x.Institucion, "InstitucionNombre",
-                                               constraintValidatorContext);
+            //isValid &= !ValidateIsNullOrEmpty<EstanciaAcademicaExterna>(estanciaAcademicaExterna, x => x.Institucion, "InstitucionNombre",
+            //                                   constraintValidatorContext);
 
             isValid &= ValidateFechaInicialFinal(estanciaAcademicaExterna, constraintValidatorContext);
 
