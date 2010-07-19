@@ -42,6 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
             model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
             model.AreaInvestigacion = catalogoService.GetAreaInvestigacionById(message.AreaInvestigacion);
+            model.Pais = catalogoService.GetPaisById(message.Pais);
         }
     }
 }
