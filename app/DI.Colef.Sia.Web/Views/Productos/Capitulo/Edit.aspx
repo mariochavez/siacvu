@@ -88,7 +88,7 @@
     
     	<% if(User.IsInRole("DGAA")){ %>    
         	<% Html.RenderPartial("_FirmaForm", new FirmaForm{Id = Model.Form.Id, IdName = "ArticuloId", Controller = "Articulo", TipoProducto = 1}); %>
-        <% } %>Compiladores
+        <% } %>
             
 	</div><!--end textos-->
     
