@@ -83,7 +83,10 @@
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
                 <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                    
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
+                </p>                    
                 <p>
                     <label>Volumen</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>

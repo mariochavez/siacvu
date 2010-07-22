@@ -125,5 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+
+        public virtual Pais Pais { get; set; }
     }
 }

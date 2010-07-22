@@ -39,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Colaboracion = message.Colaboracion;
             model.Administracion = message.Administracion;
             model.ProgramaRegistrado = message.ProgramaRegistrado;
+            model.NombreLider = message.NombreLider;
 
 		    model.FechaCreacion = message.FechaCreacion.FromShortDateToDateTime();
 

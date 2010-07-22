@@ -115,7 +115,12 @@
                         <label>T&iacute;tulo del trabajo</label>
                         <span class="valor"><%= Html.Encode(Model.Form.TituloTrabajo)%>&nbsp;</span>
                     </p>
-                    
+                     <p>                       
+                        <label>Fechas del evento</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span> a 
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
+                        <span class="cvu"></span> 
+                    </p>                   
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>

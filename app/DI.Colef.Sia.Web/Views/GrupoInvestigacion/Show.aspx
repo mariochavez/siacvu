@@ -56,7 +56,10 @@
                         <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%></span>
                     </p>
                 <% } %>
-               
+            <p>
+                <label>Nombre del lider</label>
+                <span class="valor"><%= Html.Encode(Model.Form.NombreLider)%></span>
+            </p>               
                <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>

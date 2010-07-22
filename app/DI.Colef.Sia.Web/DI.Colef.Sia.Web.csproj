@@ -192,6 +192,7 @@
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
     </Content>
+    <Content Include="Scripts\flash.detect.min.js" />
     <Content Include="Scripts\jquery.qtip-1.0.0-rc3.js" />
     <Content Include="Views\Catalogos\Glosario\Edit.aspx" />
     <Content Include="Views\Catalogos\Glosario\Index.aspx" />

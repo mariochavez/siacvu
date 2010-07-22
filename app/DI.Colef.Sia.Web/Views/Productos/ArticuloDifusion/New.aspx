@@ -64,6 +64,7 @@
                 
                   <% Html.RenderPartial("_AutorEntry", Model.Form); %>
                 </span>
+
                 <% Html.RenderPartial("_ShowEstadoProducto", 
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id}); %>
@@ -72,6 +73,12 @@
                 <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
+
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <%=Html.DropDownList("Pais", Model.Form.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+                        "Seleccione ...")%>
+                </p>
 
                 <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
