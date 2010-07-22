@@ -60,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorService = investigadorService;
             this.productoService = productoService;
+            this.paisMapper = paisMapper;
         }
 
         [Authorize]
@@ -82,6 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
             var data = new GenericViewData<ArticuloDifusionForm> {Form = SetupNewForm()};
+            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -546,6 +548,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoArticulo"] = form.TipoArticulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
+            ViewData["Pais"] = form.PaisId;
 
             ViewData["AreaId"] = form.AreaId;
             ViewData["DisciplinaId"] = form.DisciplinaId;

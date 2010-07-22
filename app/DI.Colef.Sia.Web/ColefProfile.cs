@@ -155,7 +155,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<YearDateFormatter>());
+                           o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,

@@ -53,8 +53,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaPublicacion { get; set; }
 
-        public virtual Pais Pais { get; set; }
-
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
         public virtual Departamento Departamento { get; set; }
@@ -127,5 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+
+        public virtual Pais Pais { get; set; }
     }
 }

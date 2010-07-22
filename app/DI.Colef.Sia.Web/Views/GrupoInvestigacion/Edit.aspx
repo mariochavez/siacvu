@@ -62,7 +62,10 @@
                 <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%></span>
                 <span class="cvu"></span>
             </p>
-            
+            <p>
+                <label>Nombre del lider</label>
+                <%= Html.TextBox("NombreLider", Model.Form.NombreLider, new { @class = "input420", maxlength = 60} ) %>
+            </p>            
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>

@@ -215,7 +215,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
             form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
 
-            form.InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion;
+            if(form.Institucion != null) 
+                form.InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion;
             form.InstitucionLabel = "Institución";
             form.IsShowForm = false;
 

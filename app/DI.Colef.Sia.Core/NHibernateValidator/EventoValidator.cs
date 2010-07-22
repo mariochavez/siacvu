@@ -26,6 +26,31 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 if (evento.TipoParticipacion != null)
                     isValid &= ValidateTipoParticipacion(evento, constraintValidatorContext);
+
+                if (evento.FechaInicial <= DateTime.Parse("1910-01-01"))
+                {
+                    constraintValidatorContext.DisableDefaultError();
+                    constraintValidatorContext.AddInvalid<Evento, DateTime>(
+                        "fecha inicial inválida o nula|FechaInicial", x => x.FechaInicial);
+                    isValid = false;
+                }
+
+                if (evento.FechaFinal <= DateTime.Parse("1910-01-01"))
+                {
+                    constraintValidatorContext.DisableDefaultError();
+                    constraintValidatorContext.AddInvalid<Evento, DateTime>(
+                        "fecha final inválida o nula|FechaFinal", x => x.FechaFinal);
+                    isValid = false;
+                }
+                else if (evento.FechaInicial >= evento.FechaFinal)
+                {
+                    constraintValidatorContext.DisableDefaultError();
+                    constraintValidatorContext.AddInvalid<Evento, DateTime>(
+                        "fecha inicial debe ser menor a fecha final|FechaInicial", x => x.FechaInicial);
+                    constraintValidatorContext.AddInvalid<Evento, DateTime>(
+                        "fecha final debe ser mayor a fecha inicial|FechaFinal", x => x.FechaFinal);
+                    isValid = false;
+                }
             }
 
             return isValid;

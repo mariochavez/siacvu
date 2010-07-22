@@ -63,6 +63,7 @@
                 
                   <% Html.RenderPartial("_AutorEntry", Model.Form); %>
                 </span>
+
                 <% Html.RenderPartial("_ShowEstadoProducto", 
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id}); %>

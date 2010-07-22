@@ -2,6 +2,7 @@ using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
@@ -55,6 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FinanciamientoInterno = message.FinanciamientoInterno;
             model.FinanciamientoExterno = message.FinanciamientoExterno;
             model.SesionesTrabajo = message.SesionesTrabajo;
+            model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
+            model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
 
             model.OtroTipoEvento = message.OtroTipoEvento;

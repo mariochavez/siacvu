@@ -5,6 +5,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Nombre { get; set; }
         public string TituloTrabajo { get; set; }
         public bool Invitacion { get; set; }
+        public string FechaInicial { get; set; }
+        public string FechaFinal { get; set; }
         public string FechaEvento { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
