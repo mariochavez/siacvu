@@ -169,7 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content("Uploaded");
         }
 
-        [CustomTransaction]
+        /*[CustomTransaction]*/
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
@@ -179,7 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             articulo.Firma.Aceptacion2 = 1;
             articulo.Firma.Usuario2 = CurrentUser();
 
-            articuloService.SaveArticulo(articulo);
+            articuloService.SaveArticulo(articulo,false);
 
             var data = new FirmaForm
                            {

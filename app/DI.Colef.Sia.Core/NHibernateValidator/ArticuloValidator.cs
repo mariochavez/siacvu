@@ -63,14 +63,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            //if (articulo.RevistaPublicacion == null)
-            //{
-            //    constraintValidatorContext.AddInvalid(
-            //        "no debe ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
-
-            //    isValid = false;
-            //}
-
             if (articulo.EstadoProducto == 3)
             {
                 if (articulo.FechaPublicacion <= DateTime.Parse("1910-01-01"))

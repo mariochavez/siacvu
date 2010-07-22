@@ -229,6 +229,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 case TipoProductoEnum.GrupoInvestigacion:
                     productName = "Grupo de investigación";
                     break;
+                case TipoProductoEnum.Proyecto:
+                    productName = "Proyecto";
+                    break;
             }
 
             return productName;
@@ -296,6 +299,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     break;
                 case TipoProductoEnum.GrupoInvestigacion:
                     productName = "Grupos de investigación";
+                    break;
+                case TipoProductoEnum.Proyecto:
+                    productName = "Proyectos";
                     break;
             }
 

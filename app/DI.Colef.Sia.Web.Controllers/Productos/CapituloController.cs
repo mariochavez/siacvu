@@ -254,13 +254,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             capitulo.Firma.Aceptacion2 = 1;
             capitulo.Firma.Usuario2 = CurrentUser();
-
+            
             capituloService.SaveCapitulo(capitulo);
 
             var data = new FirmaForm
                            {
                                TipoProducto = firmaForm.TipoProducto,
-                               Aceptacion2 = 1
+                               Aceptacion2 = 1                        
                            };
 
             return Rjs("DgaaSign", data);
