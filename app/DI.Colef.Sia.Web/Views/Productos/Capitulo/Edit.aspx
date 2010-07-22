@@ -75,7 +75,7 @@
 	            <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
-                <h4>&aacute;rea del conocimiento</h4>
+                
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
                 <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_ProgressBar"); %>
