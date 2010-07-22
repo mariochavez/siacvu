@@ -16,7 +16,67 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoArticulos = new List<CoautorExternoArticulo>();
             CoautorInternoArticulos = new List<CoautorInternoArticulo>();
             ArchivosArticuloDifusion = new List<ArchivoArticuloDifusion>();
-        }
+        }    
+
+        [NotNullNotEmpty]
+        public virtual string Titulo { get; set; }
+
+        public virtual int TipoArticulo { get; set; }
+
+        public virtual bool TieneProyecto { get; set; }
+
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
+
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
+        public virtual int PosicionCoautor { get; set; }
+
+        public virtual int EstadoProducto { get; set; }
+
+        public virtual string RevistaPublicacionTitulo { get; set; }
+
+        public virtual string Volumen { get; set; }
+
+        public virtual string Numero { get; set; }
+
+        public virtual int PaginaInicial { get; set; }
+
+        public virtual int PaginaFinal { get; set; }
+
+        public virtual decimal Puntuacion { get; set; }
+
+        public virtual DateTime FechaAceptacion { get; set; }
+
+        public virtual DateTime FechaPublicacion { get; set; }
+
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
+
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
+
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
+
+        public virtual Subdisciplina Subdisciplina { get; set; }
+
+        public virtual Proyecto Proyecto { get; set; }
+
+        public virtual AreaTematica AreaTematica { get; set; }
+
+        [Valid]
+        public virtual Firma Firma { get; set; }
+
+        [Valid]
+        public virtual IList<CoautorExternoArticulo> CoautorExternoArticulos { get; private set; }
+
+        [Valid]
+        public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
 
         public virtual IList<ArchivoArticuloDifusion> ArchivosArticuloDifusion { get; private set; }
 
@@ -52,66 +112,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoArticulos.Remove((CoautorExternoArticulo)coautorExterno);
         }
-
-        [NotNullNotEmpty]
-        public virtual string Titulo { get; set; }
-
-        public virtual int TipoArticulo { get; set; }
-
-        public virtual bool TieneProyecto { get; set; }
-
-        public virtual Proyecto Proyecto { get; set; }
-
-        public virtual AreaTematica AreaTematica { get; set; }
-
-        public virtual string PalabraClave1 { get; set; }
-
-        public virtual string PalabraClave2 { get; set; }
-
-        public virtual string PalabraClave3 { get; set; }
-
-        public virtual Area Area { get; set; }
-
-        public virtual Disciplina Disciplina { get; set; }
-
-        public virtual Subdisciplina Subdisciplina { get; set; }
-
-        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
-
-        [Valid]
-        public virtual IList<CoautorExternoArticulo> CoautorExternoArticulos { get; private set; }
-
-        [Valid]
-        public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
-
-        [Valid]
-        public virtual Firma Firma { get; set; }
-
-        public virtual int PosicionCoautor { get; set; }
-
-        public virtual int EstadoProducto { get; set; }
-
-        public virtual DateTime FechaAceptacion { get; set; }
-
-        public virtual DateTime FechaPublicacion { get; set; }
-        
-        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
-
-        public virtual string RevistaPublicacionTitulo { get; set; }
-
-        public virtual string Volumen { get; set; }
-
-        public virtual string Numero { get; set; }
-
-        public virtual int PaginaInicial { get; set; }
-
-        public virtual int PaginaFinal { get; set; }
-
-        public virtual decimal Puntuacion { get; set; }
-
-        public virtual Departamento Departamento { get; set; }
-
-        public virtual Sede Sede { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

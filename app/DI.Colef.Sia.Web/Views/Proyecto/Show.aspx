@@ -1,24 +1,20 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ProyectoForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+       <%=Html.ProductoShowTitle(TipoProductoEnum.Proyecto) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del proyecto como est&aacute; en el sistema.
+            <%=Html.ProductoShowMessage(TipoProductoEnum.Proyecto) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -49,7 +45,7 @@
                 
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
-                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigadores participantes
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigador(es) participante(s)
                         <span>
                             <%=Html.Encode(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length)%>
                             coautor(es) </span><span class="cvu"></span></a>
@@ -71,17 +67,17 @@
                 <p>
                     <label>Fecha inicial</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaFinal) %>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Fecha de pr&oacute;rroga</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaProrroga)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Estatus del proyecto</label>
@@ -91,7 +87,7 @@
                     <p>
                         <label>Fecha de conclusi&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaConclusion)%>&nbsp;</span>
-                        <span>Formato (dd/mm/yyyy)</span>
+                        <span>Formato (dd/mm/aaaa)</span>
                     </p>
                 <% } %>
                 <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
@@ -122,7 +118,7 @@
                             <span id="span_fechaconclusion" class="valor"><%=Html.Encode(Model.Form.ConvenioFechaConclusion)%>&nbsp;</span>
                         </p>
                         <p>
-                            <label>Termino referencia</label>
+                            <label>Término de referencia</label>
                             <span id="span_terminoreferencia" class="valor"><%=Html.Encode(Model.Form.ConvenioTerminoReferencia)%>&nbsp;</span>
                         </p>
                         <p>

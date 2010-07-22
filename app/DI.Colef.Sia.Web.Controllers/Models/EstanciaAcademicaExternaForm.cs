@@ -21,9 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int GradoAcademicoId { get; set; }
         public string GradoAcademicoNombre { get; set; }
 
-        public int InstitucionId { get; set; }
-        public string InstitucionNombre { get; set; }
-
         public string DepartamentoNombre { get; set; }
         public int Departamento { get; set; }
         public int DepartamentoId { get; set; }

@@ -46,7 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateReportesMaps();
             CreateResenasMaps();
             CreateFormacionAcademicaMaps();
-            //CreateUsuarioMaps();
             CreateLibrosMaps();
             CreateEstanciaInstitucionExternaMaps();
             CreateEstanciaAcademicaExternaMaps();
@@ -153,6 +152,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.Pais,
@@ -175,6 +176,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore());
 
@@ -377,13 +380,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.EstadoPais,
                            o => o.Ignore());
         }
-
-        //private void CreateUsuarioMaps()
-        //{
-        //    Mapper.CreateMap<Usuario, UsuarioForm>()
-        //        .ForMember(d => d.Direccion,
-        //                   o => o.Ignore());
-        //}
 
         private void CreateResenasMaps()
         {
@@ -784,6 +780,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Indice3,
                            o => o.Ignore())
                 .ForMember(d => d.AreaInvestigacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
                            o => o.Ignore());
 
             Mapper.CreateMap<Nivel, NivelForm>()

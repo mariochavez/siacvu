@@ -1,5 +1,4 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<LibroForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Nombre del evento</label>
@@ -10,6 +9,6 @@
 <p>
     <label>Fecha del evento</label>
 	<%=Html.TextBox("Evento.FechaEvento", Model.Evento.FechaEvento, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <%=Html.ValidationMessage("Evento.FechaEvento")%>
 </p>

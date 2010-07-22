@@ -5,17 +5,17 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2> <%=Html.ProductoListTitle(TipoProductoEnum.GrupoInvestigacion) %></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo grupo de investigaci&oacute;n</h3>
+        <h3> <%=Html.ProductoListSubTitle(TipoProductoEnum.GrupoInvestigacion) %></h3>
         <p>
-            Puede agregar un nuevo grupo de investigaci&oacute;n dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear grupo de investigaci&oacute;n</strong>.
+             <%=Html.ProductoListMessage(TipoProductoEnum.GrupoInvestigacion) %>
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<GrupoInvestigacionController>(x => x.New(), Model.GetObjectNameNewButton())%></span>

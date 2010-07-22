@@ -2,12 +2,10 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ArticuloDifusionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -47,8 +45,8 @@
                 
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
-                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautores del art&iacute;culo
-                    de difusi&oacute;n <span>
+                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautor(es)<!-- del art&iacute;culo
+                    de difusi&oacute;n --><span>
                         <%=Html.Encode(Model.Form.TotalCoautores)%>
                         coautor(es)</span> <span class="cvu"></span></a>
             </h4>
@@ -68,14 +66,15 @@
                 <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <%=Html.DropDownList("Pais", Model.Form.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                </p>
-                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
-                <% Html.RenderPartial("_DatosFinal", Model.Form); %>
+
+                 <label>Pa&iacute;s</label>
+                     <%=Html.DropDownList("Pais", Model.Form.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+                         "Seleccione ...", new { @class = "requerido"})%>
+                <span class="cvu"></span>
+                <%=Html.ValidationMessage("Pais") %>
                 
+                <% Html.RenderPartial("_DatosFinal", Model.Form); %>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_ProgressBar"); %>
             
 	            <p class="submit">

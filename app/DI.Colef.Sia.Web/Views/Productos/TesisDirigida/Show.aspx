@@ -38,7 +38,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+                <%--<h4>Datos del investigador</h4>
 	            <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%>&nbsp;</span>
@@ -50,7 +50,7 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 <h4>Participaci&oacute;n en tesis</h4>
                 <p>
                     <label>Tipo de tesis</label>
@@ -66,6 +66,7 @@
                     <h4>Datos de la tesis presentada</h4>
                     <% Html.RenderPartial("_ShowTesisExterna", Model.Form);%>
                 <% } %>
+                <h4>&aacute;rea del conocimiento</h4>
                 
             	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 

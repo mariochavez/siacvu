@@ -50,6 +50,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual CursoInvestigador CursoInvestigador { get; set; }
 
+        public virtual string InstitucionNombre { get; set; }
+
         public virtual Institucion Institucion { get; set; }
         
         public virtual DateTime FechaInicial { get; set; }

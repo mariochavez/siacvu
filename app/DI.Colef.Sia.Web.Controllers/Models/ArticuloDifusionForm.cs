@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-        
+
         public int TotalCoautores
         {
             get

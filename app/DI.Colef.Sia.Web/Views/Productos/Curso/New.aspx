@@ -60,6 +60,7 @@
                     <h4>Cursos en instituciones externas</h4>
                     <% Html.RenderPartial("_ShowCursoExterno", Model.Form); %>
                 </div>
+                <h4>&aacute;rea del conocimiento</h4>
                 
                 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 

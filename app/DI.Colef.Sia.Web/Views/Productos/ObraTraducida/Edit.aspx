@@ -45,7 +45,7 @@
 
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length) %>">
-                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautores de la obra traducida
+                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautor(es)<!-- de la obra traducida-->
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length)%>
                         coautor(es) </span><span class="cvu"></span></a>
@@ -65,11 +65,12 @@
 				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
                 
-                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
-
+              
+                <h4>&aacute;rea del conocimiento</h4>
+                
                 <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
-                
+                  <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_ProgressBar"); %>
 	            
 	            <p class="submit">

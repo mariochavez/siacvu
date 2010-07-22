@@ -46,6 +46,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual AreaInvestigacion AreaInvestigacion { get; set; }
 
+        public virtual Pais Pais { get; set; }
+
         public virtual Indice Indice1 { get; set; }
 
         public virtual Indice Indice2 { get; set; }

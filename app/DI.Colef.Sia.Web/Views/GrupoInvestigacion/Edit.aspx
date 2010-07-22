@@ -4,14 +4,15 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2> <%=Html.ProductoEditTitle(TipoProductoEnum.GrupoInvestigacion) %></h2>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Para modificar el grupo de investigaci&oacute;n utilice los siguientes campos para realizar cambios dentro del sistema.</p>
+		<p> <%=Html.ProductoEditMessage(TipoProductoEnum.GrupoInvestigacion) %></p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -43,7 +44,7 @@
                 <label>Fecha de creaci&oacute;n</label>
                 <%=Html.TextBox("FechaCreacion", Model.Form.FechaCreacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
                 <span class="cvu"></span>
-                <span>(Formato dd/mm/yyyy)</span>
+                <span>(Formato dd/mm/aaaa)</span>
                 <%=Html.ValidationMessage("FechaCreacion")%>
             </p>
             
@@ -68,7 +69,7 @@
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                    Miembros del <span id="coautores" class="titulovalor">Grupo de Investigaci&oacute;n</span>
+                    Miembro(s) del <span id="coautores" class="titulovalor">Grupo de Investigaci&oacute;n</span>
                     <span>
                         <%=Html.Encode(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length)%>
                         miembro(s) </span><span class="cvu"></span></a>

@@ -10,7 +10,7 @@
 <p>
     <label>Fecha de dictamen</label>
     <%=Html.TextBox("FechaDictamen", Model.FechaDictamen, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <%=Html.ValidationMessage("FechaDictamen")%>
 </p>
 <p>

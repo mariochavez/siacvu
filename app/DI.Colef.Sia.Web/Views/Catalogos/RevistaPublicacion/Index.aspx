@@ -3,7 +3,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
@@ -17,7 +16,7 @@
             catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva revista de publicaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<RevistaPublicacionController>(x => x.New(), "+ Nueva revista de publicación")%></span>
+            <span><%=Html.ActionLink<RevistaPublicacionController>(x => x.New(), "+ Nueva")%></span>
         </div>
     </div>
 </asp:Content>

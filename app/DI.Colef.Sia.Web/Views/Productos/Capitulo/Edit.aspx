@@ -45,7 +45,7 @@
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                    Coautores del cap&iacute;tulo
+                    Coautor(es) del cap&iacute;tulo
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%> coautor(es) 
                     </span>
@@ -75,11 +75,9 @@
 	            <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
-
-                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
-
+                <h4>&aacute;rea del conocimiento</h4>
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
-                
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_ProgressBar"); %>
             
 	            <p class="submit">

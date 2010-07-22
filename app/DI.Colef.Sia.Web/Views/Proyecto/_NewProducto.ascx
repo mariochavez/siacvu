@@ -10,6 +10,6 @@
 <p>
     <label>Fecha de entrega</label>
     <%=Html.TextBox("ProductoGenerado.FechaEntrega", "", new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <%=Html.ValidationMessage("ProductoGenerado.FechaEntrega")%>
 </p>

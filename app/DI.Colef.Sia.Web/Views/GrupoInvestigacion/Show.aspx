@@ -4,17 +4,18 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+         <%=Html.ProductoShowTitle(TipoProductoEnum.GrupoInvestigacion) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del grupo de investigaci&oacute;n como est&aacute; en el sistema.
+             <%=Html.ProductoShowMessage(TipoProductoEnum.GrupoInvestigacion) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -40,7 +41,7 @@
                 </p>
                 <p>
                     <label>Fecha de creaci&oacute;n</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%=Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/aaaa)</span>
                 </p>
                 
                 <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields);%>
@@ -63,7 +64,7 @@
                <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Miembros del Grupo de investigaci&oacute;n 
+                        Miembro(s) del Grupo de investigaci&oacute;n 
                         <span>
                         <%=Html.Encode(Model.Form.MiembroExternoGrupoInvestigaciones.Length + Model.Form.MiembroInternoGrupoInvestigaciones.Length)%> miembro(s)
                         </span> 

@@ -3,18 +3,19 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2><%=Html.ProductoListTitle(TipoProductoEnum.Proyecto) %></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo proyecto</h3>
+        <h3><%=Html.ProductoListSubTitle(TipoProductoEnum.Proyecto) %></h3>
         <p>
-            Puede agregar un nuevo proyecto dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
+            <%=Html.ProductoListMessage(TipoProductoEnum.Proyecto) %>
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<ProyectoController>(x => x.New(), "+ Nuevo") %></span>

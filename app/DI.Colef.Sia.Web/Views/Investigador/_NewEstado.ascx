@@ -14,7 +14,7 @@
     <span id="EstadoFechaFinal_Field" class="noeffect"> a 
     <%=Html.TextBox("EstadoInvestigador.FechaFinal", Model.EstadoInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%></span>
     
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("EstadoInvestigador.FechaInicial")%>
     <%=Html.ValidationMessage("EstadoInvestigador.FechaFinal")%>

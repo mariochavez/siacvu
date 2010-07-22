@@ -13,13 +13,13 @@
     <p class="EstatusAceptado">
         <label>A&ntilde;o de aceptaci&oacute;n</label>
         <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "input100-requerido", maxlength = 4 })%>
-        <span>(Formato yyyy)</span>
+        <span>(Formato aaaa)</span>
         <%=Html.ValidationMessage("FechaAceptacion")%>
     </p>
     <p class="EstatusPublicado">
         <label>A&ntilde;o de publicaci&oacute;n</label>
         <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class = "input100-requerido", maxlength = 4 })%>
-        <span>(Formato yyyy)</span>
+        <span>(Formato aaaa)</span>
         <%=Html.ValidationMessage("FechaPublicacion")%>
     </p>
 <% } else { %>
@@ -31,13 +31,13 @@
         <p>
             <label>A&ntilde;o de aceptaci&oacute;n</label>
             <span class="valor"><%= Html.Encode(Model.FechaAceptacion)%>&nbsp;</span>
-            <span>Formato (yyyy)</span>
+            <span>Formato (aaaa)</span>
         </p>        
     <% } if (Model.EstadoProducto == 3){ %>
         <p>
             <label>A&ntilde;o de publicaci&oacute;n</label>
             <span class="valor"><%= Html.Encode(Model.FechaPublicacion)%>&nbsp;</span>
-            <span>Formato (yyyy)</span>
+            <span>Formato (aaaa)</span>
         </p>
     <% } %>
 <% } %>

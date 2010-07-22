@@ -12,7 +12,7 @@
     <label>Periodo</label>
     <%=Html.TextBox("CategoriaInvestigador.FechaInicial", Model.CategoriaInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
     <%=Html.TextBox("CategoriaInvestigador.FechaFinal", Model.CategoriaInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <span class="cvu"></span> 
     <%=Html.ValidationMessage("CategoriaInvestigador.FechaInicial")%>
     <%=Html.ValidationMessage("CategoriaInvestigador.FechaFinal")%>

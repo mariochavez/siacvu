@@ -5,7 +5,7 @@
     <% Html.RenderPartial("_RevistaPublicacion", Model); %>
 </div>
 <p class="Capitulo_fields">
-    <label>Nombre del libro</label>
+    <label>T&iacute;tulo del libro</label>
     <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
@@ -82,6 +82,14 @@
     <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100-requerido", maxlength = 4 })%>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
+
+<p class="Articulo_fields">
+    <label>Pa&iacute;s</label>
+    <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Pais")%>
+</p>
+
 <p class="Libro_fields">
     <label>N&uacute;mero de p&aacute;ginas</label>
     <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4 })%>

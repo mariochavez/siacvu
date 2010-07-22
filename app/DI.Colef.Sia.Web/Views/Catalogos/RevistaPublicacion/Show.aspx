@@ -4,8 +4,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -48,6 +46,10 @@
                 <p>
                     <label>Departamento acad&eacute;mico</label>
                     <span class="valor"><%=Html.Encode(Model.Form.DepartamentoAcademico)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>ISSN</label>

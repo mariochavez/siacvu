@@ -1,7 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<RevistaPublicacionForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <h4>Datos generales de la revista</h4>
 <p>
@@ -21,6 +19,12 @@
     <label>Departamento acad&eacute;mico</label>
     <%=Html.TextBox("DepartamentoAcademico", Model.DepartamentoAcademico, new { @class = "input420-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("DepartamentoAcademico")%>
+</p>
+<p>
+    <label>Pa&iacute;s</label>
+    <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido"})%>
+    <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
     <label>Factor de impacto</label>

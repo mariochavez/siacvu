@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
@@ -17,7 +17,7 @@
             presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva estancia acad&eacute;mica externa</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.New(), "+ Nueva estancia académica externa")%></span>
+            <span><%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.New(), Model.GetObjectNameNewButton())%></span>
         </div>
     </div>
 </asp:Content>
@@ -52,7 +52,13 @@
 			<% foreach (var estanciaAcademicaExterna in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(estanciaAcademicaExterna.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(estanciaAcademicaExterna.InstitucionNombre) %></span></h5>
+                    <h5><span>
+                    <% if (estanciaAcademicaExterna.InstitucionExists){	%>
+                        <%=Html.Encode(estanciaAcademicaExterna.Institucion.Nombre) %>
+                    <%}else{%>
+                        <%=Html.Encode(estanciaAcademicaExterna.InstitucionNombre) %>
+                    <% } %>
+						</span></h5>
 						<h6>Modificado el <%=Html.Encode(estanciaAcademicaExterna.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

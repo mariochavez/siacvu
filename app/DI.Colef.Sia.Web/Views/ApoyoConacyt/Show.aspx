@@ -3,17 +3,19 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+         <%=Html.ProductoShowTitle(TipoProductoEnum.ApoyoConacyt) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del apoyo de CONACyT como est&aacute; en el sistema.
+             <%=Html.ProductoShowMessage(TipoProductoEnum.ApoyoConacyt) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -34,7 +36,7 @@
         <div id="forma">
             <div id="campos">
                 <p>
-                    <label>Nombre</label>
+                    <label>Nombre del apoyo</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 <p>
@@ -52,12 +54,12 @@
                 <p>
                     <label>Fecha inicial</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>                
                 <p>
 	                <label>Palabra clave 1</label>

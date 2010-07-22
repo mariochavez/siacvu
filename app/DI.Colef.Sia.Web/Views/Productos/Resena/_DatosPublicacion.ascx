@@ -3,12 +3,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
-    <label>Nombre de la publicaci&oacute;n</label>
+    <label>T&iacute;tulo de la colaboraci&oacute;n</label>
     <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 200 })%>
     <%=Html.ValidationMessage("NombreProducto")%>
 </p>
 <p>
-    <label>Nombre del Autor</label>
+    <label>Nombre del(la) Autor(a)</label>
     <%=Html.TextBox("NombreAutor", Model.NombreAutor, new { @class = "input420", maxlength = 200 })%>
     <%=Html.ValidationMessage("NombreAutor")%>
 </p>                
@@ -17,11 +17,4 @@
     <%=Html.DropDownList("TipoResena", Model.TiposResenas.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoResena")%>
-</p>
-<p>
-    <label>Pa&iacute;s</label>
-    <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Pais") %>
 </p>
