@@ -63,13 +63,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (articulo.RevistaPublicacion == null)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "no debe ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
+            //if (articulo.RevistaPublicacion == null)
+            //{
+            //    constraintValidatorContext.AddInvalid(
+            //        "no debe ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
 
-                isValid = false;
-            }
+            //    isValid = false;
+            //}
 
             if (articulo.EstadoProducto == 3)
             {
