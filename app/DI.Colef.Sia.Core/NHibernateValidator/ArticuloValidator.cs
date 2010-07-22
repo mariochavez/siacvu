@@ -63,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (articulo.RevistaPublicacion == null)
+            if (articulo.RevistaPublicacion == null && articulo.RevistaPublicacionTitulo == null)
             {
                 constraintValidatorContext.AddInvalid(
                     "no debe ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");

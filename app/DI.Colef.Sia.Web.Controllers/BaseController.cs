@@ -774,7 +774,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 case "Articulo Difusion":
                     newPrefix = "nuevo ";
                     editShowPrefix = "del ";
-                    objectName = "artículo en revista de difusión";
+                    objectName = "artículo en revista de divulgación";
                     break;
                 case "Capitulo":
                     newPrefix = "nuevo ";
