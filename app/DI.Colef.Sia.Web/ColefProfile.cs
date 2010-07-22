@@ -778,6 +778,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Indice3,
                            o => o.Ignore())
                 .ForMember(d => d.AreaInvestigacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
                            o => o.Ignore());
 
             Mapper.CreateMap<Nivel, NivelForm>()
