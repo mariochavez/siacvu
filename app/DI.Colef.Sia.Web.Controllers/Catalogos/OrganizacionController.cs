@@ -11,7 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class OrganizacionController : BaseController<Organizacion, OrganizacionForm>
     {
-        readonly IOrganizacionMapper organizacionMapper;
+        //readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
 
         public OrganizacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -20,7 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.organizacionMapper = organizacionMapper;
+            //this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
         }
 

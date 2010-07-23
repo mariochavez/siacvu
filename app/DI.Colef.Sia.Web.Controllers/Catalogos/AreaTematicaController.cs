@@ -12,7 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     public class AreaTematicaController : BaseController<AreaTematica, AreaTematicaForm>
     {
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
+        //readonly ISubdisciplinaMapper subdisciplinaMapper;
     
         public AreaTematicaController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
                                       IAreaTematicaMapper areaTematicaMapper, ISearchService searchService,
@@ -22,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             this.catalogoService = catalogoService;
             this.areaTematicaMapper = areaTematicaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
+            //this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         //[AcceptVerbs(HttpVerbs.Get)]

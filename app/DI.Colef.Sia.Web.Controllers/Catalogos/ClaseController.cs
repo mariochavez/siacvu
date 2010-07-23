@@ -12,8 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     public class ClaseController : BaseController<Clase, ClaseForm>
     {
         //readonly ICatalogoService catalogoService;
-        readonly IClaseMapper claseMapper;
-        readonly IRamaMapper ramaMapper;
+        //readonly IClaseMapper claseMapper;
+        //readonly IRamaMapper ramaMapper;
     
         public ClaseController(IUsuarioService usuarioService, 
                                ICatalogoService catalogoService, 
@@ -22,8 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             : base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.claseMapper = claseMapper;
-            this.ramaMapper = ramaMapper;
+            //this.claseMapper = claseMapper;
+            //this.ramaMapper = ramaMapper;
         }
 
         [Authorize]

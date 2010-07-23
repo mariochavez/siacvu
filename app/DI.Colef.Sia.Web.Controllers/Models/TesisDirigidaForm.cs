@@ -26,8 +26,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int GradoAcademicoId { get; set; }
         public string GradoAcademicoNombre { get; set; }
 
-        public int InstitucionId { get; set; }
-        public string InstitucionNombre { get; set; }
+        //public int InstitucionId { get; set; }
+        //public string InstitucionNombre { get; set; }
 
         public int SectorId { get; set; }
         public int OrganizacionId { get; set; }
@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string AreaNombre { get; set; }
 
         public int TesisPosgradoId { get; set; }
-        public bool IsShowForm { get; set; }
+        //public bool IsShowForm { get; set; }
 
         public ArchivoForm[] ArchivosTesisDirigida { get; set; }
 

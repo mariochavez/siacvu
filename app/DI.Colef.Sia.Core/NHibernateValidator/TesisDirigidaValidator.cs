@@ -74,12 +74,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (tesisDirigida.FormaParticipacion == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione la forma de participación|FormaParticipacion", "FormaParticipacion");
-                    isValid = false;
-                }
+                //if (tesisDirigida.FormaParticipacion == null)
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "seleccione la forma de participación|FormaParticipacion", "FormaParticipacion");
+                //    isValid = false;
+                //}
 
                 if (tesisDirigida.NombreAlumno == "")
                 {

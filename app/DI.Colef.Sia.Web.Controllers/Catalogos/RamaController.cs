@@ -11,7 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class RamaController : BaseController<Rama, RamaForm>
     {
-        readonly IRamaMapper ramaMapper;
+        //readonly IRamaMapper ramaMapper;
         readonly ISectorMapper sectorMapper;
     
         public RamaController(IUsuarioService usuarioService, 
@@ -21,7 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             : base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.ramaMapper = ramaMapper;
+            //this.ramaMapper = ramaMapper;
             this.sectorMapper = sectorMapper;
         }
 

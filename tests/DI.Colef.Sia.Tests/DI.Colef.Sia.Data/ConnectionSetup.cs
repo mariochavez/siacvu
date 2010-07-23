@@ -10,7 +10,7 @@ namespace Tests.DI.Colef.Sia.Data
     {
         const string LIVE_DB_CONFIG_PATH = "../../../../app/DI.Colef.Sia.Web/NHibernate.config";
 
-        static string factoryKey = "nhibernate.tests_using_live_database";
+        //static string factoryKey = "nhibernate.tests_using_live_database";
 
         Establish context = () =>
             {

@@ -12,7 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     public class DisciplinaController : BaseController<Disciplina, DisciplinaForm>
     {
         //readonly ICatalogoService catalogoService;
-        readonly IDisciplinaMapper disciplinaMapper;
+        //readonly IDisciplinaMapper disciplinaMapper;
         readonly IAreaMapper areaMapper;
 
         public DisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
@@ -21,7 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.disciplinaMapper = disciplinaMapper;
+            //this.disciplinaMapper = disciplinaMapper;
             this.areaMapper = areaMapper;
         }
 
