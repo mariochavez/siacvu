@@ -136,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
         public static string ProductoListMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoListMessage = "Puede registrar{0} {1}, presionando en el botón de título + Nuevo.";
+            string productoListMessage = "Puede registrar{0} {1} presionando en el botón de título + Nuevo.";
 
             return String.Format(productoListMessage, GetArticuloIndefinidoIdioma(tipoProducto), ProductoNameSingular(html, tipoProducto));
         }
@@ -176,61 +176,64 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "Artículo en revista de investigación";
+                    productName = "artículo en revista de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "Artículo en revista de divulgación";
+                    productName = "Aartículo en revista de divulgación";
                     break;
                 case TipoProductoEnum.Capitulo:
-                    productName = "Capítulo en libro";
+                    productName = "capítulo en libro";
                     break;
                 case TipoProductoEnum.Curso:
-                    productName = "Curso";
+                    productName = "curso";
                     break;
                 case TipoProductoEnum.Dictamen:
-                    productName = "Dictamen";
+                    productName = "dictamen";
                     break;
                 case TipoProductoEnum.Evento:
-                    productName = "Organización y participación de evento académico";
+                    productName = "organización y participación de evento académico";
                     break;
                 case TipoProductoEnum.Libro:
-                    productName = "Libro";
+                    productName = "libro";
                     break;
                 case TipoProductoEnum.ObraTraducida:
-                    productName = "Obra traducida";
+                    productName = "obra traducida";
                     break;
                 case TipoProductoEnum.OrganoExterno:
-                    productName = "Participación Honorífica en Órganos Colegiados Externos";
+                    productName = "participación honorífica en órganos colegiados externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
-                    productName = "Difusión del conocimiento";
+                    productName = "difusión del conocimiento";
                     break;
                 case TipoProductoEnum.Reporte:
-                    productName = "Reporte técnico/Documento de trabajo";
+                    productName = "reporte técnico/documento de trabajo";
                     break;
                 case TipoProductoEnum.TesisDirigida:
-                    productName = "Participación en Tesis";
+                    productName = "participación en tesis";
                     break;
                 case TipoProductoEnum.Resena:
-                    productName = "Reseña/Nota crítica";
+                    productName = "reseña/nota crítica";
                     break;
                 case TipoProductoEnum.OrganoInterno:
-                    productName = "Participación en órgano Interno";
+                    productName = "participación en órgano interno";
                     break;
                 case TipoProductoEnum.Distincion:
-                    productName = "Distinción académica";
+                    productName = "distinción académica";
                     break;
                 case TipoProductoEnum.ExperienciaProfesional:
-                    productName = "Experiencia Profesional";
+                    productName = "experiencia profesional";
                     break;
                 case TipoProductoEnum.ApoyoConacyt:
-                    productName = "Apoyo CONACYT";
+                    productName = "apoyo Conacyt";
                     break;
                 case TipoProductoEnum.GrupoInvestigacion:
-                    productName = "Grupo de investigación";
+                    productName = "grupo de investigación";
                     break;
                 case TipoProductoEnum.Proyecto:
-                    productName = "Proyecto";
+                    productName = "proyecto";
+                    break;
+                case TipoProductoEnum.Idioma:
+                    productName = "idioma";
                     break;
             }
 
@@ -244,64 +247,72 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "Artículos en revistas de investigación";
+                    productName = "artículos en revistas de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "Artículos en revistas de divulgación";
+                    productName = "artículos en revistas de divulgación";
                     break;
                 case TipoProductoEnum.Capitulo:
-                    productName = "Capítulos en libros";
+                    productName = "capítulos en libros";
                     break;
                 case TipoProductoEnum.Curso:
-                    productName = "Cursos";
+                    productName = "cursos";
                     break;
                 case TipoProductoEnum.Dictamen:
-                    productName = "Dictámenes";
+                    productName = "dictámenes";
                     break;
                 case TipoProductoEnum.Evento:
                     //productName = "Organización y participación de eventos académicos";
-                    productName = "Participación en eventos académicos";
+                    productName = "participación en eventos académicos";
                     break;
                 case TipoProductoEnum.Libro:
-                    productName = "Libros";
+                    productName = "libros";
                     break;
                 case TipoProductoEnum.ObraTraducida:
-                    productName = "Obras traducidas";
+                    productName = "obras traducidas";
                     break;
                 case TipoProductoEnum.OrganoExterno:
                     //productName = "Participaciónes Honoríficas en Órganos Colegiados Externos";
-                    productName = "Órganos colegiados externos";
+                    productName = "órganos colegiados externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
-                    productName = "Difusión del conocimiento";
+                    productName = "difusión del conocimiento";
                     break;
                 case TipoProductoEnum.Reporte:
                     //productName = "Reportes técnicos/Documentos de trabajo";
-                    productName = "Reportes técnicos";
+                    productName = "reportes técnicos";
                     break;
                 case TipoProductoEnum.TesisDirigida:
-                    productName = "Participación en tesis";
+                    productName = "participación en tesis";
                     break;
 				case TipoProductoEnum.Resena:
-                    productName = "Reseñas/Notas críticas";
+                    productName = "reseñas/notas críticas";
                     break;
                 case TipoProductoEnum.OrganoInterno:
-                    productName = "Participaciones en órganos internos";
+                    productName = "participaciones en órganos internos";
                     break;
                 case TipoProductoEnum.Distincion:
-                    productName = "Distinciones académicas";
+                    productName = "distinciones académicas";
                     break;
                 case TipoProductoEnum.ExperienciaProfesional:
-                    productName = "Experiencia profesional";
+                    productName = "experiencia profesional";
                     break;
                 case TipoProductoEnum.ApoyoConacyt:
-                    productName = "Apoyos CONACYT";
+                    productName = "apoyos Conacyt";
                     break;
                 case TipoProductoEnum.GrupoInvestigacion:
-                    productName = "Grupos de investigación";
+                    productName = "grupos de investigación";
                     break;
                 case TipoProductoEnum.Proyecto:
-                    productName = "Proyectos";
+                    productName = "proyectos";
+                    break;
+
+                case TipoProductoEnum.Idioma:
+                    productName = "idiomas";
+                    break;
+
+                case TipoProductoEnum.EstanciaAcademica:
+                    productName = "estancias académicas";
                     break;
             }
 
@@ -311,9 +322,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         static string GetArticuloDefinidoIdioma(TipoProductoEnum tipoProducto)
         {
             string articuloIdioma = " el";
-            if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
-                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena
-                || tipoProducto == TipoProductoEnum.Distincion || tipoProducto == TipoProductoEnum.ExperienciaProfesional)
+            if (tipoProducto == TipoProductoEnum.ObraTraducida ||
+                tipoProducto == TipoProductoEnum.ParticipacionMedio ||
+                tipoProducto == TipoProductoEnum.TesisDirigida ||
+                tipoProducto == TipoProductoEnum.Resena ||
+                tipoProducto == TipoProductoEnum.ExperienciaProfesional ||
+                tipoProducto == TipoProductoEnum.FormacionAcademica ||
+                tipoProducto == TipoProductoEnum.Evento ||
+                tipoProducto == TipoProductoEnum.Distincion ||
+                tipoProducto == TipoProductoEnum.OrganoInterno ||
+                tipoProducto == TipoProductoEnum.OrganoExterno ||
+                tipoProducto == TipoProductoEnum.EstanciaAcademica)
                 articuloIdioma = " la";
 
             if (tipoProducto == TipoProductoEnum.ParticipacionMedio) articuloIdioma += " actividad de";
@@ -323,9 +342,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         static string GetArticuloIndefinidoIdioma(TipoProductoEnum tipoProducto)
         {
             string articuloIndefinidoIdioma = " un";
-            if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio 
-                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena ||
-                tipoProducto == TipoProductoEnum.ExperienciaProfesional)
+            if (tipoProducto == TipoProductoEnum.ObraTraducida || 
+                tipoProducto == TipoProductoEnum.ParticipacionMedio || 
+                tipoProducto == TipoProductoEnum.TesisDirigida || 
+                tipoProducto == TipoProductoEnum.Resena ||
+                tipoProducto == TipoProductoEnum.ExperienciaProfesional ||
+                tipoProducto == TipoProductoEnum.FormacionAcademica ||
+                tipoProducto == TipoProductoEnum.Evento ||
+                tipoProducto == TipoProductoEnum.Distincion ||
+                tipoProducto == TipoProductoEnum.OrganoInterno ||
+                tipoProducto == TipoProductoEnum.OrganoExterno ||
+                tipoProducto == TipoProductoEnum.EstanciaAcademica)
                 articuloIndefinidoIdioma = " una";
             if (tipoProducto == TipoProductoEnum.ParticipacionMedio) articuloIndefinidoIdioma += " actividad de";
             return articuloIndefinidoIdioma;
@@ -334,9 +361,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         static string GetProductoNewGenderText(TipoProductoEnum tipoProducto)
         {
             string generoNuevo = " nuevo";
-            if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
-                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena
-                || tipoProducto == TipoProductoEnum.ExperienciaProfesional) generoNuevo = " nueva";
+            if (tipoProducto == TipoProductoEnum.ObraTraducida ||
+                tipoProducto == TipoProductoEnum.ParticipacionMedio ||
+                tipoProducto == TipoProductoEnum.TesisDirigida ||
+                tipoProducto == TipoProductoEnum.Resena ||
+                tipoProducto == TipoProductoEnum.ExperienciaProfesional ||
+                tipoProducto == TipoProductoEnum.FormacionAcademica ||
+                tipoProducto == TipoProductoEnum.Evento ||
+                tipoProducto == TipoProductoEnum.Distincion ||
+                tipoProducto == TipoProductoEnum.OrganoInterno ||
+                tipoProducto == TipoProductoEnum.OrganoExterno ||
+                tipoProducto == TipoProductoEnum.EstanciaAcademica)
+                generoNuevo = " nueva";
             return generoNuevo;
         }
     }
