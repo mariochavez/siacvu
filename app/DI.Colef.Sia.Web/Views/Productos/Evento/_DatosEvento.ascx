@@ -30,4 +30,14 @@
     <%=Html.ValidationMessage("TipoParticipacion")%>
 </p>
 
+<p>                     
+    <label>Fechas del evento</label>
+    <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
+    <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <span>(Formato dd/mm/aaaa)</span>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("FechaInicial")%>
+    <%=Html.ValidationMessage("FechaFinal")%>
+</p>    
+
 <% Html.RenderPartial("_EditInstitucion", Model ); %>

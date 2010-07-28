@@ -58,15 +58,7 @@
 	                    <span class="cvu"></span>
 	                    <%=Html.ValidationMessage("TituloTrabajo")%>
                     </p>
-                    <p>                       
-                        <label>Fechas del evento</label>
-                        <%=Html.TextBox("FechaInicial", Model.Form.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
-                        <%=Html.TextBox("FechaFinal", Model.Form.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-                        <span>(Formato dd/mm/aaaa)</span>
-                        <span class="cvu"></span> 
-                        <%=Html.ValidationMessage("FechaInicial")%>
-                        <%=Html.ValidationMessage("FechaFinal")%>
-                    </p>                    
+                                       
                     <h4>
                         <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
                           <span class="ui-icon ui-icon-circle-arrow-s"></span>
