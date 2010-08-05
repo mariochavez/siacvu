@@ -26,7 +26,7 @@
     <span class="cvu"></span>
 </p>                         
 <p>
-    <label>Clave de CVU-CONACyT</label>
+    <label>Clave de CVU-CONACYT</label>
     <%=Html.TextBox("ClaveCVU", Model.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
 </p>
  

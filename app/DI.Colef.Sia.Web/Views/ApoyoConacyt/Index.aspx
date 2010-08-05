@@ -27,7 +27,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de apoyos del CONACyT registrados en el sistema.</p>
+            <p>Lista de apoyos del Conacyt registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -40,12 +40,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Apoyos del CONACyT</h4>
+		<h4>Apoyos del Conacyt</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay apoyos del CONACyT registrados</span></h5>
+					<h5><span>No hay apoyos del Conacyt registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

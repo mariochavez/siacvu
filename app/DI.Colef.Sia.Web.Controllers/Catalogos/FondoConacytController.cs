@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveFondoConacyt(fondoConacyt);
 
-            return RedirectToIndex(String.Format("Fondo del CONACyT {0} ha sido creado", fondoConacyt.Nombre));
+            return RedirectToIndex(String.Format("Fondo del Conacyt {0} ha sido registrado", fondoConacyt.Nombre));
         }
         
         [CustomTransaction]
@@ -91,7 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveFondoConacyt(fondoConacyt);
 
-            return RedirectToIndex(String.Format("Fondo del CONACyT {0} ha sido modificado", fondoConacyt.Nombre));
+            return RedirectToIndex(String.Format("Fondo del Conacyt {0} ha sido modificado", fondoConacyt.Nombre));
         }
         
         [CustomTransaction]

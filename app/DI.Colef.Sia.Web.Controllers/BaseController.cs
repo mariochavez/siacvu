@@ -740,7 +740,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     objectName = "de órganos internos";
                     break;
                 case "Apoyos Conacyts":
-                    objectName = "de apoyos del CONACyT";
+                    objectName = "de apoyos del Conacyt";
                     break;
                 case "Idiomas Investigadores":
                     objectName = "de idiomas del investigador";

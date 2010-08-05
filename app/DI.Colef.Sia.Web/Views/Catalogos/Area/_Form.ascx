@@ -9,7 +9,7 @@
     <%=Html.ValidationMessage("Nombre") %>
 </p>
 <p>
-    <label>Codigo CONACyT</label>
+    <label>Codigo Conacyt</label>
     <%=Html.TextBox("CodigoConacyt", Model.CodigoConacyt, new { @class = "input420-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("CodigoConacyt")%>
 </p>

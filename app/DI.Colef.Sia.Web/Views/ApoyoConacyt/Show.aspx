@@ -48,7 +48,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.TipoApoyoNombre)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Subprograma del CONACyT</label>
+                    <label>Subprograma del Conacyt</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SubprogramaConacytNombre)%>&nbsp;</span>
                 </p>
                 <p>
