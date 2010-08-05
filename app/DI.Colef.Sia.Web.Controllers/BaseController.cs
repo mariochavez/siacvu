@@ -871,7 +871,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     break;
 
                 case Title.New:
-                    message = String.Format("Crear {0}", GetObjectName(false, 2).ToLower());
+                    message = String.Format("Registrar {0}", GetObjectName(false, 2).ToLower());
                     break;
 
                 case Title.Edit:
