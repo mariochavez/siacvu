@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveSector(sector);
 
-            return RedirectToIndex(String.Format("Sector {0} ha sido creado", sector.Nombre));
+            return RedirectToIndex(String.Format("Sector {0} ha sido registrado", sector.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

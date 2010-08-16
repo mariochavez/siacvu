@@ -192,6 +192,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\flash.detect.min.js" />
     <Content Include="Scripts\jquery.qtip-1.0.0-rc3.js" />

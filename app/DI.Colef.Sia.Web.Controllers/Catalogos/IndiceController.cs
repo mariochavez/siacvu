@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveIndice(indice);
 
-            return RedirectToIndex(String.Format("Índice {0} ha sido creado", indice.Nombre));
+            return RedirectToIndex(String.Format("Índice {0} ha sido registrado", indice.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

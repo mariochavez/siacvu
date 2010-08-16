@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveTipoDictamen(tipoDictamen);
 
-            return RedirectToIndex(String.Format("Tipo de Dictámen {0} ha sido creado", tipoDictamen.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Dictámen {0} ha sido registrado", tipoDictamen.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

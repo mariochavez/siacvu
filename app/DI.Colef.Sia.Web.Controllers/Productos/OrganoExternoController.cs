@@ -135,7 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             organoExternoService.SaveOrganoExterno(organoExterno);
-            SetMessage(String.Format("Órgano externo {0} ha sido creado", organoExterno.Nombre));
+            SetMessage(String.Format("Órgano externo {0} ha sido registrado", organoExterno.Nombre));
 
             return Rjs("Save", organoExterno.Id);
         }

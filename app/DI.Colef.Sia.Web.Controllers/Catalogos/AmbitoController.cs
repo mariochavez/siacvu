@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveAmbito(ambito);
 
-            return RedirectToIndex(String.Format("Ámbito {0} ha sido creado", ambito.Nombre));
+            return RedirectToIndex(String.Format("Ámbito {0} ha sido registrado", ambito.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

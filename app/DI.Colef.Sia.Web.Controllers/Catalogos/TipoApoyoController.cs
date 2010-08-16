@@ -74,7 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveTipoApoyo(tipoApoyo);
 
-            return RedirectToIndex(String.Format("Tipo de apoyo {0} ha sido creado", tipoApoyo.Nombre));
+            return RedirectToIndex(String.Format("Tipo de apoyo {0} ha sido registrado", tipoApoyo.Nombre));
         }
         
         [Authorize(Roles = "DGAA")]

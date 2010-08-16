@@ -149,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             cursoService.SaveCurso(curso);
-            SetMessage(String.Format("Curso {0} ha sido creado",
+            SetMessage(String.Format("Curso {0} ha sido registrado",
                                      IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
 
             return Rjs("Save", curso.Id);

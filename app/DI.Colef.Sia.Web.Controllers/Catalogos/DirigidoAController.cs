@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveDirigidoA(dirigidoA);
 
-            return RedirectToIndex(String.Format("Dirigido a {0} ha sido creado", dirigidoA.Nombre));
+            return RedirectToIndex(String.Format("Dirigido a {0} ha sido registrado", dirigidoA.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveDepartamento(departamento);
 
-            return RedirectToIndex(String.Format("Departamento {0} ha sido creado", departamento.Nombre));
+            return RedirectToIndex(String.Format("Departamento {0} ha sido registrado", departamento.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveEstatusFormacionAcademica(estatusFormacionAcademica);
 
-            return RedirectToIndex(String.Format("EstatusFormacionAcademica {0} ha sido creado", estatusFormacionAcademica.Nombre));
+            return RedirectToIndex(String.Format("EstatusFormacionAcademica {0} ha sido registrado", estatusFormacionAcademica.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

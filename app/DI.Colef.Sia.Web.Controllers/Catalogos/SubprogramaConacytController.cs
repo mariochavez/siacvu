@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveSubprogramaConacyt(subprogramaConacyt);
 
-            return RedirectToIndex(String.Format("Subprograma del Conacyt {0} ha sido creado", subprogramaConacyt.Nombre));
+            return RedirectToIndex(String.Format("Subprograma del Conacyt {0} ha sido registrado", subprogramaConacyt.Nombre));
         }
         
         [Authorize(Roles = "DGAA")]

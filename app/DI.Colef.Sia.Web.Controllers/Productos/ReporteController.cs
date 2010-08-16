@@ -182,7 +182,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             reporteService.SaveReporte(reporte);
-            SetMessage(String.Format("Reporte {0} ha sido creado", reporte.Titulo));
+            SetMessage(String.Format("Reporte {0} ha sido registrado", reporte.Titulo));
 
             return Rjs("Save", reporte.Id);
         }

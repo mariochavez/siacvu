@@ -175,7 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             }
 
             investigadorService.SaveInvestigador(investigador);
-            SetMessage(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
+            SetMessage(String.Format("{0} {1} {2} ha sido registrado", investigador.Usuario.Nombre,
                                      investigador.Usuario.ApellidoPaterno,
                                      investigador.Usuario.ApellidoMaterno));
 

@@ -78,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveGlosario(glosario);
 
-            return RedirectToIndex(String.Format("Glosario {0} ha sido creado", glosario.Campo));
+            return RedirectToIndex(String.Format("Glosario {0} ha sido registrado", glosario.Campo));
         }
 
         [Authorize]
