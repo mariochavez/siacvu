@@ -46,28 +46,44 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         public static string ProductActions(this HtmlHelper html, ProductoDTO producto, bool isDGAA)
         {
             var actions = String.Empty;
-            
+
             if ((isDGAA && producto.IsFirmed()) || (!isDGAA && producto.IsValidated()))
-                actions += String.Format("<span>{0}</span>",
-                                         html.ActionLink("Editar", "Edit", "Home", 
-                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, null));
+            {
+                actions += String.Format("<span>{0}</span>", html.ActionLink("Editar", "Edit", "Home",
+                                                         new {id = producto.Id, tipoProducto = producto.TipoProducto},
+                                                         null));
+                if (producto.Activo)
+                {
+                    actions += String.Format("<span>{0}</span>",
+                                             html.ActionLink("Desactivar", "Deactivate",  
+                                                             new { id = producto.Id },
+                                                             new { @class = "remote put" }));
+                }
+                else
+                {
+                    actions += String.Format("<span>{0}</span>",
+                                             html.ActionLink("Activar", "Activate",
+                                                             new { id = producto.Id },
+                                                             new {@class = "remote put"}));
+                }
+            }
             else if (!isDGAA)
             {
                 if (!producto.IsFirmed() && !producto.IsValidated() && producto.UsuarioId == producto.CurrentUserId)
                 {
                     actions += String.Format("<span>{0}</span>",
-                                         html.ActionLink("Editar", "Edit", "Home", 
-                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, null));
+                                         html.ActionLink("Editar", "Edit", "Home",
+                                            new { id = producto.Id, tipoProducto = producto.TipoProducto }, null));
 
                     actions += String.Format("<span>{0}</span>",
-                                         html.ActionLink("Firmar", "Sign", "Home", 
-                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, new { @class = "remote put"}));
-                } 
+                                         html.ActionLink("Firmar", "Sign", "Home",
+                                            new { id = producto.Id, tipoProducto = producto.TipoProducto }, new { @class = "remote put" }));
+                }
                 else if (producto.IsFirmed() && !producto.IsValidated() || producto.UsuarioId != producto.CurrentUserId)
                 {
                     actions += String.Format("<span>{0}</span>",
-                                         html.ActionLink("Ver", "Show", "Home", 
-                                         	new { id= producto.Id, tipoProducto = producto.TipoProducto }, null));
+                                         html.ActionLink("Ver", "Show", "Home",
+                                            new { id = producto.Id, tipoProducto = producto.TipoProducto }, null));
                 }
             }
             return actions;

@@ -16,6 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public string InstitucionNombre { get; set; }
         public int Tipo { get; set; }
         public string TipoNombre { get; set; }
+        public bool Activo { get; set; }
 
         public int UsuarioId{ get; set;}
         public string UsuarioApellidoMaterno { get; set; }
