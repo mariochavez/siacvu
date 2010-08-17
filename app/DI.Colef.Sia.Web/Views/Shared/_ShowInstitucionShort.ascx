@@ -14,7 +14,8 @@
     </p>
 <% } else { %>
     <p>
-        <label><%= Html.Encode(Model.InstitucionLabel) %></label>
+        <!-- <label><= Html.Encode(Model.InstitucionLabel) %></label>-->
+        <label>Instituci&oacute;n</label>
         <span id="span_institucion" class="valor"><%= Html.Encode(Model.InstitucionNombre)%>&nbsp;</span>
     </p>
 <% } %>

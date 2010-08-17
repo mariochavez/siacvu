@@ -128,6 +128,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var cursoForm = cursoMapper.Map(curso);
 
             data.Form = SetupShowForm(cursoForm);
+            data.Form.InstitucionLabel = "Institución";
             data.Form.IsShowForm = true;
 
             ViewData.Model = data;

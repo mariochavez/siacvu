@@ -45,7 +45,7 @@
         <%=Html.ValidationMessage("FechaGrado")%>
     </p>
 
-    <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
+    <% Html.RenderPartial("_ShowInstitucionShort", Model); %>
     <p>
 	    <label></label>
 	    ¿Esta instituci&oacute;n tiene convenio general con El Colef? <%=Html.CheckBox("TieneConvenio", Model.TieneConvenio)%>
@@ -91,7 +91,7 @@
         <span class="valor"><%= Html.Encode(Model.FechaGrado) %>&nbsp;</span>
     </p>
 
-    <% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
+    <% Html.RenderPartial("_ShowInstitucionShort", Model); %>
     <p>
         <label></label>
         <span class="valor">¿Esta instituci&oacute;n tiene convenio general con El Colef? <%=Html.Encode(Model.TieneConvenio)%>&nbsp;</span>
