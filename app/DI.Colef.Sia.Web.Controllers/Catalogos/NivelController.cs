@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveNivel(nivel);
 
-            return RedirectToIndex(String.Format("Nivel {0} ha sido creado", nivel.Nombre));
+            return RedirectToIndex(String.Format("Nivel {0} ha sido registrado", nivel.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

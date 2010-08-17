@@ -85,7 +85,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
-            return RedirectToIndex(String.Format("Investigador Externo {0} ha sido creado", investigadorExterno.Nombre));
+            return RedirectToIndex(String.Format("Investigador Externo {0} ha sido registrado", investigadorExterno.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

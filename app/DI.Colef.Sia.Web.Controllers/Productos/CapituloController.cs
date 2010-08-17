@@ -200,7 +200,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             capituloService.SaveCapitulo(capitulo);
-            SetMessage(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
+            SetMessage(String.Format("Capítulo {0} ha sido registrado", capitulo.NombreCapitulo));
 
             return Rjs("Save", capitulo.Id);
         }

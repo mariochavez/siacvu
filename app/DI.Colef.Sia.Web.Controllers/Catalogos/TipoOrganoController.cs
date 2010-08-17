@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveTipoOrgano(tipoOrgano);
 
-            return RedirectToIndex(String.Format("Tipo de Órgano {0} ha sido creado", tipoOrgano.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Órgano {0} ha sido registrado", tipoOrgano.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

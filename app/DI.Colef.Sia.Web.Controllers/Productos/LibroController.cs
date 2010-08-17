@@ -195,7 +195,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             libroService.SaveLibro(libro);
-            SetMessage(String.Format("Libro {0} ha sido creado", libro.Nombre));
+            SetMessage(String.Format("Libro {0} ha sido registrado", libro.Nombre));
 
             return Rjs("Save", libro.Id);
         }

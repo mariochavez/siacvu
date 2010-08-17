@@ -137,7 +137,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
 
-            return RedirectToIndex(String.Format("Grupo de Investigación {0} ha sido creado", grupoInvestigacion.NombreGrupoInvestigacion));
+            return RedirectToIndex(String.Format("Grupo de Investigación {0} ha sido registrado", grupoInvestigacion.NombreGrupoInvestigacion));
         }
         
         [CustomTransaction]

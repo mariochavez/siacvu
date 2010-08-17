@@ -87,7 +87,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveConsejoComision(consejoComision);
 
-            return RedirectToIndex(String.Format("Consejo ó Comisión {0} ha sido creado", consejoComision.Nombre));
+            return RedirectToIndex(String.Format("Consejo ó Comisión {0} ha sido registrado", consejoComision.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveMedioImpreso(medioImpreso);
 
-            return RedirectToIndex(String.Format("Medio Impreso {0} ha sido creado", medioImpreso.Nombre));
+            return RedirectToIndex(String.Format("Medio Impreso {0} ha sido registrado", medioImpreso.Nombre));
         }
         
         [Authorize(Roles = "DGAA")]

@@ -246,7 +246,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             }
 
             proyectoService.SaveProyecto(proyecto);
-            SetMessage(String.Format("Proyecto {0} ha sido creado", proyecto.Nombre));
+            SetMessage(String.Format("Proyecto {0} ha sido registrado", proyecto.Nombre));
 
             return Rjs("Save", proyecto.Id);
         }

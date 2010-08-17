@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveGradoAcademico(gradoAcademico);
 
-            return RedirectToIndex(String.Format("Grado Académico {0} ha sido creado", gradoAcademico.Nombre));
+            return RedirectToIndex(String.Format("Grado Académico {0} ha sido registrado", gradoAcademico.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

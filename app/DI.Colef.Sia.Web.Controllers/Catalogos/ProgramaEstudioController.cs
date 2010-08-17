@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveProgramaEstudio(programaEstudio);
 
-            return RedirectToIndex(String.Format("Programa de Estudio {0} ha sido creado", programaEstudio.Nombre));
+            return RedirectToIndex(String.Format("Programa de Estudio {0} ha sido registrado", programaEstudio.Nombre));
         }
         
         [Authorize(Roles = "DGAA")]

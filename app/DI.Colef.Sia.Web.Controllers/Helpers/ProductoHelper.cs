@@ -179,7 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "artículo en revista de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "Aartículo en revista de divulgación";
+                    productName = "artículo en revista de divulgación";
                     break;
                 case TipoProductoEnum.Capitulo:
                     productName = "capítulo en libro";
@@ -234,6 +234,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     break;
                 case TipoProductoEnum.Idioma:
                     productName = "idioma";
+                    break;
+                case TipoProductoEnum.EstanciaAcademica:
+                    productName = "estancia académica";
                     break;
             }
 

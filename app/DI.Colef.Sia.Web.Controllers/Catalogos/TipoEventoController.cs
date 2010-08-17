@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveTipoEvento(tipoEvento);
 
-            return RedirectToIndex(String.Format("Tipo de Evento {0} ha sido creado", tipoEvento.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Evento {0} ha sido registrado", tipoEvento.Nombre));
         }
         
         [Authorize(Roles = "DGAA")]

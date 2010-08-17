@@ -181,7 +181,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             eventoService.SaveEvento(evento);
-            SetMessage(String.Format("Evento {0} ha sido creado", evento.Nombre));
+            SetMessage(String.Format("Evento {0} ha sido registrado", evento.Nombre));
 
             return Rjs("Save", evento.Id);
         }

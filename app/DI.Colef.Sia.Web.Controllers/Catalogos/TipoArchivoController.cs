@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveTipoArchivo(tipoArchivo);
 
-            return RedirectToIndex(String.Format("Tipo de archivo {0} ha sido creado", tipoArchivo.Nombre));
+            return RedirectToIndex(String.Format("Tipo de archivo {0} ha sido registrado", tipoArchivo.Nombre));
         }
         
         [CustomTransaction]
