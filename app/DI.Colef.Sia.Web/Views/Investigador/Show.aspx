@@ -1,11 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<InvestigadorForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
@@ -46,12 +43,12 @@
 		        <p>
 			        <label>Ingreso  como investigador</label>
 			        <span class="valor"><%=Html.Encode(Model.Form.FechaIngreso) %></span>
-			        <span>(Formato dd/mm/yyyy)</span>
+			        <span>(Formato dd/mm/aaaa)</span>
 		        </p>
 	            <p>
 		            <label>Fecha de contrato indeterminado</label>
 		            <span class="valor"><%=Html.Encode(Model.Form.FechaContrato) %>&nbsp;</span>
-		            <span>(Formato dd/mm/yyyy)</span>
+		            <span>(Formato dd/mm/aaaa)</span>
 	            </p>
 	            
 	            <h4>Grado Acad&eacute;mico del Investigador</h4>

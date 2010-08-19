@@ -11,7 +11,7 @@
     </p>
 <% } else { %>
     <p>
-        <label>Nombre del alumno(autor)</label>
+        <label>Nombre del(la) alumno(a)</label>
         <span id="span_nombrealumno" class="valor"><%= Html.Encode(Model.TesisPosgrado.NombreAlumno) %>&nbsp;</span>
     </p>
 <% } %>

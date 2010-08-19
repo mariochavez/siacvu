@@ -2,12 +2,10 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ResenaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -48,7 +46,7 @@
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                    Coautores de <span id="coautores" class="titulovalor"><%=Model.Form.TipoResena == 1 ? "la Nota cr&iacute;tica" : "la Rese&ntilde;a bibligr&aacute;fica" %></span>
+                    Coautor(es) <!--de <span id="coautores" class="titulovalor"><=Model.Form.TipoResena == 1 ? "la Nota cr&iacute;tica" : "la Rese&ntilde;a bibligr&aacute;fica" ></span>-->
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length)%>
                         coautor(es) </span><span class="cvu"></span></a>
@@ -74,13 +72,22 @@
                 <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <%=Html.DropDownList("Pais", Model.Form.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+                    <span class="cvu"></span>
+                    <%=Html.ValidationMessage("Pais") %>
+                </p>
 
-                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
-
-                <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
-                <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
-                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 
+                <h4>&aacute;rea del conocimiento</h4>
+                
+                <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
+                
+                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
+                <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_ProgressBar"); %>
         		
                 <p class="submit">

@@ -2,12 +2,9 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<EventoForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -60,6 +57,15 @@
 	                    <span class="cvu"></span>
 	                    <%=Html.ValidationMessage("TituloTrabajo")%>
                     </p>
+                    <p>                       
+                        <label>Fechas del evento</label>
+                        <%=Html.TextBox("FechaInicial", Model.Form.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
+                        <%=Html.TextBox("FechaFinal", Model.Form.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+                        <span>(Formato dd/mm/aaaa)</span>
+                        <span class="cvu"></span> 
+                        <%=Html.ValidationMessage("FechaInicial")%>
+                        <%=Html.ValidationMessage("FechaFinal")%>
+                    </p>                    
                     
                     <h4>
                         <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
@@ -78,6 +84,8 @@
                     </span>
                 </div>
                 
+                <% Html.RenderPartial("_DatosFinal", Model.Form); %>
+
                 <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
                 <% Html.RenderPartial("_ProgressBar"); %>

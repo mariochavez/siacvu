@@ -68,12 +68,12 @@
                 <h4 class="ReporteTecnico">Contenido del reporte t&eacute;cnico</h4>
                 <h4 class="DocumentoTrabajo">Contenido del documento de trabajo</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-				
-                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
-
+				            
+                <h4>&aacute;rea del conocimiento</h4>
+               
                 <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
-                
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_ProgressBar"); %>
         		
                 <p class="submit">

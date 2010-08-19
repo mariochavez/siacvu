@@ -9,8 +9,6 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 
-<% Html.RenderPartial("_LineaAreaTematica", Model); %>
-
 <p>
     <label>Tipo de evento</label>
     <%=Html.DropDownList("TipoEvento", Model.TiposEventos.CreateSelectList<TipoEventoForm>("Id", "Nombre"),
@@ -33,14 +31,3 @@
 </p>
 
 <% Html.RenderPartial("_EditInstitucion", Model ); %>
-
-
-<div id="NoOrganizadorColef_fields">
-    <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>
-
-    <p>
-        <label>Con invitaci&oacute;n</label>
-        <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
-        <br /><label></label><span>(Marque en caso positivo)</span>
-    </p>
-</div>

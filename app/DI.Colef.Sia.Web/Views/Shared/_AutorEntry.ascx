@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
-    <label>Investigador</label>
+    <label>Investigador(a)</label>
     <span class="valor"><%=Html.Encode(Model.InvestigadorNombre) %></span>
     <span id="CoautorSeOrdenaAlfabeticamente_field" class="noeffect">
          <label class="right">Posici&oacute;n</label>

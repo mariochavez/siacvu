@@ -23,6 +23,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 
+        public int Pais { get; set; }
+        public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
+        public PaisForm[] Paises { get; set; }
+
         public int AreaId { get; set; }
         public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }
@@ -33,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-        
+
         public int TotalCoautores
         {
             get

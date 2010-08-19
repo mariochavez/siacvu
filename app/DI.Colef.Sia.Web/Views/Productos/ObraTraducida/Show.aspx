@@ -1,13 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ObraTraducidaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -39,7 +36,7 @@
         <div id="forma">
             <div id="campos">
             
-            <h4>Datos del investigador</h4>
+            <%--<h4>Datos del investigador</h4>
 	            <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%>&nbsp;</span>
@@ -51,26 +48,27 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 
     <!-- DATOS DE LA PUBLICACION -->            
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre original de la obra</label>
+                    <label>Título original</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Titulo actual</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreObraTraducida) %>&nbsp;</span>
                 </p>
                 <p>
                     <label>Idioma al que se tradujo</label>
                     <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre) %>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Nombre del traductor (co-traductor)</label>
+                    <label>Traductor(a)</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreCompleto) %>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Nombre de la obra en el idioma traducido</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NombreObraTraducida) %>&nbsp;</span>
-                </p>
+               
                 <p>
                     <label>Tipo de publicaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.TipoObraTraducida(Model.Form.TipoObraTraducida) %>&nbsp;</span>
@@ -80,7 +78,7 @@
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                        Coautores de la obra traducida
+                        Coautor(es) <!--de la obra traducida-->
                         <span>
                             <%=Html.Encode(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length)%> coautor(es) 
                         </span><span class="cvu"></span>
@@ -108,7 +106,8 @@
                     <% Html.RenderPartial("_ShowCapitulo", Model.Form); %>
                 <% } %>
                 <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
-                
+                <h4>&aacute;rea del conocimiento</h4>
+                <h5>El Colef</h5>
                 <p>
                     <label>
                         L&iacute;nea tem&aacute;tica institucional</label>

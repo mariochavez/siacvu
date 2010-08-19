@@ -35,7 +35,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+               <%-- <h4>Datos del investigador</h4>
                 <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%>&nbsp;</span>
@@ -47,25 +47,14 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 <h4>Eventos acad&eacute;micos</h4>
                 <p>
                     <label>Nombre del evento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 
-                <p>
-                    <label>
-                        L&iacute;nea tem&aacute;tica institucional</label>
-                    <span class="valor">
-                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; </span>
-                </p>
-                <p>
-                    <label>
-                        &Aacute;rea tem&aacute;tica institucional</label>
-                    <span class="valor">
-                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; </span>
-                </p>
+               
                 
                 <p>
                     <label>Tipo de evento</label>
@@ -102,7 +91,7 @@
                     <% Html.RenderPartial("_ShowSesion", Model.Form); %>
                     
                 <% } else {%>
-                    <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                   
                     
                     <p>
                         <label>Con invitaci&oacute;n</label>
@@ -115,7 +104,12 @@
                         <label>T&iacute;tulo del trabajo</label>
                         <span class="valor"><%= Html.Encode(Model.Form.TituloTrabajo)%>&nbsp;</span>
                     </p>
-                    
+                     <p>                       
+                        <label>Fechas del evento</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span> a 
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
+                        <span class="cvu"></span> 
+                    </p>                   
                 <h4>
                     <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
@@ -129,13 +123,28 @@
 	                <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	                <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, CoautoresInternos = Model.Form.CoautorInternoEventos }); %>
                     <p>
-                        <label>Investigador</label>
+                        <label>Investigador(a)</label>
                         <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
                         <label class="right">Posici&oacute;n</label>
                         <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
                     </p>
                     </span>
-	            <% } %>
+	            <% } %> 
+                <h4>&aacute;rea del conocimiento</h4>
+                <h5>El Colef</h5>
+                <p>
+                    <label>
+                        L&iacute;nea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; </span>
+                </p>
+                <p>
+                    <label>
+                        &Aacute;rea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; </span>
+                </p>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
 	            <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <p class="submit">

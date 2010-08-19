@@ -4,17 +4,18 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+       <%=Html.ProductoEditTitle(TipoProductoEnum.Proyecto) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el proyecto utilice los siguientes campos para realizar cambios dentro del sistema.
+            <%=Html.ProductoEditMessage(TipoProductoEnum.Proyecto) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -54,7 +55,7 @@
                 
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
-                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigadores participantes
+                    <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigador(es) participante(s)
                     <span>
                         <%=Html.Encode(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length)%>
                         participante(s) </span><span class="cvu"></span></a>

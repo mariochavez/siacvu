@@ -192,6 +192,7 @@
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
     </Content>
+    <Content Include="Scripts\flash.detect.min.js" />
     <Content Include="Scripts\jquery.qtip-1.0.0-rc3.js" />
     <Content Include="Views\Catalogos\Glosario\Edit.aspx" />
     <Content Include="Views\Catalogos\Glosario\Index.aspx" />
@@ -200,11 +201,15 @@
     <Content Include="Views\Home\Bandeja.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Investigador\_Evento.ascx" />
+    <Content Include="Views\Investigador\_ShowCorreosElectronicos.ascx" />
+    <Content Include="Views\Investigador\_ShowDirecciones.ascx" />
+    <Content Include="Views\Investigador\_ShowTelefonos.ascx" />
     <Content Include="Views\Investigador\_VinculacionDifusion.ascx" />
     <Content Include="Views\Investigador\_Proyectos.ascx" />
     <Content Include="Views\Investigador\_FormacionRecursosHumanos.ascx" />
     <Content Include="Views\Investigador\_ProducccionAcademica.ascx" />
     <Content Include="Views\Productos\ArticuloDifusion\Index.aspx" />
+    <Content Include="Views\Productos\Evento\_DatosFinal.ascx" />
     <Content Include="Views\Shared\EditorialAddError.js.ascx" />
     <Content Include="Views\Usuario\ChangePais.js.ascx" />
     <Content Include="Views\Shared\HideEditorialForm.js.ascx" />
@@ -890,7 +895,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>14458</DevelopmentServerPort>
+          <DevelopmentServerPort>60750</DevelopmentServerPort>
           <DevelopmentServerVPath>/sia</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

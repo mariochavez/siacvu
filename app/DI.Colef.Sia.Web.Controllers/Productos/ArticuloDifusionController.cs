@@ -41,9 +41,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                           IInvestigadorExternoMapper investigadorExternoMapper,
                                           IArchivoService archivoService,
                                           IInvestigadorService investigadorService,
-                                          IProductoService productoService
+                                          IProductoService productoService,
+                                          IPaisMapper paisMapper
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
+            base.paisMapper = paisMapper;
+
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.articuloService = articuloService;
             this.articuloMapper = articuloMapper;
@@ -57,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorService = investigadorService;
             this.productoService = productoService;
+            this.paisMapper = paisMapper;
         }
 
         [Authorize]
@@ -79,6 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
             var data = new GenericViewData<ArticuloDifusionForm> {Form = SetupNewForm()};
+            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -515,6 +520,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
             form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+
             if (form.Id == 0)
             {
                 form.CoautorExternoArticulos = new CoautorExternoProductoForm[] {};
@@ -541,6 +548,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoArticulo"] = form.TipoArticulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
+            ViewData["Pais"] = form.PaisId;
 
             ViewData["AreaId"] = form.AreaId;
             ViewData["DisciplinaId"] = form.DisciplinaId;
@@ -548,6 +556,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             ViewData["LineaTematicaId"] = form.LineaTematicaId;
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
+
+            ViewData["Pais"] = form.PaisId;
         }
 
         static ArticuloDifusionForm SetupShowForm(ArticuloDifusionForm form)

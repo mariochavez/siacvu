@@ -20,7 +20,7 @@
 <p>
     <label>Fecha del evento</label>
     <%=Html.TextBox("Sesion.FechaEvento", Model.SesionEvento.FechaEvento, new { @class = "datetime input100", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
 	<%=Html.ValidationMessage("Sesion.FechaEvento")%>
 </p>
 <p>

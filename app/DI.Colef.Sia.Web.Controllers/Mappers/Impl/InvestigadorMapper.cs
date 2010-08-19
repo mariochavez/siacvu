@@ -15,6 +15,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IEstadoInvestigadorMapper estadoInvestigadorMapper;
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
         readonly ICatalogoService catalogoService;
+        readonly IDireccionMapper direccionMapper;
+        readonly ICorreoElectronicoMapper correoElectronicoMapper;
+        readonly ITelefonoMapper telefonoMapper;
 
         public InvestigadorMapper(IRepository<Investigador> repository, 
             IUsuarioService usuarioService, ICargoInvestigadorMapper cargoInvestigadorMapper,
@@ -22,7 +25,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper,
             IEstadoInvestigadorMapper estadoInvestigadorMapper,
             ISNIInvestigadorMapper sniInvestigadorMapper,
-            ICatalogoService catalogoService)
+            ICatalogoService catalogoService,
+            IDireccionMapper direccionMapper,
+            ICorreoElectronicoMapper correoElectronicoMapper,
+            ITelefonoMapper telefonoMapper)
             : base(repository)
         {
             this.usuarioService = usuarioService;
@@ -32,6 +38,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             this.estadoInvestigadorMapper = estadoInvestigadorMapper;
             this.sniInvestigadorMapper = sniInvestigadorMapper;
             this.catalogoService = catalogoService;
+            this.direccionMapper = direccionMapper;
+            this.correoElectronicoMapper = correoElectronicoMapper;
+            this.telefonoMapper = telefonoMapper;
         }
 
         protected override int GetIdFromMessage(InvestigadorForm message)

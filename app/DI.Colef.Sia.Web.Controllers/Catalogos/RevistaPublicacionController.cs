@@ -23,9 +23,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
                                         IAreaInvestigacionMapper areaInvestigacionMapper,
                                         IRevistaPublicacionMapper revistaPublicacionMapper,
                                         ISearchService searchService,
-                                        IIndiceMapper indiceMapper)
+                                        IIndiceMapper indiceMapper,
+                                        IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService)
         {
+            base.paisMapper = paisMapper;
+
             this.customCollection = customCollection;
             this.areaInvestigacionMapper = areaInvestigacionMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
@@ -193,6 +196,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             form = form ?? new RevistaPublicacionForm();
 
             //Lista de Catalogos
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Periodicidades = customCollection.PeriodicidadCustomCollection();
             form.TipoRevistas = customCollection.TipoRevistaCustomCollection();
             form.ClasificacionesSieva = customCollection.ClasificacionSievaCustomCollection();
@@ -216,6 +220,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             ViewData["Indice2"] = form.Indice2Id;
             ViewData["Indice3"] = form.Indice3Id;
             ViewData["AreaInvestigacion"] = form.AreaInvestigacionId;
+            ViewData["Pais"] = form.PaisId;
         }
     }
 }

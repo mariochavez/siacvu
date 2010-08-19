@@ -2347,6 +2347,10 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00455FC17D
 alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK58CB3C00977C6E8C]') AND parent_object_id = OBJECT_ID('ArticuloDifusiones'))
+alter table ArticuloDifusiones  drop constraint FK58CB3C00977C6E8C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB7FC066F455FC17D]') AND parent_object_id = OBJECT_ID('TipoOrganos'))
 alter table TipoOrganos  drop constraint FKB7FC066F455FC17D
 
@@ -3931,6 +3935,8 @@ alter table EstanciaAcademicaExternas  drop constraint FKD3887694F1C29126
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
        FirmaFk INT null,
        TipoEventoFk INT null,
        AreaTematicaFk INT null,
@@ -4650,6 +4656,7 @@ alter table EstanciaAcademicaExternas  drop constraint FKD3887694F1C29126
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       NombreLider NVARCHAR(250) null,
        UsuarioFk INT null,
        SectorFk INT null,
        OrganizacionFk INT null,
@@ -4782,6 +4789,7 @@ alter table EstanciaAcademicaExternas  drop constraint FKD3887694F1C29126
        UsuarioFk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
+       PaisFk INT null,
        primary key (Id)
     )
 
@@ -7795,6 +7803,11 @@ alter table EstanciaAcademicaExternas  drop constraint FKD3887694F1C29126
         add constraint FK58CB3C00F1C29126 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table ArticuloDifusiones 
+        add constraint FK58CB3C00977C6E8C 
+        foreign key (PaisFk) 
+        references Paises
 
     alter table TipoOrganos 
         add constraint FKB7FC066F455FC17D 

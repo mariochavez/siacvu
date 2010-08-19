@@ -16,7 +16,7 @@
 </p>
 
 <p>
-    <label>Tipo de publicaci&oacute;n</label>
+    <label>Forma de autor&iacute;a</label>
     <%=Html.DropDownList("FormatoPublicacion", Model.FormatosPublicaciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "coautores requerido" })%>
     <%=Html.ValidationMessage("FormatoPublicacion")%>
@@ -28,7 +28,7 @@
     <%=Html.ValidationMessage("TipoProducto")%>
 </p>
 <p>
-    <label>Contenido del libro</label>
+    <label>Tipo de obra</label>
     <%=Html.DropDownList("ContenidoLibro", Model.ContenidosLibros.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <%=Html.ValidationMessage("ContenidoLibro")%>
@@ -44,7 +44,7 @@
     <p>
         <label></label>
 	    <span>
-		    <%=Html.ActionLink("+ Nuevo evento", "NewEvento", new { Id = Model.Id }, new { @class = "remote get" })%>
+		    <%=Html.ActionLink("+ Agregar nuevo evento", "NewEvento", new { Id = Model.Id }, new { @class = "remote get" })%>
 	    </span>
     </p>
 </div><!--end minilistaboton-->

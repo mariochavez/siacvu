@@ -9,10 +9,10 @@
 <div id="<%=Html.Encode(Model.SubFormName)%>New" class="minilistaboton">
 	<p>
 		<span>
-    		<%=Html.ActionLink("+ Agregar investigador interno", Model.UrlActionInterno, new { Id = Model.ModelId, esAlfabeticamente = Model.CheckboxValue }, new { id = Model.Link1Id, @class = "remote get" })%>
+    		<%=Html.ActionLink("+ Agregar investigador(a) interno(a)", Model.UrlActionInterno, new { Id = Model.ModelId, esAlfabeticamente = Model.CheckboxValue }, new { id = Model.Link1Id, @class = "remote get" })%>
 		</span>
 		<span>
-		    <%=Html.ActionLink("+ Agregar investigador externo", Model.UrlActionExterno, new { Id = Model.ModelId, esAlfabeticamente = Model.CheckboxValue }, new { id = Model.Link2Id, @class = "remote get" })%>
+		    <%=Html.ActionLink("+ Agregar investigador(a) externo(a)", Model.UrlActionExterno, new { Id = Model.ModelId, esAlfabeticamente = Model.CheckboxValue }, new { id = Model.Link2Id, @class = "remote get" })%>
 		</span>
 	</p>
 </div><!--end minilistaboton-->

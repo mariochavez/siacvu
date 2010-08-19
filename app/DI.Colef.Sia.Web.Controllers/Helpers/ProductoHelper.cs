@@ -81,6 +81,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         public static string ProductoListTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
 		{
 		    string productoListTitle = "Administración de {0}";
+
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio)
+                productoListTitle = "Administración de actividades de {0}";
 			
 			return String.Format(productoListTitle, ProductoNamePlural(html, tipoProducto));
 		}
@@ -89,12 +92,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string productoNewTitle = "Registrar {0}";
 
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio)
+                productoNewTitle = "Registrar actividad de {0}";
+
             return String.Format(productoNewTitle, ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoEditTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
             string productoEditTitle = "Modificar{0} {1}";
+
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio)
+                productoEditTitle = "Modificar actividad de{0} {1}";
 
             return String.Format(productoEditTitle, null, ProductoNameSingular(html, tipoProducto));
         }
@@ -103,12 +112,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string productoShowTitle = "Consulta de{0} {1}";
 
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio) productoShowTitle = "Consulta de actividad de{0}";
+
             return String.Format(productoShowTitle, null, ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoListSubTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoListSubTitle = "Agregar {0}";
+            string productoListSubTitle = "Registrar {0}";
+
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio) productoListSubTitle = "Registrar actividad de {0}";
 
             return String.Format(productoListSubTitle, ProductoNameSingular(html, tipoProducto));
         }
@@ -123,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
         public static string ProductoListMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoListMessage = "Puede agregar{0} {1}, presionando en el botón de título + Nuevo.";
+            string productoListMessage = "Puede registrar{0} {1}, presionando en el botón de título + Nuevo.";
 
             return String.Format(productoListMessage, GetArticuloIndefinidoIdioma(tipoProducto), ProductoNameSingular(html, tipoProducto));
         }
@@ -132,6 +145,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string productoNewMessage = "Favor de llenar los siguientes campos para registrar{0}{1} {2} dentro del sistema. ";
 
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio)
+            {
+                productoNewMessage = "Favor de llenar los siguientes campos para registrar{0} {1} dentro del sistema. ";
+                return String.Format(productoNewMessage, GetArticuloIndefinidoIdioma(tipoProducto),
+                                                 ProductoNameSingular(html, tipoProducto));
+            }
             return String.Format(productoNewMessage, GetArticuloIndefinidoIdioma(tipoProducto),
                                  GetProductoNewGenderText(tipoProducto),
                                  ProductoNameSingular(html, tipoProducto));
@@ -140,8 +159,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         public static string ProductoShowMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
             string productoShowMessage = "Aquí se muestra la información detallada de{0} {1} como está en el sistema.";
-
-            return String.Format(productoShowMessage, GetArticuloDefinidoIdioma(tipoProducto),
+            string articulo = GetArticuloDefinidoIdioma(tipoProducto);
+            if (articulo == " el") articulo = "l";
+            return String.Format(productoShowMessage,articulo,
                                  ProductoNameSingular(html, tipoProducto));
         }
 
@@ -159,7 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Artículo en revista de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "Artículo en revista de difusión";
+                    productName = "Artículo en revista de divulgación";
                     break;
                 case TipoProductoEnum.Capitulo:
                     productName = "Capítulo en libro";
@@ -198,7 +218,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Participación en órgano Interno";
                     break;
                 case TipoProductoEnum.Distincion:
-                    productName = "Distincion académica";
+                    productName = "Distinción académica";
+                    break;
+                case TipoProductoEnum.ExperienciaProfesional:
+                    productName = "Experiencia Profesional";
+                    break;
+                case TipoProductoEnum.ApoyoConacyt:
+                    productName = "Apoyo CONACYT";
+                    break;
+                case TipoProductoEnum.GrupoInvestigacion:
+                    productName = "Grupo de investigación";
                     break;
             }
 
@@ -215,7 +244,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Artículos en revistas de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "Artículos en revistas de difusión";
+                    productName = "Artículos en revistas de divulgación";
                     break;
                 case TipoProductoEnum.Capitulo:
                     productName = "Capítulos en libros";
@@ -224,7 +253,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Cursos";
                     break;
                 case TipoProductoEnum.Dictamen:
-                    productName = "Dictamenes";
+                    productName = "Dictámenes";
                     break;
                 case TipoProductoEnum.Evento:
                     //productName = "Organización y participación de eventos académicos";
@@ -238,26 +267,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     break;
                 case TipoProductoEnum.OrganoExterno:
                     //productName = "Participaciónes Honoríficas en Órganos Colegiados Externos";
-                    productName = "Órganos Colegiados Externos";
+                    productName = "Órganos colegiados externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
-                    productName = "Difusiones del conocimiento";
+                    productName = "Difusión del conocimiento";
                     break;
                 case TipoProductoEnum.Reporte:
                     //productName = "Reportes técnicos/Documentos de trabajo";
                     productName = "Reportes técnicos";
                     break;
                 case TipoProductoEnum.TesisDirigida:
-                    productName = "Participación en Tesis";
+                    productName = "Participación en tesis";
                     break;
 				case TipoProductoEnum.Resena:
                     productName = "Reseñas/Notas críticas";
                     break;
                 case TipoProductoEnum.OrganoInterno:
-                    productName = "Participaciónes en órganos Internos";
+                    productName = "Participaciones en órganos internos";
                     break;
                 case TipoProductoEnum.Distincion:
                     productName = "Distinciones académicas";
+                    break;
+                case TipoProductoEnum.ExperienciaProfesional:
+                    productName = "Experiencia profesional";
+                    break;
+                case TipoProductoEnum.ApoyoConacyt:
+                    productName = "Apoyos CONACYT";
+                    break;
+                case TipoProductoEnum.GrupoInvestigacion:
+                    productName = "Grupos de investigación";
                     break;
             }
 
@@ -269,8 +307,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             string articuloIdioma = " el";
             if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
                 || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena
-                || tipoProducto == TipoProductoEnum.Distincion)
+                || tipoProducto == TipoProductoEnum.Distincion || tipoProducto == TipoProductoEnum.ExperienciaProfesional)
                 articuloIdioma = " la";
+
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio) articuloIdioma += " actividad de";
             return articuloIdioma;
         }
 
@@ -278,8 +318,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string articuloIndefinidoIdioma = " un";
             if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio 
-                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
+                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena ||
+                tipoProducto == TipoProductoEnum.ExperienciaProfesional)
                 articuloIndefinidoIdioma = " una";
+            if (tipoProducto == TipoProductoEnum.ParticipacionMedio) articuloIndefinidoIdioma += " actividad de";
             return articuloIndefinidoIdioma;
         }
 
@@ -287,8 +329,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string generoNuevo = " nuevo";
             if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
-                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
-                generoNuevo = " nueva";
+                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena
+                || tipoProducto == TipoProductoEnum.ExperienciaProfesional) generoNuevo = " nueva";
             return generoNuevo;
         }
     }

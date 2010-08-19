@@ -35,16 +35,21 @@
 	    <div id="forma">
 
 	        <% using (Html.BeginForm("Update", "Usuario")) { %>
+
 	            <%=Html.AntiForgeryToken() %>
 	            <%=Html.Hidden("Id", Model.Form.Id) %>        
             
-	            <% Html.RenderPartial("_DatosUsuario", Model.Form); %>
-            
-                <h4>Direcci&oacute;n</h4>
-                <% Html.RenderPartial("_EditDireccion", Model.Form); %>
+                <%if(User.IsInRole("DGAA")){ %>
 
-	            <h4>Roles</h4>
-	            <% Html.RenderPartial("_EditRol", Model.Form); %>
+	                <% Html.RenderPartial("_DatosUsuario", Model.Form); %>
+                         
+	                <h4>Roles</h4>
+	                <% Html.RenderPartial("_EditRol", Model.Form); %>
+
+                <% } %>
+
+                <h4>Direcciones</h4>
+                <% Html.RenderPartial("_EditDireccion", Model.Form); %>
 
                 <h4>Tel&eacute;fonos</h4>
                 <% Html.RenderPartial("_EditTelefono", Model.Form); %>
@@ -52,9 +57,18 @@
                 <h4>Correo Electr&oacute;nico</h4>
                 <% Html.RenderPartial("_EditCorreoElectronico", Model.Form); %>
             
-	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<UsuarioController>(x => x.Index(), "Regresar") %>
-	            </p>
+                <%if (User.IsInRole("DGAA")) { %>
+
+	                <p class="submit">
+	                    <%=Html.SubmitButton("Guardar", "Guardar cambios")%> &oacute; <%=Html.ActionLink<UsuarioController>(x => x.Index(), "Regresar")%>
+	                </p>
+
+                <% } else {%>
+                    <p class="submit">
+	                    <%=Html.ActionLink<InvestigadorController>(x => x.Perfil(), "Regresar")%>
+	                </p>
+                <% }%>
+
 	        <% } %>
 	    </div><!--end forma-->
     

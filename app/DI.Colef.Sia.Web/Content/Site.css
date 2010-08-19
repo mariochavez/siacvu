@@ -692,6 +692,19 @@ a.editabusqueda {
 	position:relative;
 }
 
+#lista h7 {
+	margin: 0 20px;
+	padding: 15px 0;
+	font-size: 12pt;
+	font-weight: bold;
+	
+	letter-spacing: 1pt;
+	color: #555;
+	border-bottom: 1px solid #EFF1E7;
+	cursor:pointer;
+	position:relative;
+}
+
 #lista h4 a {
 	text-decoration: none;
 	color: #555;
@@ -844,6 +857,16 @@ a.editabusqueda {
 	float: none;
 }
 
+#forma h5 {
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 11pt;
+	font-weight: bold;
+	line-height:15pt;
+	letter-spacing: 1pt;
+	border-top: 1px solid #EFF1E7;
+	color: #555;
+}
 .input100 {
 	width: 100px;
 	padding: 3px;

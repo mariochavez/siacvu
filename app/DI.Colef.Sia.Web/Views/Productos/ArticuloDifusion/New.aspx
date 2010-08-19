@@ -5,7 +5,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
@@ -49,7 +48,7 @@
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                    Coautores del art&iacute;culo de difusi&oacute;n
+                    Coautor(es) <!--del art&iacute;culo de difusi&oacute;n-->
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length)%> coautor(es)
                     </span> 
@@ -64,6 +63,7 @@
                 
                   <% Html.RenderPartial("_AutorEntry", Model.Form); %>
                 </span>
+
                 <% Html.RenderPartial("_ShowEstadoProducto", 
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id}); %>
@@ -73,10 +73,14 @@
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
 
-                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
+                <label>Pa&iacute;s</label>
+                     <%=Html.DropDownList("Pais", Model.Form.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+                         "Seleccione ...", new { @class = "requerido"})%>
+                <span class="cvu"></span>
+                <%=Html.ValidationMessage("Pais") %>
 
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
-				
+				<% Html.RenderPartial("_EditArchivo", Model.Form); %>
 				<% Html.RenderPartial("_ProgressBar"); %>
             
 	            <p class="submit">

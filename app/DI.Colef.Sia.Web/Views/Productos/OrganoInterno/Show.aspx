@@ -38,7 +38,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+                <%--<h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
@@ -46,7 +46,7 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 
                 <h4>Datos del &Oacute;rgano Interno</h4>
                 <p>
@@ -60,12 +60,12 @@
                 <p>
                     <label>Fecha inicial</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>                
                 <p>
                     <label>Fecha final</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 
                 <% if (Model.Form.ConsejoComisionNombre != "Consejo Académico"){ %>

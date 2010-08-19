@@ -2,12 +2,9 @@
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<DistincionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -38,7 +35,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+                <%--<h4>Datos del investigador</h4>
 	            <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InvestigadorNombre)%>&nbsp;</span>
@@ -50,16 +47,20 @@
                 <p>
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
-                </p>
+                </p>--%>
                 
                 <h4>Datos de la distinci&oacute;n</h4>
                 <p>
-                    <label>T&iacute;tulo de la distinci&oacute;n</label>
+                    <label>Nombre de la distinci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de distinci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoDistincionNombre)%>&nbsp;</span>
+                </p>
+                 <p>
+                    <label>Otorgante</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Otorgante)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Descripci&oacute;n de la distinci&oacute;n</label>
@@ -68,7 +69,7 @@
                 <p>
                     <label>Fecha de otorgamiento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaOtorgamiento)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <span>Formato (dd/mm/aaaa)</span>
                 </p>
                 <p>
                     <label>Instituci&oacute;n</label>

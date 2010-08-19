@@ -57,13 +57,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.Volumen == "")
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|Volumen", "Volumen");
+                //if (obraTraducida.Volumen == "")
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "no debe ser nulo o vacío|Volumen", "Volumen");
 
-                    isValid = false;
-                }
+                //    isValid = false;
+                //}
 
                 if (obraTraducida.Numero == "")
                 {
@@ -109,21 +109,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.Reimpresion == 0)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione una reimpresión|Reimpresion", "Reimpresion");
+                //if (obraTraducida.Reimpresion == 0)
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "seleccione una reimpresión|Reimpresion", "Reimpresion");
 
-                    isValid = false;
-                }
+                //    isValid = false;
+                //}
 
-                if (obraTraducida.Volumen == "")
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|Volumen", "Volumen");
+                //if (obraTraducida.Volumen == "")
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "no debe ser nulo o vacío|Volumen", "Volumen");
 
-                    isValid = false;
-                }
+                //    isValid = false;
+                //}
 
                 //if (obraTraducida.PaginaInicial > obraTraducida.PaginaFinal)
                 //{
@@ -152,13 +152,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (obraTraducida.TipoObraTraducida == 3)
             {
-                if (obraTraducida.Volumen == "")
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|Volumen", "Volumen");
+                //if (obraTraducida.Volumen == "")
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "no debe ser nulo o vacío|Volumen", "Volumen");
 
-                    isValid = false;
-                }
+                //    isValid = false;
+                //}
 
                 if (obraTraducida.NombreLibro == "")
                 {
@@ -184,13 +184,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.NoCitas == 0)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|NoCitas", "NoCitas");
+                //if (obraTraducida.NoCitas == 0)
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "no debe ser nulo o vacío|NoCitas", "NoCitas");
 
-                    isValid = false;
-                }
+                //    isValid = false;
+                //}
             }
 
             if (!isValid)

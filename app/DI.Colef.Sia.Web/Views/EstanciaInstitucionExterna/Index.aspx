@@ -5,17 +5,17 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2> <%=Html.ProductoListTitle(TipoProductoEnum.EstanciaAcademica) %></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-	    <h3>Agregar nueva estancia en instituci&oacute;n externa</h3>
+	    <h3> <%=Html.ProductoListSubTitle(TipoProductoEnum.EstanciaAcademica) %></h3>
 		<p>
-		    Puede agregar una nueva estancia en instituci&oacute;n externa dentro de la lista de administraci&oacute;n de
-		    otros presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva estancia en instituci&oacute;n externa</strong>.
+		     <%=Html.ProductoListMessage(TipoProductoEnum.EstanciaAcademica) %>
 		</p>
 			
 		<div class="botonzon">

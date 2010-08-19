@@ -20,19 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 
-        public virtual IList<ArchivoDistincion> ArchivosDistincion { get; private set; }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivosDistincion.Add((ArchivoDistincion) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivosDistincion.Remove((ArchivoDistincion) archivo);
-        }
-
         public virtual TipoDistincion TipoDistincion { get; set; }
 
         [NotNullNotEmpty]
@@ -41,9 +28,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Descripcion { get; set; }
 
+        public virtual string Otorgante { get; set; }
+
         public virtual DateTime FechaOtorgamiento { get; set; }
 
         public virtual Institucion Institucion { get; set; }
+
+        public virtual string InstitucionNombre { get; set; }
 
         public virtual Ambito Ambito { get; set; }
 
@@ -59,6 +50,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
+
+        public virtual IList<ArchivoDistincion> ArchivosDistincion { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosDistincion.Add((ArchivoDistincion)archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosDistincion.Remove((ArchivoDistincion)archivo);
+        }
 
         public virtual Usuario CreadoPor { get; set; }
 

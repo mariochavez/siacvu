@@ -147,5 +147,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+
+        public virtual DateTime FechaInicial { get; set;}
+
+        public virtual DateTime FechaFinal { get; set; }
     }
 }

@@ -41,6 +41,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoEstancia TipoEstancia { get; set; }
 
+        public virtual string InstitucionNombre { get; set; }
+
 		public virtual Institucion Institucion { get; set; }
 
 		public virtual string LineasInvestigacion { get; set; }

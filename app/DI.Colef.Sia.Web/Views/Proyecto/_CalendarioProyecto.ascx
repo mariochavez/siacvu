@@ -4,14 +4,14 @@
 <p>
     <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaInicial")%>
 </p>
 <p>
     <label>Fecha final</label>
     <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>
@@ -19,7 +19,7 @@
     <p>
         <label>Fecha de pr&oacute;rroga</label>
         <%=Html.TextBox("FechaProrroga", Model.FechaProrroga, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-        <span>(Formato dd/mm/yyyy)</span>
+        <span>(Formato dd/mm/aaaa)</span>
         <%=Html.ValidationMessage("FechaProrroga")%>
     </p>    
     <p>
@@ -31,7 +31,7 @@
     <p id="EstadoTerminado">
         <label>Fecha de conclusi&oacute;n</label>
         <%=Html.TextBox("FechaConclusion", Model.FechaConclusion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-        <span>(Formato dd/mm/yyyy)</span>
+        <span>(Formato dd/mm/aaaa)</span>
         <%=Html.ValidationMessage("FechaConclusion")%>
     </p>
 <% } %>

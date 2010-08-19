@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
-    <label>Nombre</label>
+    <label>Nombre del apoyo</label>
     <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-requerido", maxlength = 50 })%>
     <%=Html.ValidationMessage("Nombre") %>
 </p>
@@ -31,14 +31,14 @@
     <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span class="cvu"></span>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <%=Html.ValidationMessage("FechaInicial")%>
 </p>
 <p>
     <label>Fecha final</label>
     <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span class="cvu"></span>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>
 <p>

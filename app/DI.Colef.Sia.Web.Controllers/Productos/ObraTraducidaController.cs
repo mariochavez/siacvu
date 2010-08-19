@@ -722,6 +722,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Ediciones = customCollection.EdicionCustomCollection();
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
 
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+
             if (form.Id == 0)
             {
                 form.CoautorExternoObraTraducidas = new CoautorExternoProductoForm[] {};
@@ -758,6 +760,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             ViewData["LineaTematicaId"] = form.LineaTematicaId;
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
+
+            ViewData["Pais"] = form.PaisId;
         }
 
         static ObraTraducidaForm SetupShowForm(ObraTraducidaForm form)

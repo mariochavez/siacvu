@@ -1,11 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InvestigadorForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 
-<p>
-    <label>Direcci&oacute;n</label>
-    <span id="direccion" class="valor"><%=Html.Encode(Model.UsuarioDireccion) %>&nbsp;</span>
-</p>
 <p>
     <label>Estado civil</label>
     <span id="estadocivil" class="valor"><%=Html.Encode(Model.UsuarioEstadoCivil) %>&nbsp;</span>
@@ -13,7 +10,7 @@
 <p>
     <label>Fecha de nacimiento</label>
     <span id="fechanacimiento" class="valor"><%=Html.Encode(Model.UsuarioFechaNacimiento) %>&nbsp;</span>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
 </p>
 <p>
     <label>Documentos de identidad</label>
@@ -38,7 +35,7 @@
 <p>
     <label>Fecha de ingreso</label>
     <span id="fechaingreso" class="valor"><%=Html.Encode(Model.UsuarioFechaIngreso) %>&nbsp;</span>
-    <span>(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/aaaa)</span>
 </p>
 <p>
     <label>N&uacute;m. de c&eacute;dula profesional</label>
@@ -48,3 +45,13 @@
     <label>C&oacute;digo RH</label>
     <span id="codigorh" class="valor"><%=Html.Encode(Model.UsuarioCodigoRH) %>&nbsp;</span>
 </p>	
+
+<% Html.RenderPartial("_ShowDirecciones", Model.UsuarioDirecciones); %>
+
+<% Html.RenderPartial("_ShowCorreosElectronicos", Model.UsuarioCorreosElectronicos); %>
+
+<% Html.RenderPartial("_ShowTelefonos", Model.UsuarioTelefonos); %>
+
+<p class="submit">
+    <%=Html.ActionLink<UsuarioController>(x => x.Edit(Model.UsuarioId), "Editar informacion personal") %>
+</p>

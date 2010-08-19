@@ -39,6 +39,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaInvestigacionId { get; set; }
         public string AreaInvestigacionNombre { get; set; }
 
+        public int Pais { get; set; }
+        public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
+
         /* Catalogos */
         public CustomSelectForm[] Periodicidades { get; set; }
         public CustomSelectForm[] TipoRevistas { get; set; }
@@ -48,5 +52,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public IndiceForm[] Indices2 { get; set; }
         public IndiceForm[] Indices3 { get; set; }
         public AreaInvestigacionForm[] AreasInvestigacion { get; set; }
+        public PaisForm[] Paises { get; set; }
     }
 }

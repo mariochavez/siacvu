@@ -31,15 +31,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.Estatus, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.NivelEstudio, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.TituloTesis, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.EstadoPais, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.EstadoPais, constraintValidatorContext);
                 //TODO: Quitar todas las referencias a LineaTematica en el formato FormacionAcademica
                 //isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.LineaTematica, "LineaTematicaNombre",
                 //                                            constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.Pais, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.Ciudad, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.NumeroCedula, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.Institucion, "InstitucionNombre",
-                                                           constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<FormacionAcademica>(formacionAcademica, x => x.Institucion, "InstitucionNombre",
+                //                                           constraintValidatorContext);
             }
 
             isValid &= ValidateFechas(formacionAcademica, constraintValidatorContext);

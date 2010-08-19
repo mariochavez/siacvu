@@ -5,6 +5,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string NombreGrupoInvestigacion { get; set; }
 		public string FechaCreacion { get; set; }
         public bool Lider { get; set; }
+        public string NombreLider { get; set; }
         public string Impacto { get; set; }
         public string VinculacionSectorProductivo { get; set; }
         public string VinculacionSectorSocial { get; set; }
