@@ -242,8 +242,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return bandejaTrabajo;
         }
 
-        ICriteria BuildCriteria<T>(Usuario usuario, Expression<Func<T, object>> productName,
+		ICriteria BuildCriteria<T>(Usuario usuario, Expression<Func<T, object>> productName,
             Expression<Func<T, object>> productType)
+		{
+			return BuildCriteria<T>(usuario, productName, productType, true);
+		}
+
+        ICriteria BuildCriteria<T>(Usuario usuario, Expression<Func<T, object>> productName,
+            Expression<Func<T, object>> productType, bool activo)
         {
             var firmaTable = EntityHelper.GetFirmaTable<T>();
             var estadoTable = EntityHelper.GetEstadoTable<T>();
@@ -272,6 +278,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(Projections.Property("u.Nombre"), "UsuarioNombre")
                 .Add(Projections.Property("u.ApellidoPaterno"), "UsuarioApellidoPaterno")
                 .Add(Projections.Property("u.ApellidoMaterno"), "UsuarioApellidoMaterno");
+
+			criteria.Add(Expression.Eq("Activo", activo));
 
             if (!String.IsNullOrEmpty(firmaTable))
             {

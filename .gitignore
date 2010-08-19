@@ -14,3 +14,5 @@ build/
 build.zip
 NHibernate.config
 .eprj
+.DS_Store
+*.swp
