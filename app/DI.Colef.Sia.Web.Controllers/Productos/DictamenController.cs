@@ -144,7 +144,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             dictamenService.SaveDictamen(dictamen);
-            SetMessage(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
+            SetMessage(String.Format("Dictamen {0} ha sido registrado", dictamen.Nombre));
 
             return Rjs("Save", dictamen.Id);
         }

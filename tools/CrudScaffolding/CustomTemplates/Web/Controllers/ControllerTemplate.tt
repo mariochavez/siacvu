@@ -93,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
-            return RedirectToIndex(String.Format("<#= EntityScaffoldingDetails.EntityName #> {0} ha sido creado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre));
+            return RedirectToIndex(String.Format("<#= EntityScaffoldingDetails.EntityName #> {0} ha sido registrado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre));
         }
         
         [CustomTransaction]

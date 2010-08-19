@@ -21,7 +21,7 @@
     <%=Html.ValidationMessage("TipoApoyo") %>
 </p>
 <p>
-    <label>Subprograma de CONACyT</label>
+    <label>Subprograma de Conacyt</label>
     <%=Html.DropDownList("SubprogramaConacyt", Model.SubprogramasConacyts.CreateSelectList<SubprogramaConacytForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class ="requerido" })%>
 	<span class="cvu"></span>

@@ -133,7 +133,7 @@
                 </p>
                 <%if(Model.Form.SectorFinanciamientoNombre.Contains("Fondos CONACyT")) { %>
                     <p>
-                        <label>Fondo del CONACyT</label>
+                        <label>Fondo del Conacyt</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</span>
                     </p>
                 <% } %>

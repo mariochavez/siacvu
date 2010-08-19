@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -175,7 +176,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             }
 
             investigadorService.SaveInvestigador(investigador);
-            SetMessage(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
+            SetMessage(String.Format("{0} {1} {2} ha sido registrado", investigador.Usuario.Nombre,
                                      investigador.Usuario.ApellidoPaterno,
                                      investigador.Usuario.ApellidoMaterno));
 
@@ -617,6 +618,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (form.Id == 0)
             {
+                form.UsuarioDirecciones = new List<DireccionForm>();
+                form.UsuarioCorreosElectronicos = new List<CorreoElectronicoForm>();
+                form.UsuarioTelefonos = new List<TelefonoForm>();
             }
             else
             {

@@ -131,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             formacionAcademicaService.SaveFormacionAcademica(formacionAcademica);
 
             return
-                RedirectToIndex(String.Format("Formación Académica {0} ha sido creada", formacionAcademica.TituloGrado));
+                RedirectToIndex(String.Format("Formación académica {0} ha sido registrada", formacionAcademica.TituloGrado));
         }
 
         [CustomTransaction]
@@ -157,7 +157,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             formacionAcademicaService.SaveFormacionAcademica(formacionAcademica);
 
             return
-                RedirectToIndex(String.Format("Formación Académica {0} ha sido modificada",
+                RedirectToIndex(String.Format("Formación académica {0} ha sido modificada",
                                               formacionAcademica.TituloGrado));
         }
 

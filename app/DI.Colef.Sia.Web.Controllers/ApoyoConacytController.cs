@@ -108,7 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             apoyoConacytService.SaveApoyoConacyt(apoyoConacyt);
 
-            return RedirectToIndex(String.Format("Apoyo del Conacyt {0} ha sido creado", apoyoConacyt.TipoApoyo.Nombre));
+            return RedirectToIndex(String.Format("Apoyo del Conacyt ({0}) ha sido registrado", apoyoConacyt.TipoApoyo.Nombre));
         }
 
         [CustomTransaction]
@@ -132,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             apoyoConacytService.SaveApoyoConacyt(apoyoConacyt);
 
-            return RedirectToIndex(String.Format("Apoyo del Conacyt {0} ha sido modificado", apoyoConacyt.TipoApoyo.Nombre));
+            return RedirectToIndex(String.Format("Apoyo del Conacyt ({0}) ha sido modificado", apoyoConacyt.TipoApoyo.Nombre));
         }
 
         [CustomTransaction]

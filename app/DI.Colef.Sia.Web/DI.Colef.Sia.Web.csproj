@@ -185,12 +185,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Login.css" />
     <Content Include="Content\Images\bg-ColumnaA.gif" />
     <Content Include="Content\Images\bg-ColumnaB.gif" />
     <Content Include="Content\Images\colef-logo.gif" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\flash.detect.min.js" />
     <Content Include="Scripts\jquery.qtip-1.0.0-rc3.js" />
@@ -209,6 +211,7 @@
     <Content Include="Views\Investigador\_FormacionRecursosHumanos.ascx" />
     <Content Include="Views\Investigador\_ProducccionAcademica.ascx" />
     <Content Include="Views\Productos\ArticuloDifusion\Index.aspx" />
+    <Content Include="Views\Productos\Articulo\Activate.js.ascx" />
     <Content Include="Views\Productos\Evento\_DatosFinal.ascx" />
     <Content Include="Views\Shared\EditorialAddError.js.ascx" />
     <Content Include="Views\Usuario\ChangePais.js.ascx" />

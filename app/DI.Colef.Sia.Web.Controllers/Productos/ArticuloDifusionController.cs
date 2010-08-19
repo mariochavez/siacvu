@@ -245,7 +245,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             articuloService.SaveArticulo(articulo);
-            SetMessage(String.Format("Artículo en revistas de difusión {0} ha sido creado", articulo.Titulo));
+            SetMessage(String.Format("Artículo en revistas de difusión {0} ha sido registrado", articulo.Titulo));
 
             return Rjs("Save", articulo.Id);
         }

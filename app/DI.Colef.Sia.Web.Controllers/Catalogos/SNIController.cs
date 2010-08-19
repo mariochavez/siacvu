@@ -69,7 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveSNI(sni);
 
-            return RedirectToIndex(String.Format("SNI {0} ha sido creado", sni.Nombre));
+            return RedirectToIndex(String.Format("SNI {0} ha sido registrado", sni.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

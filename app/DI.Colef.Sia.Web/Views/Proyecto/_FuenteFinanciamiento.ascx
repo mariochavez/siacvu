@@ -42,7 +42,7 @@
         <%=Html.ValidationMessage("SectorFinanciamiento")%>
     </p>
     <p id="SectorFinanciamiento_Field">
-        <label>Fondo del CONACyT</label>
+        <label>Fondo del Conacyt</label>
         <%=Html.DropDownList("FondoConacyt", Model.FondosConacyt.CreateSelectList<FondoConacytForm>("Id", "Nombre"),
                     "Seleccione ...", new { @class = "requerido" })%>
         <%=Html.ValidationMessage("FondoConacyt")%>

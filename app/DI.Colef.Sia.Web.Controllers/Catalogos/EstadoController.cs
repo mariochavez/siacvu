@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveEstado(estado);
 
-            return RedirectToIndex(String.Format("Estado {0} ha sido creado", estado.Nombre));
+            return RedirectToIndex(String.Format("Estado {0} ha sido registrado", estado.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             usuarioService.SaveRol(rol);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", rol.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido registrado", rol.Nombre));
         }
 
         [CustomTransaction]

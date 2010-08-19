@@ -11,8 +11,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class SubdisciplinaController : BaseController<Subdisciplina, SubdisciplinaForm>
     {
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
+        //readonly ISubdisciplinaMapper subdisciplinaMapper;
+        //readonly IDisciplinaMapper disciplinaMapper;
 
         public SubdisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                        ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService,
@@ -20,8 +20,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.subdisciplinaMapper = subdisciplinaMapper;
-            this.disciplinaMapper = disciplinaMapper;
+            //this.subdisciplinaMapper = subdisciplinaMapper;
+            //this.disciplinaMapper = disciplinaMapper;
             this.areaTematicaMapper = areaTematicaMapper;
         }
 

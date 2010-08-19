@@ -58,7 +58,7 @@
             <% foreach (var estanciaInstitucionExterna in Model.List){ %>
                 <div class="elementolista" id="accion_<%=Html.Encode(estanciaInstitucionExterna.Id) %>">
 			        <div class="elementodescripcion">
-			            <h5><span><%=Html.Encode(estanciaInstitucionExterna.InstitucionNombre)%></span></h5>
+			            <h5><span><%= (estanciaInstitucionExterna.InstitucionExists)?estanciaInstitucionExterna.Institucion.Nombre:Html.Encode(estanciaInstitucionExterna.InstitucionNombre)%></span></h5>
 				        <h6>Modificado el <%=Html.Encode(estanciaInstitucionExterna.Modificacion)%></h6>
 			        </div><!--end elementodescripcion-->
     				

@@ -135,6 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
 
             data.Form = SetupShowForm(tesisDirigidaForm);
+            data.Form.InstitucionLabel = "Institución";
 
             ViewData.Model = data;
             return View();
@@ -348,6 +349,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new TesisDirigidaForm();
 
             form.IsShowForm = true;
+            form.InstitucionLabel = "Institución";
 
             form.ShowFields = new ShowFieldsForm
                                   {
@@ -358,9 +360,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaNombre = form.AreaNombre,
                                       Nivel2Nombre = form.Nivel2Nombre,
                                       OrganizacionNombre = form.OrganizacionNombre,
-                                      SectorNombre = form.SectorNombre,
-                                      IsShowForm = true,
-                                      InstitucionLabel = "Institución"
+                                      SectorNombre = form.SectorNombre
                                   };
             return form;
         }

@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveIdioma(idioma);
 
-            return RedirectToIndex(String.Format("Idioma {0} ha sido creado", idioma.Nombre));
+            return RedirectToIndex(String.Format("Idioma {0} ha sido registrado", idioma.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

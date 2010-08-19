@@ -84,7 +84,7 @@
                     <span class="valor"><%=Html.Encode(Model.Form.ExpedienteAcademico)%>&nbsp;</span>
                 </p>                         
                 <p>
-                    <label>Clave de CVU-CONACyT</label>
+                    <label>Clave de CVU-CONACYT</label>
                     <span class="valor"><%=Html.Encode(Model.Form.ClaveCVU)%>&nbsp;</span>
                 </p>
                 <p>

@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveEstadoPais(estadoPais);
 
-            return RedirectToIndex(String.Format("Estado del País {0} ha sido creado", estadoPais.Nombre));
+            return RedirectToIndex(String.Format("Estado del País {0} ha sido registrado", estadoPais.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

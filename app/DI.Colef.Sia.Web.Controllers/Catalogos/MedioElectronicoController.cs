@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveMedioElectronico(medioElectronico);
 
-            return RedirectToIndex(String.Format("Medio Electrónico {0} ha sido creado", medioElectronico.Nombre));
+            return RedirectToIndex(String.Format("Medio Electrónico {0} ha sido registrado", medioElectronico.Nombre));
         }
         
         [Authorize(Roles = "DGAA")]

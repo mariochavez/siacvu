@@ -10,7 +10,7 @@
 </p>
 <p>
     <label>N&uacute;mero de c&eacute;dula profesional</label>
-    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 20 })%>
+    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250", maxlength = 20 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>

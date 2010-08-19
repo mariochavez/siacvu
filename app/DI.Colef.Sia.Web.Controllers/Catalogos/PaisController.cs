@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SavePais(pais);
 
-            return RedirectToIndex(String.Format("País {0} ha sido creado", pais.Nombre));
+            return RedirectToIndex(String.Format("País {0} ha sido registrado", pais.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

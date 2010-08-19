@@ -54,6 +54,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual GradoAcademico GradoAcademico { get; set; }
 
+        public virtual string InstitucionNombre { get; set; }
+
         public virtual Institucion Institucion { get; set; }
 
         public virtual bool TieneConvenio { get; set; }

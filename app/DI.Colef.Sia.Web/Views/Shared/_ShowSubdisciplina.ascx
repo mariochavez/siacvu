@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<h5>CONACyT</h5>
+<h5>Conacyt</h5>
 <% if(!Model.IsShowForm){ %>
     <p>
         <label>&Aacute;rea</label>

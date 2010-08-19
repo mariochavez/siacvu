@@ -740,7 +740,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     objectName = "de órganos internos";
                     break;
                 case "Apoyos Conacyts":
-                    objectName = "de apoyos del CONACyT";
+                    objectName = "de apoyos del Conacyt";
                     break;
                 case "Idiomas Investigadores":
                     objectName = "de idiomas del investigador";
@@ -774,7 +774,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 case "Articulo Difusion":
                     newPrefix = "nuevo ";
                     editShowPrefix = "del ";
-                    objectName = "artículo en revista de difusión";
+                    objectName = "artículo en revista de divulgación";
                     break;
                 case "Capitulo":
                     newPrefix = "nuevo ";
@@ -871,7 +871,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     break;
 
                 case Title.New:
-                    message = String.Format("Crear {0}", GetObjectName(false, 2).ToLower());
+                    message = String.Format("Registrar {0}", GetObjectName(false, 2).ToLower());
                     break;
 
                 case Title.Edit:

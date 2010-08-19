@@ -11,8 +11,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class NivelController : BaseController<Nivel, NivelForm>
     {
-        readonly INivelMapper nivelMapper;
-        readonly IOrganizacionMapper organizacionMapper;
+        //readonly INivelMapper nivelMapper;
+        //readonly IOrganizacionMapper organizacionMapper;
 
         public NivelController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                INivelMapper nivelMapper, ISearchService searchService,
@@ -20,8 +20,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.nivelMapper = nivelMapper;
-            this.organizacionMapper = organizacionMapper;
+            //this.nivelMapper = nivelMapper;
+            //this.organizacionMapper = organizacionMapper;
         }
 
         [Authorize]
@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveNivel(nivel);
 
-            return RedirectToIndex(String.Format("Nivel {0} ha sido creado", nivel.Nombre));
+            return RedirectToIndex(String.Format("Nivel {0} ha sido registrado", nivel.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

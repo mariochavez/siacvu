@@ -48,6 +48,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.AreaId);
             model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
+
+            var institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            if (institucion != null && string.Compare(institucion.Nombre, message.InstitucionNombre) >= 0)
+            {
+                model.Institucion = institucion;
+                model.InstitucionNombre = string.Empty;
+            }
+            else
+            {
+                model.InstitucionNombre = message.InstitucionNombre;
+                model.Institucion = null;
+            }
         }
 
         public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario)
@@ -74,6 +86,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.ModificadoPor = usuario;
 
             return model;
+        }
+
+        public override TesisDirigidaForm Map(TesisDirigida model)
+        {
+            var message = base.Map(model);
+
+            if (message.InstitucionId > 0)
+                message.InstitucionNombre = model.Institucion.Nombre;
+
+            return message;
         }
     }
 }

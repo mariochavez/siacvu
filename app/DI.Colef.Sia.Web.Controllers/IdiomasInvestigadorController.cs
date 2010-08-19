@@ -109,7 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             idiomasInvestigadorService.SaveIdiomasInvestigador(idiomasInvestigador);
 
-            return RedirectToIndex(String.Format("Idioma del investigador {0} ha sido creado", idiomasInvestigador.Idioma.Nombre));
+            return RedirectToIndex(String.Format("Idioma del investigador {0} ha sido registrado", idiomasInvestigador.Idioma.Nombre));
         }
 
         [CustomTransaction]

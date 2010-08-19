@@ -169,7 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content("Uploaded");
         }
 
-        [CustomTransaction]
+        /*[CustomTransaction]*/
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
@@ -179,7 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             articulo.Firma.Aceptacion2 = 1;
             articulo.Firma.Usuario2 = CurrentUser();
 
-            articuloService.SaveArticulo(articulo);
+            articuloService.SaveArticulo(articulo,false);
 
             var data = new FirmaForm
                            {
@@ -240,7 +240,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             articuloService.SaveArticulo(articulo);
-            SetMessage(String.Format("Artículo en revistas de investigación {0} ha sido creado", articulo.Titulo));
+            SetMessage(String.Format("Artículo en revistas de investigación {0} ha sido registrado", articulo.Titulo));
 
             return Rjs("Save", articulo.Id);
         }
@@ -476,6 +476,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var form = new CoautorForm {ModelId = id, InvestigadorExternoId = investigadorExternoId};
 
             return Rjs("DeleteCoautorExterno", form);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Activate(int id)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            articulo.Activo = true;
+            articulo.ModificadoPor = CurrentUser();
+
+            articuloService.SaveArticulo(articulo);
+
+            var form = articuloMapper.Map(articulo);
+
+            return Rjs("Activate", form);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Deactivate(int id)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            articulo.Activo = false;
+            articulo.ModificadoPor = CurrentUser();
+
+            articuloService.SaveArticulo(articulo);
+
+            var form = articuloMapper.Map(articulo);
+
+            return Rjs("Activate", form);
         }
 
         ArticuloForm SetupNewForm()

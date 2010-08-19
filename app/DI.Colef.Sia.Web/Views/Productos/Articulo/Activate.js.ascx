@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<FondoConacytForm>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ArticuloForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
@@ -9,6 +9,6 @@ var html = '
 <% } %>
 ';
 
-$('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last').html(html);
+$('#accion_<%=Html.Encode(Model.Id)%>_1 .elementobotones span:last').html(html);
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last a').removeLoading();
-showMessage('Fondo del Conacyt <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Art&iacute;culo <%=Html.Encode(Model.Titulo) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');

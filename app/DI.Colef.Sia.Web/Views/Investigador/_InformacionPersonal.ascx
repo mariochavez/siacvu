@@ -45,13 +45,13 @@
     <label>C&oacute;digo RH</label>
     <span id="codigorh" class="valor"><%=Html.Encode(Model.UsuarioCodigoRH) %>&nbsp;</span>
 </p>	
-
+<!-- -->
 <% Html.RenderPartial("_ShowDirecciones", Model.UsuarioDirecciones); %>
 
 <% Html.RenderPartial("_ShowCorreosElectronicos", Model.UsuarioCorreosElectronicos); %>
 
 <% Html.RenderPartial("_ShowTelefonos", Model.UsuarioTelefonos); %>
-
+<!-- -->
 <p class="submit">
     <%=Html.ActionLink<UsuarioController>(x => x.Edit(Model.UsuarioId), "Editar informacion personal") %>
 </p>

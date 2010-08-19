@@ -118,7 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             organoInternoService.SaveOrganoInterno(organoInterno);
-            SetMessage(String.Format("Órgano interno {0} ha sido creado", organoInterno.ConsejoComision.Nombre));
+            SetMessage(String.Format("Órgano interno {0} ha sido registrado", organoInterno.ConsejoComision.Nombre));
 
             return Rjs("Save", organoInterno.Id);
         }

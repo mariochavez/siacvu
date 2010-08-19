@@ -45,14 +45,14 @@
             <h4>
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
-                    Coautor(es) del cap&iacute;tulo
+                    Coautor(es)<!-- del cap&iacute;tulo-->
                     <span>
                         <%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%> coautor(es) 
                     </span>
                     <span class="cvu"></span>
                 </a>
             </h4>
-            <span id="coautores_area">
+            <span id="coautores_area" >
                 <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "CoautorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewCoautorInternoLink, NewCoautorExternoLink", SubFormName = "coautor", UrlActionExterno = "NewCoautorExterno", UrlActionInterno = "NewCoautorInterno", Link1Id = "NewCoautorInternoLink", Link2Id = "NewCoautorExternoLink" }); %>
                 <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
                 <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
@@ -75,7 +75,7 @@
 	            <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
-                <h4>&aacute;rea del conocimiento</h4>
+                
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
                 <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_ProgressBar"); %>
@@ -88,7 +88,7 @@
     
     	<% if(User.IsInRole("DGAA")){ %>    
         	<% Html.RenderPartial("_FirmaForm", new FirmaForm{Id = Model.Form.Id, IdName = "ArticuloId", Controller = "Articulo", TipoProducto = 1}); %>
-        <% } %>Compiladores
+        <% } %>
             
 	</div><!--end textos-->
     

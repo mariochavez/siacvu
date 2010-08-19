@@ -80,7 +80,7 @@
         <span class="valor"><%= Html.Encode(Model.NivelEstudioNombre) %>&nbsp;</span>
     </p>
 
-    <% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
+    <% Html.RenderPartial("_ShowInstitucionShort", Model); %>
     <p>
         <label></label>
         <span class="valor">¿Esta instituci&oacute;n es privada? <%= Html.Encode(Model.EsPrivada) %>&nbsp;</span>

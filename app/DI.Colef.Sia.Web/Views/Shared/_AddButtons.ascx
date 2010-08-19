@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ShowFieldsForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-
-<p style="display:none;">
+<!--style="display:none;"-->
+<p> 
     <label></label>
     <%= Html.CheckBox(Model.CheckboxName, Model.CheckboxValue, new { @class = "order", rel = Model.Rel })%> ¿Los investigadores se ordenan alfab&eacute;ticamente? 
     <br /><label></label><span>(Marque en caso positivo)</span>

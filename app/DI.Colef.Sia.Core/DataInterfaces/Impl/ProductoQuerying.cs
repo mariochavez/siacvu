@@ -266,6 +266,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(Projections.Property(GetPropertyName(productName)), "Nombre")
                 .Add(Projections.Constant((int) EntityHelper.GetTipoProducto<T>()), "TipoProducto")
                 .Add(Projections.Property("CreadoEl"), "CreadoEl")
+                .Add(Projections.Property("Activo"), "Activo")
 
                 .Add(Projections.Property("u.Id"), "UsuarioId")
                 .Add(Projections.Property("u.Nombre"), "UsuarioNombre")

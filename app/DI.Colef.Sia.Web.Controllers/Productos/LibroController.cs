@@ -195,7 +195,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             libroService.SaveLibro(libro);
-            SetMessage(String.Format("Libro {0} ha sido creado", libro.Nombre));
+            SetMessage(String.Format("Libro {0} ha sido registrado", libro.Nombre));
 
             return Rjs("Save", libro.Id);
         }
@@ -240,7 +240,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content("Uploaded");
         }
 
-        [CustomTransaction]
+       /* [CustomTransaction]*/
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
@@ -255,7 +255,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = new FirmaForm
                            {
                                TipoProducto = firmaForm.TipoProducto,
-                               Aceptacion2 = 1
+                               Aceptacion2 = 1,
+                               Firma2 = DateTime.Now.ToString()
                            };
 
             return Rjs("DgaaSign", data);

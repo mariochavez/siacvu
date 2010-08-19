@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveTipoProyecto(tipoProyecto);
 
-            return RedirectToIndex(String.Format("Tipo de Proyecto {0} ha sido creado", tipoProyecto.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Proyecto {0} ha sido registrado", tipoProyecto.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]

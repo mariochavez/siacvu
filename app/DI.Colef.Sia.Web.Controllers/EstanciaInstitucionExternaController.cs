@@ -119,11 +119,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
 
-            //return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
+            return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
 
-            SetMessage(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
+            //SetMessage(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
 
-            return Rjs("Save", movilidadAcademica.Id);
+            //return Rjs("Save", movilidadAcademica.Id);
         }
 
         [CustomTransaction]
@@ -191,6 +191,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             form = form ?? new EstanciaInstitucionExternaForm();
 
+            form.IsShowForm = true;
+            form.InstitucionLabel = "Institución de destino";
+
             form.ShowFields = new ShowFieldsForm
                                   {
                                       InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
@@ -201,10 +204,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
                                       Nivel2Nombre = form.Nivel2Nombre,
                                       OrganizacionNombre = form.OrganizacionNombre,
-                                      SectorNombre = form.SectorNombre,
-
-                                      IsShowForm = true,
-                                      InstitucionLabel = "Institución de destino"
+                                      SectorNombre = form.SectorNombre
                                   };
 
             return form;
